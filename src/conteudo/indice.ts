@@ -17,6 +17,8 @@ import { santificacao } from './sistematica/santificacao';
 import { batismo } from './sistematica/batismo';
 import { donsEspirituais } from './sistematica/dons-espirituais';
 import { milenio } from './sistematica/milenio';
+import { principioRegulador } from './sistematica/principio-regulador';
+import { cosmovisao } from './sistematica/cosmovisao';
 import { subscricaoConfessional } from './sistematica/subscricao-confessional';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
@@ -45,6 +47,8 @@ export const verbetes: Verbete[] = [
   batismo,
   donsEspirituais,
   milenio,
+  principioRegulador,
+  cosmovisao,
   subscricaoConfessional,
   hermeneutica,
   canonAT,
