@@ -107,13 +107,19 @@ def parse(e, ls):
         if re.match(r'^(Pré-requisito|Ementa|Objetivo)\b', l):
             cur = None
             continue
+        # O marcador de tópico do PDF (0x95) sobrevive à extração e é o limite
+        # confiável entre título e tópicos: antes dele, tudo é continuação do
+        # título, que costuma ocupar duas linhas. Sem isso, a segunda linha do
+        # título virava o primeiro tópico — "vida financeira" saía partida.
+        if l.strip() in ('\x95', '•'):
+            cur['_emTopico'] = True
+            cur['topicos'].append('')
+            continue
         l2 = BULLET.sub('', l).strip()
         if not l2:
             continue
-        if not cur['titulo']:
-            cur['titulo'] = l2
-        elif BULLET.match(l) or cur['topicos'] == []:
-            cur['topicos'].append(l2)
+        if not cur.get('_emTopico'):
+            cur['titulo'] = (cur['titulo'] + ' ' + l2).strip()
         else:
             cur['topicos'][-1] = (cur['topicos'][-1] + ' ' + l2).strip()
 
@@ -155,7 +161,11 @@ def parse(e, ls):
         'eletiva': int(e['codigo'][2:]) >= 51,
         'preRequisito': pre or 'Não há',
         'ementa': ementa,
-        'unidades': [u for u in unidades if u['titulo'] or u['topicos']],
+        'unidades': [
+            {'numero': u['numero'], 'titulo': u['titulo'],
+             'topicos': [t for t in u['topicos'] if t.strip()]}
+            for u in unidades if u['titulo'] or any(t.strip() for t in u['topicos'])
+        ],
         'bibliografia': bib,
         'paginaPdf': e['pagina'],
     }

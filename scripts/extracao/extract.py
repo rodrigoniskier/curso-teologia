@@ -145,9 +145,13 @@ for _, content, fonts in pages:
 full = '\n'.join(f"===== PAG {i+1} =====\n{t}" for i, t in enumerate(out_pages))
 # junta palavras quebradas por hífen de fim de linha. O extrator emite o hífen
 # como token isolado, então a forma dominante é "exis\n-\ntência".
-full = re.sub(r'(\w)[ \t]*\n[ \t]*-[ \t]*\n[ \t]*(\w)', r'\1\2', full)
-full = re.sub(r'(\w)-[ \t]*\n[ \t]*(\w)', r'\1\2', full)
-full = re.sub(r'(\w)[ \t]+-[ \t]*\n[ \t]*(\w)', r'\1\2', full)
+# O ▮ é o placeholder de ligadura e precisa entrar na classe de caracteres:
+# sem ele, palavra hifenizada terminada em ligadura ("vida ﬁ-nanceira") nunca
+# se juntava, porque a de-hifenização corre antes de ligaduras.py.
+_P = r'[\w▮]'
+full = re.sub(rf'({_P})[ \t]*\n[ \t]*-[ \t]*\n[ \t]*({_P})', r'\1\2', full)
+full = re.sub(rf'({_P})-[ \t]*\n[ \t]*({_P})', r'\1\2', full)
+full = re.sub(rf'({_P})[ \t]+-[ \t]*\n[ \t]*({_P})', r'\1\2', full)
 open('texto.txt', 'w', encoding='utf-8').write(full)
 
 leftovers = sum(full.count(chr(c)) for c in range(0x1b, 0x20))
