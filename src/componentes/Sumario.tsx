@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { departamentos, verbetesDe } from '../conteudo/indice';
+import { buscarVerbetes, departamentos, verbetesDe } from '../conteudo/indice';
 
 /**
  * Abrir todo departamento que tenha verbete enterrava a Sistemática abaixo das
@@ -44,6 +44,8 @@ export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
     ativoRef.current?.scrollIntoView({ block: 'nearest' });
   }, [codigo, abertos]);
 
+  const achados = useMemo(() => buscarVerbetes(busca), [busca]);
+
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase();
     if (!q) return departamentos;
@@ -79,6 +81,34 @@ export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
       </div>
 
       <div className="barra-lateral flex-1 overflow-y-auto px-2 pb-10">
+        {achados.length > 0 && (
+          <section className="mb-4 border-b border-margem pb-3">
+            <p className="px-3 py-2 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.11em] text-ouro-700">
+              Nos verbetes · {achados.length}
+            </p>
+            <ul className="space-y-1">
+              {achados.map(({ verbete, trecho }) => (
+                <li key={verbete.id}>
+                  <NavLink
+                    to={`/disciplina/${verbete.disciplina}/${verbete.id}`}
+                    onClick={aoNavegar}
+                    className="block border-l-2 border-ouro-300 py-1.5 pl-3 pr-2 hover:bg-papel-quente"
+                  >
+                    <span className="block font-serif text-[0.95rem] leading-snug text-tinta-700">
+                      {verbete.titulo}
+                    </span>
+                    {trecho && (
+                      <span className="mt-0.5 block font-sans text-[0.72rem] leading-snug text-neutral-500">
+                        {trecho}
+                      </span>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {filtrados.map((dep) => {
           const aberto = busca ? true : abertos[dep.nome];
           return (
@@ -140,8 +170,10 @@ export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
         })}
 
         {filtrados.length === 0 && (
-          <p className="px-4 py-6 font-sans text-sm text-neutral-500">
-            Nenhuma disciplina corresponde a “{busca}”.
+          <p className="px-4 py-6 font-sans text-sm leading-relaxed text-neutral-500">
+            {achados.length > 0
+              ? `Nenhuma disciplina se chama assim — os resultados acima estão no corpo dos verbetes.`
+              : `Nada encontrado para “${busca}”, nem entre as disciplinas nem no texto dos verbetes.`}
           </p>
         )}
       </div>

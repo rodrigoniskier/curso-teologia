@@ -79,6 +79,81 @@ export const departamentos: Departamento[] = ORDEM_DEPARTAMENTOS.map((nome) => {
 export const porCodigo = new Map(disciplinas.map((d) => [d.codigo, d]));
 export const verbetePorId = new Map(verbetes.map((v) => [v.id, v]));
 
+/**
+ * Índice de busca em texto integral.
+ *
+ * A busca cobria apenas títulos e ementas de disciplina, de modo que nada do
+ * que foi escrito nos verbetes era encontrável — quem procurasse "imputação"
+ * não chegava à justificação. Aqui se achata todo o texto de cada verbete,
+ * inclusive o conteúdo dos blocos, num campo minúsculo e sem acento.
+ */
+function semAcento(s: string): string {
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
+function textoDoBloco(b: Verbete['blocos'][number]): string {
+  switch (b.tipo) {
+    case 'paragrafo':
+    case 'pastoral':
+      return b.texto;
+    case 'secao':
+      return b.titulo;
+    case 'citacao':
+      return `${b.texto} ${b.autor} ${b.obra ?? ''}`;
+    case 'passagem':
+      return `${b.referencia} ${b.texto}`;
+    case 'lista':
+      return b.itens.join(' ');
+    case 'termo':
+    case 'definicao':
+      return `${b.termo} ${b.texto}`;
+    case 'controversia':
+      return `${b.titulo} ${b.posicoes.map((p) => `${p.escola} ${p.sintese}`).join(' ')}`;
+  }
+}
+
+const indiceBusca = verbetes.map((v) => ({
+  verbete: v,
+  texto: semAcento(
+    [
+      v.titulo,
+      v.subtitulo ?? '',
+      v.objetivo,
+      v.disciplina,
+      ...v.blocos.map(textoDoBloco),
+      ...v.fontes.map((f) => `${f.autor} ${f.titulo}`),
+    ].join(' '),
+  ),
+}));
+
+export interface Achado {
+  verbete: Verbete;
+  /** Trecho ao redor da primeira ocorrência, para mostrar o contexto. */
+  trecho?: string;
+}
+
+export function buscarVerbetes(consulta: string, limite = 8): Achado[] {
+  const q = semAcento(consulta.trim());
+  if (q.length < 3) return [];
+  const achados: Achado[] = [];
+  for (const { verbete, texto } of indiceBusca) {
+    const i = texto.indexOf(q);
+    if (i === -1) continue;
+    // recorta o trecho no texto original, alinhado pela posição no normalizado
+    const bruto = [verbete.titulo, verbete.objetivo, ...verbete.blocos.map(textoDoBloco)].join(' ');
+    const j = semAcento(bruto).indexOf(q);
+    const trecho =
+      j === -1
+        ? undefined
+        : (j > 40 ? '…' : '') +
+          bruto.slice(Math.max(0, j - 40), j + q.length + 70).trim() +
+          '…';
+    achados.push({ verbete, trecho });
+    if (achados.length >= limite) break;
+  }
+  return achados;
+}
+
 export function verbetesDe(codigo: string): Verbete[] {
   return verbetes.filter((v) => v.disciplina === codigo);
 }
