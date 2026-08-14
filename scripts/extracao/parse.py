@@ -153,7 +153,29 @@ def parse(e, ls):
         'paginaPdf': e['pagina'],
     }
 
-out = [parse(e, ls) for e, ls in registros]
+# O cabeçalho que corre no alto das páginas às vezes é capturado dentro de um
+# campo, quando a unidade atravessa a quebra de página.
+_LIXO = re.compile(
+    r'\s*DEPARTAMENTO DE\s*|\s*(?:' + '|'.join(d.upper() for d in DEPTS.values()) + r')\s*',
+    re.I,
+)
+
+
+def limpar(s):
+    return re.sub(r'\s{2,}', ' ', _LIXO.sub(' ', s)).strip()
+
+
+def limpar_disciplina(d):
+    d['ementa'] = limpar(d['ementa'])
+    for u in d['unidades']:
+        u['titulo'] = limpar(u['titulo'])
+        u['topicos'] = [limpar(t) for t in u['topicos']]
+    for k in ('basica', 'complementar'):
+        d['bibliografia'][k] = [limpar(x) for x in d['bibliografia'][k]]
+    return d
+
+
+out = [limpar_disciplina(parse(e, ls)) for e, ls in registros]
 json.dump(out, open('ementas.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
 
 ok_e = sum(1 for d in out if len(d['ementa']) > 30)

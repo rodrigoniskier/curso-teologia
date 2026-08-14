@@ -5,6 +5,8 @@ import { prolegomenos } from './sistematica/prolegomenos';
 import { revelacao } from './sistematica/revelacao';
 import { inspiracao } from './sistematica/inspiracao';
 import { atributos } from './sistematica/atributos';
+import { trindade } from './sistematica/trindade';
+import { decretos } from './sistematica/decretos';
 import { hermeneutica } from './exegetica/hermeneutica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -16,6 +18,8 @@ export const verbetes: Verbete[] = [
   revelacao,
   inspiracao,
   atributos,
+  trindade,
+  decretos,
   hermeneutica,
 ];
 

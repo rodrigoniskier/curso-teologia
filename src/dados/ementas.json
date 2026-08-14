@@ -1582,7 +1582,7 @@
         "numero": 11,
         "titulo": "Lógica e teologia",
         "topicos": [
-          "Os perigos da absolutização de princípios lógicos aplicados à teologia Aplicação da lógica aos campos da teologia (teologia exegética, sistemática e pastoral)"
+          "Os perigos da absolutização de princípios lógicos aplicados à teologia Aplicação da lógica aos campos da teologia ( , sistemática e pastoral)"
         ]
       }
     ],
@@ -3863,7 +3863,7 @@
       "basica": [
         "ALVES, João. O Dispensacionalismo e suas Implicações Doutrinárias . Disponível em: http:// www.monergismo.com/textos/escatologia_reformada/imp-dispensacionalismo_joao - -alves.pdf",
         "CALVINO, J. Institutas – Edição clássica (4 vols.). São Paulo: Cultura Cristã, 2006.",
-        "CARSON, D. A. O Deus Presente : Encontrando seu Lugar no Plano de Deus. São José dos Campos: Fiel, 2012._______. Teologia Bíblica ou Teologia Sistemática? São Paulo: Vida Nova, 2001.",
+        "CARSON, D. A. O Deus Presente : Encontrando seu Lugar no Plano de Deus. São José dos Campos: Fiel, 2012._______. Teologia Bíblica ou ? São Paulo: Vida Nova, 2001.",
         "CHILDS, Brevard S. Biblical Theology in Crisis . Greenville: Westminster Press, 1970.",
         "DESMOND, T. Alexander e ROSNER, Brian S. Novo Dicionário de Teologia Bíblica . São Paulo: Editora Vida, 2009.",
         "GOLDSWORTHY, Graeme.fi Christ-Centered Biblical Theology : Hermeneutical Foundations and Principles. Downers Grove, IL: InterVarsity, 2012.",
@@ -3978,7 +3978,7 @@
         "BLACK, David Alan. Por que 4 Evangelhos? : Razões Históricas e Científicas da Escolha de Mateus, Marcos, Lucas e João. São Paulo: Vida, 2004.",
         "BRUCE, Frederick Fye. Paulo, O Apóstolo da Graça – sua Vida, Cartas e Teologia. São Paulo: Shedd, 2003.",
         "CALVINO, J. Institutas – Edição clássica (4 vols.). São Paulo: Cultura Cristã, 2006.",
-        "CARSON, D. A. Teologia Bíblica Ou Teologia Sistemática? São Paulo: Vida Nova, 2001.",
+        "CARSON, D. A. Teologia Bíblica Ou ? São Paulo: Vida Nova, 2001.",
         "GUTHRIE, Donald. Teologia do Novo Testamento . São Paulo: Cultura Cristã, 2011.",
         "HASEL, Gerhard. Teologia do Antigo e Novo Testamento : Questões Básicas no Debate Atual. São Paulo: Ed. Academia Cristã, 2007.",
         "HOEKEMA, A. A Bíblia e o Futuro . São Paulo: Cultura Cristã, 2001.",
@@ -5345,7 +5345,7 @@
         "HALL, Christopher A. Lendo as Escrituras com os Pais da Igreja . Viçosa: Ultimato, 2007.",
         "IRVIN, Dale T. e SUNQUIST, Scott W. História do Movimento Cristão Mundial (vol. 1). São Paulo: Paulus, 2004.",
         "LE GOFF, Jacques. Reflexões sobre a História . Lisboa: Edições 70, 1982.",
-        "MCGRATH, Alister E. Teologia Sistemática, Histórica e Filosófica . São Paulo: Shedd, 2005.",
+        "MCGRATH, Alister E. , Histórica e Filosófica . São Paulo: Shedd, 2005.",
         "MOMIGLIANO, Arnaldo. As Raízes Clássicas da Historiografia Moderna . São Paulo: Edusc, 2004.",
         "SHELLEY, Bruce L. História do Cristianismo ao Alcance de Todos . São Paulo: Shedd, 2004.",
         "VON CAMPENHAUSEN, Hans. Os Pais da Igreja . São Paulo: CPAD, 2005.",
@@ -6347,7 +6347,7 @@
         "LANE, Tony. Pensamento Cristão (2 vols.). São Paulo: Abba Press, 1999.",
         "MCGRATH, Alister E. A Vida de João Calvino . São Paulo: Cultura Cristã, 2004.",
         "________. Origens Intelectuais da Reforma . São Paulo: Cultura Cristã, 2007.",
-        "________. – Uma Introdução à História do Pensamento Cristão. São Paulo: Cultura Cristã, 2007.________. Teologia Sistemática, Histórica e Filosófica : Uma Introdução à Teologia Cristã. São Paulo: Shedd Publicações, 2005.",
+        "________. – Uma Introdução à História do Pensamento Cristão. São Paulo: Cultura Cristã, 2007.________. , Histórica e Filosófica : Uma Introdução à Teologia Cristã. São Paulo: Shedd Publicações, 2005.",
         "NOLL, Mark A. Momentos Decisivos na História do Cristianismo . São Paulo: Cultura Cristã, 2000."
       ],
       "complementar": []
@@ -6483,7 +6483,7 @@
         "LANE, Tony. Pensamento Cristão . 2 vols. São Paulo: Abba Press, 1999.",
         "MCGRATH, Alister E. A Vida de João Calvino . São Paulo: Cultura Cristã, 2004.",
         "________. Origens Intelectuais da Reforma . São Paulo: Cultura Cristã, 2007.",
-        "________. : Uma Introdução à História do Pensamento Cristão. São Paulo: Cultura Cristã, 2007.________. Teologia Sistemática, Histórica e Filosófica : Uma Introdução à Teologia Cristã. São Paulo: Shedd Publicações, 2005.",
+        "________. : Uma Introdução à História do Pensamento Cristão. São Paulo: Cultura Cristã, 2007.________. , Histórica e Filosófica : Uma Introdução à Teologia Cristã. São Paulo: Shedd Publicações, 2005.",
         "NOLL, Mark A. Momentos Decisivos na História do Cristianismo . São Paulo: Cultura Cristã, 2000."
       ],
       "complementar": []
@@ -9091,20 +9091,20 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Não há",
-    "ementa": "Prolegômena – Introduz os alunos ao estudo da Teologia Sistemática Reformada. Inclui definição, natureza, história, métodos e fontes; Bibliologia – Estuda a doutrina bíblico-reformada das Escrituras. Inclui as doutrinas da revelação, inspiração, autoridade, suficiência, clareza e preservação das Escrituras; Teontologia – Estuda a doutrina bíblico-reformada acerca de Deus e suas obras. Aborda temas como a existência, conhecimento, nomes, ser, atributos, decretos e obras de Deus, incluindo a criação e providência.",
+    "ementa": "Prolegômena – Introduz os alunos ao estudo da Reformada. Inclui definição, natureza, história, métodos e fontes; Bibliologia – Estuda a doutrina bíblico-reformada das Escrituras. Inclui as doutrinas da revelação, inspiração, autoridade, suficiência, clareza e preservação das Escrituras; Teontologia – Estuda a doutrina bíblico-reformada acerca de Deus e suas obras. Aborda temas como a existência, conhecimento, nomes, ser, atributos, decretos e obras de Deus, incluindo a criação e providência.",
     "unidades": [
       {
         "numero": 1,
         "titulo": "Os princípios em geral e Prolegomeno I",
         "topicos": [
-          "Definição de principium , os princípios nas ciências não teológicas e os princípios nas ciências teológicas, definição de Teologia Sistemática, pressupostos da Teologia Sistemática e necessidade e tarefa da Teologia Sistemática"
+          "Definição de principium , os princípios nas ciências não teológicas e os princípios nas ciências teológicas, definição de , pressupostos da e necessidade e tarefa da"
         ]
       },
       {
         "numero": 2,
         "titulo": "Prolegômena II",
         "topicos": [
-          "História da Teologia Sistemática, método da Teologia Sistemática e fontes da Teologia Sistemática"
+          "História da , método da e fontes da"
         ]
       },
       {
@@ -9158,7 +9158,7 @@
         "numero": 10,
         "titulo": "O ser e os nomes de Deus: a natureza de",
         "topicos": [
-          "Deus: a doutrina de Deus na Teologia Sistemática e a imanência e a transcendência de Deus O ser de Deus como revelado em seus atributos e os nomes de Deus no AT e no NT"
+          "Deus: a doutrina de Deus na e a imanência e a transcendência de Deus O ser de Deus como revelado em seus atributos e os nomes de Deus no AT e no NT"
         ]
       },
       {
@@ -9207,7 +9207,7 @@
         "numero": 17,
         "titulo": "A doutrina da Trindade III",
         "topicos": [
-          "A relação trinitária como a melhor comunidaDEPARTAMENTO DE"
+          "A relação trinitária como a melhor comunida"
         ]
       },
       {
@@ -9290,7 +9290,7 @@
         "________. O Ser de Deus e suas Obras – Providência. São Paulo: Cultura Cristã, 2001.",
         "COSTA, Hermisten Maia Pereira. A Inspiração e Inerrância das Escrituras – Uma perspectiva Reformada. São Paulo: Cultura Cristã, 1998.",
         "DYKE, Fred van, et. al. A Criação Redimida . São Paulo: Cultura Cristã, 1999.",
-        "ERICKSON, Millard J. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "ERICKSON, Millard J. Introdução à . São Paulo: Vida Nova, 1997.",
         "FRAME, John. A Doutrina da Palavra de Deus . São Paulo: Cultura Cristã, 2007.",
         "________. Conhecimento de Deus . São Paulo: Cultura Cristã, 2008.",
         "GEISLER, Norman e WILLIAM, Nix. Introdução Bíblica – Como a Bíblia Chegou Até Nós. São Paulo: Vida, 1997.",
@@ -9307,14 +9307,14 @@
         "CALVINO, João. As Institutas – Edição Clássica (4 vols.). São Paulo: Cultura Cristã, 2006.",
         "DABNEY, R. L. Lectures in Systematic Theology . Grand Rapids: Baker Book House, 1985.",
         "DAGG, John L. Manual de Teologia . São José dos Campos: Fiel, 1989.",
-        "ERICKSON, Millard J. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "ERICKSON, Millard J. Introdução à . São Paulo: Vida Nova, 1997.",
         "FRANCOIS, Turretini. Compêndio de Teologia Apologética . São Paulo: Cultura Cristã, 2011",
         "GRUDEN, Wayne A. . São Paulo: Vida Nova, 1999.",
         "GRUDEN, W., COLLINS, J., e SCHREINER, T. R. Origem e Confiabilidade . São Paulo: Vida Nova, 2013.",
         "HODGE, Charles. . São Paulo: Hagnos, 2003.",
         "HOEKSEMA, Herman. Reformed Dogmatics . Grand Rapids: Reformed Publishing Association, 2005.",
         "HORTON, Michael. The Christian Faith . Grand Rapids: Zondervan, 2011.",
-        "MCGRATH, Alister. Teologia Sistemática, Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
+        "MCGRATH, Alister. , Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
         "PACKER, J. I. Teologia Concisa . São Paulo: Cultura Cristã, 1999.",
         "REYMOND, A. A New Sistematic Thelogy of Christian Faith . Nashville: Thomas Nelson, 1998. Símbolos de fé – Confissão de Fé de Westminster, Catecismo Maior, Breve Catecismo. São Paulo: Cultura Cristã, 2008.",
         "ROBERTSON, O. Palmer. A palavra final: resposta bíblica à questão das línguas e profecias hoje . Recife: Os Puritanos, 2015.",
@@ -9455,15 +9455,15 @@
         "CALVINO, João. As Institutas – Edição Clássica (4 vols.). São Paulo: Cultura Cristã, 2006.",
         "DABNEY, R. L. Lectures in Systematic Theology . Grand Rapids: Baker Book House, 1985.",
         "DAGG, John L. Manual de Teologia . São José dos Campos: Fiel, 1989.",
-        "ERICKSON, Millard J. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "ERICKSON, Millard J. Introdução à . São Paulo: Vida Nova, 1997.",
         "GRUDEM, Wayne A. . São Paulo: Vida Nova, 1999.",
         "HODGE, Charles. . São Paulo: Hagnos, 2003.",
         "HOEKSEMA, Herman. Reformed Dogmatics . Grand Rapids: Reformed Publishing Association, 1976.",
-        "MCGRATH, Alister. Teologia Sistemática, Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
+        "MCGRATH, Alister. , Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
         "OWEN, John. A Mortificação do Pecado . São Paulo: Vida, 2005.",
         "PACKER, J. I. Teologia Concisa . São Paulo: Cultura Cristã, 1999. Símbolos de fé – Confissão de fé de Westminster, Catecismo Maior, Breve Catecismo. São Paulo: Cultura Cristã, 2008.",
         "STRONG, Augustus H. . São Paulo: Hagnos, 2003.",
-        "TURRETINI, François. Compêndio de Teologia Apologética . São Paulo: Cultura Cristã, 2011. TEOLOGIA SISTEMÁTICA 2 – ANTROPOLOGIA TS02"
+        "TURRETINI, François. Compêndio de Teologia Apologética . São Paulo: Cultura Cristã, 2011. 2 – ANTROPOLOGIA TS02"
       ],
       "complementar": []
     },
@@ -9476,7 +9476,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 2",
-    "ementa": "Cristologia – Estuda a doutrina bíblico-reformada acerca de Cristo. Abrange temas como a pessoa, nomes, natureza, ofícios, estados e obra de Cristo. TEOLOGIA SISTEMÁTICA 3 – CRISTOLOGIA TS03",
+    "ementa": "Cristologia – Estuda a doutrina bíblico-reformada acerca de Cristo. Abrange temas como a pessoa, nomes, natureza, ofícios, estados e obra de Cristo. 3 – CRISTOLOGIA TS03",
     "unidades": [
       {
         "numero": 1,
@@ -9602,11 +9602,11 @@
         "CALVINO, João. As Institutas – Edição Clássica (4 vols.). São Paulo: Cultura Cristã, 2006.",
         "DABNEY, R. L. Lectures in Systematic Theology . Grand Rapids: Baker Book House, 1985.",
         "DAGG, John L. Manual de Teologia . São José dos Campos: Fiel, 1989.",
-        "ERICKSON, Millard J. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "ERICKSON, Millard J. Introdução à . São Paulo: Vida Nova, 1997.",
         "GRUDEM, Wayne A. . São Paulo: Vida Nova, 1999.",
         "HODGE, Charles. . São Paulo: Hagnos, 2003.",
         "HOEKSEMA, Herman. Reformed Dogmatics . Grand Rapids: Reformed Publishing Association, 1976.",
-        "MCGRATH, Alister. Teologia Sistemática, Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
+        "MCGRATH, Alister. , Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
         "PACKER, J. I. Teologia Concisa . São Paulo: Cultura Cristã, 1999. Símbolos de fé – Confissão de Fé de Westminster, Catecismo Maior, Breve Catecismo. São Paulo: Cultura Cristã, 2008.",
         "STRONG, Augustus H. . São Paulo: Hagnos, 2003."
       ],
@@ -9621,7 +9621,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Soteriologia – Estuda a doutrina bíblico-reformada da salvação. Inclui as doutrinas da graça comum, chamado, regeneração, conversão, união mística, arrependimento, fé, certeza de salvação, justificação, adoção, santificação e perseverança na santidade. TEOLOGIA SISTEMÁTICA 4 – SOTERIOLOGIA TS04",
+    "ementa": "Soteriologia – Estuda a doutrina bíblico-reformada da salvação. Inclui as doutrinas da graça comum, chamado, regeneração, conversão, união mística, arrependimento, fé, certeza de salvação, justificação, adoção, santificação e perseverança na santidade. 4 – SOTERIOLOGIA TS04",
     "unidades": [
       {
         "numero": 1,
@@ -9698,11 +9698,11 @@
         "CALVINO, João. As Institutas – Edição Clássica. 4 vols. São Paulo: Cultura Cristã, 2006.",
         "DABNEY, R. L. Lectures in Systematic Theology . Grand Rapids: Baker Book House, 1985.",
         "DAGG, John L. Manual de Teologia . São José dos Campos: Fiel, 1989.",
-        "ERICKSON, Millard J. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "ERICKSON, Millard J. Introdução à . São Paulo: Vida Nova, 1997.",
         "GRUDEM, Wayne A. . São Paulo: Vida Nova, 1999.",
         "HODGE, Charles. . São Paulo: Hagnos, 2003.",
         "HOEKSEMA, Herman. Reformed Dogmatics . Grand Rapids: Reformed Publishing Association, 1976.",
-        "MCGRATH, Alister. Teologia Sistemática, histórica e filosófica . São Paulo: Vida Nova, 2005.",
+        "MCGRATH, Alister. , histórica e filosófica . São Paulo: Vida Nova, 2005.",
         "PACKER, J. I. Teologia Concisa . São Paulo: Cultura Cristã, 1999. Símbolos de fé – Confissão de fé de Westminster, Catecismo Maior, Breve Catecismo. São Paulo: Cultura Cristã, 2008.",
         "STRONG, Augustus H. . São Paulo: Hagnos, 2003.",
         "VOS, Johannes Goerhardus. Catecismo Maior Comentado , Recife: Editora Puritanos, 2007 Unidade 10 – Justificação  Termos bíblicos para Justificação  Natureza e características da Justificação  Elementos da Justificação  Quando e onde ocorre a Justificação  A base da Justificação  Objeções à doutrina da Justificação Unidade 11 – Adoção  Definição de adoção  A base da adoção  Implicações da adoção Unidade 12 – Santificação  Termos bíblicos para santidade e santificação  Ideia bíblica de santidade e santificaçãonatureza da santificação  O Autor e os meios de santificação  Santificação e boas obras Unidade 13 – Perseverança dos Santos  A doutrina da perseverança, prova da doutrina da perseverança e objeções à doutrina da perseverança Unidade 14 – Certeza da salvação  Bases objetivas e bases subjetivas"
@@ -9718,7 +9718,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Pneumatologia – Estuda a doutrina bíblico-reformada acerca do Espírito Santo. Abrange a pessoa e obras do Espírito Santo relacionadas a Cristo e à Igreja. Investiga o papel da Terceira Pessoa da Trindade na regeneração, conversão, arrependimento e fé, justificação e santificação do homem. TEOLOGIA SISTEMÁTICA 5 – PNEUMATOLOGIA TS05",
+    "ementa": "Pneumatologia – Estuda a doutrina bíblico-reformada acerca do Espírito Santo. Abrange a pessoa e obras do Espírito Santo relacionadas a Cristo e à Igreja. Investiga o papel da Terceira Pessoa da Trindade na regeneração, conversão, arrependimento e fé, justificação e santificação do homem. 5 – PNEUMATOLOGIA TS05",
     "unidades": [
       {
         "numero": 1,
@@ -9845,7 +9845,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Eclesiologia – Estuda a doutrina bíblico-reformada da Igreja. Aborda temas como a natureza, aspectos, atributos e marcas da Igreja, governo eclesiástico, e os meios de graça. TEOLOGIA SISTEMÁTICA 6 – ECLESIOLOGIA TS06",
+    "ementa": "Eclesiologia – Estuda a doutrina bíblico-reformada da Igreja. Aborda temas como a natureza, aspectos, atributos e marcas da Igreja, governo eclesiástico, e os meios de graça. 6 – ECLESIOLOGIA TS06",
     "unidades": [
       {
         "numero": 1,
@@ -9980,11 +9980,11 @@
         "CALVINO, João. As Institutas – Edição Clássica (4 vols.). São Paulo: Cultura Cristã, 2006.",
         "DABNEY, R. L. Lectures in Systematic Theology . Grand Rapids: Baker Book House, 1985.",
         "DAGG, John L. Manual de Teologia . São José dos Campos: Fiel, 1989.",
-        "ERICKSON, Millard J. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "ERICKSON, Millard J. Introdução à . São Paulo: Vida Nova, 1997.",
         "GRUDEM, Wayne A. . São Paulo: Vida Nova, 1999.",
         "HODGE, Charles. . São Paulo: Hagnos, 2003.",
         "HOEKSEMA, Herman. Reformed Dogmatics . Grand Rapids: Reformed Publishing Association, 1976.",
-        "MCGRATH, Alister. Teologia Sistemática, Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
+        "MCGRATH, Alister. , Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
         "PACKER, J. I. Teologia Concisa . São Paulo: Cultura Cristã, 1999. Símbolos de fé – Confissão de fé de Westminster, Catecismo Maior, Breve Catecismo. São Paulo: Cultura Cristã, 2008.",
         "STRONG, Augustus H. . São Paulo: Hagnos, 2003."
       ],
@@ -9999,7 +9999,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Escatologia – Estuda a doutrina bíblico-reformada das últimas coisas. Abrange a escatologia individual e geral. Aborda temas como a natureza escatológica da mensagem bíblica, a morte, imortalidade, estado intermediário, segunda vinda de Cristo, milênio, ressurreição, juízo final e estado eterno. TEOLOGIA SISTEMÁTICA 7 – ESCATOLOGIA TS07",
+    "ementa": "Escatologia – Estuda a doutrina bíblico-reformada das últimas coisas. Abrange a escatologia individual e geral. Aborda temas como a natureza escatológica da mensagem bíblica, a morte, imortalidade, estado intermediário, segunda vinda de Cristo, milênio, ressurreição, juízo final e estado eterno. 7 – ESCATOLOGIA TS07",
     "unidades": [
       {
         "numero": 1,
@@ -10108,7 +10108,7 @@
         "DABNEY, R. L. Lectures in Systematic Theology . Grand Rapids: Baker Book House, 1985.",
         "DAGG, John L. Manual de Teologia . São José dos Campos: Fiel, 1989.",
         "ERICKSON, Millard J. Escatologia – A Polêmica em Torno do Milênio. São Paulo: Vida Nova, 2010.",
-        "________. Introdução à Teologia Sistemática . São Paulo: Vida Nova, 1997.",
+        "________. Introdução à . São Paulo: Vida Nova, 1997.",
         "GRIER, W. J. O Maior de Todos os Acontecimentos . Campinas: LPC, 1987."
       ],
       "complementar": []
@@ -10210,7 +10210,7 @@
         "HODGE, Charles. . São Paulo: Hagnos, 2003.",
         "HOEKEMA, Anthony. A Bíblia e o futuro . São Paulo: Cultura Cristã, 2001.",
         "HOEKSEMA, Herman. Reformed Dogmatics . Grand Rapids: Reformed Publishing Association, 1976.",
-        "MCGRATH, Alister. Teologia Sistemática, Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
+        "MCGRATH, Alister. , Histórica e Filosófica . São Paulo: Vida Nova, 2005.",
         "PACKER, J. I. Teologia Concisa. São Paulo: Cultura Cristã, 1999.",
         "SHEDD, Russel P. e PIERATT, Alan (orgs.). Imortalidade . São Paulo: Vida Nova, 1992. Símbolos de fé – Confissão de Fé de Westminster, Catecismo Maior, Breve Catecismo. São Paulo: Cultura Cristã, 2008.SPROUL, R. C. Os Últimos Dias Segundo Jesus . São Paulo: Cultura Cristã, 2003.",
         "STRONG, Augustus H. . São Paulo: Hagnos, 2003."
