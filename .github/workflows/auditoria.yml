@@ -1,11 +1,12 @@
 name: Auditoria de fontes
 
+# Sem filtro de paths: ele existia para poupar execuções, mas gatilhava também
+# o job de build, e um PR que só mexesse na interface passava sem checagem de
+# tipos nenhuma. A auditoria leva menos de um minuto — não vale o risco.
 on:
   push:
     branches: [main]
-    paths: ['src/conteudo/**', 'src/dados/**', 'scripts/auditar-links.mjs']
   pull_request:
-    paths: ['src/conteudo/**', 'src/dados/**', 'scripts/auditar-links.mjs']
   schedule:
     # Toda segunda-feira às 06:00 UTC — pega link que morreu desde a última checagem.
     - cron: '0 6 * * 1'
