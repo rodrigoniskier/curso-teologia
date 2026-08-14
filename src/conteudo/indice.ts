@@ -10,6 +10,8 @@ import { decretos } from './sistematica/decretos';
 import { providencia } from './sistematica/providencia';
 import { imagemDeDeus } from './sistematica/imagem-de-deus';
 import { pessoaDeCristo } from './sistematica/pessoa-de-cristo';
+import { expiacao } from './sistematica/expiacao';
+import { ordoSalutis } from './sistematica/ordo-salutis';
 import { hermeneutica } from './exegetica/hermeneutica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -26,6 +28,8 @@ export const verbetes: Verbete[] = [
   providencia,
   imagemDeDeus,
   pessoaDeCristo,
+  expiacao,
+  ordoSalutis,
   hermeneutica,
 ];
 
