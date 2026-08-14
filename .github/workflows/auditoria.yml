@@ -3,9 +3,9 @@ name: Auditoria de fontes
 on:
   push:
     branches: [main]
-    paths: ['src/conteudo/**', 'scripts/auditar-links.mjs']
+    paths: ['src/conteudo/**', 'src/dados/**', 'scripts/auditar-links.mjs']
   pull_request:
-    paths: ['src/conteudo/**', 'scripts/auditar-links.mjs']
+    paths: ['src/conteudo/**', 'src/dados/**', 'scripts/auditar-links.mjs']
   schedule:
     # Toda segunda-feira às 06:00 UTC — pega link que morreu desde a última checagem.
     - cron: '0 6 * * 1'

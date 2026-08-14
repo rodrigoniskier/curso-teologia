@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { porCodigo, verbetesDe } from '../conteudo/indice';
+import { porDisciplina } from '../dados/biblioteca';
 import { Verbete } from '../componentes/Verbete';
 
 export function PaginaDisciplina() {
@@ -15,6 +16,7 @@ export function PaginaDisciplina() {
   }
 
   const vs = verbetesDe(codigo);
+  const livres = porDisciplina(codigo);
   const atual = verbeteId ? vs.find((v) => v.id === verbeteId) : undefined;
 
   if (atual) {
@@ -102,11 +104,46 @@ export function PaginaDisciplina() {
         </section>
       )}
 
+      {livres.length > 0 && (
+        <section className="mt-11 border-t border-margem pt-7">
+          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
+            Leitura gratuita para esta disciplina
+          </h2>
+          <p className="mt-1.5 font-sans text-[0.78rem] text-neutral-500">
+            Obras em domínio público, edição autorizada ou empréstimo de
+            biblioteca. <Link to="/biblioteca" className="text-tinta-600 underline">Ver a biblioteca completa</Link>.
+          </p>
+          <ul className="mt-5 space-y-4">
+            {livres.map((o) => (
+              <li key={o.id} className="border-l-2 border-ouro-300 pl-4">
+                <a
+                  href={o.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-serif text-[1.05rem] text-tinta-600 underline decoration-tinta-200
+                             underline-offset-2 hover:decoration-tinta-600"
+                >
+                  {o.titulo}
+                </a>
+                <p className="mt-0.5 font-sans text-[0.8rem] text-neutral-600">
+                  {o.autor} ({o.ano}) · {o.publicacao}
+                </p>
+                <p className="mt-1 text-[0.95rem] leading-relaxed text-neutral-600">{o.nota}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {(d.bibliografia.basica.length > 0 || d.bibliografia.complementar.length > 0) && (
         <section className="mt-11 border-t border-margem pt-7">
           <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
             Bibliografia oficial
           </h2>
+          <p className="mt-1.5 font-sans text-[0.78rem] text-neutral-500">
+            Como consta do programa da JET. Boa parte destes títulos está em
+            catálogo; onde for o caso, os verbetes acima cobrem o conteúdo.
+          </p>
           {(['basica', 'complementar'] as const).map((k) =>
             d.bibliografia[k].length > 0 ? (
               <div key={k} className="mt-5">

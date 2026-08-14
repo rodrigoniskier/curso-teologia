@@ -21,7 +21,9 @@ import { setDefaultResultOrder } from 'node:dns';
 setDefaultResultOrder('ipv4first');
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
-const CONTEUDO = join(RAIZ, 'src', 'conteudo');
+// Verbetes e biblioteca: as duas fontes de URL do portal precisam ser auditadas,
+// já que a página da Biblioteca promete ao leitor que os links são verificados.
+const DIRETORIOS = [join(RAIZ, 'src', 'conteudo'), join(RAIZ, 'src', 'dados')];
 const TEMPO_LIMITE = 25_000;
 const CONCORRENCIA = 6;
 const TENTATIVAS = 3;
@@ -75,7 +77,8 @@ async function arquivosTs(dir) {
 /** Extrai as fontes sem executar TypeScript: lê os literais do próprio código. */
 async function coletarFontes() {
   const fontes = [];
-  for (const arquivo of await arquivosTs(CONTEUDO)) {
+  const arquivos = (await Promise.all(DIRETORIOS.map(arquivosTs))).flat();
+  for (const arquivo of arquivos) {
     const src = await readFile(arquivo, 'utf8');
     const rel = arquivo.slice(RAIZ.length + 1);
     for (const m of src.matchAll(/\{[^{}]*?url:\s*'([^']+)'[^{}]*?\}/gs)) {

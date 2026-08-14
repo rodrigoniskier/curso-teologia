@@ -3,13 +3,21 @@ import type { Disciplina, Verbete } from '../tipos';
 
 import { prolegomenos } from './sistematica/prolegomenos';
 import { revelacao } from './sistematica/revelacao';
+import { inspiracao } from './sistematica/inspiracao';
+import { atributos } from './sistematica/atributos';
 import { hermeneutica } from './exegetica/hermeneutica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
 
 /** Verbetes já redigidos. Cresce a cada ciclo de trabalho. */
-export const verbetes: Verbete[] = [prolegomenos, revelacao, hermeneutica];
+export const verbetes: Verbete[] = [
+  prolegomenos,
+  revelacao,
+  inspiracao,
+  atributos,
+  hermeneutica,
+];
 
 export const ORDEM_DEPARTAMENTOS = [
   'Teologia Exegética',

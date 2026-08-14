@@ -13,7 +13,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.212** |
 | Referências bibliográficas oficiais | **1.237** |
-| Verbetes redigidos | 3 |
+| Verbetes redigidos | 5 |
+| Obras livres mapeadas | 18 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -38,6 +39,25 @@ Os blocos disponíveis estão tipados em [`src/tipos.ts`](src/tipos.ts):
 
 Toda fonte externa é um objeto tipado com autor, ano, obra, veículo, idioma,
 tipo e nível de acesso — e sempre com link para o original.
+
+O verbete precisa **ensinar a doutrina**, não resumi-la e remeter ao manual.
+O alvo declarado do portal é que quem estuda por ele não dependa de comprar
+bibliografia cara para se formar.
+
+## Biblioteca
+
+[`src/dados/biblioteca.ts`](src/dados/biblioteca.ts) mapeia o que dá para ler
+legalmente sem pagar nada, cruzado com os códigos de disciplina — cada página
+de disciplina mostra a leitura gratuita correspondente.
+
+O critério de entrada é estreito de propósito: **domínio público**, **edição
+digital autorizada** ou **empréstimo de biblioteca**. Cópia não autorizada de
+obra em catálogo não entra. Além de ser injusto com quem publica em português,
+esses links morrem, e um portal de estudo não pode ser construído sobre eles.
+
+Onde a obra de referência ainda está em catálogo, a resposta não é indicar uma
+cópia pirata: é cobrir o conteúdo no próprio verbete, apoiado no aparato
+primário aberto — Calvino, Hodge, Turretin e Bavinck estão todos livres.
 
 ## Auditoria de links
 

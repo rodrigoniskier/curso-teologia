@@ -4,6 +4,7 @@ import { Marca } from './componentes/Marca';
 import { Sumario } from './componentes/Sumario';
 import { PaginaInicio } from './paginas/Inicio';
 import { PaginaDisciplina } from './paginas/Disciplina';
+import { PaginaBiblioteca } from './paginas/Biblioteca';
 
 export default function App() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -40,9 +41,17 @@ export default function App() {
             </span>
           </Link>
 
-          <span className="ml-auto hidden font-sans text-[0.72rem] text-neutral-500 md:block">
-            Currículo dos Seminários da IPB
-          </span>
+          <nav className="ml-auto flex items-center gap-5">
+            <Link
+              to="/biblioteca"
+              className="font-sans text-[0.78rem] font-medium text-tinta-700 hover:text-tinta-600 hover:underline"
+            >
+              Biblioteca
+            </Link>
+            <span className="hidden font-sans text-[0.72rem] text-neutral-500 lg:block">
+              Currículo dos Seminários da IPB
+            </span>
+          </nav>
         </div>
       </header>
 
@@ -68,6 +77,7 @@ export default function App() {
           <div className="mx-auto max-w-[68ch]">
             <Routes>
               <Route path="/" element={<PaginaInicio />} />
+              <Route path="/biblioteca" element={<PaginaBiblioteca />} />
               <Route path="/disciplina/:codigo" element={<PaginaDisciplina />} />
               <Route path="/disciplina/:codigo/:verbeteId" element={<PaginaDisciplina />} />
               <Route

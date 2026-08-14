@@ -1,0 +1,272 @@
+import type { Idioma, NivelAcesso } from '../tipos';
+
+/**
+ * Obras de referência disponíveis legalmente sem custo.
+ *
+ * Critério de entrada, deliberadamente estreito: domínio público, edição
+ * digital autorizada pelo detentor dos direitos, ou empréstimo digital
+ * controlado de biblioteca. Cópia não autorizada de obra em catálogo NÃO
+ * entra — nem por conveniência. Além de ser errado com quem publica em
+ * português, esses links morrem, e um portal de estudo não pode ser
+ * construído sobre eles.
+ *
+ * Quando a obra de referência ainda está em catálogo, a resposta do portal
+ * não é indicar uma cópia pirata: é ensinar a doutrina no próprio verbete,
+ * com o aparato primário aberto listado aqui.
+ */
+export interface ObraLivre {
+  id: string;
+  autor: string;
+  ano: string;
+  titulo: string;
+  publicacao: string;
+  url: string;
+  idioma: Idioma;
+  acesso: NivelAcesso;
+  /** Códigos de disciplina que esta obra serve. */
+  disciplinas: string[];
+  /** Por que vale a pena, e o que ela substitui. */
+  nota: string;
+  /** Por que é lícito estar aqui. */
+  base: 'domínio público' | 'edição autorizada' | 'empréstimo de biblioteca';
+}
+
+export const biblioteca: ObraLivre[] = [
+  {
+    id: 'calvino-institutas',
+    autor: 'João Calvino',
+    ano: '1559',
+    titulo: 'Institutes of the Christian Religion (trad. Beveridge)',
+    publicacao: 'Christian Classics Ethereal Library',
+    url: 'https://www.ccel.org/ccel/calvin/institutes.all.html',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS11', 'TS12'],
+    nota: 'A obra fundadora da dogmática reformada, em texto integral. Percorre praticamente todo o programa de Teologia Sistemática dos quatro anos. Se você só puder ler uma obra primária, leia esta.',
+    base: 'domínio público',
+  },
+  {
+    id: 'calvino-institutas-pdf',
+    autor: 'João Calvino',
+    ano: '1559',
+    titulo: 'The Institutes of the Christian Religion — PDF integral',
+    publicacao: 'CCEL',
+    url: 'https://www.ccel.org/ccel/calvin/institutes/formats/institutes.pdf',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07'],
+    nota: 'Mesma tradução em arquivo único, para leitura offline e citação por página.',
+    base: 'domínio público',
+  },
+  {
+    id: 'calvino-romanos',
+    autor: 'João Calvino',
+    ano: '1540',
+    titulo: 'Commentary on Romans',
+    publicacao: 'CCEL',
+    url: 'https://www.ccel.org/ccel/calvin/calcom38.toc.html',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TE12', 'TE13', 'TE20', 'TE21', 'TS04'],
+    nota: 'O primeiro comentário de Calvino e o manifesto do método exegético reformado. A epístola dedicatória é leitura obrigatória em Hermenêutica.',
+    base: 'domínio público',
+  },
+  {
+    id: 'hodge-st1',
+    autor: 'Charles Hodge',
+    ano: '1872',
+    titulo: 'Systematic Theology — vol. I: Teologia',
+    publicacao: 'CCEL',
+    url: 'https://www.ccel.org/ccel/hodge/theology1.toc.html',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS01'],
+    nota: 'Prolegômenos, Bibliologia e Teontologia em exposição completa. Cobre integralmente o programa de TS01 e é a matriz de Princeton por trás de boa parte dos manuais em português.',
+    base: 'domínio público',
+  },
+  {
+    id: 'hodge-st2',
+    autor: 'Charles Hodge',
+    ano: '1872',
+    titulo: 'Systematic Theology — vol. II: Antropologia',
+    publicacao: 'CCEL',
+    url: 'https://www.ccel.org/ccel/hodge/theology2.toc.html',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS02', 'TS03'],
+    nota: 'Criação, imagem de Deus, pacto das obras, queda, pecado original e livre-arbítrio: o programa de TS02 inteiro.',
+    base: 'domínio público',
+  },
+  {
+    id: 'hodge-st3-pdf',
+    autor: 'Charles Hodge',
+    ano: '1873',
+    titulo: 'Systematic Theology — vol. III: Soteriologia e Escatologia (PDF)',
+    publicacao: 'CCEL',
+    url: 'https://www.ccel.org/ccel/h/hodge/theology3/cache/theology3.pdf',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS04', 'TS06', 'TS07'],
+    nota: 'Vocação, regeneração, fé, justificação, santificação, meios da graça e últimas coisas.',
+    base: 'domínio público',
+  },
+  {
+    id: 'bavinck-gd1',
+    autor: 'Herman Bavinck',
+    ano: '1895',
+    titulo: 'Gereformeerde Dogmatiek — Deel 1',
+    publicacao: 'Digitale Bibliotheek voor de Nederlandse Letteren (DBNL)',
+    url: 'https://www.dbnl.org/tekst/bavi002gere01_01/',
+    idioma: 'nl',
+    acesso: 'livre',
+    disciplinas: ['TS01'],
+    nota: 'O original holandês, em domínio público e texto integral. A tradução inglesa em quatro volumes custa algumas centenas de reais; o holandês de Bavinck é surpreendentemente acessível com dicionário, e este volume é a melhor exposição existente da doutrina dos princípios.',
+    base: 'domínio público',
+  },
+  {
+    id: 'bavinck-gd-obra',
+    autor: 'Herman Bavinck',
+    ano: '1895-1901',
+    titulo: 'Gereformeerde Dogmatiek — os quatro volumes',
+    publicacao: 'DBNL',
+    url: 'https://www.dbnl.org/tekst/bavi002gere00_01/',
+    idioma: 'nl',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07'],
+    nota: 'Página da obra completa, com acesso aos quatro volumes e aos PDFs. A dogmática reformada mais equilibrada já escrita.',
+    base: 'domínio público',
+  },
+  {
+    id: 'bavinck-rd-monergism',
+    autor: 'Herman Bavinck',
+    ano: '1895',
+    titulo: 'Reformed Dogmatics — página de acesso',
+    publicacao: 'Monergism',
+    url: 'https://www.monergism.com/reformed-dogmatics-ebook',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07'],
+    nota: 'Para quem lê inglês com mais conforto que holandês.',
+    base: 'edição autorizada',
+  },
+  {
+    id: 'turretin-latim',
+    autor: 'Francis Turretin',
+    ano: '1679',
+    titulo: 'Institutio Theologiae Elencticae',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/institutiotheol00turrgoog',
+    idioma: 'la',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04', 'TS11', 'TS53'],
+    nota: 'O ápice da escolástica reformada, em latim e domínio público. É a fonte por trás das distinções técnicas que os manuais modernos repetem sem citar.',
+    base: 'domínio público',
+  },
+  {
+    id: 'turretin-ingles',
+    autor: 'Francis Turretin',
+    ano: '1679',
+    titulo: 'Institutes of Elenctic Theology (trad. Giger)',
+    publicacao: 'Internet Archive — empréstimo digital',
+    url: 'https://archive.org/details/institutesofelen0001turr',
+    idioma: 'en',
+    acesso: 'cadastro',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04'],
+    nota: 'A tradução ainda está em catálogo; o Internet Archive a empresta por tempo limitado, com conta gratuita. É empréstimo de biblioteca, não download.',
+    base: 'empréstimo de biblioteca',
+  },
+  {
+    id: 'cfw-ipib',
+    autor: 'Assembleia de Westminster',
+    ano: '1647',
+    titulo: 'Confissão de Fé de Westminster',
+    publicacao: 'Igreja Presbiteriana Independente do Brasil',
+    url: 'https://ipib.org.br/confissao-de-fe-de-westminster/',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['TS11', 'TS53', 'TP12', 'TP13'],
+    nota: 'O padrão subordinado da IPB, em português. Base direta de TS11 (Símbolos de Fé) e referência constante em toda a Sistemática.',
+    base: 'domínio público',
+  },
+  {
+    id: 'cfw-braga',
+    autor: 'Assembleia de Westminster',
+    ano: '1647',
+    titulo: 'A Confissão de Fé de Westminster — edição portuguesa',
+    publicacao: 'Igreja Cristã Presbiteriana de Braga',
+    url: 'https://www.icpbraga.pt/documentos/cfw',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['TS11', 'TS53'],
+    nota: 'Útil para cotejo de tradução: onde as duas versões divergem, quase sempre há uma decisão interpretativa por trás.',
+    base: 'domínio público',
+  },
+  {
+    id: 'cfw-ipcambe',
+    autor: 'Assembleia de Westminster',
+    ano: '1647',
+    titulo: 'Confissão de Fé de Westminster — cap. I, Da Escritura Sagrada',
+    publicacao: 'Igreja Presbiteriana de Cambé (IPB)',
+    url: 'https://ipcambe.ipb.org.br/boletim/confissao-de-fe-de-westminster',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS11'],
+    nota: 'Hospedada em domínio da própria IPB.',
+    base: 'domínio público',
+  },
+  {
+    id: 'monergismo',
+    autor: 'Vários',
+    ano: '—',
+    titulo: 'Monergismo — acervo de teologia reformada em português',
+    publicacao: 'monergismo.com',
+    url: 'https://www.monergismo.com/',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TE12', 'TH01'],
+    nota: 'O maior acervo lusófono de textos reformados traduzidos e disponibilizados com autorização. Primeira parada para quem lê só em português.',
+    base: 'edição autorizada',
+  },
+  {
+    id: 'ccel',
+    autor: 'Vários',
+    ano: '—',
+    titulo: 'Christian Classics Ethereal Library',
+    publicacao: 'ccel.org',
+    url: 'https://www.ccel.org/',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TH01', 'TH02', 'TH03', 'TH07', 'TE12'],
+    nota: 'Milhares de clássicos cristãos em domínio público, com texto navegável e PDF. Padres, medievais, reformadores e puritanos.',
+    base: 'domínio público',
+  },
+  {
+    id: 'dbnl',
+    autor: 'Vários',
+    ano: '—',
+    titulo: 'Digitale Bibliotheek voor de Nederlandse Letteren',
+    publicacao: 'dbnl.org',
+    url: 'https://www.dbnl.org/',
+    idioma: 'nl',
+    acesso: 'livre',
+    disciplinas: ['TS01', 'TS12', 'TH04'],
+    nota: 'O acervo digital das letras holandesas. Indispensável para a tradição neocalvinista — Bavinck, Kuyper e a discussão da cosmovisão em TS12.',
+    base: 'domínio público',
+  },
+  {
+    id: 'archive',
+    autor: 'Vários',
+    ano: '—',
+    titulo: 'Internet Archive',
+    publicacao: 'archive.org',
+    url: 'https://archive.org/',
+    idioma: 'en',
+    acesso: 'parcial',
+    disciplinas: ['TS01', 'TH01', 'TH05', 'TH06'],
+    nota: 'Domínio público em download livre e obras em catálogo por empréstimo digital com conta gratuita. Atenção ao distinguir os dois casos.',
+    base: 'empréstimo de biblioteca',
+  },
+];
+
+export const porDisciplina = (codigo: string) =>
+  biblioteca.filter((o) => o.disciplinas.includes(codigo));
