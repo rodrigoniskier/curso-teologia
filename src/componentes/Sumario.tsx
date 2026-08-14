@@ -1,17 +1,48 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { departamentos, verbetesDe } from '../conteudo/indice';
+
+/**
+ * Abrir todo departamento que tenha verbete enterrava a Sistemática abaixo das
+ * 27 disciplinas da Exegética. Abre-se apenas um: o da disciplina em leitura,
+ * ou, na página inicial, o que tem mais verbetes publicados.
+ */
+function departamentoInicial(codigo?: string): string {
+  if (codigo) {
+    const d = departamentos.find((x) => x.disciplinas.some((y) => y.codigo === codigo));
+    if (d) return d.nome;
+  }
+  let melhor = departamentos[0];
+  let max = -1;
+  for (const d of departamentos) {
+    const n = d.disciplinas.reduce((s, x) => s + verbetesDe(x.codigo).length, 0);
+    if (n > max) {
+      max = n;
+      melhor = d;
+    }
+  }
+  return melhor.nome;
+}
 
 export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
   const { codigo } = useParams();
   const [busca, setBusca] = useState('');
-  const [abertos, setAbertos] = useState<Record<string, boolean>>(() => {
-    const inicial: Record<string, boolean> = {};
-    for (const d of departamentos) {
-      inicial[d.nome] = d.disciplinas.some((x) => verbetesDe(x.codigo).length > 0);
-    }
-    return inicial;
-  });
+  const [abertos, setAbertos] = useState<Record<string, boolean>>(() => ({
+    [departamentoInicial(codigo)]: true,
+  }));
+  const ativoRef = useRef<HTMLAnchorElement>(null);
+
+  // ao entrar direto numa URL de disciplina, garante que o departamento dela
+  // esteja aberto e que o item fique visível sem o leitor ter de caçá-lo
+  useEffect(() => {
+    if (!codigo) return;
+    const dep = departamentoInicial(codigo);
+    setAbertos((s) => (s[dep] ? s : { ...s, [dep]: true }));
+  }, [codigo]);
+
+  useEffect(() => {
+    ativoRef.current?.scrollIntoView({ block: 'nearest' });
+  }, [codigo, abertos]);
 
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase();
@@ -80,6 +111,7 @@ export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
                         <NavLink
                           to={`/disciplina/${d.codigo}`}
                           onClick={aoNavegar}
+                          ref={ativo ? ativoRef : undefined}
                           className={`group flex items-baseline gap-2 border-l-2 py-[0.3rem] pl-3 pr-2 text-[0.9rem]
                             ${
                               ativo
