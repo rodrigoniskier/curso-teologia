@@ -102,9 +102,16 @@ async function tentar(url, metodo, sinal) {
 
 async function verificar(fonte) {
   let ultimoErro = '';
-  for (let tentativa = 1; tentativa <= TENTATIVAS; tentativa++) {
+  // Domínio que sabidamente recusa IP de nuvem não merece o ciclo completo de
+  // repetições: são ~80s gastos por URL para reconfirmar o que já se sabe.
+  // Uma tentativa curta ainda detecta se o acervo passar a aceitar a CI.
+  const restrito = dominioRestrito(fonte.url);
+  const tentativas = restrito ? 1 : TENTATIVAS;
+  const limite = restrito ? 10_000 : TEMPO_LIMITE;
+
+  for (let tentativa = 1; tentativa <= tentativas; tentativa++) {
     const ctrl = new AbortController();
-    const t = setTimeout(() => ctrl.abort(), TEMPO_LIMITE);
+    const t = setTimeout(() => ctrl.abort(), limite);
     try {
       // HEAD é mais barato, mas muitos servidores não o implementam.
       let res = await tentar(fonte.url, 'HEAD', ctrl.signal);
@@ -123,9 +130,9 @@ async function verificar(fonte) {
       clearTimeout(t);
       ultimoErro =
         e.name === 'AbortError'
-          ? `timeout após ${TEMPO_LIMITE / 1000}s`
+          ? `timeout após ${limite / 1000}s`
           : String(e.cause?.code ?? e.message);
-      if (tentativa < TENTATIVAS) {
+      if (tentativa < tentativas) {
         await new Promise((r) => setTimeout(r, 2000 * 2 ** (tentativa - 1)));
       }
     }
