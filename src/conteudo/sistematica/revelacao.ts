@@ -150,7 +150,7 @@ export const revelacao: Verbete = {
       ano: '1559',
       titulo: 'Institutes of the Christian Religion — Livro I, caps. 3-6',
       publicacao: 'Christian Classics Ethereal Library (CCEL)',
-      url: 'https://ccel.org/ccel/calvin/institutes',
+      url: 'https://www.ccel.org/ccel/calvin/institutes.all.html',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',

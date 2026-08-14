@@ -14,6 +14,11 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { setDefaultResultOrder } from 'node:dns';
+
+// Vários acervos teológicos publicam registro AAAA mas não atendem por IPv6;
+// a conexão fica pendurada até o timeout e o link parece morto sem estar.
+setDefaultResultOrder('ipv4first');
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTEUDO = join(RAIZ, 'src', 'conteudo');
