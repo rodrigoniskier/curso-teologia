@@ -1,0 +1,59 @@
+name: Auditoria de fontes
+
+on:
+  push:
+    branches: [main]
+    paths: ['src/conteudo/**', 'scripts/auditar-links.mjs']
+  pull_request:
+    paths: ['src/conteudo/**', 'scripts/auditar-links.mjs']
+  schedule:
+    # Toda segunda-feira às 06:00 UTC — pega link que morreu desde a última checagem.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+jobs:
+  links:
+    name: Verificar todas as fontes citadas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Auditar links
+        id: auditoria
+        # Em execução agendada não quebramos o build por link fora do ar
+        # temporariamente; o relatório fica no resumo do job.
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            node scripts/auditar-links.mjs --relatorio --tolerante
+          else
+            node scripts/auditar-links.mjs --relatorio
+          fi
+
+      - name: Publicar relatório no resumo
+        if: always()
+        run: cat relatorio-auditoria.md >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: Guardar relatório
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-auditoria
+          path: |
+            relatorio-auditoria.md
+            relatorio-auditoria.json
+          retention-days: 30
+
+  build:
+    name: Compilar o portal
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npm run build
