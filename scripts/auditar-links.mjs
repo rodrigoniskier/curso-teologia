@@ -4,8 +4,8 @@
  *
  * Percorre todas as fontes declaradas nos verbetes e verifica se cada URL
  * responde. Roda na CI do GitHub (rede aberta) porque o ambiente de
- * desenvolvimento do agente tem egresso restrito e não consegue alcançar
- * a maioria dos domínios.
+ * desenvolvimento do agente tem egresso restrito e não alcança a maioria
+ * dos domínios.
  *
  *   node scripts/auditar-links.mjs              # falha se houver link quebrado
  *   node scripts/auditar-links.mjs --relatorio  # grava relatorio-auditoria.md
@@ -26,6 +26,10 @@ const TEMPO_LIMITE = 25_000;
 const CONCORRENCIA = 6;
 const TENTATIVAS = 3;
 
+const VERDE = '[32m OK  [0m';
+const VERMELHO = '[31mFALHA[0m';
+const AMARELO = '[33mREST.[0m';
+
 const args = new Set(process.argv.slice(2));
 const gerarRelatorio = args.has('--relatorio');
 const tolerante = args.has('--tolerante');
@@ -37,6 +41,26 @@ const CABECALHOS = {
   Accept: 'text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8',
   'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
 };
+
+/**
+ * Acervos que recusam conexões vindas de faixas de IP de nuvem. Reprovar por
+ * causa deles empurraria o portal a trocar fonte primária boa por fonte pior,
+ * então entram em categoria própria: "não verificável daqui" não é a mesma
+ * coisa que "link morto", e a diferença precisa ficar visível no relatório.
+ */
+const restritos = JSON.parse(
+  await readFile(join(RAIZ, 'src', 'dados', 'dominios-restritos.json'), 'utf8'),
+);
+
+function dominioRestrito(url) {
+  let host;
+  try {
+    host = new URL(url).hostname;
+  } catch {
+    return undefined;
+  }
+  return restritos.find((r) => host === r.dominio || host.endsWith(`.${r.dominio}`));
+}
 
 async function arquivosTs(dir) {
   const saida = [];
@@ -54,7 +78,6 @@ async function coletarFontes() {
   for (const arquivo of await arquivosTs(CONTEUDO)) {
     const src = await readFile(arquivo, 'utf8');
     const rel = arquivo.slice(RAIZ.length + 1);
-    // cada objeto Fonte contém um campo url: '...'
     for (const m of src.matchAll(/\{[^{}]*?url:\s*'([^']+)'[^{}]*?\}/gs)) {
       const bloco = m[0];
       const campo = (nome) => bloco.match(new RegExp(`${nome}:\\s*'([^']*)'`))?.[1] ?? '';
@@ -71,12 +94,7 @@ async function coletarFontes() {
 }
 
 async function tentar(url, metodo, sinal) {
-  return fetch(url, {
-    method: metodo,
-    redirect: 'follow',
-    headers: CABECALHOS,
-    signal: sinal,
-  });
+  return fetch(url, { method: metodo, redirect: 'follow', headers: CABECALHOS, signal: sinal });
 }
 
 async function verificar(fonte) {
@@ -100,7 +118,10 @@ async function verificar(fonte) {
       };
     } catch (e) {
       clearTimeout(t);
-      ultimoErro = e.name === 'AbortError' ? `timeout após ${TEMPO_LIMITE / 1000}s` : String(e.cause?.code ?? e.message);
+      ultimoErro =
+        e.name === 'AbortError'
+          ? `timeout após ${TEMPO_LIMITE / 1000}s`
+          : String(e.cause?.code ?? e.message);
       if (tentativa < TENTATIVAS) {
         await new Promise((r) => setTimeout(r, 2000 * 2 ** (tentativa - 1)));
       }
@@ -124,18 +145,29 @@ console.log(`Auditando ${unicas.length} URLs únicas (${fontes.length} citaçõe
 
 const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
   const r = await verificar(f);
-  const marca = r.ok ? '[32m OK [0m' : '[31mFALHA[0m';
+  r.restrito = r.ok ? undefined : dominioRestrito(r.url);
+  const marca = r.ok ? VERDE : r.restrito ? AMARELO : VERMELHO;
   console.log(`${marca} ${String(r.status).padEnd(3)} ${r.url}${r.erro ? `  — ${r.erro}` : ''}`);
   return r;
 });
 
-const quebrados = resultados.filter((r) => !r.ok);
+const acessiveis = resultados.filter((r) => r.ok);
+const quebrados = resultados.filter((r) => !r.ok && !r.restrito);
+const naoVerificaveis = resultados.filter((r) => !r.ok && r.restrito);
 const redirecionados = resultados.filter((r) => r.ok && r.urlFinal);
 
 console.log(
-  `\n${resultados.length - quebrados.length}/${resultados.length} acessíveis · ` +
-    `${quebrados.length} com falha · ${redirecionados.length} redirecionadas`,
+  `\n${acessiveis.length}/${resultados.length} acessíveis · ${quebrados.length} com falha · ` +
+    `${naoVerificaveis.length} em domínio restrito · ${redirecionados.length} redirecionadas`,
 );
+
+if (naoVerificaveis.length) {
+  console.log(
+    '\nDomínios restritos não reprovam a auditoria: eles recusam IPs de nuvem, e\n' +
+      'daqui não há como separar um bloqueio de um link morto. Confira no navegador\n' +
+      'e atualize confirmadoEm em src/dados/dominios-restritos.json.',
+  );
+}
 
 if (gerarRelatorio) {
   const linhas = [
@@ -144,15 +176,40 @@ if (gerarRelatorio) {
     `Gerado em ${new Date().toISOString()}`,
     '',
     `- URLs verificadas: **${resultados.length}**`,
-    `- Acessíveis: **${resultados.length - quebrados.length}**`,
+    `- Acessíveis: **${acessiveis.length}**`,
     `- Com falha: **${quebrados.length}**`,
+    `- Em domínio restrito (não verificável na CI): **${naoVerificaveis.length}**`,
     `- Redirecionadas: **${redirecionados.length}**`,
     '',
   ];
   if (quebrados.length) {
-    linhas.push('## Links com falha', '', '| Status | URL | Verbete | Erro |', '| --- | --- | --- | --- |');
+    linhas.push(
+      '## Links com falha',
+      '',
+      '| Status | URL | Verbete | Erro |',
+      '| --- | --- | --- | --- |',
+    );
     for (const r of quebrados) {
       linhas.push(`| ${r.status || '—'} | ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
+    }
+    linhas.push('');
+  }
+  if (naoVerificaveis.length) {
+    linhas.push(
+      '## Domínios restritos',
+      '',
+      'Estes acervos recusam conexões vindas de faixas de IP de nuvem, então a CI',
+      'não consegue verificá-los. Não reprovam a auditoria; devem ser conferidos',
+      'no navegador e ter `confirmadoEm` atualizado em',
+      '`src/dados/dominios-restritos.json`.',
+      '',
+      '| URL | Domínio | Confirmado em | Erro na CI |',
+      '| --- | --- | --- | --- |',
+    );
+    for (const r of naoVerificaveis) {
+      linhas.push(
+        `| ${r.url} | ${r.restrito.dominio} | ${r.restrito.confirmadoEm} | ${r.erro} |`,
+      );
     }
     linhas.push('');
   }

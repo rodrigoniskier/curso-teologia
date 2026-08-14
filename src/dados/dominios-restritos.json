@@ -1,0 +1,8 @@
+[
+  {
+    "dominio": "ccel.org",
+    "motivo": "A Christian Classics Ethereal Library recusa conexões vindas de faixas de IP de datacenter — os runners do GitHub Actions caem em UND_ERR_CONNECT_TIMEOUT tanto em ccel.org quanto em www.ccel.org, por IPv4 e por IPv6. O acervo responde normalmente a navegadores comuns.",
+    "confirmadoEm": "2026-08-14",
+    "comoVerificar": "Abrir a URL no navegador, ou consultar o índice de um buscador. Não use curl a partir de nuvem."
+  }
+]
