@@ -13,7 +13,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.212** |
 | Referências bibliográficas oficiais | **1.237** |
-| Verbetes redigidos | 7 |
+| Verbetes redigidos | 10 |
 | Obras livres mapeadas | 18 |
 
 Os cinco departamentos, conforme o documento oficial:
@@ -70,9 +70,9 @@ npm run auditar:relatorio   # grava relatorio-auditoria.md
 ```
 
 O workflow [`.github/workflows/auditoria.yml`](.github/workflows/auditoria.yml)
-roda a auditoria em todo PR e push que toque o conteúdo, e semanalmente às
-segundas, para pegar link que morreu desde a última checagem. O relatório fica
-no resumo do job e como artefato.
+roda a auditoria e a checagem de tipos em todo PR e push para `main`, e
+semanalmente às segundas para pegar link que morreu desde a última checagem.
+O relatório fica no resumo do job e como artefato.
 
 ### Domínios restritos
 

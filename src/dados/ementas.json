@@ -367,7 +367,7 @@
     "sigla": "CG",
     "eletiva": false,
     "preRequisito": "Não há",
-    "ementa": "Introduz os alunos aos conceitos básicos da Filosofia. Inclui a análise do processo de formação do conhecimento, estimulando a compreensão das ideias que movem o mundo e suas consequências diante do pensamento reformado. INTRODUÇÃO À FILOSOFIA CG08",
+    "ementa": "Introduz os alunos aos conceitos básicos da Filosofia. Inclui a análise do processo de formação do conhecimento, estimulando a compreensão das ideias que movem o mundo e suas consequências diante do pensamento reformado.",
     "unidades": [
       {
         "numero": 1,
@@ -1399,7 +1399,7 @@
     "sigla": "CG",
     "eletiva": true,
     "preRequisito": "Não há",
-    "ementa": "Estudo da gramática fundamental do Latim, com concentração na morfologia das classes de palavras. Inclui exercícios práticos de tradução e interpretação de textos teológicos. LATIM CG57",
+    "ementa": "Estudo da gramática fundamental do Latim, com concentração na morfologia das classes de palavras. Inclui exercícios práticos de tradução e interpretação de textos teológicos.",
     "unidades": [
       {
         "numero": 1,
@@ -1510,7 +1510,7 @@
     "sigla": "CG",
     "eletiva": true,
     "preRequisito": "Introdução à Filosofia",
-    "ementa": "Introduz os alunos aos conceitos básicos da lógica. Inclui o estudo da lógica proposicional e de primeira ordem e noções de lógicas não clássicas. LÓGICA CG58",
+    "ementa": "Introduz os alunos aos conceitos básicos da lógica. Inclui o estudo da lógica proposicional e de primeira ordem e noções de lógicas não clássicas.",
     "unidades": [
       {
         "numero": 1,
@@ -1608,7 +1608,7 @@
     "sigla": "CG",
     "eletiva": true,
     "preRequisito": "Não há",
-    "ementa": "Apresenta um panorama da história da música na igreja pela ótica bíblico-reformada e da teoria musical básica. Aborda temas como ritmo, melodia, tempo, intervalos musicais, escalas e condução de hinos. MÚSICA CG59",
+    "ementa": "Apresenta um panorama da história da música na igreja pela ótica bíblico-reformada e da teoria musical básica. Aborda temas como ritmo, melodia, tempo, intervalos musicais, escalas e condução de hinos.",
     "unidades": [
       {
         "numero": 1,
@@ -2245,7 +2245,7 @@
     "sigla": "CG",
     "eletiva": true,
     "preRequisito": "Não há",
-    "ementa": "Estudos sobre o fenômeno linguístico, a linguagem em ambiente cultural, noções de aquisição da língua e aplicação missionária. INTRODUÇÃO À LINGUISTICA APLICADA CG66",
+    "ementa": "Estudos sobre o fenômeno linguístico, a linguagem em ambiente cultural, noções de aquisição da língua e aplicação missionária.",
     "unidades": [],
     "bibliografia": {
       "basica": [
@@ -9476,7 +9476,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 2",
-    "ementa": "Cristologia – Estuda a doutrina bíblico-reformada acerca de Cristo. Abrange temas como a pessoa, nomes, natureza, ofícios, estados e obra de Cristo. 3 – CRISTOLOGIA TS03",
+    "ementa": "Cristologia – Estuda a doutrina bíblico-reformada acerca de Cristo. Abrange temas como a pessoa, nomes, natureza, ofícios, estados e obra de Cristo.",
     "unidades": [
       {
         "numero": 1,
@@ -9621,7 +9621,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Soteriologia – Estuda a doutrina bíblico-reformada da salvação. Inclui as doutrinas da graça comum, chamado, regeneração, conversão, união mística, arrependimento, fé, certeza de salvação, justificação, adoção, santificação e perseverança na santidade. 4 – SOTERIOLOGIA TS04",
+    "ementa": "Soteriologia – Estuda a doutrina bíblico-reformada da salvação. Inclui as doutrinas da graça comum, chamado, regeneração, conversão, união mística, arrependimento, fé, certeza de salvação, justificação, adoção, santificação e perseverança na santidade.",
     "unidades": [
       {
         "numero": 1,
@@ -9718,7 +9718,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Pneumatologia – Estuda a doutrina bíblico-reformada acerca do Espírito Santo. Abrange a pessoa e obras do Espírito Santo relacionadas a Cristo e à Igreja. Investiga o papel da Terceira Pessoa da Trindade na regeneração, conversão, arrependimento e fé, justificação e santificação do homem. 5 – PNEUMATOLOGIA TS05",
+    "ementa": "Pneumatologia – Estuda a doutrina bíblico-reformada acerca do Espírito Santo. Abrange a pessoa e obras do Espírito Santo relacionadas a Cristo e à Igreja. Investiga o papel da Terceira Pessoa da Trindade na regeneração, conversão, arrependimento e fé, justificação e santificação do homem.",
     "unidades": [
       {
         "numero": 1,
@@ -9845,7 +9845,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Eclesiologia – Estuda a doutrina bíblico-reformada da Igreja. Aborda temas como a natureza, aspectos, atributos e marcas da Igreja, governo eclesiástico, e os meios de graça. 6 – ECLESIOLOGIA TS06",
+    "ementa": "Eclesiologia – Estuda a doutrina bíblico-reformada da Igreja. Aborda temas como a natureza, aspectos, atributos e marcas da Igreja, governo eclesiástico, e os meios de graça.",
     "unidades": [
       {
         "numero": 1,
@@ -9999,7 +9999,7 @@
     "sigla": "TS",
     "eletiva": false,
     "preRequisito": "Teologia Sistemática 3",
-    "ementa": "Escatologia – Estuda a doutrina bíblico-reformada das últimas coisas. Abrange a escatologia individual e geral. Aborda temas como a natureza escatológica da mensagem bíblica, a morte, imortalidade, estado intermediário, segunda vinda de Cristo, milênio, ressurreição, juízo final e estado eterno. 7 – ESCATOLOGIA TS07",
+    "ementa": "Escatologia – Estuda a doutrina bíblico-reformada das últimas coisas. Abrange a escatologia individual e geral. Aborda temas como a natureza escatológica da mensagem bíblica, a morte, imortalidade, estado intermediário, segunda vinda de Cristo, milênio, ressurreição, juízo final e estado eterno.",
     "unidades": [
       {
         "numero": 1,
