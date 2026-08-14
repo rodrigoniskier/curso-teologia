@@ -54,6 +54,21 @@ roda a auditoria em todo PR e push que toque o conteúdo, e semanalmente às
 segundas, para pegar link que morreu desde a última checagem. O relatório fica
 no resumo do job e como artefato.
 
+### Domínios restritos
+
+Alguns acervos recusam conexões vindas de faixas de IP de nuvem — o CCEL é o
+caso mais notável: responde normalmente a um navegador e dá
+`UND_ERR_CONNECT_TIMEOUT` nos runners do GitHub, em IPv4 e IPv6, com ou sem
+`www`. Da CI é impossível distinguir esse bloqueio de um link morto.
+
+Reprovar por causa disso empurraria o portal a trocar fonte primária boa por
+fonte pior, então esses domínios ficam em
+[`src/dados/dominios-restritos.json`](src/dados/dominios-restritos.json), com
+motivo e data da última confirmação manual. Eles aparecem no relatório em
+seção própria e **não** reprovam a auditoria. Qualquer URL fora dessa lista
+que falhe continua quebrando o build — a garantia segue valendo para todo o
+resto.
+
 ## Extração do currículo
 
 O currículo não foi digitado à mão: foi extraído do PDF oficial. O pipeline

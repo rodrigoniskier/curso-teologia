@@ -24,6 +24,11 @@ jobs:
 
       - name: Auditar links
         id: auditoria
+        env:
+          # Alguns servidores de acervo (ccel.org entre eles) anunciam AAAA mas
+          # não respondem por IPv6 a partir dos runners, e a conexão fica
+          # pendurada até o timeout. Resolver IPv4 primeiro evita o falso negativo.
+          NODE_OPTIONS: --dns-result-order=ipv4first
         # Em execução agendada não quebramos o build por link fora do ar
         # temporariamente; o relatório fica no resumo do job.
         run: |
