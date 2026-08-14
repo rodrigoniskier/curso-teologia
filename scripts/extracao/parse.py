@@ -71,6 +71,8 @@ registros = [(e, recortar(e['codigo'], ls, todos)) for e, ls in registros]
 
 # ---- 4. extrair campos ---------------------------------------------------
 BULLET = re.compile(r'^[•·▪–—\-•]\s*')
+# "SOBRENOME, Nome" — o formato das entradas bibliográficas
+ENTRADA_BIB = re.compile(r'^[A-ZÁÉÍÓÚÂÊÔÃÕÇ][A-ZÁÉÍÓÚÂÊÔÃÕÇ\'\-. ]{1,40},')
 
 def parse(e, ls):
     joined = '\n'.join(ls)
@@ -117,6 +119,12 @@ def parse(e, ls):
             continue
         l2 = BULLET.sub('', l).strip()
         if not l2:
+            continue
+        # Quando a última unidade de uma disciplina não tem marcador de tópico,
+        # a acumulação do título seguiria pela bibliografia adentro. Uma linha
+        # no formato "SOBRENOME, Nome" encerra a unidade.
+        if ENTRADA_BIB.match(l2):
+            cur = None
             continue
         if not cur.get('_emTopico'):
             cur['titulo'] = (cur['titulo'] + ' ' + l2).strip()
