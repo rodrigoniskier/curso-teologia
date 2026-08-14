@@ -305,6 +305,32 @@ export const biblioteca: ObraLivre[] = [
     nota: 'Alternativa ao CCEL, que recusa conexões vindas de faixas de IP de nuvem.',
     base: 'domínio público',
   },
+  {
+    id: 'spurgeon-lectures',
+    autor: 'Charles Haddon Spurgeon',
+    ano: '1877',
+    titulo: 'Lectures to My Students',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/lecturestomystud1877spur',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TP14', 'TP01', 'TP02', 'TP15'],
+    nota: 'As palestras de Spurgeon aos alunos do Pastors College, em domínio público. Ainda hoje o tratado mais útil sobre a vida, o preparo e a entrega do pregador.',
+    base: 'domínio público',
+  },
+  {
+    id: 'spurgeon-segunda',
+    autor: 'Charles Haddon Spurgeon',
+    ano: '1877',
+    titulo: 'Second Series of Lectures to My Students',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/secondseriesofle00spur',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TP14'],
+    nota: 'A segunda série trata sobretudo da voz e da entrega — o material da unidade 4 do programa de Homilética.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>

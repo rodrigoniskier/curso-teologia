@@ -13,8 +13,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.339** |
 | Referências bibliográficas oficiais | **1.237** |
-| Verbetes redigidos | 16 |
-| Obras livres mapeadas | 21 |
+| Verbetes redigidos | 17 |
+| Obras livres mapeadas | 23 |
 
 Os cinco departamentos, conforme o documento oficial:
 

@@ -17,6 +17,7 @@ import { santificacao } from './sistematica/santificacao';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { igrejaAntiga } from './historica/igreja-antiga';
+import { homiletica } from './pastoral/homiletica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -39,6 +40,7 @@ export const verbetes: Verbete[] = [
   hermeneutica,
   canonAT,
   igrejaAntiga,
+  homiletica,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
