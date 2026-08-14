@@ -84,13 +84,20 @@ def parse(e, ls):
     pre = campo('Pré-requisito', r'Ementa:|Objetivo|BIBLIOGRAFIA|Unidade \d')
     ementa = campo('Ementa', r'Objetivo|BIBLIOGRAFIA|Unidade \d|[A-ZÁÉÍÓÚÇÃÕÂÊÔ][A-ZÁÉÍÓÚÇÃÕÂÊÔ \d\-,]{6,}$')
 
+    # O flag de bibliografia precisa ser reversível. Em disciplina de várias
+    # páginas, ou em página de duas colunas, BIBLIOGRAFIA aparece antes de
+    # unidades que ainda vêm na ordem de leitura; com um flag de mão única,
+    # tudo depois dela era descartado — eram 140 unidades perdidas em 18
+    # disciplinas, incluindo justificação e santificação em TS04.
     unidades, cur, in_bib = [], None, False
     for l in ls:
         if re.match(r'^BIBLIOGRAFIA', l, re.I):
             in_bib = True
+        m = re.match(r'^Unidade\s*(\d+)\s*[-–—]?\s*(.*)$', l)
+        if m:
+            in_bib = False
         if in_bib:
             continue
-        m = re.match(r'^Unidade\s*(\d+)\s*[-–—]?\s*(.*)$', l)
         if m:
             cur = {'numero': int(m.group(1)), 'titulo': m.group(2).strip(), 'topicos': []}
             unidades.append(cur)
@@ -165,7 +172,18 @@ def limpar(s):
     return re.sub(r'\s{2,}', ' ', _LIXO.sub(' ', s)).strip()
 
 
+# O título da própria disciplina em caixa alta, seguido do seu código, vaza no
+# fim da ementa quando o cabeçalho da página cai dentro do bloco de texto —
+# ex.: "...ofícios, estados e obra de Cristo. 3 – CRISTOLOGIA TS03".
+_MAI = 'A-ZÀÁÂÃÄÉÊÍÓÔÕÚÜÇ'
+_CABECALHO = re.compile(
+    rf'\s*\d*\s*[–—-]?\s*[{_MAI}][{_MAI} \d\-,]{{2,}}\s*(?:CG|TE|TH|TP|TS)\d{{2}}\s*$'
+)
+
+
 def limpar_disciplina(d):
+    d['ementa'] = re.sub(r'\s*(?:CG|TE|TH|TP|TS)\d{2}\s*$', '',
+                         _CABECALHO.sub('', d['ementa'])).strip()
     d['ementa'] = limpar(d['ementa'])
     for u in d['unidades']:
         u['titulo'] = limpar(u['titulo'])

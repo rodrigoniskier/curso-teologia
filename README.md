@@ -11,7 +11,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | | |
 | --- | --- |
 | Disciplinas mapeadas | **121** (5 departamentos) |
-| Unidades do programa | **1.212** |
+| Unidades do programa | **1.339** |
 | Referências bibliográficas oficiais | **1.237** |
 | Verbetes redigidos | 12 |
 | Obras livres mapeadas | 18 |
@@ -135,3 +135,13 @@ Os textos dos verbetes são de elaboração própria. O currículo é documento
 público da Junta de Educação Teológica da IPB, citado como fonte. As obras
 externas pertencem aos seus detentores de direitos e são sempre referenciadas
 com link para o original — o portal não hospeda cópias.
+
+### Verificação de completude
+
+O parser é conferido contra o texto bruto: para cada disciplina, compara-se o
+conjunto de `Unidade N` presentes nas páginas do PDF com o que foi extraído.
+Foi assim que se descobriu que o flag de bibliografia era de mão única e
+descartava tudo o que viesse depois de `BIBLIOGRAFIA` na ordem de leitura —
+**140 unidades perdidas em 18 disciplinas**, incluindo justificação e
+santificação em TS04. Restam 14 perdas, em CG10, CG12 e CG13, que dividem
+páginas entre si.
