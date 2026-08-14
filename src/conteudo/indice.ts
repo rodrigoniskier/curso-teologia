@@ -7,6 +7,9 @@ import { inspiracao } from './sistematica/inspiracao';
 import { atributos } from './sistematica/atributos';
 import { trindade } from './sistematica/trindade';
 import { decretos } from './sistematica/decretos';
+import { providencia } from './sistematica/providencia';
+import { imagemDeDeus } from './sistematica/imagem-de-deus';
+import { pessoaDeCristo } from './sistematica/pessoa-de-cristo';
 import { hermeneutica } from './exegetica/hermeneutica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -20,6 +23,9 @@ export const verbetes: Verbete[] = [
   atributos,
   trindade,
   decretos,
+  providencia,
+  imagemDeDeus,
+  pessoaDeCristo,
   hermeneutica,
 ];
 
