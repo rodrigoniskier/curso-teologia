@@ -14,6 +14,7 @@ import { expiacao } from './sistematica/expiacao';
 import { ordoSalutis } from './sistematica/ordo-salutis';
 import { justificacao } from './sistematica/justificacao';
 import { santificacao } from './sistematica/santificacao';
+import { batismo } from './sistematica/batismo';
 import { subscricaoConfessional } from './sistematica/subscricao-confessional';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
@@ -39,6 +40,7 @@ export const verbetes: Verbete[] = [
   ordoSalutis,
   justificacao,
   santificacao,
+  batismo,
   subscricaoConfessional,
   hermeneutica,
   canonAT,
