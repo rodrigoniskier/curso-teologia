@@ -14,9 +14,11 @@ import { expiacao } from './sistematica/expiacao';
 import { ordoSalutis } from './sistematica/ordo-salutis';
 import { justificacao } from './sistematica/justificacao';
 import { santificacao } from './sistematica/santificacao';
+import { subscricaoConfessional } from './sistematica/subscricao-confessional';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { igrejaAntiga } from './historica/igreja-antiga';
+import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -37,9 +39,11 @@ export const verbetes: Verbete[] = [
   ordoSalutis,
   justificacao,
   santificacao,
+  subscricaoConfessional,
   hermeneutica,
   canonAT,
   igrejaAntiga,
+  reforma,
   homiletica,
 ];
 
