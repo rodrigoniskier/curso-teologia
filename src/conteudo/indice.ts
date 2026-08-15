@@ -35,6 +35,7 @@ import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
 import { filosofia } from './geral/filosofia';
+import { historiaFilosofia } from './geral/historia-filosofia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -75,6 +76,7 @@ export const verbetes: Verbete[] = [
   aconselhamento,
   evangelizacao,
   filosofia,
+  historiaFilosofia,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
@@ -111,7 +113,16 @@ function semAcento(s: string): string {
   return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 }
 
+/** Remove a marcação de ênfase (`**forte**`, `*itálico*`) da busca e dos trechos. */
+function semMarcacao(s: string): string {
+  return s.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1');
+}
+
 function textoDoBloco(b: Verbete['blocos'][number]): string {
+  return semMarcacao(textoBrutoDoBloco(b));
+}
+
+function textoBrutoDoBloco(b: Verbete['blocos'][number]): string {
   switch (b.tipo) {
     case 'paragrafo':
     case 'pastoral':
