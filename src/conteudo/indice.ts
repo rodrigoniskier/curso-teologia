@@ -31,6 +31,7 @@ import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 import { poimenica } from './pastoral/poimenica';
+import { filosofia } from './geral/filosofia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -67,6 +68,7 @@ export const verbetes: Verbete[] = [
   homiletica,
   governoPresbiteriano,
   poimenica,
+  filosofia,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
