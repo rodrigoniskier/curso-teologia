@@ -26,6 +26,7 @@ import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { canonNT } from './exegetica/canon-nt';
 import { igrejaAntiga } from './historica/igreja-antiga';
+import { igrejaImperial } from './historica/igreja-imperial';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
@@ -60,6 +61,7 @@ export const verbetes: Verbete[] = [
   canonAT,
   canonNT,
   igrejaAntiga,
+  igrejaImperial,
   reforma,
   homiletica,
   governoPresbiteriano,
