@@ -28,6 +28,7 @@ import { canonNT } from './exegetica/canon-nt';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
+import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -61,6 +62,7 @@ export const verbetes: Verbete[] = [
   igrejaAntiga,
   reforma,
   homiletica,
+  governoPresbiteriano,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
