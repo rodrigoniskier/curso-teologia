@@ -32,6 +32,8 @@ import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 import { poimenica } from './pastoral/poimenica';
+import { aconselhamento } from './pastoral/aconselhamento';
+import { evangelizacao } from './pastoral/evangelizacao';
 import { filosofia } from './geral/filosofia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -70,6 +72,8 @@ export const verbetes: Verbete[] = [
   homiletica,
   governoPresbiteriano,
   poimenica,
+  aconselhamento,
+  evangelizacao,
   filosofia,
 ];
 
