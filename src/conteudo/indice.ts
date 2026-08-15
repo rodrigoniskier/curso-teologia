@@ -20,6 +20,7 @@ import { milenio } from './sistematica/milenio';
 import { principioRegulador } from './sistematica/principio-regulador';
 import { cosmovisao } from './sistematica/cosmovisao';
 import { subscricaoConfessional } from './sistematica/subscricao-confessional';
+import { etica } from './sistematica/etica';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { igrejaAntiga } from './historica/igreja-antiga';
@@ -50,6 +51,7 @@ export const verbetes: Verbete[] = [
   principioRegulador,
   cosmovisao,
   subscricaoConfessional,
+  etica,
   hermeneutica,
   canonAT,
   igrejaAntiga,
