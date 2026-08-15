@@ -111,7 +111,16 @@ function semAcento(s: string): string {
   return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 }
 
+/** Remove a marcação de ênfase (`**forte**`, `*itálico*`) da busca e dos trechos. */
+function semMarcacao(s: string): string {
+  return s.replace(/\*\*([^*]+)\*\*/g, '$1').replace(/\*([^*]+)\*/g, '$1');
+}
+
 function textoDoBloco(b: Verbete['blocos'][number]): string {
+  return semMarcacao(textoBrutoDoBloco(b));
+}
+
+function textoBrutoDoBloco(b: Verbete['blocos'][number]): string {
   switch (b.tipo) {
     case 'paragrafo':
     case 'pastoral':

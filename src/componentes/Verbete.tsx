@@ -1,6 +1,38 @@
+import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { verbetePorId } from '../conteudo/indice';
 import type { Bloco, Fonte, Verbete as TVerbete } from '../tipos';
+
+/**
+ * Ênfase inline no texto dos blocos: `**forte**` e `*itálico*`.
+ *
+ * Só esses dois. Sublinhado (`_x_`) fica de fora de propósito: as URLs das
+ * fontes (Wikisource, Archive.org) usam sublinhado no lugar de espaço, e
+ * interpretá-lo quebraria os links.
+ */
+function textoRico(texto: string): ReactNode {
+  if (!texto.includes('*')) return texto;
+  const re = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+  const partes: ReactNode[] = [];
+  let fim = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(texto)) !== null) {
+    if (m.index > fim) partes.push(texto.slice(fim, m.index));
+    partes.push(
+      m[1] !== undefined ? (
+        <strong key={partes.length} className="font-semibold text-tinta-800">
+          {m[1]}
+        </strong>
+      ) : (
+        <em key={partes.length}>{m[2]}</em>
+      ),
+    );
+    fim = m.index + m[0].length;
+  }
+  if (partes.length === 0) return texto;
+  if (fim < texto.length) partes.push(texto.slice(fim));
+  return partes;
+}
 
 const NOME_IDIOMA: Record<string, string> = {
   pt: 'português', en: 'inglês', de: 'alemão', nl: 'holandês', es: 'espanhol',
@@ -22,7 +54,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
       );
 
     case 'paragrafo':
-      return <p>{bloco.texto}</p>;
+      return <p>{textoRico(bloco.texto)}</p>;
 
     case 'lista': {
       const Tag = bloco.ordenada ? 'ol' : 'ul';
@@ -37,7 +69,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
               {!bloco.ordenada && (
                 <span className="absolute -left-5 top-[0.62em] h-1 w-2.5 bg-ouro-300" aria-hidden="true" />
               )}
-              {it}
+              {textoRico(it)}
             </li>
           ))}
         </Tag>
@@ -49,7 +81,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
       return (
         <figure className="my-7 border-l-[3px] border-ouro-300 bg-papel-quente py-4 pl-6 pr-5">
           <blockquote className="text-[1.05rem] italic leading-relaxed text-neutral-800">
-            “{bloco.texto}”
+            “{textoRico(bloco.texto)}”
           </blockquote>
           <figcaption className="mt-3 font-sans text-[0.78rem] text-neutral-500">
             <span className="font-semibold text-tinta-700">{bloco.autor}</span>
@@ -75,7 +107,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
     case 'passagem':
       return (
         <figure className="my-7 bg-tinta-50 px-6 py-5">
-          <p className="text-[1.05rem] leading-relaxed text-tinta-900">{bloco.texto}</p>
+          <p className="text-[1.05rem] leading-relaxed text-tinta-900">{textoRico(bloco.texto)}</p>
           <figcaption className="mt-2 font-sans text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-tinta-600">
             {bloco.referencia}
           </figcaption>
@@ -89,7 +121,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
             Termo técnico
           </p>
           <p className="mt-1.5 font-serif text-[1.1rem] italic text-tinta-700">{bloco.termo}</p>
-          <p className="mt-2 text-[1rem] leading-relaxed text-neutral-700">{bloco.texto}</p>
+          <p className="mt-2 text-[1rem] leading-relaxed text-neutral-700">{textoRico(bloco.texto)}</p>
         </div>
       );
 
@@ -104,7 +136,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
             {bloco.posicoes.map((p, i) => (
               <div key={i} className="border-l-2 border-margem pl-4">
                 <dt className="font-sans text-[0.82rem] font-semibold text-tinta-700">{p.escola}</dt>
-                <dd className="mt-0.5 text-[0.98rem] leading-relaxed text-neutral-700">{p.sintese}</dd>
+                <dd className="mt-0.5 text-[0.98rem] leading-relaxed text-neutral-700">{textoRico(p.sintese)}</dd>
               </div>
             ))}
           </dl>
@@ -118,7 +150,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
             Definição
           </p>
           <p className="mt-1.5 font-serif text-[1.25rem] font-semibold text-tinta-900">{bloco.termo}</p>
-          <p className="mt-2.5 text-[1.05rem] leading-relaxed text-neutral-800">{bloco.texto}</p>
+          <p className="mt-2.5 text-[1.05rem] leading-relaxed text-neutral-800">{textoRico(bloco.texto)}</p>
         </div>
       );
 
@@ -128,7 +160,7 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
           <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.13em] text-ouro-700">
             Nota pastoral
           </p>
-          <p className="mt-2 text-[1.02rem] leading-relaxed text-neutral-800">{bloco.texto}</p>
+          <p className="mt-2 text-[1.02rem] leading-relaxed text-neutral-800">{textoRico(bloco.texto)}</p>
         </aside>
       );
   }
