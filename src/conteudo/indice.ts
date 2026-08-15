@@ -24,6 +24,7 @@ import { etica } from './sistematica/etica';
 import { teologiaDoCulto } from './sistematica/teologia-do-culto';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
+import { canonNT } from './exegetica/canon-nt';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
@@ -56,6 +57,7 @@ export const verbetes: Verbete[] = [
   teologiaDoCulto,
   hermeneutica,
   canonAT,
+  canonNT,
   igrejaAntiga,
   reforma,
   homiletica,
