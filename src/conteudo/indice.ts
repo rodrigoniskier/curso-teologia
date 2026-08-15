@@ -35,6 +35,7 @@ import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
 import { filosofia } from './geral/filosofia';
+import { historiaFilosofia } from './geral/historia-filosofia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -75,6 +76,7 @@ export const verbetes: Verbete[] = [
   aconselhamento,
   evangelizacao,
   filosofia,
+  historiaFilosofia,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
