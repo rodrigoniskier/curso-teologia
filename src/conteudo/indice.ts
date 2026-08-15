@@ -21,6 +21,7 @@ import { principioRegulador } from './sistematica/principio-regulador';
 import { cosmovisao } from './sistematica/cosmovisao';
 import { subscricaoConfessional } from './sistematica/subscricao-confessional';
 import { etica } from './sistematica/etica';
+import { teologiaDoCulto } from './sistematica/teologia-do-culto';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { igrejaAntiga } from './historica/igreja-antiga';
@@ -52,6 +53,7 @@ export const verbetes: Verbete[] = [
   cosmovisao,
   subscricaoConfessional,
   etica,
+  teologiaDoCulto,
   hermeneutica,
   canonAT,
   igrejaAntiga,
