@@ -786,6 +786,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'O manual de lógica escrito por um pastor — o mesmo autor de centenas de hinos — e adotado como livro-texto em universidades inglesas e americanas por mais de um século. Trata explicitamente do uso da razão nos assuntos de religião, o que o torna a introdução mais adequada para este currículo.',
     base: 'domínio público',
   },
+  {
+    id: 'charles-enoque',
+    autor: 'R. H. Charles (trad.)',
+    ano: '1912',
+    titulo: 'The Book of Enoch, or 1 Enoch',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/bookofenochor1en00char',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TE55', 'TE51', 'TE02', 'TS07'],
+    nota: 'A apocalipse judaica não canônica mais importante do período intertestamentário, em tradução do próprio editor do texto etíope. Permite ao estudante ver o gênero apocalíptico em ação fora do cânon e comparar por conta própria — em vez de aceitar a descrição de um manual sobre um texto que ele nunca leu.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
