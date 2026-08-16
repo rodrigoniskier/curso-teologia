@@ -57,6 +57,14 @@ export function PaginaBiblioteca() {
           <em>Gereformeerde Dogmatiek</em> de Bavinck — cuja tradução inglesa
           custa algumas centenas de reais — está livre em holandês.
         </p>
+        <p className="mt-3 text-[1rem] leading-relaxed text-neutral-700">
+          Se preferir começar por algo curto, comece pelo avesso: as{' '}
+          <em>Outlines of Theology</em> de A. A. Hodge percorrem a mesma matéria
+          em pergunta e resposta e servem de consulta rápida; a aula inaugural de
+          Vos sobre teologia bíblica cabe numa tarde; e{' '}
+          <em>Christianity and Liberalism</em>, de Machen, explica em poucas
+          páginas a divisão que organiza o protestantismo até hoje.
+        </p>
       </section>
 
       {porIdioma.map((idioma) => {
@@ -114,7 +122,12 @@ export function PaginaBiblioteca() {
 
       <p className="mt-14 border-t border-margem pt-6 font-sans text-[0.8rem] leading-relaxed text-neutral-500">
         Todos estes endereços passam pela mesma auditoria automática das fontes
-        dos verbetes. Se algum sair do ar, a verificação semanal acusa.
+        dos verbetes, e a verificação semanal acusa se algum sair do ar. Dois
+        hospedeiros ficam fora do alcance dela por motivo alheio ao conteúdo — a
+        CCEL recusa conexões vindas de servidores em nuvem, e o site da Executiva
+        da IPB está com o certificado vencido, o que faz o navegador exibir um
+        aviso antes de abrir os PDFs. Nos dois casos o material continua
+        publicado, e o motivo fica registrado no repositório.
       </p>
     </div>
   );
