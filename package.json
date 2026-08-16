@@ -10,7 +10,8 @@
     "lint": "tsc --noEmit",
     "auditar": "node scripts/auditar-links.mjs",
     "auditar:relatorio": "node scripts/auditar-links.mjs --relatorio",
-    "estado": "node scripts/estado.mjs"
+    "estado": "node scripts/estado.mjs",
+    "conferir": "node scripts/estado.mjs --conferir"
   },
   "dependencies": {
     "react": "^19.0.0",
