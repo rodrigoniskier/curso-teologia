@@ -747,6 +747,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'O volume que expõe o método por trás da edição de 1881 e discute as passagens em disputa. É a peça central da controvérsia sobre o texto crítico: quem quer avaliá-la deve ler o argumento original, não apenas as críticas a ele.',
     base: 'domínio público',
   },
+  {
+    id: 'lutero-tres-tratados',
+    autor: 'Martinho Lutero',
+    ano: '1520',
+    titulo: 'First Principles of the Reformation: as 95 teses e os três tratados primários',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/firstprinciples00buchgoog',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TH03', 'TP01', 'TS11', 'TS06'],
+    nota: 'Reúne À Nobreza Cristã da Nação Alemã, O Cativeiro Babilônico e A Liberdade Cristã — os três escritos de 1520 em que a Reforma expõe seu programa. Traz o argumento do sacerdócio de todos os crentes, que demoliu a divisão entre estado espiritual e temporal. A biblioteca não tinha nenhuma obra de Lutero.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
