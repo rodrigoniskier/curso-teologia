@@ -4,5 +4,11 @@
     "motivo": "A Christian Classics Ethereal Library recusa conexões vindas de faixas de IP de datacenter — os runners do GitHub Actions caem em UND_ERR_CONNECT_TIMEOUT tanto em ccel.org quanto em www.ccel.org, por IPv4 e por IPv6. O acervo responde normalmente a navegadores comuns.",
     "confirmadoEm": "2026-08-14",
     "comoVerificar": "Abrir a URL no navegador, ou consultar o índice de um buscador. Não use curl a partir de nuvem."
+  },
+  {
+    "dominio": "executivaipb.com.br",
+    "motivo": "O certificado TLS do site da Comissão Executiva da IPB venceu em 16/08/2026, e desde então a auditoria falha com CERT_HAS_EXPIRED. Os documentos continuam publicados e o servidor continua respondendo — o problema é do certificado, não do link —, mas enquanto não for renovado o navegador exibirá um aviso de segurança antes de abrir os PDFs. Ao contrário do bloqueio da CCEL, isto é temporário por natureza: quando o certificado for renovado, remova esta entrada em vez de mantê-la.",
+    "confirmadoEm": "2026-08-16",
+    "comoVerificar": "openssl s_client -connect www.executivaipb.com.br:443 -servername www.executivaipb.com.br </dev/null 2>/dev/null | openssl x509 -noout -dates — e conferir notAfter. Ou abrir a URL no navegador e observar se o aviso de certificado ainda aparece."
   }
 ]

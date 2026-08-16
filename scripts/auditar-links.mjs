@@ -173,9 +173,11 @@ console.log(
 
 if (naoVerificaveis.length) {
   console.log(
-    '\nDomínios restritos não reprovam a auditoria: eles recusam IPs de nuvem, e\n' +
-      'daqui não há como separar um bloqueio de um link morto. Confira no navegador\n' +
-      'e atualize confirmadoEm em src/dados/dominios-restritos.json.',
+    '\nDomínios restritos não reprovam a auditoria: por algum motivo alheio ao\n' +
+      'conteúdo — recusa de IPs de nuvem, certificado vencido — a CI não consegue\n' +
+      'confirmá-los, e daqui não há como separar isso de um link morto. O motivo de\n' +
+      'cada um está em src/dados/dominios-restritos.json. Confira no navegador e\n' +
+      'atualize confirmadoEm.',
   );
 }
 
@@ -208,10 +210,10 @@ if (gerarRelatorio) {
     linhas.push(
       '## Domínios restritos',
       '',
-      'Estes acervos recusam conexões vindas de faixas de IP de nuvem, então a CI',
-      'não consegue verificá-los. Não reprovam a auditoria; devem ser conferidos',
-      'no navegador e ter `confirmadoEm` atualizado em',
-      '`src/dados/dominios-restritos.json`.',
+      'A CI não consegue verificar estes endereços por um motivo alheio ao conteúdo',
+      '— recusa de IPs de nuvem, certificado vencido —, registrado por domínio em',
+      '`src/dados/dominios-restritos.json`. Não reprovam a auditoria; devem ser',
+      'conferidos no navegador e ter `confirmadoEm` atualizado.',
       '',
       '| URL | Domínio | Confirmado em | Erro na CI |',
       '| --- | --- | --- | --- |',
