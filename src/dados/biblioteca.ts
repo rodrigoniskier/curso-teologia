@@ -890,6 +890,32 @@ export const biblioteca: ObraLivre[] = [
     nota: 'Popularizou a sequência magia–religião–ciência e influenciou gerações muito além da antropologia. Vale pelo método — comparar práticas de contextos radicalmente distintos como variantes de um mesmo tipo —, que é exatamente o procedimento que o trabalho de campo posterior desautorizou.',
     base: 'domínio público',
   },
+  {
+    id: 'james-principles',
+    autor: 'William James',
+    ano: '1890',
+    titulo: 'The Principles of Psychology, vol. I',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/theprinciplesofp01jameuoft',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG07', 'CG62', 'CG64', 'CG08'],
+    nota: 'O tratado que estabeleceu a psicologia como disciplina no mundo de língua inglesa, escrito por alguém que ainda argumentava como filósofo — e por isso trata explicitamente das questões que a psicologia posterior passou a pressupor sem discutir, como a natureza do eu, do hábito e da vontade.',
+    base: 'domínio público',
+  },
+  {
+    id: 'james-varieties',
+    autor: 'William James',
+    ano: '1902',
+    titulo: 'The Varieties of Religious Experience',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/varietiesofrelig00jameuoft',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG62', 'CG07', 'CG11', 'TS51'],
+    nota: 'As conferências Gifford que fundaram a psicologia da religião. Examina conversões, misticismo e santidade com simpatia e sem reduzi-los a patologia — mas avaliando-os pelos frutos, o que é ao mesmo tempo o mérito e o limite da obra para uma leitura reformada. É a fonte primária de CG62 inteira.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
