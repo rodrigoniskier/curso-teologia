@@ -35,6 +35,7 @@ import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
+import { teologiaDeMissoes } from './pastoral/teologia-de-missoes';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 
@@ -77,6 +78,7 @@ export const verbetes: Verbete[] = [
   poimenica,
   aconselhamento,
   evangelizacao,
+  teologiaDeMissoes,
   filosofia,
   historiaFilosofia,
 ];
