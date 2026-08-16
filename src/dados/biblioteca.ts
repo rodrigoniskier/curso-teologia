@@ -864,6 +864,32 @@ export const biblioteca: ObraLivre[] = [
     nota: 'Tratado sobre como estudar, ler, tomar notas, conversar e escrever, do mesmo pastor que escreveu a Logick. É o clássico protestante de método intelectual e trata de coisas que os manuais atuais de metodologia raramente abordam — como ler um livro com que se discorda, ou como conversar de modo que a conversa ensine alguma coisa.',
     base: 'domínio público',
   },
+  {
+    id: 'tylor-primitive',
+    autor: 'Edward Burnett Tylor',
+    ano: '1871',
+    titulo: 'Primitive Culture: Researches into the Development of Mythology, Philosophy, Religion, Art and Custom',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/primitiveculture01tylouoft',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG11', 'CG62', 'TP27', 'TS51'],
+    nota: 'A obra que fundou a antropologia da religião e propôs a escada animismo–politeísmo–monoteísmo. Leia como fonte primária de uma hipótese que a própria disciplina depois abandonou, não como descrição confiável dos povos que trata. Traz a definição de cultura mais citada do século XIX.',
+    base: 'domínio público',
+  },
+  {
+    id: 'frazer-golden-bough',
+    autor: 'James George Frazer',
+    ano: '1890',
+    titulo: 'The Golden Bough: A Study in Comparative Religion',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/goldenboughstudy01fraz',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG11', 'CG62', 'TS51', 'TE51'],
+    nota: 'Popularizou a sequência magia–religião–ciência e influenciou gerações muito além da antropologia. Vale pelo método — comparar práticas de contextos radicalmente distintos como variantes de um mesmo tipo —, que é exatamente o procedimento que o trabalho de campo posterior desautorizou.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
