@@ -117,6 +117,7 @@ por `ligaduras.py`.
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # checagem de tipos + build de produção
+npm run estado   # cobertura por departamento e contagens, calculadas do código
 ```
 
 Stack: Vite + React 19 + TypeScript (estrito) + Tailwind CSS 4 + React Router.

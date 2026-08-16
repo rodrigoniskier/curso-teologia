@@ -133,7 +133,7 @@ temporário, e o que fazer para resolver.
 ## 5. O ciclo de trabalho
 
 ```
-1. Escolher o alvo pelo desequilíbrio (ver seção 7)
+1. npm run estado  — escolher o alvo pelo desequilíbrio (ver seção 7)
 2. Ler a ementa da disciplina em src/dados/ementas.json — o verbete deve
    servir ao programa oficial, não ao que você acha que o tema é
 3. Ler os verbetes vizinhos para não repetir
@@ -194,15 +194,21 @@ os três links de "Leia também" resolvendo, e nenhum erro de JS.
 
 ## 7. Estado atual e como escolher o próximo alvo
 
-**47 verbetes, 64 obras na biblioteca.**
+**Não confie em número escrito aqui.** Rode:
 
-| Departamento | disciplinas | verbetes | v/disc |
-| --- | --- | --- | --- |
-| Cultura Geral | 30 | 5 | 0,17 |
-| Teologia Pastoral | 37 | 9 | 0,24 |
-| Teologia Exegética | 27 | 7 | 0,26 |
-| Teologia Histórica | 10 | 5 | 0,50 |
-| Teologia Sistemática | 17 | 21 | 1,24 |
+```bash
+npm run estado
+```
+
+Ele calcula a cobertura por departamento a partir do próprio código, imprime
+as contagens e os idiomas da biblioteca, e diz qual departamento está com a
+menor razão. Existe porque a tabela que ocupava este lugar divergiu do
+repositório em menos de um dia — e documento de continuidade que envelhece
+errado orienta pior do que documento nenhum.
+
+Instantâneo de 16/08/2026, só para quem lê sem rodar nada: 48 verbetes, 66
+obras, 39 das 121 disciplinas com pelo menos um verbete, e a ordem de carência
+era Cultura Geral, Pastoral, Exegética, Histórica, Sistemática.
 
 **Regra de escolha:** o próximo verbete vai para o departamento com a menor
 razão verbetes/disciplina. Sistemática está muito à frente e não deve receber
