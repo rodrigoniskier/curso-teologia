@@ -760,6 +760,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'Reúne À Nobreza Cristã da Nação Alemã, O Cativeiro Babilônico e A Liberdade Cristã — os três escritos de 1520 em que a Reforma expõe seu programa. Traz o argumento do sacerdócio de todos os crentes, que demoliu a divisão entre estado espiritual e temporal. A biblioteca não tinha nenhuma obra de Lutero.',
     base: 'domínio público',
   },
+  {
+    id: 'lutero-catecismo',
+    autor: 'Martinho Lutero',
+    ano: '1529',
+    titulo: 'The Small Catechism of Dr. Martin Luther',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/smallcatechismof00luth',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TP10', 'TS11', 'TS53', 'TH03'],
+    nota: 'O catecismo que inaugurou o gênero na Reforma. Vale ler o prefácio antes do conteúdo: nele Lutero relata a visita às paróquias da Saxônia em 1528, onde encontrou gente que não sabia o Pai-Nosso, e explica que escreveu aquilo por necessidade. É o documento de fundação da educação cristã protestante.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
