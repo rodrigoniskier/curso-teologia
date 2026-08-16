@@ -39,6 +39,7 @@ import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 import { vocacao } from './pastoral/vocacao';
 import { educacaoCrista } from './pastoral/educacao-crista';
 import { conflitos } from './pastoral/conflitos';
+import { lideranca } from './pastoral/lideranca';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
@@ -94,6 +95,7 @@ export const verbetes: Verbete[] = [
   vocacao,
   educacaoCrista,
   conflitos,
+  lideranca,
   poimenica,
   aconselhamento,
   evangelizacao,
