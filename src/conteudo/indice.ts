@@ -41,6 +41,7 @@ import { educacaoCrista } from './pastoral/educacao-crista';
 import { conflitos } from './pastoral/conflitos';
 import { lideranca } from './pastoral/lideranca';
 import { plantacao } from './pastoral/plantacao';
+import { pregacaoGeneros } from './pastoral/pregacao-generos';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
@@ -99,6 +100,7 @@ export const verbetes: Verbete[] = [
   conflitos,
   lideranca,
   plantacao,
+  pregacaoGeneros,
   poimenica,
   aconselhamento,
   evangelizacao,
