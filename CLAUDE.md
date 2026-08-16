@@ -114,6 +114,19 @@ Regras duras. Elas são o que separa este portal de um agregador.
    no PR. É melhor não ter verbete do que ter um mal fundamentado.
 5. **Toda obra citada num verbete deve estar na biblioteca** (`src/dados/biblioteca.ts`).
    Já aconteceu de 24 obras citadas não aparecerem lá.
+6. **Em obra traduzida, a data que importa é a morte do tradutor, não a do
+   autor.** A tradução é obra derivada com direito próprio. Weber morreu em
+   1920 e o original alemão é livre há décadas, mas a tradução inglesa corrente
+   é de Parsons, morto em 1979 — no Brasil ela só cai em domínio público em
+   2050, ainda que esteja aberta no Archive.org. **Estar acessível não é o
+   mesmo que o leitor poder usar licitamente**, e o portal se dirige a leitores
+   brasileiros. Quando a tradução não servir, procure verbete de enciclopédia
+   livre, outra tradução antiga, ou o original.
+
+   Auditoria feita em 16/08/2026 nas traduções já listadas: Beveridge (m. 1868)
+   e Giger (m. 1865) livres; Charles (m. 1931) livre no Brasil desde 2002;
+   Turretini em inglês corretamente marcado como empréstimo; Bavinck em inglês
+   como edição autorizada, sem alegar domínio público. Nenhuma irregularidade.
 
 ### Domínios restritos
 
