@@ -122,12 +122,11 @@ export function PaginaBiblioteca() {
 
       <p className="mt-14 border-t border-margem pt-6 font-sans text-[0.8rem] leading-relaxed text-neutral-500">
         Todos estes endereços passam pela mesma auditoria automática das fontes
-        dos verbetes, e a verificação semanal acusa se algum sair do ar. Dois
-        hospedeiros ficam fora do alcance dela por motivo alheio ao conteúdo — a
-        CCEL recusa conexões vindas de servidores em nuvem, e o site da Executiva
-        da IPB está com o certificado vencido, o que faz o navegador exibir um
-        aviso antes de abrir os PDFs. Nos dois casos o material continua
-        publicado, e o motivo fica registrado no repositório.
+        dos verbetes, e a verificação semanal acusa se algum sair do ar. Um único
+        hospedeiro fica fora do alcance dela por motivo alheio ao conteúdo: a
+        CCEL recusa conexões vindas de servidores em nuvem, embora responda
+        normalmente a navegadores comuns. O motivo fica registrado no
+        repositório.
       </p>
     </div>
   );

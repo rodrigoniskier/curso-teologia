@@ -157,28 +157,16 @@ export const governoPresbiteriano: Verbete = {
 
   fontes: [
     {
-      id: 'ci-ipb',
-      autor: 'Igreja Presbiteriana do Brasil',
-      ano: '1950',
-      titulo: 'Constituição da Igreja Presbiteriana do Brasil (CI/IPB)',
-      publicacao: 'Secretaria Executiva da IPB',
-      url: 'https://www.executivaipb.com.br/site/constituicao/constituicao.pdf',
-      idioma: 'pt',
-      tipo: 'documento',
-      acesso: 'livre',
-      nota: 'O texto oficial e vigente, publicado pela própria denominação. É a fonte normativa de tudo o que este verbete descreve sobre concílios, ofícios e jurisdição.',
-    },
-    {
       id: 'manual-presbiteriano',
       autor: 'Igreja Presbiteriana do Brasil',
-      ano: '2024',
+      ano: '2025',
       titulo: 'Manual Presbiteriano com notas remissivas — edição revista e atualizada',
-      publicacao: 'Secretaria Executiva da IPB',
-      url: 'https://www.executivaipb.com.br/arquivos/manual_presbiteriano_2024.pdf',
+      publicacao: 'Igreja Presbiteriana do Brasil',
+      url: 'https://www.ipb.org.br/content/Downloads/manual_presbiteriano_2025.pdf',
       idioma: 'pt',
       tipo: 'documento',
       acesso: 'livre',
-      nota: 'A obra de referência que todo oficial precisa ter, distribuída gratuitamente em PDF pela denominação. Reúne Constituição, códigos e princípios de liturgia com remissões cruzadas — dispensa a compra do volume impresso.',
+      nota: 'A obra de referência que todo oficial precisa ter, distribuída gratuitamente em PDF pela denominação. Reúne a Constituição da IPB, os códigos e os princípios de liturgia com remissões cruzadas — dispensa a compra do volume impresso. Hospedado no site principal da IPB.',
     },
     {
       id: 'cfw-ipib',

@@ -192,10 +192,10 @@ export const poimenica: Verbete = {
     {
       id: 'manual-presbiteriano',
       autor: 'Igreja Presbiteriana do Brasil',
-      ano: '2024',
+      ano: '2025',
       titulo: 'Manual Presbiteriano — deveres do ministro e disciplina eclesiástica',
       publicacao: 'Secretaria Executiva da IPB',
-      url: 'https://www.executivaipb.com.br/arquivos/manual_presbiteriano_2024.pdf',
+      url: 'https://www.ipb.org.br/content/Downloads/manual_presbiteriano_2025.pdf',
       idioma: 'pt',
       tipo: 'documento',
       acesso: 'livre',
