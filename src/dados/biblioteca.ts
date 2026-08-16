@@ -773,6 +773,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'O catecismo que inaugurou o gênero na Reforma. Vale ler o prefácio antes do conteúdo: nele Lutero relata a visita às paróquias da Saxônia em 1528, onde encontrou gente que não sabia o Pai-Nosso, e explica que escreveu aquilo por necessidade. É o documento de fundação da educação cristã protestante.',
     base: 'domínio público',
   },
+  {
+    id: 'watts-logick',
+    autor: 'Isaac Watts',
+    ano: '1724',
+    titulo: 'Logick: or, The Right Use of Reason in the Enquiry after Truth',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/logickorrightuse00wattuoft',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG58', 'CG06', 'TS51', 'TE16'],
+    nota: 'O manual de lógica escrito por um pastor — o mesmo autor de centenas de hinos — e adotado como livro-texto em universidades inglesas e americanas por mais de um século. Trata explicitamente do uso da razão nos assuntos de religião, o que o torna a introdução mais adequada para este currículo.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
