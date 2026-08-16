@@ -916,6 +916,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'As conferências Gifford que fundaram a psicologia da religião. Examina conversões, misticismo e santidade com simpatia e sem reduzi-los a patologia — mas avaliando-os pelos frutos, o que é ao mesmo tempo o mérito e o limite da obra para uma leitura reformada. É a fonte primária de CG62 inteira.',
     base: 'domínio público',
   },
+  {
+    id: 'broadus-sermoes',
+    autor: 'John A. Broadus',
+    ano: '1870',
+    titulo: 'A Treatise on the Preparation and Delivery of Sermons',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/treatiseonprepar00broarich',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TP14', 'TP15', 'TP16', 'TP17', 'TP18', 'TP19', 'TP58', 'CG60'],
+    nota: 'O manual de homilética mais influente da língua inglesa, usado como livro-texto por mais de um século. Trata de assunto, arranjo, estilo e entrega com um detalhamento que os manuais atuais raramente alcançam, e serve às cinco disciplinas de Prática de Pregação além da Homilética.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
