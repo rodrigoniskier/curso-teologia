@@ -16,6 +16,27 @@ import { fileURLToPath } from 'node:url';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+/**
+ * Disciplinas em que um verbete doutrinário não se aplica: aquisição de língua
+ * e estágio supervisionado. Não é possível aprender hebraico nem cumprir
+ * estágio lendo um verbete, e contá-las como descobertas distorce a escolha do
+ * próximo alvo — foi o que fez Cultura Geral e Exegética parecerem mais
+ * carentes do que estão, já que juntas concentram dezesseis disciplinas de
+ * língua.
+ *
+ * A lista é discutível e é para ser discutida: se você achar que uma delas
+ * comporta verbete, tire daqui. Um verbete de orientação sobre por que estudar
+ * as línguas originais, por exemplo, serviria a TE04 e TE08 sem ensinar língua
+ * nenhuma.
+ */
+const SEM_VERBETE = new Set([
+  // aquisição de língua
+  'CG01', 'CG02', 'CG03', 'CG04', 'CG05', 'CG54', 'CG56', 'CG57',
+  'TE04', 'TE05', 'TE06', 'TE07', 'TE08', 'TE09', 'TE10', 'TE11',
+  // estágio supervisionado
+  'TP21', 'TP22', 'TP23', 'TP24',
+]);
+
 async function arquivosDeConteudo(dir) {
   const saida = [];
   for (const ent of await readdir(dir, { withFileTypes: true })) {
@@ -29,7 +50,12 @@ async function arquivosDeConteudo(dir) {
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 const depPorCodigo = new Map(ementas.map((d) => [d.codigo, d.departamento]));
 const discPorDep = new Map();
-for (const d of ementas) discPorDep.set(d.departamento, (discPorDep.get(d.departamento) ?? 0) + 1);
+const aplicaveisPorDep = new Map();
+for (const d of ementas) {
+  discPorDep.set(d.departamento, (discPorDep.get(d.departamento) ?? 0) + 1);
+  if (!SEM_VERBETE.has(d.codigo))
+    aplicaveisPorDep.set(d.departamento, (aplicaveisPorDep.get(d.departamento) ?? 0) + 1);
+}
 
 const verbPorDep = new Map();
 const disciplinasCobertas = new Set();
@@ -55,16 +81,33 @@ const restritos = JSON.parse(
 );
 
 const linhas = [...discPorDep.entries()]
-  .map(([dep, nd]) => ({ dep, nd, nv: verbPorDep.get(dep) ?? 0, razao: (verbPorDep.get(dep) ?? 0) / nd }))
+  .map(([dep, nd]) => {
+    const nap = aplicaveisPorDep.get(dep) ?? 0;
+    const nv = verbPorDep.get(dep) ?? 0;
+    return { dep, nd, nap, nv, razao: nv / nap };
+  })
   .sort((a, b) => a.razao - b.razao);
 
-console.log(`\n${'DEPARTAMENTO'.padEnd(24)}${'disc'.padStart(5)}${'verb'.padStart(6)}${'v/disc'.padStart(9)}`);
-for (const l of linhas)
-  console.log(l.dep.padEnd(24) + String(l.nd).padStart(5) + String(l.nv).padStart(6) + l.razao.toFixed(2).padStart(9));
-
 console.log(
-  `\nverbetes: ${verbetes}  ·  disciplinas com verbete: ${disciplinasCobertas.size}/${ementas.length}` +
-    `  ·  obras na biblioteca: ${obras}`,
+  `\n${'DEPARTAMENTO'.padEnd(24)}${'disc'.padStart(5)}${'aplic'.padStart(7)}${'verb'.padStart(6)}${'v/aplic'.padStart(9)}`,
+);
+for (const l of linhas)
+  console.log(
+    l.dep.padEnd(24) +
+      String(l.nd).padStart(5) +
+      String(l.nap).padStart(7) +
+      String(l.nv).padStart(6) +
+      l.razao.toFixed(2).padStart(9),
+  );
+console.log(
+  '\naplic = disciplinas em que cabe verbete; exclui aquisição de língua e' +
+    ` estágio (${SEM_VERBETE.size} no total, lista no topo do script).`,
+);
+
+const aplicaveis = ementas.length - SEM_VERBETE.size;
+console.log(
+  `\nverbetes: ${verbetes}  ·  disciplinas com verbete: ${disciplinasCobertas.size}/${aplicaveis} aplicáveis` +
+    ` (${ementas.length} no currículo)  ·  obras na biblioteca: ${obras}`,
 );
 console.log(
   'idiomas da biblioteca: ' +

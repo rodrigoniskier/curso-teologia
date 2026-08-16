@@ -206,17 +206,25 @@ menor razão. Existe porque a tabela que ocupava este lugar divergiu do
 repositório em menos de um dia — e documento de continuidade que envelhece
 errado orienta pior do que documento nenhum.
 
-Instantâneo de 16/08/2026, só para quem lê sem rodar nada: 48 verbetes, 66
-obras, 39 das 121 disciplinas com pelo menos um verbete, e a ordem de carência
-era Cultura Geral, Pastoral, Exegética, Histórica, Sistemática.
+Instantâneo de 16/08/2026, só para quem lê sem rodar nada: 49 verbetes, 68
+obras, 40 das 101 disciplinas em que cabe verbete, e a ordem de carência era
+Pastoral, Cultura Geral, Exegética, Histórica, Sistemática.
 
 **Regra de escolha:** o próximo verbete vai para o departamento com a menor
 razão verbetes/disciplina. Sistemática está muito à frente e não deve receber
 verbete novo enquanto os outros não subirem.
 
-Ressalva ao usar a tabela: Cultura Geral inclui Português, Inglês, Espanhol,
-Latim e Música, onde um verbete doutrinário não faz sentido. A razão bruta
-exagera o vão desse departamento.
+A razão é calculada sobre as disciplinas **em que cabe verbete**, não sobre
+todas: o script exclui aquisição de língua e estágio supervisionado, porque
+ninguém aprende hebraico nem cumpre estágio lendo um verbete. Isso não é
+detalhe. Quando a conta era feita sobre o total, Cultura Geral e Exegética
+pareciam mais carentes do que estão — juntas concentram dezesseis disciplinas
+de língua —, e o alvo indicado chegou a ser o departamento errado.
+
+A lista de exclusões está no topo de `scripts/estado.mjs` e é para ser
+discutida. Se você achar que uma delas comporta verbete, tire de lá: um
+verbete de orientação sobre por que estudar as línguas originais, por exemplo,
+serviria a TE04 e TE08 sem ensinar língua nenhuma.
 
 Alvos mapeados: CG07/CG62 (Psicologia), CG11 (Antropologia da Religião),
 TP20 (Plantação e Revitalização), TP56 (Denominações e Seitas), TP05
