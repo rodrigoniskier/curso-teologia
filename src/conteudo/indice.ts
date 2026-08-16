@@ -35,6 +35,7 @@ import { igrejaBrasileira } from './historica/igreja-brasileira';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
+import { vocacao } from './pastoral/vocacao';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
@@ -82,6 +83,7 @@ export const verbetes: Verbete[] = [
   igrejaBrasileira,
   homiletica,
   governoPresbiteriano,
+  vocacao,
   poimenica,
   aconselhamento,
   evangelizacao,
