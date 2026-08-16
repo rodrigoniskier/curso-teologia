@@ -178,6 +178,11 @@ Armadilhas que já custaram tempo:
   porque o topo do ramo não é ancestral de `main`. Confirme que o conteúdo já
   entrou (`git diff --stat <sha> origin/main`) e use a forma explícita:
   `--force-with-lease=refs/heads/<ramo>:<sha>`.
+- **A auditoria repete em 5xx e 429 e não repete em 404.** O Archive.org
+  devolve 502 em rajada quando várias requisições chegam juntas, e isso já
+  reprovou uma auditoria inteira. Se um lote de URLs do mesmo domínio falhar
+  no mesmo instante enquanto outras do mesmo domínio passam, suspeite de
+  indisponibilidade momentânea antes de mexer nas fontes.
 
 ### Verificação no navegador
 

@@ -119,6 +119,19 @@ async function verificar(fonte) {
         res = await tentar(fonte.url, 'GET', ctrl.signal);
       }
       clearTimeout(t);
+
+      // Erro de servidor (5xx) e limitação de taxa (429) não são link morto:
+      // são indisponibilidade momentânea, e merecem o mesmo tratamento que uma
+      // falha de rede. O Archive.org responde 502 em rajada quando várias
+      // requisições chegam juntas — em 16/08/2026 isso reprovou a auditoria com
+      // quatro URLs falhando no mesmo milissegundo, enquanto outras do mesmo
+      // domínio passavam segundos antes e depois. Um 404 continua terminal.
+      if ((res.status === 429 || res.status >= 500) && tentativa < tentativas) {
+        ultimoErro = `HTTP ${res.status}`;
+        await new Promise((r) => setTimeout(r, 2000 * 2 ** (tentativa - 1)));
+        continue;
+      }
+
       return {
         ...fonte,
         status: res.status,
