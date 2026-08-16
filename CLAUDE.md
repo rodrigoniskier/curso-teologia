@@ -219,9 +219,12 @@ menor razão. Existe porque a tabela que ocupava este lugar divergiu do
 repositório em menos de um dia — e documento de continuidade que envelhece
 errado orienta pior do que documento nenhum.
 
-Instantâneo de 16/08/2026, só para quem lê sem rodar nada: 49 verbetes, 68
-obras, 40 das 101 disciplinas em que cabe verbete, e a ordem de carência era
-Pastoral, Cultura Geral, Exegética, Histórica, Sistemática.
+Não há instantâneo numérico aqui de propósito. Já houve dois, e os dois
+envelheceram no mesmo dia em que foram escritos — o segundo ficou quatro
+verbetes defasado em poucas horas. O que se pode dizer sem prazo de validade:
+**Sistemática está muito à frente e não deve receber verbete novo**; os outros
+quatro departamentos se aproximaram e a ordem entre eles muda a cada ciclo, o
+que é exatamente por que se roda o comando antes de escolher.
 
 **Regra de escolha:** o próximo verbete vai para o departamento com a menor
 razão verbetes/disciplina. Sistemática está muito à frente e não deve receber
