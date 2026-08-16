@@ -29,6 +29,7 @@ import { teologiaBiblica } from './exegetica/teologia-biblica';
 import { teologiaBiblicaNT } from './exegetica/teologia-biblica-nt';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
+import { igrejaModerna } from './historica/igreja-moderna';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
@@ -73,6 +74,7 @@ export const verbetes: Verbete[] = [
   igrejaAntiga,
   igrejaImperial,
   reforma,
+  igrejaModerna,
   homiletica,
   governoPresbiteriano,
   poimenica,
