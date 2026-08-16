@@ -156,9 +156,14 @@ temporário, e o que fazer para resolver.
 7. Acrescentar as fontes novas a src/dados/biblioteca.ts
 8. Atualizar as contagens no README
 9. npm run build
-10. Verificar no Chromium headless (ver seção 6)
-11. Commit, push com --force-with-lease, PR, esperar CI, merge
+10. npm run conferir — bate os números do README com o repositório
+11. Verificar no Chromium headless (ver seção 6)
+12. Commit, push com --force-with-lease, PR, esperar CI, merge
 ```
+
+O passo 10 também roda na CI, de modo que esquecer o passo 8 quebra o build em
+vez de publicar número errado. É intencional: a contagem de verbetes já
+divergiu duas vezes por edição manual.
 
 ### Validações que valem rodar sempre
 
@@ -219,6 +224,12 @@ menor razão. Existe porque a tabela que ocupava este lugar divergiu do
 repositório em menos de um dia — e documento de continuidade que envelhece
 errado orienta pior do que documento nenhum.
 
+O README não tem essa saída: é vitrine, e precisa mostrar os números a quem
+não vai rodar script nenhum. Por isso `npm run conferir` roda o mesmo cálculo
+e confere as dez linhas numéricas do README contra o repositório, falhando a
+CI quando divergem. Escreva o número no README à vontade — só não confie em
+tê-lo escrito certo.
+
 Não há instantâneo numérico aqui de propósito. Já houve dois, e os dois
 envelheceram no mesmo dia em que foram escritos — o segundo ficou quatro
 verbetes defasado em poucas horas. O que se pode dizer sem prazo de validade:
@@ -263,6 +274,13 @@ até que a condição mude:
   domínio público, fundador da IPI) — só aparece em agregador pirata.
 - **Roland Allen, *Missionary Methods*** (1912) e **Vos, *The Pauline
   Eschatology*** — existem no Archive.org apenas como empréstimo.
+- **Freud sobre religião** (*O Futuro de uma Ilusão*, *Totem e Tabu*) — o
+  original alemão é domínio público, mas nenhuma tradução de referência
+  localizada está livre no Brasil: as portuguesas estão em catálogo e as
+  inglesas correntes têm tradutores mortos há menos de setenta anos. CG62
+  aplica a regra da casa — **ensina a tese da projeção no próprio verbete**,
+  com a força que ela tem, e responde a ela pelo *Varieties* de James, que já
+  é livre e formulou a objeção antes de Freud escrever sobre religião.
 
 Ainda por procurar: Imprensa Evangélica (jornal fundado por Simonton em 1864),
 documentos do Brasil holandês, traduções antigas já em domínio público.
@@ -297,6 +315,14 @@ denominacional vigente, como o Manual Presbiteriano, é `edição autorizada`.
 exibiam asteriscos literais ao leitor porque o renderizador não processava a
 marcação. Foi encontrado ao verificar um verbete novo no navegador. Verifique
 de verdade, no navegador, e olhe a página inteira.
+
+**Sobre número escrito à mão.** Informação que muda não deve ser escrita à mão
+em documento nenhum: ou está no código que a calcula, ou não deveria estar
+escrita. A contagem de verbetes divergiu duas vezes — a segunda em poucas
+horas. No CLAUDE.md a saída foi apagar o instantâneo; no README, que precisa
+mostrar os números, foi `npm run conferir` na CI. **Onde o número tiver de
+ficar escrito, ponha uma verificação junto dele** — e verifique que ela
+realmente falha quando o número está errado, senão é enfeite.
 
 ---
 

@@ -9,6 +9,13 @@
  * que nenhum. Aqui a fonte é sempre o próprio código.
  *
  *   npm run estado
+ *
+ * O README, porém, é vitrine: precisa mostrar os números sem que o leitor rode
+ * script nenhum. A saída é conferi-los na integração contínua em vez de confiar
+ * na memória de quem edita — foi assim que a contagem de verbetes já divergiu
+ * duas vezes, uma delas em poucas horas.
+ *
+ *   npm run conferir
  */
 import { readFile, readdir } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -49,12 +56,20 @@ async function arquivosDeConteudo(dir) {
 
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 const depPorCodigo = new Map(ementas.map((d) => [d.codigo, d.departamento]));
+const depPorSigla = new Map(ementas.map((d) => [d.sigla, d.departamento]));
 const discPorDep = new Map();
 const aplicaveisPorDep = new Map();
+let unidades = 0;
+let topicos = 0;
+let referencias = 0;
 for (const d of ementas) {
   discPorDep.set(d.departamento, (discPorDep.get(d.departamento) ?? 0) + 1);
   if (!SEM_VERBETE.has(d.codigo))
     aplicaveisPorDep.set(d.departamento, (aplicaveisPorDep.get(d.departamento) ?? 0) + 1);
+  unidades += d.unidades?.length ?? 0;
+  for (const u of d.unidades ?? []) topicos += u.topicos?.length ?? 0;
+  referencias +=
+    (d.bibliografia?.basica?.length ?? 0) + (d.bibliografia?.complementar?.length ?? 0);
 }
 
 const verbPorDep = new Map();
@@ -115,3 +130,51 @@ console.log(
 );
 console.log('domínios não auditáveis: ' + (restritos.map((r) => r.dominio).join(', ') || 'nenhum'));
 console.log(`\npróximo alvo: ${linhas[0].dep} (menor razão)\n`);
+
+if (!process.argv.includes('--conferir')) process.exit(0);
+
+/* ------------------------------------------------------------------ *
+ * Conferência do README                                              *
+ * ------------------------------------------------------------------ */
+
+const readme = await readFile(join(RAIZ, 'README.md'), 'utf8');
+
+/** Números de uma linha de tabela, pelo rótulo da primeira célula.
+ *  Aceita separador de milhar (`1.339`) e negrito (`**121**`). */
+function numerosDaLinha(rotulo) {
+  const escapado = rotulo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const m = readme.match(new RegExp(`^\\|\\s*${escapado}\\s*\\|(.*)$`, 'm'));
+  if (!m) return null;
+  return [...m[1].matchAll(/\d[\d.]*/g)].map((n) => Number(n[0].replace(/\./g, '')));
+}
+
+const conferencias = [
+  ['Disciplinas mapeadas', [ementas.length, discPorDep.size]],
+  ['Unidades do programa', [unidades, topicos]],
+  ['Referências bibliográficas oficiais', [referencias]],
+  ['Verbetes redigidos', [verbetes]],
+  ['Obras livres mapeadas', [obras]],
+  ...[...depPorSigla].map(([sigla, dep]) => [`\`${sigla}\``, [discPorDep.get(dep) ?? 0]]),
+];
+
+const divergencias = [];
+for (const [rotulo, esperado] of conferencias) {
+  const achado = numerosDaLinha(rotulo);
+  if (achado === null) {
+    divergencias.push(`${rotulo}: linha não encontrada no README`);
+  } else if (achado.length !== esperado.length || achado.some((n, i) => n !== esperado[i])) {
+    divergencias.push(`${rotulo}: README diz ${achado.join(', ')} — o código diz ${esperado.join(', ')}`);
+  }
+}
+
+if (divergencias.length > 0) {
+  console.error('README fora de sincronia com o repositório:\n');
+  for (const d of divergencias) console.error(`  · ${d}`);
+  console.error(
+    '\nCorrija os números no README.md (ou o rótulo, se a linha foi renomeada).' +
+      ' Estes números são conferidos na CI justamente porque já divergiram à mão.\n',
+  );
+  process.exit(1);
+}
+
+console.log(`README conferido: ${conferencias.length} linhas batem com o repositório.\n`);

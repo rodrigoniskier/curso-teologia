@@ -63,3 +63,9 @@ jobs:
           node-version: '22'
       - run: npm install
       - run: npm run build
+
+      # Os números do README são derivados do currículo, dos verbetes e da
+      # biblioteca. Já divergiram duas vezes por edição manual — a segunda em
+      # poucas horas. Conferir aqui é mais barato que conferir de memória.
+      - name: Conferir os números do README
+        run: npm run conferir

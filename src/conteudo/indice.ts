@@ -53,6 +53,7 @@ import { logica } from './geral/logica';
 import { metodologia } from './geral/metodologia';
 import { antropologia } from './geral/antropologia';
 import { psicologia } from './geral/psicologia';
+import { psicologiaReligiao } from './geral/psicologia-religiao';
 import { sociologia } from './geral/sociologia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -112,6 +113,7 @@ export const verbetes: Verbete[] = [
   metodologia,
   antropologia,
   psicologia,
+  psicologiaReligiao,
   sociologia,
 ];
 
