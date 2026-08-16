@@ -26,6 +26,7 @@ import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { canonNT } from './exegetica/canon-nt';
 import { teologiaBiblica } from './exegetica/teologia-biblica';
+import { teologiaBiblicaNT } from './exegetica/teologia-biblica-nt';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
 import { reforma } from './historica/reforma';
@@ -67,6 +68,7 @@ export const verbetes: Verbete[] = [
   canonAT,
   canonNT,
   teologiaBiblica,
+  teologiaBiblicaNT,
   igrejaAntiga,
   igrejaImperial,
   reforma,
