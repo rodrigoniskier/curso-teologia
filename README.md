@@ -6,6 +6,11 @@ Presbiteriana do Brasil** (Junta de Educação Teológica, 2ª ed., 2018) — o
 currículo unificado aprovado pelo Supremo Concílio Extraordinário de 2014 e
 adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 
+> **Vai escrever para o portal?** Leia antes o [`CLAUDE.md`](CLAUDE.md). Ele
+> registra o padrão de redação dos verbetes, a disciplina de fontes, as
+> lacunas que foram recusadas de propósito e as armadilhas do ambiente de
+> desenvolvimento. Vale para colaborador humano e para agente.
+
 ## O que já existe
 
 | | |
