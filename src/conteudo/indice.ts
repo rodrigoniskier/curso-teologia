@@ -52,6 +52,7 @@ import { logica } from './geral/logica';
 import { metodologia } from './geral/metodologia';
 import { antropologia } from './geral/antropologia';
 import { psicologia } from './geral/psicologia';
+import { sociologia } from './geral/sociologia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -109,6 +110,7 @@ export const verbetes: Verbete[] = [
   metodologia,
   antropologia,
   psicologia,
+  sociologia,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
