@@ -14,7 +14,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Unidades do programa | **1.339** (1.995 tópicos) |
 | Referências bibliográficas oficiais | **1.237** |
 | Verbetes redigidos | 45 |
-| Obras livres mapeadas | 59 |
+| Obras livres mapeadas | 60 |
 
 Os cinco departamentos, conforme o documento oficial:
 

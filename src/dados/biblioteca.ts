@@ -799,6 +799,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'A apocalipse judaica não canônica mais importante do período intertestamentário, em tradução do próprio editor do texto etíope. Permite ao estudante ver o gênero apocalíptico em ação fora do cânon e comparar por conta própria — em vez de aceitar a descrição de um manual sobre um texto que ele nunca leu.',
     base: 'domínio público',
   },
+  {
+    id: 'catecismo-maior',
+    autor: 'Assembleia de Westminster',
+    ano: '1647',
+    titulo: 'O Catecismo Maior de Westminster',
+    publicacao: 'Monergismo',
+    url: 'https://www.monergismo.com/textos/catecismos/catecismomaior_westminster.htm',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['TS11', 'TS53', 'TS10', 'TP10', 'TS01', 'TS04'],
+    nota: 'As 196 perguntas e respostas em português, em texto corrido e sem paywall. Completa o par com o Breve Catecismo: onde este resume, o Maior desdobra — e a exposição dos Dez Mandamentos, nas perguntas 91 a 152, é o tratamento mais detalhado da lei moral que a tradição reformada produziu em forma catequética, o que o torna material de ética cristã tanto quanto de doutrina.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
