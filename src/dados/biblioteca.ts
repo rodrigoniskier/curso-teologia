@@ -851,6 +851,19 @@ export const biblioteca: ObraLivre[] = [
     nota: 'Escrita pelo sucessor de Zuínglio em Zurique e adotada por igrejas reformadas de vários países, o que a torna o documento de maior alcance internacional da primeira geração. A afirmação de que a pregação da Palavra de Deus é a Palavra de Deus está aqui, e é uma das frases mais citadas sobre o ofício do pregador.',
     base: 'domínio público',
   },
+  {
+    id: 'watts-improvement',
+    autor: 'Isaac Watts',
+    ano: '1741',
+    titulo: 'The Improvement of the Mind: or, a Supplement to the Art of Logick',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/suppimproveofmin00wattuoft',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG06', 'CG12', 'CG13', 'CG58', 'TE16'],
+    nota: 'Tratado sobre como estudar, ler, tomar notas, conversar e escrever, do mesmo pastor que escreveu a Logick. É o clássico protestante de método intelectual e trata de coisas que os manuais atuais de metodologia raramente abordam — como ler um livro com que se discorda, ou como conversar de modo que a conversa ensine alguma coisa.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
