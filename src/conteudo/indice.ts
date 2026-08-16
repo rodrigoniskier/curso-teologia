@@ -44,6 +44,7 @@ import { teologiaDeMissoes } from './pastoral/teologia-de-missoes';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
+import { logica } from './geral/logica';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -93,6 +94,7 @@ export const verbetes: Verbete[] = [
   filosofia,
   historiaFilosofia,
   historiaFilosofiaModerna,
+  logica,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
