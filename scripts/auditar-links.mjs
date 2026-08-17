@@ -174,15 +174,76 @@ const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
   return r;
 });
 
+/**
+ * Um acervo inteiro fora do ar não é a mesma coisa que link morto, e a diferença
+ * é apurável do próprio resultado: link morto responde 404 enquanto os vizinhos
+ * do mesmo domínio respondem 200; acervo fora do ar não responde a nada, nem na
+ * raiz. Em 17/08/2026 o Archive.org parou de aceitar conexões dos runners e
+ * reprovou um PR com 45 falhas — inclusive `archive.org/` — nove minutos depois
+ * de as mesmas URLs terem passado com 200.
+ *
+ * Reprovar nesse caso não protege o leitor de nada: a falha nada tem a ver com o
+ * que mudou no PR e não há o que corrigir no portal. Então esses vão para
+ * categoria própria e não reprovam — mesmo tratamento dos domínios restritos,
+ * com a diferença de que aqui a conclusão é calculada, e não escrita à mão numa
+ * lista que envelhece.
+ *
+ * Os três critérios são cumulativos e existem para que um link morto nunca caia
+ * aqui: o domínio precisa ter várias URLs no portal, TODAS precisam ter falhado,
+ * e todas em nível de conexão (status 0). Um 404 no meio já desqualifica o
+ * domínio inteiro — e volta a reprovar, como deve.
+ */
+const MIN_URLS_PARA_FORA_DO_AR = 3;
+
+function hostDe(url) {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return '';
+  }
+}
+
+const porHost = new Map();
+for (const r of resultados) {
+  const h = hostDe(r.url);
+  if (h) porHost.set(h, [...(porHost.get(h) ?? []), r]);
+}
+
+const hostsForaDoAr = new Set(
+  [...porHost.entries()]
+    .filter(
+      ([, rs]) =>
+        rs.length >= MIN_URLS_PARA_FORA_DO_AR &&
+        rs.every((r) => !r.ok && !r.status && !r.restrito),
+    )
+    .map(([h]) => h),
+);
+
 const acessiveis = resultados.filter((r) => r.ok);
-const quebrados = resultados.filter((r) => !r.ok && !r.restrito);
 const naoVerificaveis = resultados.filter((r) => !r.ok && r.restrito);
+const foraDoAr = resultados.filter(
+  (r) => !r.ok && !r.restrito && hostsForaDoAr.has(hostDe(r.url)),
+);
+const quebrados = resultados.filter(
+  (r) => !r.ok && !r.restrito && !hostsForaDoAr.has(hostDe(r.url)),
+);
 const redirecionados = resultados.filter((r) => r.ok && r.urlFinal);
 
 console.log(
   `\n${acessiveis.length}/${resultados.length} acessíveis · ${quebrados.length} com falha · ` +
+    `${foraDoAr.length} em acervo fora do ar · ` +
     `${naoVerificaveis.length} em domínio restrito · ${redirecionados.length} redirecionadas`,
 );
+
+if (foraDoAr.length) {
+  console.log(
+    `\nAcervo(s) sem responder a nada agora: ${[...hostsForaDoAr].join(', ')}.\n` +
+      'Todas as URLs desses domínios falharam em nível de conexão, o que indica\n' +
+      'indisponibilidade do acervo e não link morto — link morto responde 404\n' +
+      'enquanto os vizinhos respondem 200. Não reprova a auditoria: confira no\n' +
+      'navegador e, se o acervo tiver mesmo sumido, troque as fontes.',
+  );
+}
 
 if (naoVerificaveis.length) {
   console.log(
@@ -203,10 +264,27 @@ if (gerarRelatorio) {
     `- URLs verificadas: **${resultados.length}**`,
     `- Acessíveis: **${acessiveis.length}**`,
     `- Com falha: **${quebrados.length}**`,
+    `- Em acervo fora do ar: **${foraDoAr.length}**`,
     `- Em domínio restrito (não verificável na CI): **${naoVerificaveis.length}**`,
     `- Redirecionadas: **${redirecionados.length}**`,
     '',
   ];
+  if (foraDoAr.length) {
+    linhas.push(
+      '## Acervos fora do ar',
+      '',
+      `Nenhuma URL de ${[...hostsForaDoAr].map((h) => `\`${h}\``).join(', ')} respondeu,`,
+      'e todas falharam em nível de conexão — o que indica indisponibilidade do',
+      'acervo, não link morto: link morto responde 404 enquanto os vizinhos do',
+      'mesmo domínio respondem 200. Não reprovam a auditoria. Confira no navegador;',
+      'se o acervo tiver mesmo desaparecido, as fontes precisam ser trocadas.',
+      '',
+      '| URL | Verbete | Erro na CI |',
+      '| --- | --- | --- |',
+    );
+    for (const r of foraDoAr) linhas.push(`| ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
+    linhas.push('');
+  }
   if (quebrados.length) {
     linhas.push(
       '## Links com falha',

@@ -316,6 +316,15 @@ exibiam asteriscos literais ao leitor porque o renderizador não processava a
 marcação. Foi encontrado ao verificar um verbete novo no navegador. Verifique
 de verdade, no navegador, e olhe a página inteira.
 
+**Sobre CI vermelha que não é sua.** O Archive.org hospeda mais de cem fontes
+do portal. Quando ele cai, a auditoria reprova o PR com dezenas de falhas que
+nada têm a ver com o diff. Antes de mexer em fonte alguma, **olhe o padrão do
+erro**: falha de conexão em todas as URLs de um domínio — inclusive na raiz — é
+acervo fora do ar; link morto responde 404 enquanto os vizinhos respondem 200.
+O auditor hoje separa os dois casos sozinho e não reprova pelo primeiro. Não
+ponha o Archive.org em `dominios-restritos.json` para contornar queda passageira:
+isso desligaria a verificação de mais de cem links de vez.
+
 **Sobre número escrito à mão.** Informação que muda não deve ser escrita à mão
 em documento nenhum: ou está no código que a calcula, ou não deveria estar
 escrita. A contagem de verbetes divergiu duas vezes — a segunda em poucas

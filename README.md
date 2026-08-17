@@ -94,6 +94,22 @@ seção própria e **não** reprovam a auditoria. Qualquer URL fora dessa lista
 que falhe continua quebrando o build — a garantia segue valendo para todo o
 resto.
 
+### Acervos fora do ar
+
+Caso diferente, e **apurado do resultado em vez de escrito à mão**: quando
+*todas* as URLs de um domínio falham em nível de conexão, isso indica acervo
+indisponível, não link morto — link morto responde `404` enquanto os vizinhos
+do mesmo domínio respondem `200`. Em 17/08/2026 o Archive.org, que hospeda
+mais de cem fontes do portal, parou de aceitar conexões dos runners e reprovou
+um PR com 45 falhas — incluindo a própria raiz `archive.org/` — nove minutos
+depois de as mesmas URLs terem passado.
+
+Esses casos são relatados em seção própria e não reprovam. Os três critérios
+são cumulativos, para que link morto nunca caia aqui: o domínio precisa ter ao
+menos três URLs no portal, **todas** precisam ter falhado, e todas em nível de
+conexão. Um único `404` no meio desqualifica o domínio inteiro e volta a
+reprovar.
+
 ## Extração do currículo
 
 O currículo não foi digitado à mão: foi extraído do PDF oficial. O pipeline
