@@ -47,6 +47,7 @@ import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { evangelizacao } from './pastoral/evangelizacao';
 import { teologiaDeMissoes } from './pastoral/teologia-de-missoes';
+import { igrejaQueEnvia } from './pastoral/igreja-que-envia';
 import { missoesTransculturais } from './pastoral/missoes-transculturais';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
@@ -109,6 +110,7 @@ export const verbetes: Verbete[] = [
   aconselhamento,
   evangelizacao,
   teologiaDeMissoes,
+  igrejaQueEnvia,
   missoesTransculturais,
   filosofia,
   historiaFilosofia,
