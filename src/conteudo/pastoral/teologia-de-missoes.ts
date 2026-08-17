@@ -225,7 +225,7 @@ export const teologiaDeMissoes: Verbete = {
       titulo:
         'Outline of a History of Protestant Missions from the Reformation to the Present Time',
       publicacao: 'Internet Archive',
-      url: 'https://archive.org/details/outlineofhistorypc00warn',
+      url: 'https://archive.org/details/outlineofhistory00warn',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',

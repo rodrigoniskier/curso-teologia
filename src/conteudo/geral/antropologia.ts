@@ -179,7 +179,7 @@ export const antropologia: Verbete = {
       ano: '1890',
       titulo: 'The Golden Bough: A Study in Comparative Religion',
       publicacao: 'Internet Archive',
-      url: 'https://archive.org/details/goldenboughstudy01fraz',
+      url: 'https://archive.org/details/cu31924021569128',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',

@@ -54,15 +54,26 @@ const restritos = JSON.parse(
   await readFile(join(RAIZ, 'src', 'dados', 'dominios-restritos.json'), 'utf8'),
 );
 
-function dominioRestrito(url) {
-  let host;
+function hostDe(url) {
   try {
-    host = new URL(url).hostname;
+    return new URL(url).hostname;
   } catch {
-    return undefined;
+    return '';
   }
+}
+
+function dominioRestrito(url) {
+  const host = hostDe(url);
+  if (!host) return undefined;
   return restritos.find((r) => host === r.dominio || host.endsWith(`.${r.dominio}`));
 }
+
+/**
+ * Domínios que não responderam à sondagem inicial. Suas URLs recebem tentativa
+ * única, como as de domínio restrito: repetir o ciclo completo contra um acervo
+ * mudo custa ~80s por URL e não descobre nada que a sondagem já não tenha dito.
+ */
+const hostsMudos = new Set();
 
 async function arquivosTs(dir) {
   const saida = [];
@@ -100,14 +111,16 @@ async function tentar(url, metodo, sinal) {
   return fetch(url, { method: metodo, redirect: 'follow', headers: CABECALHOS, signal: sinal });
 }
 
-async function verificar(fonte) {
+async function verificar(fonte, { sondagem = false } = {}) {
   let ultimoErro = '';
   // Domínio que sabidamente recusa IP de nuvem não merece o ciclo completo de
   // repetições: são ~80s gastos por URL para reconfirmar o que já se sabe.
   // Uma tentativa curta ainda detecta se o acervo passar a aceitar a CI.
+  // O mesmo vale para o acervo que não respondeu à sondagem inicial.
   const restrito = dominioRestrito(fonte.url);
-  const tentativas = restrito ? 1 : TENTATIVAS;
-  const limite = restrito ? 10_000 : TEMPO_LIMITE;
+  const rapido = restrito || (!sondagem && hostsMudos.has(hostDe(fonte.url)));
+  const tentativas = rapido ? 1 : TENTATIVAS;
+  const limite = rapido ? 10_000 : TEMPO_LIMITE;
 
   for (let tentativa = 1; tentativa <= tentativas; tentativa++) {
     const ctrl = new AbortController();
@@ -116,9 +129,20 @@ async function verificar(fonte) {
       // HEAD é mais barato, mas muitos servidores não o implementam.
       let res = await tentar(fonte.url, 'HEAD', ctrl.signal);
       if (res.status === 405 || res.status === 501 || res.status === 403) {
+        // A resposta ao HEAD vai ser descartada: solte o socket dela também.
+        await res.body?.cancel().catch(() => {});
         res = await tentar(fonte.url, 'GET', ctrl.signal);
       }
       clearTimeout(t);
+
+      // Corpo de resposta que ninguém lê prende o socket: o undici mantém a
+      // conexão presa ao pool, e quando os sockets presos acabam com o limite do
+      // pool as requisições seguintes ficam na fila sem prazo. Só interessa aqui
+      // o status, nunca o conteúdo — então o corpo é descartado explicitamente.
+      // Em 17/08/2026 uma auditoria passou de uma hora sem terminar por isto:
+      // o Archive.org respondeu 403 ao HEAD em massa, cada 403 virou um GET, e
+      // os GETs foram empilhando corpos nunca lidos até a vazão morrer.
+      await res.body?.cancel().catch(() => {});
 
       // Erro de servidor (5xx) e limitação de taxa (429) não são link morto:
       // são indisponibilidade momentânea, e merecem o mesmo tratamento que uma
@@ -166,6 +190,25 @@ const unicas = [...new Map(fontes.map((f) => [f.url, f])).values()];
 
 console.log(`Auditando ${unicas.length} URLs únicas (${fontes.length} citações)…\n`);
 
+// Sondagem: uma URL por domínio, antes de auditar tudo. Um acervo grande fora
+// do ar custava ~80s por URL — em 17/08/2026, com o Archive.org mudo, a
+// auditoria passou de quarenta minutos sem terminar. Pagar o ciclo completo uma
+// vez por domínio, e não uma vez por URL, resolve sem perder informação: quem
+// não responde à sondagem também não responderia às outras oitenta tentativas.
+const representantes = [
+  ...new Map(
+    unicas.filter((f) => hostDe(f.url) && !dominioRestrito(f.url)).map((f) => [hostDe(f.url), f]),
+  ).values(),
+];
+const sondagens = await Promise.all(representantes.map((f) => verificar(f, { sondagem: true })));
+for (const s of sondagens) if (!s.ok && !s.status) hostsMudos.add(hostDe(s.url));
+if (hostsMudos.size) {
+  console.log(
+    `Sem resposta na sondagem: ${[...hostsMudos].join(', ')}.\n` +
+      'As URLs desses domínios recebem tentativa única em vez do ciclo completo.\n',
+  );
+}
+
 const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
   const r = await verificar(f);
   r.restrito = r.ok ? undefined : dominioRestrito(r.url);
@@ -174,15 +217,68 @@ const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
   return r;
 });
 
+/**
+ * Um acervo inteiro fora do ar não é a mesma coisa que link morto, e a diferença
+ * é apurável do próprio resultado: link morto responde 404 enquanto os vizinhos
+ * do mesmo domínio respondem 200; acervo fora do ar não responde a nada, nem na
+ * raiz. Em 17/08/2026 o Archive.org parou de aceitar conexões dos runners e
+ * reprovou um PR com 45 falhas — inclusive `archive.org/` — nove minutos depois
+ * de as mesmas URLs terem passado com 200.
+ *
+ * Reprovar nesse caso não protege o leitor de nada: a falha nada tem a ver com o
+ * que mudou no PR e não há o que corrigir no portal. Então esses vão para
+ * categoria própria e não reprovam — mesmo tratamento dos domínios restritos,
+ * com a diferença de que aqui a conclusão é calculada, e não escrita à mão numa
+ * lista que envelhece.
+ *
+ * Os três critérios são cumulativos e existem para que um link morto nunca caia
+ * aqui: o domínio precisa ter várias URLs no portal, TODAS precisam ter falhado,
+ * e todas em nível de conexão (status 0). Um 404 no meio já desqualifica o
+ * domínio inteiro — e volta a reprovar, como deve.
+ */
+const MIN_URLS_PARA_FORA_DO_AR = 3;
+
+const porHost = new Map();
+for (const r of resultados) {
+  const h = hostDe(r.url);
+  if (h) porHost.set(h, [...(porHost.get(h) ?? []), r]);
+}
+
+const hostsForaDoAr = new Set(
+  [...porHost.entries()]
+    .filter(
+      ([, rs]) =>
+        rs.length >= MIN_URLS_PARA_FORA_DO_AR &&
+        rs.every((r) => !r.ok && !r.status && !r.restrito),
+    )
+    .map(([h]) => h),
+);
+
 const acessiveis = resultados.filter((r) => r.ok);
-const quebrados = resultados.filter((r) => !r.ok && !r.restrito);
 const naoVerificaveis = resultados.filter((r) => !r.ok && r.restrito);
+const foraDoAr = resultados.filter(
+  (r) => !r.ok && !r.restrito && hostsForaDoAr.has(hostDe(r.url)),
+);
+const quebrados = resultados.filter(
+  (r) => !r.ok && !r.restrito && !hostsForaDoAr.has(hostDe(r.url)),
+);
 const redirecionados = resultados.filter((r) => r.ok && r.urlFinal);
 
 console.log(
   `\n${acessiveis.length}/${resultados.length} acessíveis · ${quebrados.length} com falha · ` +
+    `${foraDoAr.length} em acervo fora do ar · ` +
     `${naoVerificaveis.length} em domínio restrito · ${redirecionados.length} redirecionadas`,
 );
+
+if (foraDoAr.length) {
+  console.log(
+    `\nAcervo(s) sem responder a nada agora: ${[...hostsForaDoAr].join(', ')}.\n` +
+      'Todas as URLs desses domínios falharam em nível de conexão, o que indica\n' +
+      'indisponibilidade do acervo e não link morto — link morto responde 404\n' +
+      'enquanto os vizinhos respondem 200. Não reprova a auditoria: confira no\n' +
+      'navegador e, se o acervo tiver mesmo sumido, troque as fontes.',
+  );
+}
 
 if (naoVerificaveis.length) {
   console.log(
@@ -203,10 +299,27 @@ if (gerarRelatorio) {
     `- URLs verificadas: **${resultados.length}**`,
     `- Acessíveis: **${acessiveis.length}**`,
     `- Com falha: **${quebrados.length}**`,
+    `- Em acervo fora do ar: **${foraDoAr.length}**`,
     `- Em domínio restrito (não verificável na CI): **${naoVerificaveis.length}**`,
     `- Redirecionadas: **${redirecionados.length}**`,
     '',
   ];
+  if (foraDoAr.length) {
+    linhas.push(
+      '## Acervos fora do ar',
+      '',
+      `Nenhuma URL de ${[...hostsForaDoAr].map((h) => `\`${h}\``).join(', ')} respondeu,`,
+      'e todas falharam em nível de conexão — o que indica indisponibilidade do',
+      'acervo, não link morto: link morto responde 404 enquanto os vizinhos do',
+      'mesmo domínio respondem 200. Não reprovam a auditoria. Confira no navegador;',
+      'se o acervo tiver mesmo desaparecido, as fontes precisam ser trocadas.',
+      '',
+      '| URL | Verbete | Erro na CI |',
+      '| --- | --- | --- |',
+    );
+    for (const r of foraDoAr) linhas.push(`| ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
+    linhas.push('');
+  }
   if (quebrados.length) {
     linhas.push(
       '## Links com falha',
