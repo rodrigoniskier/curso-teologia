@@ -325,23 +325,6 @@ O auditor hoje separa os dois casos sozinho e não reprova pelo primeiro. Não
 ponha o Archive.org em `dominios-restritos.json` para contornar queda passageira:
 isso desligaria a verificação de mais de cem links de vez.
 
-**Sobre diagnosticar CI vermelha por status.** O campo `status` da API do GitHub
-fica marcando `in_progress` muito depois de o job ter acabado. Guiado por ele,
-conclui duas vezes que uma auditoria estava travada quando ela tinha terminado
-em dois minutos — e cheguei a cancelar execução boa e a declarar que um conserto
-não funcionara. **Use a disponibilidade do log como sonda**: `get_job_logs`
-devolve 404 enquanto o job roda e passa a devolver conteúdo quando termina.
-
-**Sobre 404 do Archive.org.** Escrevi no auditor que "404 é resposta, queda é
-silêncio", e usei isso para tratar 404 como terminal. Quando quatro obras
-passaram a dar 404 num dia em que o acervo oscilava, atribuí a falso positivo da
-recuperação e mandei re-executar. A segunda execução deu exatamente o mesmo
-resultado — as mesmas quatro, enquanto quarenta outras do mesmo domínio davam
-200. **404 repetido e seletivo não é acervo instável: é item que saiu do ar.**
-O que distingue os dois casos é a repetição, não a leitura de uma execução só.
-E a resposta certa foi trocar o endereço — todas as quatro eram domínio público
-com outra cópia disponível —, nunca afrouxar o auditor para tolerar 404.
-
 **Sobre número escrito à mão.** Informação que muda não deve ser escrita à mão
 em documento nenhum: ou está no código que a calcula, ou não deveria estar
 escrita. A contagem de verbetes divergiu duas vezes — a segunda em poucas
