@@ -325,6 +325,31 @@ O auditor hoje separa os dois casos sozinho e não reprova pelo primeiro. Não
 ponha o Archive.org em `dominios-restritos.json` para contornar queda passageira:
 isso desligaria a verificação de mais de cem links de vez.
 
+**Sobre diagnosticar a CI.** Não use isoladamente o campo `status` da API, a
+`conclusion` do check run nem o 404 de `get_job_logs` para decidir se um job
+terminou. Durante o incidente de 17/08/2026, esses sinais permaneceram
+enganosos depois de uma execução já ter acabado e isso levou ao cancelamento
+de uma execução saudável. Quando houver dúvida, a evidência confiável é o
+timestamp dentro do próprio log, e não o estado externo reportado pela API.
+
+**Sobre distinguir link morto de sobrecarga.** Uma execução isolada não basta.
+A regra que sobreviveu ao incidente é temporal: **404 consistente na mesma URL,
+em duas ou mais execuções, indica item removido e pede substituição**. Se a
+mesma URL alterna entre 404, 502, `ECONNRESET` e timeout, o sinal é de
+sobrecarga do acervo e a ação é esperar. Se as falhas migram de uma URL para
+outra a cada execução, o padrão é congestionamento e a ação também é esperar.
+Falha de conexão em todo o domínio, inclusive na raiz, é acervo fora do ar —
+o auditor já trata esse caso sem reprovar. O caso de Ryle é o teste de sanidade:
+a mesma URL devolveu 404, depois 502 e depois `ECONNRESET`; aplicar
+mecanicamente "404 = item removido" teria descartado uma fonte viva.
+
+**Sobre a concorrência do auditor.** Na pior execução do incidente, dezenove
+falhas ocorreram todas em nível de conexão contra o mesmo host. Isso é
+compatível com limitação de taxa e torna plausível testar `CONCORRENCIA = 2`
+ou `3` no lugar de `6`. **É hipótese, não correção.** Não altere a concorrência
+só porque a explicação parece boa; primeiro reproduza o problema num ambiente
+em que seja possível comparar as duas configurações sem afrouxar a garantia.
+
 **Sobre número escrito à mão.** Informação que muda não deve ser escrita à mão
 em documento nenhum: ou está no código que a calcula, ou não deveria estar
 escrita. A contagem de verbetes divergiu duas vezes — a segunda em poucas
