@@ -53,6 +53,7 @@ import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
 import { logica } from './geral/logica';
+import { oratoria } from './geral/oratoria';
 import { metodologia } from './geral/metodologia';
 import { antropologia } from './geral/antropologia';
 import { psicologia } from './geral/psicologia';
@@ -116,6 +117,7 @@ export const verbetes: Verbete[] = [
   historiaFilosofia,
   historiaFilosofiaModerna,
   logica,
+  oratoria,
   metodologia,
   antropologia,
   psicologia,
