@@ -294,7 +294,7 @@ export const psicologiaReligiao: Verbete = {
       ano: '1890',
       titulo: 'The Principles of Psychology, vol. I',
       publicacao: 'Internet Archive',
-      url: 'https://archive.org/details/theprinciplesofp01jameuoft',
+      url: 'https://archive.org/details/PrinciplesOfPsychologyVol1',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',
