@@ -129,9 +129,20 @@ async function verificar(fonte, { sondagem = false } = {}) {
       // HEAD é mais barato, mas muitos servidores não o implementam.
       let res = await tentar(fonte.url, 'HEAD', ctrl.signal);
       if (res.status === 405 || res.status === 501 || res.status === 403) {
+        // A resposta ao HEAD vai ser descartada: solte o socket dela também.
+        await res.body?.cancel().catch(() => {});
         res = await tentar(fonte.url, 'GET', ctrl.signal);
       }
       clearTimeout(t);
+
+      // Corpo de resposta que ninguém lê prende o socket: o undici mantém a
+      // conexão presa ao pool, e quando os sockets presos acabam com o limite do
+      // pool as requisições seguintes ficam na fila sem prazo. Só interessa aqui
+      // o status, nunca o conteúdo — então o corpo é descartado explicitamente.
+      // Em 17/08/2026 uma auditoria passou de uma hora sem terminar por isto:
+      // o Archive.org respondeu 403 ao HEAD em massa, cada 403 virou um GET, e
+      // os GETs foram empilhando corpos nunca lidos até a vazão morrer.
+      await res.body?.cancel().catch(() => {});
 
       // Erro de servidor (5xx) e limitação de taxa (429) não são link morto:
       // são indisponibilidade momentânea, e merecem o mesmo tratamento que uma
