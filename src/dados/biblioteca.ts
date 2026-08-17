@@ -480,7 +480,7 @@ export const biblioteca: ObraLivre[] = [
     ano: '1648',
     titulo: 'The Death of Death in the Death of Christ',
     publicacao: 'Internet Archive',
-    url: 'https://archive.org/details/deathofdeathinde00owen_0',
+    url: 'https://archive.org/details/deathofdeathinde00owen',
     idioma: 'en',
     acesso: 'livre',
     disciplinas: ['TS03', 'TS04'],
