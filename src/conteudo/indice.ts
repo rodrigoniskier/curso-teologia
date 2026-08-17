@@ -46,6 +46,7 @@ import { plantacao } from './pastoral/plantacao';
 import { pregacaoGeneros } from './pastoral/pregacao-generos';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
+import { aconselhamento2 } from './pastoral/aconselhamento-2';
 import { evangelizacao } from './pastoral/evangelizacao';
 import { teologiaDeMissoes } from './pastoral/teologia-de-missoes';
 import { igrejaQueEnvia } from './pastoral/igreja-que-envia';
@@ -111,6 +112,7 @@ export const verbetes: Verbete[] = [
   pregacaoGeneros,
   poimenica,
   aconselhamento,
+  aconselhamento2,
   evangelizacao,
   teologiaDeMissoes,
   igrejaQueEnvia,
