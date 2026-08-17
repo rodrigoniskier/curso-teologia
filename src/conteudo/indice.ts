@@ -30,6 +30,7 @@ import { teologiaBiblicaNT } from './exegetica/teologia-biblica-nt';
 import { manuscritologia } from './exegetica/manuscritologia';
 import { apocaliptica } from './exegetica/apocaliptica';
 import { metodologiaExegetica } from './exegetica/metodologia-exegetica';
+import { genesis22 } from './exegetica/genesis-22';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
 import { igrejaModerna } from './historica/igreja-moderna';
@@ -94,6 +95,7 @@ export const verbetes: Verbete[] = [
   manuscritologia,
   apocaliptica,
   metodologiaExegetica,
+  genesis22,
   igrejaAntiga,
   igrejaImperial,
   reforma,
