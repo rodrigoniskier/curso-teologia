@@ -54,15 +54,26 @@ const restritos = JSON.parse(
   await readFile(join(RAIZ, 'src', 'dados', 'dominios-restritos.json'), 'utf8'),
 );
 
-function dominioRestrito(url) {
-  let host;
+function hostDe(url) {
   try {
-    host = new URL(url).hostname;
+    return new URL(url).hostname;
   } catch {
-    return undefined;
+    return '';
   }
+}
+
+function dominioRestrito(url) {
+  const host = hostDe(url);
+  if (!host) return undefined;
   return restritos.find((r) => host === r.dominio || host.endsWith(`.${r.dominio}`));
 }
+
+/**
+ * Domínios que não responderam à sondagem inicial. Suas URLs recebem tentativa
+ * única, como as de domínio restrito: repetir o ciclo completo contra um acervo
+ * mudo custa ~80s por URL e não descobre nada que a sondagem já não tenha dito.
+ */
+const hostsMudos = new Set();
 
 async function arquivosTs(dir) {
   const saida = [];
@@ -100,14 +111,16 @@ async function tentar(url, metodo, sinal) {
   return fetch(url, { method: metodo, redirect: 'follow', headers: CABECALHOS, signal: sinal });
 }
 
-async function verificar(fonte) {
+async function verificar(fonte, { sondagem = false } = {}) {
   let ultimoErro = '';
   // Domínio que sabidamente recusa IP de nuvem não merece o ciclo completo de
   // repetições: são ~80s gastos por URL para reconfirmar o que já se sabe.
   // Uma tentativa curta ainda detecta se o acervo passar a aceitar a CI.
+  // O mesmo vale para o acervo que não respondeu à sondagem inicial.
   const restrito = dominioRestrito(fonte.url);
-  const tentativas = restrito ? 1 : TENTATIVAS;
-  const limite = restrito ? 10_000 : TEMPO_LIMITE;
+  const rapido = restrito || (!sondagem && hostsMudos.has(hostDe(fonte.url)));
+  const tentativas = rapido ? 1 : TENTATIVAS;
+  const limite = rapido ? 10_000 : TEMPO_LIMITE;
 
   for (let tentativa = 1; tentativa <= tentativas; tentativa++) {
     const ctrl = new AbortController();
@@ -166,6 +179,25 @@ const unicas = [...new Map(fontes.map((f) => [f.url, f])).values()];
 
 console.log(`Auditando ${unicas.length} URLs únicas (${fontes.length} citações)…\n`);
 
+// Sondagem: uma URL por domínio, antes de auditar tudo. Um acervo grande fora
+// do ar custava ~80s por URL — em 17/08/2026, com o Archive.org mudo, a
+// auditoria passou de quarenta minutos sem terminar. Pagar o ciclo completo uma
+// vez por domínio, e não uma vez por URL, resolve sem perder informação: quem
+// não responde à sondagem também não responderia às outras oitenta tentativas.
+const representantes = [
+  ...new Map(
+    unicas.filter((f) => hostDe(f.url) && !dominioRestrito(f.url)).map((f) => [hostDe(f.url), f]),
+  ).values(),
+];
+const sondagens = await Promise.all(representantes.map((f) => verificar(f, { sondagem: true })));
+for (const s of sondagens) if (!s.ok && !s.status) hostsMudos.add(hostDe(s.url));
+if (hostsMudos.size) {
+  console.log(
+    `Sem resposta na sondagem: ${[...hostsMudos].join(', ')}.\n` +
+      'As URLs desses domínios recebem tentativa única em vez do ciclo completo.\n',
+  );
+}
+
 const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
   const r = await verificar(f);
   r.restrito = r.ok ? undefined : dominioRestrito(r.url);
@@ -194,14 +226,6 @@ const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
  * domínio inteiro — e volta a reprovar, como deve.
  */
 const MIN_URLS_PARA_FORA_DO_AR = 3;
-
-function hostDe(url) {
-  try {
-    return new URL(url).hostname;
-  } catch {
-    return '';
-  }
-}
 
 const porHost = new Map();
 for (const r of resultados) {
