@@ -36,6 +36,7 @@ import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
 import { igrejaModerna } from './historica/igreja-moderna';
 import { igrejaBrasileira } from './historica/igreja-brasileira';
+import { historiaIPB } from './historica/ipb';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
@@ -108,6 +109,7 @@ export const verbetes: Verbete[] = [
   reforma,
   igrejaModerna,
   igrejaBrasileira,
+  historiaIPB,
   homiletica,
   governoPresbiteriano,
   vocacao,
