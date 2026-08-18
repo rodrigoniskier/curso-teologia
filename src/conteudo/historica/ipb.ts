@@ -144,7 +144,7 @@ export const historiaIPB: Verbete = {
       tipo: 'lista',
       ordenada: true,
       itens: [
-        '**Leia a fonte do período, não o resumo.** Os jornais da época estão digitalizados e são gratuitos: a *Imprensa Evangélica* mostra o que se discutia, em que tom e com que argumentos — antes de qualquer historiador organizar a narrativa.',
+        '**Leia a fonte do período, não o resumo.** Os jornais da época estão digitalizados e são gratuitos na Hemeroteca Digital Brasileira, da Biblioteca Nacional: a *Imprensa Evangélica*, fundada por Simonton em 1864, mostra o que se discutia, em que tom e com que argumentos — antes de qualquer historiador organizar a narrativa.',
         '**Leia o outro lado na voz dele.** Sobre 1903, isso significa ler o que a IPI diz de si mesma, e não apenas o que se diz dela. Vale a inversão para quem estuda a partir da IPI.',
         '**Desconfie de toda narrativa em que um lado só erra.** Quando o relato de um cisma não registra nenhum erro do próprio grupo, o que se está lendo é apologia, e ela é reconhecível justamente por essa simetria ausente.',
         '**Repare no que é decisão administrativa e no que é princípio.** Muita coisa que hoje se defende como identidade confessional começou como solução prática para escassez de dinheiro ou de gente — o que não a torna errada, mas muda o peso do argumento.',
@@ -158,17 +158,6 @@ export const historiaIPB: Verbete = {
     },
   ],
   fontes: [
-    {
-      id: 'hemeroteca-bn',
-      autor: 'Fundação Biblioteca Nacional',
-      titulo: 'Hemeroteca Digital Brasileira — jornais e revistas',
-      publicacao: 'Biblioteca Nacional',
-      url: 'https://memoria.bn.gov.br/',
-      idioma: 'pt',
-      tipo: 'acervo',
-      acesso: 'livre',
-      nota: 'O acervo digitalizado de periódicos brasileiros, gratuito e com texto pesquisável por OCR — a Imprensa Evangélica, primeiro jornal protestante do país, está entre os títulos. Permite rastrear um nome, uma polêmica ou uma data pela imprensa da época, inclusive a repercussão pública das disputas que levaram a 1903.',
-    },
     {
       id: 'ipb-sobre',
       autor: 'Igreja Presbiteriana do Brasil',
