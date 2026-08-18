@@ -72,6 +72,13 @@ function dominioRestrito(url) {
  * Domínios que não responderam à sondagem inicial. Suas URLs recebem tentativa
  * única, como as de domínio restrito: repetir o ciclo completo contra um acervo
  * mudo custa ~80s por URL e não descobre nada que a sondagem já não tenha dito.
+ *
+ * Só entram aqui domínios com duas ou mais URLs no portal. Com uma URL só, a
+ * sondagem testa exatamente a mesma URL que a verificação vai testar depois, e
+ * já pagou por ela o ciclo completo — não há o que economizar. Rebaixá-la a uma
+ * tentativa de 10s deixa a verificação mais fraca que a sondagem que falhou, o
+ * que converte host lento em reprovação garantida. Foi o que aconteceu duas
+ * vezes com o PDF do IBGE, em 18/08/2026, com 200 nas execuções vizinhas.
  */
 const hostsMudos = new Set();
 
@@ -200,8 +207,16 @@ const representantes = [
     unicas.filter((f) => hostDe(f.url) && !dominioRestrito(f.url)).map((f) => [hostDe(f.url), f]),
   ).values(),
 ];
+const urlsPorHost = new Map();
+for (const f of unicas) {
+  const h = hostDe(f.url);
+  if (h) urlsPorHost.set(h, (urlsPorHost.get(h) ?? 0) + 1);
+}
 const sondagens = await Promise.all(representantes.map((f) => verificar(f, { sondagem: true })));
-for (const s of sondagens) if (!s.ok && !s.status) hostsMudos.add(hostDe(s.url));
+for (const s of sondagens) {
+  const h = hostDe(s.url);
+  if (!s.ok && !s.status && (urlsPorHost.get(h) ?? 0) > 1) hostsMudos.add(h);
+}
 if (hostsMudos.size) {
   console.log(
     `Sem resposta na sondagem: ${[...hostsMudos].join(', ')}.\n` +
