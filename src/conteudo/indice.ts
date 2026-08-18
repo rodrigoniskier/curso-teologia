@@ -57,6 +57,7 @@ import { missoesTransculturais } from './pastoral/missoes-transculturais';
 import { acaoSocial } from './pastoral/acao-social';
 import { missoesUrbanas } from './pastoral/missoes-urbanas';
 import { capelania } from './pastoral/capelania';
+import { denominacoesSeitas } from './pastoral/denominacoes-seitas';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
@@ -132,6 +133,7 @@ export const verbetes: Verbete[] = [
   acaoSocial,
   missoesUrbanas,
   capelania,
+  denominacoesSeitas,
   filosofia,
   historiaFilosofia,
   historiaFilosofiaModerna,
