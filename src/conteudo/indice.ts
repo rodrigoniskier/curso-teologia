@@ -31,6 +31,7 @@ import { manuscritologia } from './exegetica/manuscritologia';
 import { apocaliptica } from './exegetica/apocaliptica';
 import { metodologiaExegetica } from './exegetica/metodologia-exegetica';
 import { genesis22 } from './exegetica/genesis-22';
+import { geografiaArqueologia } from './exegetica/geografia-arqueologia';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
 import { igrejaModerna } from './historica/igreja-moderna';
@@ -99,6 +100,7 @@ export const verbetes: Verbete[] = [
   apocaliptica,
   metodologiaExegetica,
   genesis22,
+  geografiaArqueologia,
   igrejaAntiga,
   igrejaImperial,
   reforma,
