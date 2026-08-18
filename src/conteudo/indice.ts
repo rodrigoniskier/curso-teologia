@@ -65,6 +65,7 @@ import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
 import { logica } from './geral/logica';
 import { didatica } from './geral/didatica';
+import { terceiroSetor } from './geral/terceiro-setor';
 import { oratoria } from './geral/oratoria';
 import { metodologia } from './geral/metodologia';
 import { musica } from './geral/musica';
@@ -143,6 +144,7 @@ export const verbetes: Verbete[] = [
   historiaFilosofiaModerna,
   logica,
   didatica,
+  terceiroSetor,
   oratoria,
   metodologia,
   musica,
