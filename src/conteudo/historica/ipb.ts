@@ -159,26 +159,15 @@ export const historiaIPB: Verbete = {
   ],
   fontes: [
     {
-      id: 'bn-periodicos-religiosos',
-      autor: 'Fundação Biblioteca Nacional',
-      titulo: 'Periódicos religiosos na Hemeroteca Digital Brasileira',
-      publicacao: 'BNDigital',
-      url: 'https://bndigital.bn.gov.br/dossies/periodicos-religiosos-na-hemeroteca-digital-brasileira/',
-      idioma: 'pt',
-      tipo: 'acervo',
-      acesso: 'livre',
-      nota: 'O guia da própria Biblioteca Nacional aos periódicos religiosos digitalizados, com a Imprensa Evangélica entre eles. É o caminho mais curto para ler o protestantismo brasileiro do século XIX na fonte, e não no resumo.',
-    },
-    {
       id: 'hemeroteca-bn',
       autor: 'Fundação Biblioteca Nacional',
       titulo: 'Hemeroteca Digital Brasileira — jornais e revistas',
       publicacao: 'Biblioteca Nacional',
-      url: 'https://memoria.bn.br/',
+      url: 'https://memoria.bn.gov.br/',
       idioma: 'pt',
       tipo: 'acervo',
       acesso: 'livre',
-      nota: 'A ferramenta de busca no acervo digitalizado de periódicos brasileiros, com texto pesquisável. Permite rastrear um nome, uma polêmica ou uma data pela imprensa da época — inclusive a repercussão pública das disputas que levaram a 1903.',
+      nota: 'O acervo digitalizado de periódicos brasileiros, gratuito e com texto pesquisável por OCR — a Imprensa Evangélica, primeiro jornal protestante do país, está entre os títulos. Permite rastrear um nome, uma polêmica ou uma data pela imprensa da época, inclusive a repercussão pública das disputas que levaram a 1903.',
     },
     {
       id: 'ipb-sobre',
