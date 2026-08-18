@@ -64,6 +64,7 @@ import { musica } from './geral/musica';
 import { antropologia } from './geral/antropologia';
 import { psicologia } from './geral/psicologia';
 import { psicologiaReligiao } from './geral/psicologia-religiao';
+import { psicopatologia } from './geral/psicopatologia';
 import { sociologia } from './geral/sociologia';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
@@ -134,6 +135,7 @@ export const verbetes: Verbete[] = [
   antropologia,
   psicologia,
   psicologiaReligiao,
+  psicopatologia,
   sociologia,
 ];
 

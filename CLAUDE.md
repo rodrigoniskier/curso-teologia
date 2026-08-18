@@ -207,6 +207,11 @@ Armadilhas que já custaram tempo:
   porque o topo do ramo não é ancestral de `main`. Confirme que o conteúdo já
   entrou (`git diff --stat <sha> origin/main`) e use a forma explícita:
   `--force-with-lease=refs/heads/<ramo>:<sha>`.
+- **Ênfase não aninha.** O processador casa `\*\*([^*]+)\*\*`, e `[^*]` não
+  aceita asterisco no interior: escrever `**forte com *itálico* dentro**` faz
+  o bloco inteiro vazar com os asteriscos na tela. Ponha uma ênfase ou a
+  outra. A varredura que encontra o caso:
+  `grep -rnoP '\*\*[^*]*\*[^*]*\*\*' src/conteudo/`
 - **O campo `nota` das fontes é texto puro.** Ele é impresso direto em
   `Verbete.tsx`, `Biblioteca.tsx` e `Disciplina.tsx`, sem passar pelo
   processador de marcação — `*itálico*` aparece com os asteriscos na tela. As
@@ -215,6 +220,13 @@ Armadilhas que já custaram tempo:
   causa identificada, e voltou a funcionar nos PRs seguintes sem intervenção.
   Não mexa no workflow por causa disso: ele aceita `workflow_dispatch`, então
   dispare a auditoria à mão sobre o ramo e siga. Só investigue se repetir.
+- **`403` é resposta, não queda — e não se generaliza por host.** O IBGE
+  recusou o runner em `agenciadenoticias.ibge.gov.br` e em
+  `censo2022.ibge.gov.br`, e concluir dali um bloqueio do domínio inteiro
+  teria sido errado: `biblioteca.ibge.gov.br` respondeu 200. Antes de cogitar
+  `dominios-restritos.json`, tente outro host da mesma instituição — e prefira
+  o repositório de publicações, que costuma não ter a proteção contra robô
+  que as páginas de portal têm, e ainda dá citação melhor.
 - **A auditoria repete em 5xx e 429 e não repete em 404.** O Archive.org
   devolve 502 em rajada quando várias requisições chegam juntas, e isso já
   reprovou uma auditoria inteira. Se um lote de URLs do mesmo domínio falhar
