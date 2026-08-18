@@ -146,6 +146,7 @@ temporário, e o que fazer para resolver.
 ## 5. O ciclo de trabalho
 
 ```
+0. git fetch origin && git checkout -B <ramo> origin/main — ver nota abaixo
 1. npm run estado  — escolher o alvo pelo desequilíbrio (ver seção 7)
 2. Ler a ementa da disciplina em src/dados/ementas.json — o verbete deve
    servir ao programa oficial, não ao que você acha que o tema é
@@ -160,6 +161,16 @@ temporário, e o que fazer para resolver.
 11. Verificar no Chromium headless (ver seção 6)
 12. Commit, push com --force-with-lease, PR, esperar CI, merge
 ```
+
+O passo 0 não é zelo: sem ele o ciclo seguinte **falha no merge**. Como o
+merge é por squash, o commit anterior do ramo e o commit correspondente em
+`main` têm o mesmo conteúdo e identidades diferentes; o PR novo carrega o
+antigo junto e o GitHub acusa conflito nos arquivos que todo ciclo toca —
+`README.md`, `indice.ts`, `biblioteca.ts`. Se isso já aconteceu, o remédio é
+refazer o ramo a partir de `origin/main` e aplicar o commit por cima
+(`git cherry-pick`), conferindo antes de mergear que a árvore continua a
+mesma que a auditoria aprovou: `git rev-parse <sha-auditado>^{tree}` e
+`git rev-parse <sha-novo>^{tree}` devem coincidir.
 
 O passo 10 também roda na CI, de modo que esquecer o passo 8 quebra o build em
 vez de publicar número errado. É intencional: a contagem de verbetes já
@@ -196,6 +207,14 @@ Armadilhas que já custaram tempo:
   porque o topo do ramo não é ancestral de `main`. Confirme que o conteúdo já
   entrou (`git diff --stat <sha> origin/main`) e use a forma explícita:
   `--force-with-lease=refs/heads/<ramo>:<sha>`.
+- **O campo `nota` das fontes é texto puro.** Ele é impresso direto em
+  `Verbete.tsx`, `Biblioteca.tsx` e `Disciplina.tsx`, sem passar pelo
+  processador de marcação — `*itálico*` aparece com os asteriscos na tela. As
+  demais notas do repositório seguem todas texto puro; escreva sem marcação.
+- **O gatilho `pull_request` da auditoria já deixou de disparar uma vez**, sem
+  causa identificada, e voltou a funcionar nos PRs seguintes sem intervenção.
+  Não mexa no workflow por causa disso: ele aceita `workflow_dispatch`, então
+  dispare a auditoria à mão sobre o ramo e siga. Só investigue se repetir.
 - **A auditoria repete em 5xx e 429 e não repete em 404.** O Archive.org
   devolve 502 em rajada quando várias requisições chegam juntas, e isso já
   reprovou uma auditoria inteira. Se um lote de URLs do mesmo domínio falhar

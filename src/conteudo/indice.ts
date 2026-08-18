@@ -53,6 +53,7 @@ import { teologiaDeMissoes } from './pastoral/teologia-de-missoes';
 import { igrejaQueEnvia } from './pastoral/igreja-que-envia';
 import { missoesTransculturais } from './pastoral/missoes-transculturais';
 import { acaoSocial } from './pastoral/acao-social';
+import { missoesUrbanas } from './pastoral/missoes-urbanas';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
@@ -122,6 +123,7 @@ export const verbetes: Verbete[] = [
   igrejaQueEnvia,
   missoesTransculturais,
   acaoSocial,
+  missoesUrbanas,
   filosofia,
   historiaFilosofia,
   historiaFilosofiaModerna,
