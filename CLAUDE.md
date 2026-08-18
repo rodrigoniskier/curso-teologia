@@ -220,6 +220,15 @@ Armadilhas que já custaram tempo:
   causa identificada, e voltou a funcionar nos PRs seguintes sem intervenção.
   Não mexa no workflow por causa disso: ele aceita `workflow_dispatch`, então
   dispare a auditoria à mão sobre o ramo e siga. Só investigue se repetir.
+- **Falha só na sondagem, com 200 nas execuções vizinhas, é do auditor e não
+  da fonte.** A sondagem manda os domínios que não respondem para o caminho
+  rápido — uma tentativa de 10s em vez do ciclo de três. Para um domínio com
+  uma URL só isso é perda garantida, porque a sondagem testou justamente
+  aquela URL e já pagou o ciclo completo por ela: o que vem depois é mais
+  fraco que o que acabou de falhar. Corrigido em 18/08/2026 restringindo o
+  caminho rápido a domínios com duas ou mais URLs, que é onde havia o que
+  economizar. Se um PDF grande de servidor lento voltar a reprovar, olhe
+  primeiro a linha `Sem resposta na sondagem:` do log.
 - **`403` é resposta, não queda — e não se generaliza por host.** O IBGE
   recusou o runner em `agenciadenoticias.ibge.gov.br` e em
   `censo2022.ibge.gov.br`, e concluir dali um bloqueio do domínio inteiro
