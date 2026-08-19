@@ -161,7 +161,7 @@ export const hermeneutica: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Monergismo — seção de hermenêutica e interpretação bíblica',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'monergismo.com',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',
