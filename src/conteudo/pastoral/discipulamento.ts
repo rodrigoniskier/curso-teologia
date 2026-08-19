@@ -9,7 +9,7 @@ export const discipulamento: Verbete = {
   objetivo:
     'Ao final, você saberá explicar por que discipulado é a forma ordinária da vida cristã e não uma segunda etapa para crentes mais interessados, interpretar a Grande Comissão a partir do imperativo “fazei discípulos”, distinguir ensino de transferência de informação, reconhecer o lugar da igreja, dos meios da graça, da imitação e das relações intencionais na formação cristã, avaliar criticamente modelos individuais e programáticos e desenhar uma prática de discipulamento que conduza pessoas à maturidade sem criar dependência do discipulador.',
   atualizadoEm: '2026-08-19',
-  verMais: ['tp09-evangelizacao', 'tp10-educacao-crista', 'tp20-plantacao'],
+  verMais: ['tp09-evangelizacao', 'tp10-educacao-crista', 'tp20-plantacao-revitalizacao'],
   blocos: [
     {
       tipo: 'paragrafo',
