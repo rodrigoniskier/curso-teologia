@@ -3,7 +3,7 @@ import type { Verbete } from '../../tipos';
 export const igrejaImperial: Verbete = {
   id: 'th02-igreja-imperial',
   disciplina: 'TH02',
-  unidade: 1,
+  unidade: 20,
   titulo: 'A Igreja Imperial',
   subtitulo: 'De 313 a 590: quando o favor do Estado se revelou prova mais difícil que a perseguição',
   objetivo:

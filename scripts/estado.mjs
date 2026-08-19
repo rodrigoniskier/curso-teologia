@@ -49,7 +49,7 @@ async function arquivosDeConteudo(dir) {
   for (const ent of await readdir(dir, { withFileTypes: true })) {
     const caminho = join(dir, ent.name);
     if (ent.isDirectory()) saida.push(...(await arquivosDeConteudo(caminho)));
-    else if (ent.name.endsWith('.ts') && ent.name !== 'indice.ts') saida.push(caminho);
+    else if (ent.name.endsWith('.ts') && ent.name !== 'indice.ts' && ent.name !== 'relacoes.ts') saida.push(caminho);
   }
   return saida;
 }
@@ -85,7 +85,12 @@ for (const f of await arquivosDeConteudo(join(RAIZ, 'src/conteudo'))) {
   verbPorDep.set(dep, (verbPorDep.get(dep) ?? 0) + 1);
 }
 
-const bib = await readFile(join(RAIZ, 'src/dados/biblioteca.ts'), 'utf8');
+// O acervo está dividido em um arquivo histórico e um complemento pequeno,
+// recuperado pela auditoria de integridade. Ambos formam uma única biblioteca.
+const bib = [
+  await readFile(join(RAIZ, 'src/dados/biblioteca.ts'), 'utf8'),
+  await readFile(join(RAIZ, 'src/dados/biblioteca-extra.ts'), 'utf8'),
+].join('\n');
 const obras = [...bib.matchAll(/^ {4}id: '([^']+)',/gm)].length;
 const idiomas = new Map();
 for (const [, i] of bib.matchAll(/^ {4}idioma: '([^']+)',/gm))

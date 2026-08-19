@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { porCodigo, verbetesDe } from '../conteudo/indice';
-import { porDisciplina } from '../dados/biblioteca';
+import { porDisciplina } from '../dados/biblioteca-completa';
 import { Verbete } from '../componentes/Verbete';
 
 export function PaginaDisciplina() {
