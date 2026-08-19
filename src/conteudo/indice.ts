@@ -52,6 +52,7 @@ import { conflitos } from './pastoral/conflitos';
 import { lideranca } from './pastoral/lideranca';
 import { plantacao } from './pastoral/plantacao';
 import { pregacaoGeneros } from './pastoral/pregacao-generos';
+import { pregacaoEvangelhos } from './pastoral/pregacao-evangelhos';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { aconselhamento2 } from './pastoral/aconselhamento-2';
@@ -140,6 +141,7 @@ export const verbetes: Verbete[] = [
   lideranca,
   plantacao,
   pregacaoGeneros,
+  pregacaoEvangelhos,
   poimenica,
   aconselhamento,
   aconselhamento2,
