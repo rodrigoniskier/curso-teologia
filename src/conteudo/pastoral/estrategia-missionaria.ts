@@ -26,11 +26,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'O erro começa quando planejamento recebe uma tarefa que não pode cumprir. Nenhum plano conhece de antemão a pessoa que abrirá uma porta inesperada, a crise política que fechará outra, a doença que mudará uma família, a resposta real de uma comunidade ou a maneira pela qual Deus redirecionará uma obra. **Estratégia cristã não é técnica para controlar resultados; é disciplina para tornar decisões visíveis, responsáveis e corrigíveis.**',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Paulo planeja rotas — e aceita que a rota seja interrompida',
-    },
+    { tipo: 'secao', titulo: 'Paulo planeja rotas — e aceita que a rota seja interrompida' },
     {
       tipo: 'passagem',
       referencia: 'Romanos 15.20-24',
@@ -53,11 +49,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Conjunto revisável de decisões que relaciona chamado e objetivo missionário a um contexto real: quem envia, para quem se vai, como o contexto será conhecido, como ocorrerá a inserção, que recursos e competências são necessários, como família e equipe serão cuidadas, quais limites legais e institucionais existem, como a obra será sustentada, como o aprendizado será avaliado e em que condições haverá transição, mudança ou encerramento. É instrumento de mordomia; não mecanismo de garantia do resultado.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Antes de escolher a solução, escreva o problema de modo que ele possa desmentir você',
-    },
+    { tipo: 'secao', titulo: 'Antes de escolher a solução, escreva o problema de modo que ele possa desmentir você' },
     {
       tipo: 'paragrafo',
       texto:
@@ -81,11 +73,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'A antropologia missionária oferece a correção: observar antes de concluir, ouvir por mais de uma relação, registrar exceções, perguntar como as próprias pessoas nomeiam o problema e perceber como a presença do pesquisador altera a resposta. Prospecção não é turismo religioso com uma planilha. É a primeira etapa do aprendizado do campo.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Um projeto é uma hipótese organizada, não uma profecia',
-    },
+    { tipo: 'secao', titulo: 'Um projeto é uma hipótese organizada, não uma profecia' },
     {
       tipo: 'paragrafo',
       texto:
@@ -107,11 +95,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'A teologia protege essa mensuração de dois extremos. Conversão é obra do Espírito e não pode virar KPI produzido pela equipe. Ao mesmo tempo, “Deus dará o crescimento” não absolve ninguém de perguntar se a tradução é compreensível, se o treinamento forma líderes, se o dinheiro chega ao propósito definido ou se o método está criando dependência. Paulo atribui o crescimento a Deus e ainda avalia plantio, rega, doutrina, caráter e ordem da igreja.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Inserção cultural começa assumindo a posição de aprendiz',
-    },
+    { tipo: 'secao', titulo: 'Inserção cultural começa assumindo a posição de aprendiz' },
     {
       tipo: 'paragrafo',
       texto:
@@ -127,11 +111,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Inserção não significa fingir ser nativo. O estrangeiro que tenta apagar toda diferença pode produzir uma performance que ninguém local acredita. O alvo é diminuir barreiras desnecessárias, aprender códigos de convivência, receber correção e tornar-se capaz de distinguir estranheza cultural de ofensa do evangelho. Missões Transculturais trata da contextualização; Estratégia Missionária pergunta **que decisões concretas permitem permanecer tempo suficiente para que essa contextualização seja possível**.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'A família não viaja junto com a estratégia; ela está dentro dela',
-    },
+    { tipo: 'secao', titulo: 'A família não viaja junto com a estratégia; ela está dentro dela' },
     {
       tipo: 'paragrafo',
       texto:
@@ -152,11 +132,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Uma estratégia madura mede custo em pessoas, não apenas em dinheiro. Isso não elimina sacrifício cristão. Impede que sacrifícios escolhidos pela organização sejam apresentados à família como se tivessem sido impostos diretamente por Deus.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Quatro relações precisam ter nomes antes que a primeira crise descubra quem manda',
-    },
+    { tipo: 'secao', titulo: 'Quatro relações precisam ter nomes antes que a primeira crise descubra quem manda' },
     {
       tipo: 'paragrafo',
       texto:
@@ -177,16 +153,11 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Na estrutura presbiteriana brasileira, a APMT existe justamente para dar coordenação especializada à missão transcultural. A estratégia deve aproveitar essa competência sem imaginar que um organograma resolve automaticamente a eclesiologia. A igreja que envia continua igreja; a agência continua instrumento; e parceiros locais não podem ser tratados como executores de decisões que nunca ajudaram a formular.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Aspectos legais são parte da fidelidade, e precisamente por isso não cabem em uma tabela eterna',
-    },
+    { tipo: 'secao', titulo: 'Aspectos legais são parte da fidelidade, e precisamente por isso não cabem em uma tabela eterna' },
     {
       tipo: 'passagem',
       referencia: 'Romanos 13.1',
-      texto:
-        'Todo homem esteja sujeito às autoridades superiores; porque não há autoridade que não proceda de Deus.',
+      texto: 'Todo homem esteja sujeito às autoridades superiores; porque não há autoridade que não proceda de Deus.',
     },
     {
       tipo: 'paragrafo',
@@ -203,11 +174,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'A regra editorial deste portal é, portanto, deliberada: aspectos legais entram como **categoria obrigatória de planejamento**, não como aconselhamento jurídico de país específico. A informação concreta precisa ser atualizada no momento da decisão, porque é justamente a parte da estratégia que mais rapidamente envelhece.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Fixação e sustento precisam conter a pergunta que o orçamento evita: até quando?',
-    },
+    { tipo: 'secao', titulo: 'Fixação e sustento precisam conter a pergunta que o orçamento evita: até quando?' },
     {
       tipo: 'paragrafo',
       texto:
@@ -229,11 +196,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Capacidade de a obra continuar cumprindo sua finalidade sem depender indefinidamente de um arranjo extraordinário que só existe enquanto a equipe fundadora, uma fonte específica de dinheiro ou uma autoridade externa permanece. Pode envolver recursos externos duradouros; o critério é saber se eles são parceria conscientemente assumida ou dependência que impede liderança, decisão e iniciativa locais.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'A estratégia precisa dizer como aprende, não apenas o que fará',
-    },
+    { tipo: 'secao', titulo: 'A estratégia precisa dizer como aprende, não apenas o que fará' },
     {
       tipo: 'paragrafo',
       texto:
@@ -255,11 +218,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Essa lógica também protege a prestação de contas. Mantenedores não precisam receber propaganda permanente; precisam compreender o que está sendo tentado, o que foi aprendido, onde o plano falhou e o que será feito diferente. Uma igreja que só aceita relatórios de vitória ensina o missionário a esconder justamente a informação necessária para tomar boas decisões.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Planejar a saída desde o início é uma forma de amar a igreja que ainda nem existe',
-    },
+    { tipo: 'secao', titulo: 'Planejar a saída desde o início é uma forma de amar a igreja que ainda nem existe' },
     {
       tipo: 'paragrafo',
       texto:
@@ -275,11 +234,7 @@ export const estrategiaMissionaria: Verbete = {
       texto:
         'Há projetos que devem terminar sem fracassar. Uma equipe pode cumprir a tarefa, transferir uma função, perceber que outra organização faz melhor, mudar de região ou encerrar uma iniciativa que não produz o efeito esperado. Encerramento responsável preserva pessoas, arquivos, compromissos financeiros, parceiros e aprendizado. Manter um projeto apenas porque fechá-lo seria constrangedor é usar recursos futuros para proteger uma decisão passada.',
     },
-
-    {
-      tipo: 'secao',
-      titulo: 'Três modelos de estratégia e o risco característico de cada um',
-    },
+    { tipo: 'secao', titulo: 'Três modelos de estratégia e o risco característico de cada um' },
     {
       tipo: 'controversia',
       titulo: 'Quanto um empreendimento missionário deve ser planejado',
@@ -321,7 +276,7 @@ export const estrategiaMissionaria: Verbete = {
       publicacao: 'IPB',
       url: 'https://www.ipb.org.br/autarquias-apmt.php',
       idioma: 'pt',
-      tipo: 'documento-oficial',
+      tipo: 'documento',
       acesso: 'livre',
       nota: 'Fonte institucional da IPB para a estrutura denominacional de coordenação das missões transculturais. Já integra o acervo do portal para TP60.',
     },
@@ -369,7 +324,7 @@ export const estrategiaMissionaria: Verbete = {
       publicacao: 'PM4NGOs',
       url: 'https://pm4ngos.org/pt-br/metodologias-e-guias/project-dpro-pmd-pro/',
       idioma: 'pt',
-      tipo: 'manual',
+      tipo: 'documento',
       acesso: 'livre',
       nota: 'Guia gratuito de gestão de projetos usado aqui apenas como ferramenta de desenho, monitoramento, adaptação, sustentabilidade e encerramento; a teologia e os fins da missão vêm da Escritura, não da metodologia de projetos.',
     },
