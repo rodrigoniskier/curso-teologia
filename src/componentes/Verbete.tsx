@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { verbetePorId } from '../conteudo/indice';
+import { relacoesDe } from '../conteudo/relacoes';
 import type { Bloco, Fonte, Verbete as TVerbete } from '../tipos';
 
 /**
@@ -167,6 +167,8 @@ function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
 }
 
 export function Verbete({ verbete }: { verbete: TVerbete }) {
+  const relacoes = relacoesDe(verbete.id);
+
   return (
     <article className="corpo-verbete">
       <header className="mb-9 border-b border-margem pb-7">
@@ -192,42 +194,56 @@ export function Verbete({ verbete }: { verbete: TVerbete }) {
         ))}
       </div>
 
-      {(() => {
-        const ligados = (verbete.verMais ?? [])
-          .map((id) => verbetePorId.get(id))
-          .filter((v): v is TVerbete => Boolean(v));
-        if (ligados.length === 0) return null;
-        return (
-          <section className="mt-12 border-t border-margem pt-6">
-            <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
-              Leia também
-            </h2>
-            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {ligados.map((v) => (
-                <li key={v.id}>
-                  <Link
-                    to={`/disciplina/${v.disciplina}/${v.id}`}
-                    className="block h-full border border-margem bg-white px-4 py-3 transition-colors
-                               hover:border-tinta-400 hover:bg-papel-quente"
-                  >
-                    <span className="block font-sans text-[0.64rem] font-semibold uppercase tracking-[0.12em] text-ouro-700">
-                      {v.disciplina}
+      {relacoes.diretas.length > 0 && (
+        <section className="mt-12 border-t border-margem pt-6">
+          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
+            Leia também
+          </h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {relacoes.diretas.map((v) => (
+              <li key={v.id}>
+                <Link
+                  to={`/disciplina/${v.disciplina}/${v.id}`}
+                  className="block h-full border border-margem bg-white px-4 py-3 transition-colors
+                             hover:border-tinta-400 hover:bg-papel-quente"
+                >
+                  <span className="block font-sans text-[0.64rem] font-semibold uppercase tracking-[0.12em] text-ouro-700">
+                    {v.disciplina}
+                  </span>
+                  <span className="mt-1 block font-serif text-[1.05rem] font-semibold leading-snug text-tinta-700">
+                    {v.titulo}
+                  </span>
+                  {v.subtitulo && (
+                    <span className="mt-0.5 block font-serif text-[0.88rem] italic leading-snug text-neutral-600">
+                      {v.subtitulo}
                     </span>
-                    <span className="mt-1 block font-serif text-[1.05rem] font-semibold leading-snug text-tinta-700">
-                      {v.titulo}
-                    </span>
-                    {v.subtitulo && (
-                      <span className="mt-0.5 block font-serif text-[0.88rem] italic leading-snug text-neutral-600">
-                        {v.subtitulo}
-                      </span>
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        );
-      })()}
+                  )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {relacoes.inversas.length > 0 && (
+        <details className="mt-4 border border-margem bg-papel-quente px-4 py-3">
+          <summary className="cursor-pointer font-sans text-[0.76rem] font-semibold text-tinta-700">
+            Verbetes que remetem para este ({relacoes.inversas.length})
+          </summary>
+          <ul className="mt-3 space-y-1.5 border-t border-margem pt-3">
+            {relacoes.inversas.map((v) => (
+              <li key={v.id}>
+                <Link
+                  to={`/disciplina/${v.disciplina}/${v.id}`}
+                  className="font-sans text-[0.8rem] text-tinta-600 hover:underline"
+                >
+                  {v.disciplina} · {v.titulo}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
 
       <section className="mt-14 border-t-2 border-tinta-600 pt-6">
         <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
