@@ -19,7 +19,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Unidades do programa | **1.339** (1.995 tópicos) |
 | Referências bibliográficas oficiais | **1.237** |
 | Verbetes redigidos | 90 |
-| Obras livres mapeadas | 122 |
+| Obras livres mapeadas | 134 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -51,9 +51,11 @@ bibliografia cara para se formar.
 
 ## Biblioteca
 
-[`src/dados/biblioteca.ts`](src/dados/biblioteca.ts) mapeia o que dá para ler
-legalmente sem pagar nada, cruzado com os códigos de disciplina — cada página
-de disciplina mostra a leitura gratuita correspondente.
+O acervo está nos arquivos [`src/dados/biblioteca.ts`](src/dados/biblioteca.ts)
+e [`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts), reunidos por
+[`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele mapeia o que
+dá para ler legalmente sem pagar nada, cruzado com os códigos de disciplina —
+cada página de disciplina mostra a leitura gratuita correspondente.
 
 O critério de entrada é estreito de propósito: **domínio público**, **edição
 digital autorizada** ou **empréstimo de biblioteca**. Cópia não autorizada de
@@ -64,51 +66,54 @@ Onde a obra de referência ainda está em catálogo, a resposta não é indicar 
 cópia pirata: é cobrir o conteúdo no próprio verbete, apoiado no aparato
 primário aberto — Calvino, Hodge, Turretin e Bavinck estão todos livres.
 
-## Auditoria de links
+## Auditorias automáticas
 
-O requisito é que **só entrem links que funcionam**. Isso é garantido por
-automação, não por inspeção manual:
+Há duas garantias diferentes e complementares. A auditoria de integridade
+confere as relações internas; a auditoria de links verifica a rede:
 
 ```bash
+npm run validar             # ids, índice, verMais, fonteId e acervo
 npm run auditar             # falha se houver link quebrado
 npm run auditar:relatorio   # grava relatorio-auditoria.md
 ```
 
+`npm run validar` reprova, entre outras coisas, verbete não registrado no
+índice, id duplicado, destino de `verMais` inexistente, auto-remissão, fonte de
+citação sem `fonteId` resolvível e obra usada em verbete sem entrada no acervo.
+As remissões são editoriais num sentido e **navegáveis nos dois**: a interface
+mostra as escolhas do verbete e gera automaticamente o caminho de volta para
+qualquer verbete que aponte para ele. Assim a reciprocidade não depende de
+copiar manualmente a mesma relação para dois arquivos.
+
 O workflow [`.github/workflows/auditoria.yml`](.github/workflows/auditoria.yml)
-roda a auditoria e a checagem de tipos em todo PR e push para `main`, e
-semanalmente às segundas para pegar link que morreu desde a última checagem.
-O relatório fica no resumo do job e como artefato.
+roda a validação estrutural, a auditoria de fontes e a checagem de tipos em todo
+PR e push para `main`, e semanalmente às segundas para pegar link que morreu
+desde a última checagem. O relatório de rede fica no resumo do job e como
+artefato.
 
 ### Domínios restritos
 
-Alguns acervos recusam conexões vindas de faixas de IP de nuvem — o CCEL é o
-caso mais notável: responde normalmente a um navegador e dá
-`UND_ERR_CONNECT_TIMEOUT` nos runners do GitHub, em IPv4 e IPv6, com ou sem
-`www`. Da CI é impossível distinguir esse bloqueio de um link morto.
-
-Reprovar por causa disso empurraria o portal a trocar fonte primária boa por
-fonte pior, então esses domínios ficam em
+Alguns acervos recusam conexões vindas de faixas de IP de nuvem. Nesses casos,
+quando a limitação é persistente e demonstrável, o domínio pode ficar em
 [`src/dados/dominios-restritos.json`](src/dados/dominios-restritos.json), com
 motivo e data da última confirmação manual. Eles aparecem no relatório em
 seção própria e **não** reprovam a auditoria. Qualquer URL fora dessa lista
-que falhe continua quebrando o build — a garantia segue valendo para todo o
-resto.
+que falhe continua sendo examinada normalmente.
 
 ### Acervos fora do ar
 
-Caso diferente, e **apurado do resultado em vez de escrito à mão**: quando
-*todas* as URLs de um domínio falham em nível de conexão, isso indica acervo
-indisponível, não link morto — link morto responde `404` enquanto os vizinhos
-do mesmo domínio respondem `200`. Em 17/08/2026 o Archive.org, que hospeda
-mais de cem fontes do portal, parou de aceitar conexões dos runners e reprovou
-um PR com 45 falhas — incluindo a própria raiz `archive.org/` — nove minutos
-depois de as mesmas URLs terem passado.
+Uma falha do acervo inteiro é diferente de um item removido. Se todas as URLs
+de um domínio falham em nível de conexão — inclusive a raiz —, a auditoria pode
+classificar o acervo como temporariamente indisponível em vez de condenar cada
+item individualmente. Isso evita trocar fontes boas porque um hospedeiro teve
+uma interrupção transitória.
 
-Esses casos são relatados em seção própria e não reprovam. Os três critérios
-são cumulativos, para que link morto nunca caia aqui: o domínio precisa ter ao
-menos três URLs no portal, **todas** precisam ter falhado, e todas em nível de
-conexão. Um único `404` no meio desqualifica o domínio inteiro e volta a
-reprovar.
+Um `404` isolado, porém, **não basta para diagnosticar item morto quando o
+acervo está instável**. A regra operacional é observar o padrão entre execuções:
+`404` consistente para a mesma URL, enquanto o restante do acervo responde,
+justifica substituição; alternância entre `404`, `502`, timeout e erro de
+conexão aponta antes para sobrecarga. A auditoria continua estrita — não há
+exceção genérica para `404` ou `502`.
 
 ## Extração do currículo
 
@@ -132,6 +137,7 @@ por `ligaduras.py`.
 ```bash
 npm install
 npm run dev      # http://localhost:3000
+npm run validar  # consistência de conteúdo e acervo
 npm run build    # checagem de tipos + build de produção
 npm run estado   # cobertura por departamento e contagens, calculadas do código
 ```
@@ -165,5 +171,6 @@ conjunto de `Unidade N` presentes nas páginas do PDF com o que foi extraído.
 Foi assim que se descobriu que o flag de bibliografia era de mão única e
 descartava tudo o que viesse depois de `BIBLIOGRAFIA` na ordem de leitura —
 **140 unidades perdidas em 18 disciplinas**, incluindo justificação e
-santificação em TS04. Restam 14 perdas, em CG10, CG12 e CG13, que dividem
-páginas entre si.
+santificação em TS04. Restam perdas conhecidas em CG10, CG12 e CG13, que
+dividem páginas entre si; por isso divergência de `unidade` é tratada pela
+validação como aviso para conferência contra o PDF, não como erro automático.
