@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { biblioteca } from '../dados/biblioteca';
+import { biblioteca } from '../dados/biblioteca-completa';
 import { porCodigo } from '../conteudo/indice';
 
 const NOME_IDIOMA: Record<string, string> = {
