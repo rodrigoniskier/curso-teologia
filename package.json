@@ -10,6 +10,7 @@
     "lint": "tsc --noEmit",
     "auditar": "node scripts/auditar-links.mjs",
     "auditar:relatorio": "node scripts/auditar-links.mjs --relatorio",
+    "validar": "node scripts/validar-conteudo.mjs",
     "estado": "node scripts/estado.mjs",
     "conferir": "node scripts/estado.mjs --conferir"
   },
