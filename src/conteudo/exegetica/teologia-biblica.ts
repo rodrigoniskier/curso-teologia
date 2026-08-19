@@ -205,7 +205,7 @@ export const teologiaBiblica: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Acervo de textos em português sobre teologia bíblica e teologia da aliança',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'Monergismo',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',
