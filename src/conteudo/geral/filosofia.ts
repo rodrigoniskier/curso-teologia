@@ -194,7 +194,7 @@ export const filosofia: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Acervo de textos em português sobre apologética e fé e razão',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'Monergismo',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',
