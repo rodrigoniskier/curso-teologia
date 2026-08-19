@@ -82,6 +82,7 @@ import { planejamentoEstrategico } from './geral/planejamento-estrategico';
 import { realidadesRegionais } from './geral/realidades-regionais';
 import { oratoria } from './geral/oratoria';
 import { metodologia } from './geral/metodologia';
+import { monografia1 } from './geral/monografia-1';
 import { musica } from './geral/musica';
 import { antropologia } from './geral/antropologia';
 import { psicologia } from './geral/psicologia';
@@ -175,6 +176,7 @@ export const verbetes: Verbete[] = [
   realidadesRegionais,
   oratoria,
   metodologia,
+  monografia1,
   musica,
   antropologia,
   psicologia,
