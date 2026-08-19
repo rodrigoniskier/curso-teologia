@@ -233,7 +233,7 @@ export const inspiracao: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Monergismo — textos sobre bibliologia e inerrância',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'monergismo.com',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',

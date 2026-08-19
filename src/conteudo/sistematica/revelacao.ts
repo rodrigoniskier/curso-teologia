@@ -195,7 +195,7 @@ export const revelacao: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Monergismo — textos sobre revelação e teologia natural',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'monergismo.com',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',

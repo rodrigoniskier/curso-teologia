@@ -172,7 +172,7 @@ export const donsEspirituais: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Monergismo — textos sobre pneumatologia e dons espirituais',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'monergismo.com',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',

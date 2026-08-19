@@ -207,7 +207,7 @@ export const aconselhamento: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Acervo de textos em português sobre aconselhamento e vida cristã',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'Monergismo',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',

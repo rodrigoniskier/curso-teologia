@@ -161,7 +161,7 @@ export const cosmovisao: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Monergismo — textos sobre cosmovisão e neocalvinismo',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'monergismo.com',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',

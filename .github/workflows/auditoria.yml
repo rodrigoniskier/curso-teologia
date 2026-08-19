@@ -68,6 +68,11 @@ jobs:
       - name: Validar integridade do conteúdo
         run: npm run validar
 
+      # Links que respondem 200 ainda podem prometer conteúdo que a URL não entrega.
+      # Esta etapa protege títulos canônicos de páginas iniciais conhecidas.
+      - name: Auditar coerência semântica dos metadados
+        run: npm run auditar:metadados
+
       - run: npm run build
 
       # Os números do README são derivados do currículo, dos verbetes e da
