@@ -80,6 +80,7 @@ import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
 import { logica } from './geral/logica';
 import { didatica } from './geral/didatica';
 import { andragogia } from './geral/andragogia';
+import { projetosSustentaveis } from './geral/projetos-sustentaveis';
 import { terceiroSetor } from './geral/terceiro-setor';
 import { planejamentoEstrategico } from './geral/planejamento-estrategico';
 import { realidadesRegionais } from './geral/realidades-regionais';
@@ -177,6 +178,7 @@ export const verbetes: Verbete[] = [
   logica,
   didatica,
   andragogia,
+  projetosSustentaveis,
   terceiroSetor,
   planejamentoEstrategico,
   realidadesRegionais,
