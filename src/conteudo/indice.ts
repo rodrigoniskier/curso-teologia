@@ -57,6 +57,7 @@ import { pregacaoGeneros } from './pastoral/pregacao-generos';
 import { pregacaoEvangelhos } from './pastoral/pregacao-evangelhos';
 import { pregacaoEpistolas } from './pastoral/pregacao-epistolas';
 import { pregacaoPoeticos } from './pastoral/pregacao-poeticos';
+import { pregacaoProfeticos } from './pastoral/pregacao-profeticos';
 import { poimenica } from './pastoral/poimenica';
 import { aconselhamento } from './pastoral/aconselhamento';
 import { aconselhamento2 } from './pastoral/aconselhamento-2';
@@ -151,6 +152,7 @@ export const verbetes: Verbete[] = [
   pregacaoEvangelhos,
   pregacaoEpistolas,
   pregacaoPoeticos,
+  pregacaoProfeticos,
   poimenica,
   aconselhamento,
   aconselhamento2,
