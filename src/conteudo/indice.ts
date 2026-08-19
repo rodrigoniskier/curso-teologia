@@ -96,6 +96,7 @@ import { psicologia } from './geral/psicologia';
 import { psicologiaReligiao } from './geral/psicologia-religiao';
 import { psicopatologia } from './geral/psicopatologia';
 import { sociologia } from './geral/sociologia';
+import { linguisticaAplicada } from './geral/linguistica-aplicada';
 
 /** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
 export const disciplinas = ementasJson as Disciplina[];
@@ -197,6 +198,7 @@ export const verbetes: Verbete[] = [
   psicologiaReligiao,
   psicopatologia,
   sociologia,
+  linguisticaAplicada,
 ];
 
 export const ORDEM_DEPARTAMENTOS = [
