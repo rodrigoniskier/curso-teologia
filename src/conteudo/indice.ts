@@ -29,6 +29,7 @@ import { teologiaBiblica } from './exegetica/teologia-biblica';
 import { teologiaBiblicaNT } from './exegetica/teologia-biblica-nt';
 import { manuscritologia } from './exegetica/manuscritologia';
 import { apocaliptica } from './exegetica/apocaliptica';
+import { apocalipse5 } from './exegetica/apocalipse-5';
 import { metodologiaExegetica } from './exegetica/metodologia-exegetica';
 import { genesis22 } from './exegetica/genesis-22';
 import { geografiaArqueologia } from './exegetica/geografia-arqueologia';
@@ -132,6 +133,7 @@ export const verbetes: Verbete[] = [
   teologiaBiblicaNT,
   manuscritologia,
   apocaliptica,
+  apocalipse5,
   metodologiaExegetica,
   genesis22,
   geografiaArqueologia,
