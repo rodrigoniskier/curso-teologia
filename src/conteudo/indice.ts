@@ -74,6 +74,7 @@ import { didatica } from './geral/didatica';
 import { andragogia } from './geral/andragogia';
 import { terceiroSetor } from './geral/terceiro-setor';
 import { planejamentoEstrategico } from './geral/planejamento-estrategico';
+import { realidadesRegionais } from './geral/realidades-regionais';
 import { oratoria } from './geral/oratoria';
 import { metodologia } from './geral/metodologia';
 import { musica } from './geral/musica';
@@ -161,6 +162,7 @@ export const verbetes: Verbete[] = [
   andragogia,
   terceiroSetor,
   planejamentoEstrategico,
+  realidadesRegionais,
   oratoria,
   metodologia,
   musica,
