@@ -1,11 +1,12 @@
 import type { ObraLivre } from './biblioteca';
 
 /**
- * Entradas recuperadas pela auditoria de integridade de 19/08/2026.
+ * Entradas recuperadas pela auditoria de integridade de 19/08/2026 e novas
+ * fontes abertas incorporadas após a consolidação inicial do acervo.
  *
- * Ficam separadas do arquivo histórico apenas para que a correção seja pequena
- * e auditável. `biblioteca-completa.ts` é a fonte consumida pela interface e
- * pelos novos validadores.
+ * Ficam separadas do arquivo histórico apenas para que as correções sejam
+ * pequenas e auditáveis. `biblioteca-completa.ts` é a fonte consumida pela
+ * interface e pelos validadores.
  */
 export const bibliotecaExtra: ObraLivre[] = [
   {
@@ -163,5 +164,18 @@ export const bibliotecaExtra: ObraLivre[] = [
     disciplinas: ['TH01'],
     nota: 'O segundo volume de Schaff em arquivo único, útil para leitura offline e citação; a mesma obra também está disponível em HTML.',
     base: 'domínio público',
+  },
+  {
+    id: 'pm4ngos-project-dpro',
+    autor: 'PM4NGOs',
+    ano: '2020',
+    titulo: 'Guia Project DPro — PMD Pro, 2ª edição',
+    publicacao: 'PM4NGOs',
+    url: 'https://pm4ngos.org/pt-br/metodologias-e-guias/project-dpro-pmd-pro/',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['CG53'],
+    nota: 'Guia gratuito em português para gerenciamento de projetos no setor de desenvolvimento, com ferramentas de desenho, planejamento, execução, monitoramento, encerramento e sustentabilidade. A própria PM4NGOs o distribui sob licença Creative Commons BY-NC 4.0.',
+    base: 'edição autorizada',
   },
 ];
