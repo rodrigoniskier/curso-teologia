@@ -54,7 +54,7 @@ jobs:
           retention-days: 30
 
   build:
-    name: Compilar o portal
+    name: Compilar e validar o portal
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -62,6 +62,12 @@ jobs:
         with:
           node-version: '22'
       - run: npm install
+
+      # TypeScript não detecta ids sem destino, relações unilaterais nem obras
+      # citadas fora da biblioteca. Esta etapa torna essas invariantes parte da CI.
+      - name: Validar integridade do conteúdo
+        run: npm run validar
+
       - run: npm run build
 
       # Os números do README são derivados do currículo, dos verbetes e da
