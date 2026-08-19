@@ -159,7 +159,7 @@ export const poimenica: Verbete = {
       ano: '1875',
       titulo: 'Lectures to My Students',
       publicacao: 'Internet Archive',
-      url: 'https://archive.org/details/lecturestomystu00spuruoft',
+      url: 'https://archive.org/details/lecturestomystud1877spur',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',
