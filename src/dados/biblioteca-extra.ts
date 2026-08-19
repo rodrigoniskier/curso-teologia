@@ -174,7 +174,7 @@ export const bibliotecaExtra: ObraLivre[] = [
     url: 'https://pm4ngos.org/pt-br/metodologias-e-guias/project-dpro-pmd-pro/',
     idioma: 'pt',
     acesso: 'livre',
-    disciplinas: ['CG53'],
+    disciplinas: ['CG53', 'TP60'],
     nota: 'Guia gratuito em português para gerenciamento de projetos no setor de desenvolvimento, com ferramentas de desenho, planejamento, execução, monitoramento, encerramento e sustentabilidade. A própria PM4NGOs o distribui sob licença Creative Commons BY-NC 4.0.',
     base: 'edição autorizada',
   },
