@@ -26,7 +26,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'Isso também protege a missão de uma tentação antiga: imaginar que possuir dados sobre um povo equivale a conhecer esse povo. Estatística mostra padrões agregados; não substitui amizade, língua, observação local nem parceria com igrejas que já vivem no contexto. O mapa pode dizer onde olhar. Não pode fazer o encontro por nós.',
     },
-
     { tipo: 'secao', titulo: 'O primeiro desafio contemporâneo é histórico: o centro do cristianismo já não coincide com o centro do antigo poder missionário' },
     {
       tipo: 'paragrafo',
@@ -49,7 +48,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'Condição histórica em que o envio cristão parte de múltiplas regiões e tradições e se dirige em múltiplas direções, sem um único centro geográfico controlando a expansão. A expressão descreve uma realidade e um ideal de parceria: igrejas na África, Ásia, América Latina, Europa, América do Norte e outros contextos podem simultaneamente enviar, receber, ensinar, aprender e cooperar.',
     },
-
     { tipo: 'secao', titulo: 'O mapa religioso muda por demografia, migração e troca de identidade' },
     {
       tipo: 'paragrafo',
@@ -72,7 +70,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'Estimativa de composição ou mudança religiosa que precisa ser citada com ano de referência, método e unidade geográfica. Em missão, deve ser tratada como fotografia estatística de um período, nunca como essência permanente de um povo. Sempre que um número orientar decisão concreta, ele deve ser atualizado na fonte original.',
     },
-
     { tipo: 'secao', titulo: 'A missão encontra pessoas em movimento, não apenas povos fixos no mapa' },
     {
       tipo: 'paragrafo',
@@ -89,7 +86,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'O cuidado pastoral, porém, exige uma correção ética. Refugiados não são “atalhos estratégicos” para alcançar povos difíceis. São pessoas que perderam casa, segurança e redes. A igreja pode acolher, aprender língua, servir e testemunhar; não deve transformar vulnerabilidade em oportunidade de marketing missionário. Hospitalidade cristã continua boa mesmo quando não produz um relatório impressionante.',
     },
-
     { tipo: 'secao', titulo: 'O século urbano muda escala, anonimato, mobilidade e formação de comunidade' },
     {
       tipo: 'paragrafo',
@@ -106,7 +102,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'Em cidades, proximidade física pode coexistir com distância social. Pessoas moram no mesmo quarteirão e pertencem a redes linguísticas, profissionais, religiosas e digitais diferentes. A igreja não pode assumir que plantar um prédio num bairro significa entrar automaticamente nas redes que compõem o bairro. Missão urbana exige mapear fluxos: onde pessoas trabalham, estudam, compram, transitam, formam amizade e encontram identidade.',
     },
-
     { tipo: 'secao', titulo: 'O sistema político define oportunidades, riscos e limites — mas não deve ser resumido por um índice único' },
     {
       tipo: 'paragrafo',
@@ -128,7 +123,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'A ética cristã também importa aqui. Missão não recebe licença para colocar parceiros locais em risco que estrangeiros não assumiriam para si. Segurança nunca será perfeita, e coragem pode exigir custo; mas decisões sobre comunicação, nomes, fotografias, dados e encontros devem considerar quem continuará no país depois que o visitante puder embarcar de volta.',
     },
-
     { tipo: 'secao', titulo: 'A diversidade linguística permanece muito maior que o conjunto de línguas globais mais visíveis' },
     {
       tipo: 'paragrafo',
@@ -145,7 +139,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'A disciplina de linguística aplicada ajuda a perguntar como a comunicação funciona; a missiologia precisa acrescentar quem decide prioridades, quem traduz, quem revisa e quem continuará ensinando. A meta não é completar uma tabela global de idiomas, mas tornar a Palavra compreensível e a igreja capaz de confessá-la na língua em que pessoas realmente vivem sua fé.',
     },
-
     { tipo: 'secao', titulo: 'A revolução digital conectou bilhões — e deixou bilhões em condições muito diferentes de acesso' },
     {
       tipo: 'paragrafo',
@@ -162,7 +155,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'Missão digital também levanta questões eclesiológicas. Uma pessoa pode ouvir o evangelho sozinha no celular; discipulado, sacramentos, disciplina, mutualidade e cuidado não se transformam automaticamente em funções de plataforma. Tecnologia pode reduzir distância de informação sem abolir a necessidade de igreja encarnada em relações, lugares e responsabilidades concretas.',
     },
-
     { tipo: 'secao', titulo: 'Seis desafios atuais não são seis estratégias prontas' },
     {
       tipo: 'lista',
@@ -180,7 +172,6 @@ export const desafiosMissionarios: Verbete = {
       texto:
         'Nenhum item diz automaticamente onde uma igreja deve enviar pessoas. Um país pode combinar forte crescimento cristão, severa restrição política, dezenas de línguas e rápida urbanização. Outro pode ser juridicamente aberto, digitalmente conectado e missionariamente negligenciado por secularização e individualismo. Desafio é propriedade do contexto; estratégia é decisão eclesial tomada depois de interpretar o contexto.',
     },
-
     { tipo: 'secao', titulo: 'Há uma disputa sobre o que conta como prioridade missionária' },
     {
       tipo: 'controversia',
@@ -203,7 +194,6 @@ export const desafiosMissionarios: Verbete = {
         },
       ],
     },
-
     { tipo: 'secao', titulo: 'Uma disciplina contemporânea precisa ensinar seu próprio prazo de validade' },
     {
       tipo: 'paragrafo',
@@ -263,13 +253,13 @@ export const desafiosMissionarios: Verbete = {
       id: 'unhcr-global-trends-2025',
       autor: 'UNHCR',
       ano: '2026',
-      titulo: 'Global Trends 2025',
+      titulo: 'Figures at a glance — Global Trends 2025',
       publicacao: 'United Nations High Commissioner for Refugees',
-      url: 'https://www.unhcr.org/media/global-trends-2025-report',
+      url: 'https://www.unhcr.org/about-unhcr/overview/figures-glance',
       idioma: 'en',
       tipo: 'documento',
       acesso: 'livre',
-      nota: 'Relatório oficial mais recente sobre deslocamento forçado global, usado para discutir migração, diásporas e ética da hospitalidade missionária.',
+      nota: 'Página oficial que apresenta o total de deslocamento forçado no fim de 2025 e identifica o Global Trends 2025 como fonte, usada para discutir migração, diásporas e ética da hospitalidade missionária.',
     },
     {
       id: 'undesa-urbanization-2025',
