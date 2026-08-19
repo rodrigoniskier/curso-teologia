@@ -2,8 +2,8 @@
 
 Este arquivo existe para que uma sessão nova consiga retomar o trabalho sem
 depender da memória da conversa anterior. Leia-o antes de escrever qualquer
-coisa. Ele registra o que o mantenedor decidiu, o que já foi aprendido a
-duras penas e o que deliberadamente não foi feito.
+coisa. Ele registra decisões do mantenedor, invariantes do código e lições de
+incidentes que não devem precisar ser reaprendidas.
 
 ---
 
@@ -28,229 +28,243 @@ Deploy na Vercel a partir de `main`.
 
 ## 2. Regras fixadas pelo mantenedor
 
-Estas não são negociáveis e vieram dele, não de mim:
-
 - **Layout minimalista e acadêmico**, branco / azul / amarelo.
 - **Conteúdo profundo, acadêmico e pastoral**, em português acessível.
-- **Estrutura textual progressiva**: o texto constrói o conceito e só depois o
-  declara. Nunca abra um verbete com uma definição.
+- **Estrutura textual progressiva**: construa o conceito e só depois o declare.
+  Nunca abra um verbete com uma definição.
 - **Sempre ligar à fonte original.**
-- **Só links que funcionam.** "Audite tudo."
-- **Sempre PR e merge** — nada vai direto para `main`.
+- **Só links que funcionam.** Audite tudo.
+- **Toda obra citada precisa estar no acervo.**
+- **Sempre ramo → PR → CI → merge.** Nada vai direto para `main`.
 
 ---
 
 ## 3. Como se escreve um verbete
-
-Esta seção é a mais importante do arquivo. O que distingue este portal não é
-a informação — é a forma.
 
 ### A abertura
 
 Comece por um **problema real que o leitor tem**, não por definição nem por
 histórico. Exemplos que funcionaram:
 
-- TE52 abre mandando o leitor olhar o rodapé de Marcos 16 e perguntar por que
-  os tradutores não parecem saber onde a Bíblia termina.
-- TP01 abre com alguém dizendo ao pastor que vai largar o emprego para servir
-  a Deus em tempo integral — e desmonta o pressuposto escondido na frase.
-- TE55 abre listando as identificações da besta ao longo de dois séculos,
-  todas sinceras, todas erradas.
-- CG58 abre com dois argumentos sobre a inspiração e pede ao leitor que decida
-  qual presta. O que defende a doutrina é o inválido.
+- TE52 manda o leitor olhar o rodapé de Marcos 16 e perguntar por que os
+  tradutores parecem não saber onde a Bíblia termina.
+- TP01 começa com alguém dizendo ao pastor que vai largar o emprego para servir
+  a Deus em tempo integral e desmonta o pressuposto escondido na frase.
+- TE55 lista identificações da besta feitas ao longo de dois séculos, todas
+  sinceras e todas erradas.
+- CG58 põe dois argumentos sobre inspiração lado a lado; o que defende a
+  doutrina é o logicamente inválido.
 
-O padrão: encurrale o leitor num problema que ele reconhece, mostre que as
-saídas fáceis são ruins, e só então desenvolva.
+O padrão: encurrale o leitor num problema reconhecível, mostre por que as
+saídas fáceis falham e só então desenvolva.
 
 ### O corpo
 
-- Construa antes de nomear. O bloco `definicao` ou `termo` vem **depois** que o
-  leitor já entendeu a coisa, como consolidação.
+- Construa antes de nomear. `definicao` ou `termo` vem **depois** que o leitor
+  já entendeu a coisa.
 - Quando uma tradição legou algo, diga também **o que ela cobrou em troca**.
-  CG09 faz isso com Platão e Aristóteles; TH04 faz com o pietismo.
-- Antecipe a objeção honesta e responda a ela no texto, não em nota.
-- Prefira o exemplo concreto ao adjetivo. "Um cristão de Esmirna que ia perder
-  a loja por não queimar incenso" vale mais que "os cristãos perseguidos".
+- Antecipe a objeção honesta e responda no corpo, não numa nota defensiva.
+- Prefira exemplo concreto a adjetivo abstrato.
+- Não faça uma palavra original carregar uma doutrina inteira quando a doutrina
+  depende da passagem, do cânon ou de síntese posterior. TE22 é o modelo:
+  Calcedônia sintetiza dados de Filipenses 2; não é o significado lexical de
+  `morphē`.
 
 ### O bloco `controversia`
 
-É onde a qualidade do verbete se prova. Regra:
-
-**Cada posição recebe a força real que tem E o custo real que paga —
-inclusive a posição que o portal defende.**
+**Cada posição recebe a força real que tem e o custo real que paga — inclusive
+a posição que o portal defende.**
 
 Se a posição reformada aparece sem custo e as outras só com defeito, o bloco
-falhou. Verifique se um defensor competente de cada lado se reconheceria na
-descrição. Exemplos bem resolvidos: TE52 (Textus Receptus tratado com
-seriedade), TE55 (futurismo, que é a leitura dominante no Brasil), TP07
-(missão integral).
+falhou. Um defensor competente de cada lado precisa conseguir se reconhecer na
+descrição.
 
 ### A `pastoral`
 
-Não é aplicação devocional. É a consequência prática para quem exerce
-ministério, e frequentemente contém a coisa mais difícil do verbete — por
-exemplo, TP53 diz que às vezes o conflito é o próprio pastor, e CG58 adverte
-quem gostou demais do verbete que saber o nome de uma falácia não é ter razão.
+Não é aplicação devocional genérica. É a consequência prática para quem exerce
+ministério. Frequentemente contém a coisa mais difícil do verbete.
 
-### Ligações
+### Ligações (`verMais`)
 
-`verMais` com três verbetes existentes. **Confirme que os ids existem** — o
-componente descarta silenciosamente id inexistente, então erro não aparece.
+`verMais` contém **duas ou três relações editoriais diretas**; para verbete
+novo, prefira três quando houver três relações realmente úteis. Nunca coloque
+id inexistente, duplicado ou o próprio id.
+
+A reciprocidade **não é feita duplicando manualmente cada ligação**. A interface
+resolve o grafo em dois sentidos por `src/conteudo/relacoes.ts`: mostra as
+relações escolhidas pelo verbete e, em bloco compacto, os verbetes que apontam
+para ele. Assim, se A remete a B, o leitor consegue voltar de B para A mesmo
+quando B não gastou uma das suas três relações autorais com A.
+
+`npm run validar` reprova destino inexistente, auto-remissão e duplicação. Não
+volte ao modelo de exigir `A.verMais` e `B.verMais` simétricos nos arquivos:
+isso cria hubs enormes e transforma curadoria editorial em manutenção mecânica.
 
 ---
 
 ## 4. Disciplina de fontes
 
-Regras duras. Elas são o que separa este portal de um agregador.
-
-1. **Só entra o que o leitor consegue abrir.** Item de empréstimo do
-   Archive.org (padrão de identificador com `0000`) não é acesso livre — se
-   entrar, marque `acesso: 'cadastro'` e diga na nota.
-2. **Nunca agregador de PDF pirata** (pdfcoffee, scribd e afins). Nem por
-   conveniência. É injusto com quem publica em português, e esses links morrem.
+1. **Só entra o que o leitor consegue abrir.** Empréstimo do Archive.org não é
+   acesso livre; marque `acesso: 'cadastro'` quando for o caso.
+2. **Nunca agregador de PDF pirata** (pdfcoffee, scribd e semelhantes).
 3. **Prefira hospedeiro que a CI alcança**: Archive.org, Wikisource,
    plato.stanford.edu, monergismo.com, ipb.org.br, ipib.org.br.
-4. **Quando não houver fonte à altura, declare a lacuna** no próprio verbete e
-   no PR. É melhor não ter verbete do que ter um mal fundamentado.
-5. **Toda obra citada num verbete deve estar na biblioteca** (`src/dados/biblioteca.ts`).
-   Já aconteceu de 24 obras citadas não aparecerem lá.
-6. **Em obra traduzida, a data que importa é a morte do tradutor, não a do
-   autor.** A tradução é obra derivada com direito próprio. Weber morreu em
-   1920 e o original alemão é livre há décadas, mas a tradução inglesa corrente
-   é de Parsons, morto em 1979 — no Brasil ela só cai em domínio público em
-   2050, ainda que esteja aberta no Archive.org. **Estar acessível não é o
-   mesmo que o leitor poder usar licitamente**, e o portal se dirige a leitores
-   brasileiros. Quando a tradução não servir, procure verbete de enciclopédia
-   livre, outra tradução antiga, ou o original.
+4. **Quando não houver fonte à altura, declare a lacuna**. É melhor adiar um
+   verbete que fundamentá-lo mal.
+5. **Toda obra citada num verbete deve ter entrada no acervo.** O acervo está
+   historicamente em `src/dados/biblioteca.ts`, com complementos recuperados
+   pela auditoria em `src/dados/biblioteca-extra.ts`; a interface consome a
+   união em `src/dados/biblioteca-completa.ts`.
+6. **Em obra traduzida, o direito da tradução importa separadamente.** Estar
+   acessível na rede não significa que a tradução possa ser usada licitamente
+   no Brasil. Quando a tradução não servir, procure original em domínio público,
+   tradução antiga livre ou recurso autorizado.
 
-   Auditoria feita em 16/08/2026 nas traduções já listadas: Beveridge (m. 1868)
-   e Giger (m. 1865) livres; Charles (m. 1931) livre no Brasil desde 2002;
-   Turretini em inglês corretamente marcado como empréstimo; Bavinck em inglês
-   como edição autorizada, sem alegar domínio público. Nenhuma irregularidade.
+A auditoria de 16/08/2026 já conferiu as traduções sensíveis então existentes:
+Beveridge e Giger estão em domínio público; Charles está livre no Brasil;
+Turretini em inglês está corretamente tratado como empréstimo; Bavinck em
+inglês como edição autorizada.
 
 ### Domínios restritos
 
-`src/dados/dominios-restritos.json` lista domínios que a CI não consegue
-verificar por motivo alheio ao conteúdo. Hoje só `ccel.org`, que recusa IPs de
-nuvem — bloqueio permanente, sem alternativa conhecida.
+`src/dados/dominios-restritos.json` é para **impossibilidade persistente de
+verificação pela CI**, não para contornar instabilidade temporária. Nunca ponha
+`archive.org` ali por causa de uma sequência ruim: isso desliga a verificação de
+muitas fontes e esconde links realmente mortos.
 
-**Este mecanismo é para impossibilidade, não para conveniência.** Quando o
-certificado do site da Executiva da IPB venceu, a entrada foi criada com
-instrução de removê-la assim que houvesse solução — e foi removida horas
-depois, ao descobrir que a IPB publica os mesmos documentos em `ipb.org.br`.
-Se você adicionar um domínio aqui, escreva no `motivo` se é permanente ou
-temporário, e o que fazer para resolver.
+Antes de restringir um domínio, teste outros hosts da mesma instituição. `403`
+é resposta, não queda, e não se generaliza automaticamente para todos os
+subdomínios.
 
 ---
 
-## 5. O ciclo de trabalho
+## 5. Validações automáticas
 
-```
-0. git fetch origin && git checkout -B <ramo> origin/main — ver nota abaixo
-1. npm run estado  — escolher o alvo pelo desequilíbrio (ver seção 7)
-2. Ler a ementa da disciplina em src/dados/ementas.json — o verbete deve
-   servir ao programa oficial, não ao que você acha que o tema é
-3. Ler os verbetes vizinhos para não repetir
-4. Verificar as fontes com WebSearch antes de escrever
-5. Escrever src/conteudo/<departamento>/<nome>.ts
-6. Registrar em src/conteudo/indice.ts (import + entrada no array)
-7. Acrescentar as fontes novas a src/dados/biblioteca.ts
-8. Atualizar as contagens no README
-9. npm run build
-10. npm run conferir — bate os números do README com o repositório
-11. Verificar no Chromium headless (ver seção 6)
-12. Commit, push com --force-with-lease, PR, esperar CI, merge
-```
-
-O passo 0 não é zelo: sem ele o ciclo seguinte **falha no merge**. Como o
-merge é por squash, o commit anterior do ramo e o commit correspondente em
-`main` têm o mesmo conteúdo e identidades diferentes; o PR novo carrega o
-antigo junto e o GitHub acusa conflito nos arquivos que todo ciclo toca —
-`README.md`, `indice.ts`, `biblioteca.ts`. Se isso já aconteceu, o remédio é
-refazer o ramo a partir de `origin/main` e aplicar o commit por cima
-(`git cherry-pick`), conferindo antes de mergear que a árvore continua a
-mesma que a auditoria aprovou: `git rev-parse <sha-auditado>^{tree}` e
-`git rev-parse <sha-novo>^{tree}` devem coincidir.
-
-O passo 10 também roda na CI, de modo que esquecer o passo 8 quebra o build em
-vez de publicar número errado. É intencional: a contagem de verbetes já
-divergiu duas vezes por edição manual.
-
-### Validações que valem rodar sempre
+Há três camadas e elas protegem coisas diferentes:
 
 ```bash
-# códigos de disciplina inválidos somem sem aviso na página
-python3 -c "
-import json,re
-validos={x['codigo'] for x in json.load(open('src/dados/ementas.json'))}
-s=open('src/dados/biblioteca.ts').read()
-maus={c for m in re.finditer(r'disciplinas: \[([^\]]*)\]', s, re.S)
-      for c in re.findall(r\"'([^']+)'\", m.group(1)) if c not in validos}
-print(sorted(maus) or 'nenhum inválido')"
+npm run validar             # integridade interna de conteúdo e acervo
+npm run build               # TypeScript + build de produção
+npm run conferir            # números do README contra o repositório
+npm run auditar             # rede: disponibilidade das URLs
+npm run auditar:relatorio   # rede + relatório persistido
 ```
+
+`npm run validar` deve permanecer **offline e determinístico**. Ele verifica:
+
+- um Verbete exportado por arquivo, importado e registrado uma vez no índice;
+- ids de verbete únicos e códigos de disciplina existentes;
+- `atualizadoEm` no formato esperado;
+- `verMais` com 2–3 destinos existentes, sem repetição nem auto-remissão;
+- ids de fonte únicos dentro do verbete;
+- `fonteId` de bloco `citacao` resolvendo em uma fonte local;
+- toda fonte citada correspondendo, por id ou URL normalizada, a uma entrada do
+  acervo;
+- ids únicos no acervo e códigos de disciplina válidos;
+- marcações que sabemos vazar asteriscos na interface.
+
+Divergência entre o número de `unidade` do verbete e o JSON é **aviso**, não
+erro automático, porque a extração do PDF tem lacunas documentadas. Confirme
+contra o PDF antes de alterar conteúdo ou ementa.
+
+A CI em `.github/workflows/auditoria.yml` executa a validação estrutural antes
+do build, confere o README e roda a auditoria de rede em job separado. Não
+junte falha estrutural com indisponibilidade externa: são classes de problema
+diferentes.
 
 ---
 
-## 6. Particularidades do ambiente
+## 6. O ciclo de trabalho
 
-Armadilhas que já custaram tempo:
+```text
+0. Partir sempre do main mais recente em um ramo novo
+1. npm run estado — escolher o alvo pelo desequilíbrio
+2. Ler a ementa oficial em src/dados/ementas.json
+3. Ler verbetes vizinhos para não repetir
+4. Verificar as fontes antes de escrever
+5. Escrever src/conteudo/<departamento>/<nome>.ts
+6. Registrar em src/conteudo/indice.ts
+7. Acrescentar fontes novas ao acervo, quando necessário
+8. Atualizar as contagens do README
+9. npm run validar
+10. npm run build
+11. npm run conferir
+12. Verificar a interface real no navegador
+13. Commit, push, PR, esperar CI, merge
+```
 
-- **A auditoria local não funciona.** O proxy da caixa bloqueia toda saída, e
-  `npm run auditar` retorna 403 em tudo. **A CI é o único teste real de link.**
-  Não conclua que um link está morto a partir daqui.
-- **`pkill` num comando composto mata o próprio shell** (exit 144). Rode
-  separado.
-- **Playwright só roda de `/home/user/cosmosacademy`**, onde foi instalado.
-  Chromium em `/opt/pw-browsers/chromium`.
+Como os merges são por squash, **não reutilize um ramo antigo como base do
+próximo ciclo**. Isso já produziu conflitos em `README.md`, `indice.ts` e
+biblioteca. Novo ciclo começa no `main` já incorporado.
+
+A contagem do README é escrita para o leitor, mas conferida por código. Se
+esquecer de atualizá-la, a CI precisa falhar. Não mantenha instantâneos mutáveis
+no CLAUDE.md; rode `npm run estado`.
+
+---
+
+## 7. Particularidades do ambiente e da interface
+
+- **A auditoria local de rede não é confiável** em ambientes com egresso
+  bloqueado. A CI é o teste real de links; não declare link morto por um 403 do
+  ambiente de desenvolvimento.
 - **A rota do verbete é `/disciplina/:codigo/:id`**, não `/verbete/:id`.
-- **Depois de um merge por squash**, o `--force-with-lease` simples falha
-  porque o topo do ramo não é ancestral de `main`. Confirme que o conteúdo já
-  entrou (`git diff --stat <sha> origin/main`) e use a forma explícita:
-  `--force-with-lease=refs/heads/<ramo>:<sha>`.
-- **Ênfase não aninha.** O processador casa `\*\*([^*]+)\*\*`, e `[^*]` não
-  aceita asterisco no interior: escrever `**forte com *itálico* dentro**` faz
-  o bloco inteiro vazar com os asteriscos na tela. Ponha uma ênfase ou a
-  outra. A varredura que encontra o caso:
-  `grep -rnoP '\*\*[^*]*\*[^*]*\*\*' src/conteudo/`
-- **O campo `nota` das fontes é texto puro.** Ele é impresso direto em
-  `Verbete.tsx`, `Biblioteca.tsx` e `Disciplina.tsx`, sem passar pelo
-  processador de marcação — `*itálico*` aparece com os asteriscos na tela. As
-  demais notas do repositório seguem todas texto puro; escreva sem marcação.
-- **O gatilho `pull_request` da auditoria já deixou de disparar uma vez**, sem
-  causa identificada, e voltou a funcionar nos PRs seguintes sem intervenção.
-  Não mexa no workflow por causa disso: ele aceita `workflow_dispatch`, então
-  dispare a auditoria à mão sobre o ramo e siga. Só investigue se repetir.
-- **Falha só na sondagem, com 200 nas execuções vizinhas, é do auditor e não
-  da fonte.** A sondagem manda os domínios que não respondem para o caminho
-  rápido — uma tentativa de 10s em vez do ciclo de três. Para um domínio com
-  uma URL só isso é perda garantida, porque a sondagem testou justamente
-  aquela URL e já pagou o ciclo completo por ela: o que vem depois é mais
-  fraco que o que acabou de falhar. Corrigido em 18/08/2026 restringindo o
-  caminho rápido a domínios com duas ou mais URLs, que é onde havia o que
-  economizar. Se um PDF grande de servidor lento voltar a reprovar, olhe
-  primeiro a linha `Sem resposta na sondagem:` do log.
-- **`403` é resposta, não queda — e não se generaliza por host.** O IBGE
-  recusou o runner em `agenciadenoticias.ibge.gov.br` e em
-  `censo2022.ibge.gov.br`, e concluir dali um bloqueio do domínio inteiro
-  teria sido errado: `biblioteca.ibge.gov.br` respondeu 200. Antes de cogitar
-  `dominios-restritos.json`, tente outro host da mesma instituição — e prefira
-  o repositório de publicações, que costuma não ter a proteção contra robô
-  que as páginas de portal têm, e ainda dá citação melhor.
-- **A auditoria repete em 5xx e 429 e não repete em 404.** O Archive.org
-  devolve 502 em rajada quando várias requisições chegam juntas, e isso já
-  reprovou uma auditoria inteira. Se um lote de URLs do mesmo domínio falhar
-  no mesmo instante enquanto outras do mesmo domínio passam, suspeite de
-  indisponibilidade momentânea antes de mexer nas fontes.
+- **Ênfase não aninha.** `**forte com *itálico* dentro**` vaza asteriscos.
+  `npm run validar` deve impedir esse padrão.
+- **`nota` de fonte é texto puro.** Não use marcação `*...*` nela.
+- A página de Biblioteca e as páginas de disciplina devem importar o acervo por
+  `biblioteca-completa.ts`, para não perder complementos auditados.
 
 ### Verificação no navegador
 
-Confira sempre: zero asteriscos literais, ausência de "não encontrado",
-ausência de transbordo horizontal em 1280px **e** 390px, blocos renderizando,
-os três links de "Leia também" resolvendo, e nenhum erro de JS.
+Confira sempre: zero asteriscos literais, ausência de “não encontrado”, ausência
+de transbordo horizontal em desktop e mobile, blocos renderizando, relações
+`Leia também` resolvendo, backlinks recíprocos aparecendo quando houver, e
+nenhum erro de JavaScript.
 
 ---
 
-## 7. Estado atual e como escolher o próximo alvo
+## 8. Auditoria de rede: como diagnosticar Archive.org e semelhantes
+
+O auditor repete `5xx` e `429`; um `404` é terminal **naquela execução**, mas
+não deve ser interpretado isoladamente durante instabilidade do acervo.
+
+Regras que sobreviveram ao incidente de agosto de 2026:
+
+- **mesma URL com 404 consistente em duas ou mais execuções independentes**,
+  enquanto o restante do acervo responde: item provavelmente removido →
+  substituir;
+- **mesma URL alternando 404 / 502 / `ECONNRESET` / timeout**: sobrecarga →
+  esperar;
+- **falhas migrando entre URLs a cada execução**: congestionamento → esperar;
+- **falha de conexão no domínio inteiro, inclusive na raiz**: acervo fora do ar;
+  o auditor já classifica esse caso e não deve reprovar;
+- não crie tolerância genérica para 404/502 e não restrinja Archive.org para
+  fazer a CI ficar verde.
+
+O caso de Ryle é o teste de sanidade: a mesma URL chegou a responder 404, depois
+502 e depois `ECONNRESET`, e mais tarde voltou a 200. “404 = morto” teria
+eliminado uma fonte viva.
+
+### Diagnóstico da CI
+
+Não use isoladamente o `status` da API, a `conclusion` do check run nem um 404
+ao buscar logs para inferir que um job terminou. Durante um incidente esses
+sinais ficaram defasados e uma execução saudável foi cancelada. Quando houver
+dúvida, use evidência temporal do log real e os timestamps das etapas
+concluídas; não transforme indisponibilidade momentânea do endpoint de logs em
+estado do job.
+
+### Concorrência do auditor
+
+`CONCORRENCIA = 6` já foi levantada como possível fator de rate limiting em
+Archive.org. Reduzir para 2–3 é **hipótese não confirmada**, não correção.
+Somente altere depois de comparação reproduzível; nunca afrouxe a garantia por
+plausibilidade.
+
+---
+
+## 9. Estado e escolha do próximo alvo
 
 **Não confie em número escrito aqui.** Rode:
 
@@ -258,155 +272,63 @@ os três links de "Leia também" resolvendo, e nenhum erro de JS.
 npm run estado
 ```
 
-Ele calcula a cobertura por departamento a partir do próprio código, imprime
-as contagens e os idiomas da biblioteca, e diz qual departamento está com a
-menor razão. Existe porque a tabela que ocupava este lugar divergiu do
-repositório em menos de um dia — e documento de continuidade que envelhece
-errado orienta pior do que documento nenhum.
+O script calcula cobertura por departamento, disciplinas aplicáveis, verbetes,
+acervo e idiomas diretamente do código. A escolha padrão é o departamento com
+menor razão verbetes/disciplina aplicável. Sistemática ficou historicamente bem
+à frente e não deve receber novos verbetes enquanto os demais estiverem atrás.
 
-O README não tem essa saída: é vitrine, e precisa mostrar os números a quem
-não vai rodar script nenhum. Por isso `npm run conferir` roda o mesmo cálculo
-e confere as dez linhas numéricas do README contra o repositório, falhando a
-CI quando divergem. Escreva o número no README à vontade — só não confie em
-tê-lo escrito certo.
-
-Não há instantâneo numérico aqui de propósito. Já houve dois, e os dois
-envelheceram no mesmo dia em que foram escritos — o segundo ficou quatro
-verbetes defasado em poucas horas. O que se pode dizer sem prazo de validade:
-**Sistemática está muito à frente e não deve receber verbete novo**; os outros
-quatro departamentos se aproximaram e a ordem entre eles muda a cada ciclo, o
-que é exatamente por que se roda o comando antes de escolher.
-
-**Regra de escolha:** o próximo verbete vai para o departamento com a menor
-razão verbetes/disciplina. Sistemática está muito à frente e não deve receber
-verbete novo enquanto os outros não subirem.
-
-A razão é calculada sobre as disciplinas **em que cabe verbete**, não sobre
-todas: o script exclui aquisição de língua e estágio supervisionado, porque
-ninguém aprende hebraico nem cumpre estágio lendo um verbete. Isso não é
-detalhe. Quando a conta era feita sobre o total, Cultura Geral e Exegética
-pareciam mais carentes do que estão — juntas concentram dezesseis disciplinas
-de língua —, e o alvo indicado chegou a ser o departamento errado.
-
-A lista de exclusões está no topo de `scripts/estado.mjs` e é para ser
-discutida. Se você achar que uma delas comporta verbete, tire de lá: um
-verbete de orientação sobre por que estudar as línguas originais, por exemplo,
-serviria a TE04 e TE08 sem ensinar língua nenhuma.
-
-Alvos mapeados: CG07/CG62 (Psicologia), CG11 (Antropologia da Religião),
-TP20 (Plantação e Revitalização), TP56 (Denominações e Seitas), TP05
-(Liderança), TP04 (Aconselhamento 2), TE16 (Metodologia da Pesquisa
-Exegética), TE03 (Geografia e Arqueologia), TH07/TH08 (História do Pensamento
-Cristão).
+A razão exclui aquisição de língua e estágio supervisionado. A lista fica no
+topo de `scripts/estado.mjs` e pode ser discutida, mas não deve ser alterada só
+para melhorar um número.
 
 ---
 
-## 8. Lacunas declaradas
+## 10. Lacunas declaradas
 
-Não são esquecimento. Foram recusas conscientes, e devem continuar recusadas
-até que a condição mude:
+Não são esquecimentos; foram recusas conscientes até que surja fonte adequada:
 
-- **TH06 · História da IPB** — não há fonte livre à altura, só material
-  secundário disperso de sites de igreja.
-- **Cânones de Dort em português** — não localizado em texto integral num
-  endereço estável. Só esboços, blogs e agregadores.
-- **Eduardo Carlos Pereira, *O Problema Religioso da América Latina*** (1920,
-  domínio público, fundador da IPI) — só aparece em agregador pirata.
-- **Roland Allen, *Missionary Methods*** (1912) e **Vos, *The Pauline
-  Eschatology*** — existem no Archive.org apenas como empréstimo.
-- **Freud sobre religião** (*O Futuro de uma Ilusão*, *Totem e Tabu*) — o
-  original alemão é domínio público, mas nenhuma tradução de referência
-  localizada está livre no Brasil: as portuguesas estão em catálogo e as
-  inglesas correntes têm tradutores mortos há menos de setenta anos. CG62
-  aplica a regra da casa — **ensina a tese da projeção no próprio verbete**,
-  com a força que ela tem, e responde a ela pelo *Varieties* de James, que já
-  é livre e formulou a objeção antes de Freud escrever sobre religião.
+- **TH06 · História da IPB** — ainda sem fonte livre única à altura de todo o
+  programa; há material secundário disperso.
+- **Cânones de Dort em português** — não localizado texto integral em endereço
+  estável e juridicamente claro.
+- **Eduardo Carlos Pereira, O Problema Religioso da América Latina** — só foi
+  localizado em agregador inadequado.
+- **Roland Allen, Missionary Methods** e **Vos, The Pauline Eschatology** — no
+  Archive.org em modalidade de empréstimo nas edições localizadas.
+- **Freud sobre religião** — original alemão livre, mas traduções de referência
+  localizadas ainda protegidas; ensine a tese com fontes lícitas em vez de
+  apontar cópia indevida.
 
-Ainda por procurar: Imprensa Evangélica (jornal fundado por Simonton em 1864),
-documentos do Brasil holandês, traduções antigas já em domínio público.
+Antes de declarar “não existe em português”, refaça a busca nos hospedeiros que
+o portal já usa. Essa conclusão já esteve errada no caso do Catecismo Maior.
 
 ---
 
-## 9. Lições que custaram caro
+## 11. Lições de consistência
 
-**Sobre buscar fontes em português.** Declarei que o Catecismo Maior só
-existia em sites de igrejas locais. Estava no Monergismo — hospedeiro que o
-portal já citava. Refeita a busca com atenção, apareceram também Heidelberg,
-Confissão Belga e Segunda Helvética, e o português saltou de 8 para 12 obras.
-**Desconfie de conclusão sua do tipo "não existe em português"; refaça a busca
-nos hospedeiros já conhecidos antes de declarar lacuna.**
-
-**Sobre ênfase no texto.** O renderizador trata `**forte**` e `*itálico*`, e
-só isso. Sublinhado (`_x_`) ficou **deliberadamente** de fora: as URLs de
-Wikisource e Archive.org usam sublinhado no lugar de espaço, e interpretá-lo
-quebraria os links das fontes. Não "conserte" isso.
-
-**Sobre a ementa.** Escrevi TE52 inteiro pensando só no Novo Testamento e a
-ementa cobria também o Antigo, com a diferença entre os dois como unidade
-própria. Leia a ementa antes de escrever, não depois.
-
-**Sobre consistência de dados.** Introduzi um selo divergente na biblioteca —
-Confissão de Westminster como domínio público e Breve Catecismo, mesma
-assembleia de 1647, como edição autorizada. A regra agora: símbolo
-confessional dos séculos XVI–XVII é `domínio público`; documento
-denominacional vigente, como o Manual Presbiteriano, é `edição autorizada`.
-
-**Sobre defeitos que ninguém pediu para corrigir.** Doze verbetes publicados
-exibiam asteriscos literais ao leitor porque o renderizador não processava a
-marcação. Foi encontrado ao verificar um verbete novo no navegador. Verifique
-de verdade, no navegador, e olhe a página inteira.
-
-**Sobre CI vermelha que não é sua.** O Archive.org hospeda mais de cem fontes
-do portal. Quando ele cai, a auditoria reprova o PR com dezenas de falhas que
-nada têm a ver com o diff. Antes de mexer em fonte alguma, **olhe o padrão do
-erro**: falha de conexão em todas as URLs de um domínio — inclusive na raiz — é
-acervo fora do ar; link morto responde 404 enquanto os vizinhos respondem 200.
-O auditor hoje separa os dois casos sozinho e não reprova pelo primeiro. Não
-ponha o Archive.org em `dominios-restritos.json` para contornar queda passageira:
-isso desligaria a verificação de mais de cem links de vez.
-
-**Sobre diagnosticar a CI.** Não use isoladamente o campo `status` da API, a
-`conclusion` do check run nem o 404 de `get_job_logs` para decidir se um job
-terminou. Durante o incidente de 17/08/2026, esses sinais permaneceram
-enganosos depois de uma execução já ter acabado e isso levou ao cancelamento
-de uma execução saudável. Quando houver dúvida, a evidência confiável é o
-timestamp dentro do próprio log, e não o estado externo reportado pela API.
-
-**Sobre distinguir link morto de sobrecarga.** Uma execução isolada não basta.
-A regra que sobreviveu ao incidente é temporal: **404 consistente na mesma URL,
-em duas ou mais execuções, indica item removido e pede substituição**. Se a
-mesma URL alterna entre 404, 502, `ECONNRESET` e timeout, o sinal é de
-sobrecarga do acervo e a ação é esperar. Se as falhas migram de uma URL para
-outra a cada execução, o padrão é congestionamento e a ação também é esperar.
-Falha de conexão em todo o domínio, inclusive na raiz, é acervo fora do ar —
-o auditor já trata esse caso sem reprovar. O caso de Ryle é o teste de sanidade:
-a mesma URL devolveu 404, depois 502 e depois `ECONNRESET`; aplicar
-mecanicamente "404 = item removido" teria descartado uma fonte viva.
-
-**Sobre a concorrência do auditor.** Na pior execução do incidente, dezenove
-falhas ocorreram todas em nível de conexão contra o mesmo host. Isso é
-compatível com limitação de taxa e torna plausível testar `CONCORRENCIA = 2`
-ou `3` no lugar de `6`. **É hipótese, não correção.** Não altere a concorrência
-só porque a explicação parece boa; primeiro reproduza o problema num ambiente
-em que seja possível comparar as duas configurações sem afrouxar a garantia.
-
-**Sobre número escrito à mão.** Informação que muda não deve ser escrita à mão
-em documento nenhum: ou está no código que a calcula, ou não deveria estar
-escrita. A contagem de verbetes divergiu duas vezes — a segunda em poucas
-horas. No CLAUDE.md a saída foi apagar o instantâneo; no README, que precisa
-mostrar os números, foi `npm run conferir` na CI. **Onde o número tiver de
-ficar escrito, ponha uma verificação junto dele** — e verifique que ela
-realmente falha quando o número está errado, senão é enfeite.
+- **Leia a ementa antes de escrever.** TE52 precisou ser corrigido porque foi
+  pensado só para NT enquanto a disciplina cobria também AT.
+- **Mesma classe de documento recebe a mesma classificação jurídica.** Símbolo
+  confessional dos séculos XVI–XVII é domínio público; documento denominacional
+  vigente é edição autorizada.
+- **Não confie em manutenção manual para invariantes que o código pode testar.**
+  Foi assim com números do README, obras citadas fora da biblioteca e destinos
+  de `verMais`. Se uma regra é mecânica, coloque-a em `npm run validar`.
+- **Reciprocidade de navegação é propriedade do sistema, não duplicação de
+  dados.** Preserve a curadoria direta em 2–3 relações e gere a volta.
+- **Mesmo id de fonte com outra edição pode ser legítimo.** Trate URL diferente
+  como aviso para revisão, não como erro automático; o caso de Spurgeon em
+  Poimênica usa outra digitalização da mesma obra.
 
 ---
 
-## 10. Sobre o tom
+## 12. Sobre o tom
 
-O leitor típico é pastor ou seminarista brasileiro, frequentemente sem
-dinheiro para a bibliografia e frequentemente sozinho. Escreva para alguém
-inteligente que não teve acesso, não para alguém que precisa ser impressionado.
+O leitor típico é pastor ou seminarista brasileiro, frequentemente sem dinheiro
+para a bibliografia e frequentemente sozinho. Escreva para alguém inteligente
+que não teve acesso, não para alguém que precisa ser impressionado.
 
 Não poupe o leitor da dificuldade real de uma questão, e não finja neutralidade
 que o portal não tem — ele é confessionalmente reformado e diz isso. O que se
-exige não é neutralidade, é **imparcialidade**, que é verificável: representar
-a posição contrária de modo que seu defensor a reconheça.
+exige não é neutralidade, é **imparcialidade**: representar a posição contrária
+de modo que seu defensor competente a reconheça.
