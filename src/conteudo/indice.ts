@@ -49,6 +49,7 @@ import { pensamentoCristao } from './historica/pensamento-cristao';
 import { pensamentoCristao2 } from './historica/pensamento-cristao-2';
 import { reforma } from './historica/reforma';
 import { historiaPraticaMissoes } from './historica/historia-pratica-missoes';
+import { desafiosMissionarios } from './historica/desafios-missionarios-contemporaneos';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 import { vocacao } from './pastoral/vocacao';
@@ -153,6 +154,7 @@ export const verbetes: Verbete[] = [
   pensamentoCristao,
   pensamentoCristao2,
   historiaPraticaMissoes,
+  desafiosMissionarios,
   homiletica,
   governoPresbiteriano,
   vocacao,
