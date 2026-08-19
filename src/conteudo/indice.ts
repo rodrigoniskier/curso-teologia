@@ -36,6 +36,7 @@ import { salmos } from './exegetica/salmos';
 import { profetas } from './exegetica/profetas';
 import { evangelhos } from './exegetica/evangelhos';
 import { atos15 } from './exegetica/atos-15';
+import { filipenses2 } from './exegetica/filipenses-2';
 import { generosLiterarios } from './exegetica/generos-literarios';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
@@ -131,6 +132,7 @@ export const verbetes: Verbete[] = [
   profetas,
   evangelhos,
   atos15,
+  filipenses2,
   generosLiterarios,
   igrejaAntiga,
   igrejaImperial,
