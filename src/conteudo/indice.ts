@@ -42,6 +42,7 @@ import { igrejaModerna } from './historica/igreja-moderna';
 import { igrejaBrasileira } from './historica/igreja-brasileira';
 import { historiaIPB } from './historica/ipb';
 import { pensamentoCristao } from './historica/pensamento-cristao';
+import { pensamentoCristao2 } from './historica/pensamento-cristao-2';
 import { reforma } from './historica/reforma';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
@@ -132,6 +133,7 @@ export const verbetes: Verbete[] = [
   igrejaBrasileira,
   historiaIPB,
   pensamentoCristao,
+  pensamentoCristao2,
   homiletica,
   governoPresbiteriano,
   vocacao,
