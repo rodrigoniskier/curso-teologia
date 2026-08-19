@@ -61,6 +61,7 @@ import { missoesUrbanas } from './pastoral/missoes-urbanas';
 import { capelania } from './pastoral/capelania';
 import { denominacoesSeitas } from './pastoral/denominacoes-seitas';
 import { disciplinaEclesiastica } from './pastoral/disciplina-eclesiastica';
+import { gestaoEclesiastica } from './pastoral/gestao-eclesiastica';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
@@ -141,6 +142,7 @@ export const verbetes: Verbete[] = [
   capelania,
   denominacoesSeitas,
   disciplinaEclesiastica,
+  gestaoEclesiastica,
   filosofia,
   historiaFilosofia,
   historiaFilosofiaModerna,
