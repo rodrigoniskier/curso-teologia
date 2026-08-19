@@ -71,6 +71,7 @@ import { igrejaQueEnvia } from './pastoral/igreja-que-envia';
 import { missoesTransculturais } from './pastoral/missoes-transculturais';
 import { antropologiaMissionaria } from './pastoral/antropologia-missionaria';
 import { estrategiaMissionaria } from './pastoral/estrategia-missionaria';
+import { donsMinisterios } from './pastoral/dons-ministerios';
 import { acaoSocial } from './pastoral/acao-social';
 import { missoesUrbanas } from './pastoral/missoes-urbanas';
 import { capelania } from './pastoral/capelania';
@@ -173,6 +174,7 @@ export const verbetes: Verbete[] = [
   missoesTransculturais,
   antropologiaMissionaria,
   estrategiaMissionaria,
+  donsMinisterios,
   acaoSocial,
   missoesUrbanas,
   capelania,
