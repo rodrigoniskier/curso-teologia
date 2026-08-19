@@ -1579,6 +1579,32 @@ export const biblioteca: ObraLivre[] = [
     nota: 'Os artigos 2º e 3º definem empregador e empregado pelos elementos de fato — pessoalidade, habitualidade, subordinação e onerosidade. É por eles, e não pelo nome que a igreja dá à relação, que se decide se o zelador, a secretária ou o músico têm vínculo de emprego.',
     base: 'domínio público',
   },
+  {
+    id: 'fairbairn-tipologia',
+    autor: 'Patrick Fairbairn',
+    ano: '1845',
+    titulo: 'The Typology of Scripture',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/typologyofscript00fairuoft',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TE13', 'TE12', 'TE16', 'TE14', 'TE17'],
+    nota: 'O tratamento reformado clássico de como instituições e figuras do Antigo Testamento se relacionam com Cristo, com regras explícitas contra o excesso alegórico. É a obra que impede que a leitura tipológica — necessária para ler lei e narrativa — vire licença para encontrar Cristo em cada detalhe do texto.',
+    base: 'domínio público',
+  },
+  {
+    id: 'bullinger-figuras',
+    autor: 'Ethelbert William Bullinger',
+    ano: '1898',
+    titulo: 'Figures of Speech Used in the Bible',
+    publicacao: 'Internet Archive',
+    url: 'https://archive.org/details/figuresofspeechu00bull',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TE13', 'TE12', 'TE18', 'TE55'],
+    nota: 'Catálogo exaustivo das figuras de linguagem da Escritura, com centenas de exemplos classificados e explicados — a referência para o problema prático de saber quando o texto fala em sentido figurado. Bullinger é dispensacionalista, o que não afeta esta obra em particular, que é de retórica e não de escatologia.',
+    base: 'domínio público',
+  },
 ];
 
 export const porDisciplina = (codigo: string) =>
