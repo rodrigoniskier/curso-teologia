@@ -207,7 +207,7 @@ export const governoPresbiteriano: Verbete = {
     {
       id: 'monergismo-acervo',
       autor: 'Vários',
-      titulo: 'Acervo de textos em português sobre eclesiologia e governo reformado',
+      titulo: 'Monergismo — acervo de teologia reformada em português',
       publicacao: 'Monergismo',
       url: 'https://www.monergismo.com/',
       idioma: 'pt',
