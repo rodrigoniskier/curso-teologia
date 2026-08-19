@@ -38,6 +38,7 @@ import { evangelhos } from './exegetica/evangelhos';
 import { atos15 } from './exegetica/atos-15';
 import { filipenses2 } from './exegetica/filipenses-2';
 import { generosLiterarios } from './exegetica/generos-literarios';
+import { culturaSemiticaHelenica } from './exegetica/cultura-semitica-helenica';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
 import { igrejaModerna } from './historica/igreja-moderna';
@@ -137,6 +138,7 @@ export const verbetes: Verbete[] = [
   atos15,
   filipenses2,
   generosLiterarios,
+  culturaSemiticaHelenica,
   igrejaAntiga,
   igrejaImperial,
   reforma,
