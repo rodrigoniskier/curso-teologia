@@ -35,6 +35,7 @@ import { geografiaArqueologia } from './exegetica/geografia-arqueologia';
 import { salmos } from './exegetica/salmos';
 import { profetas } from './exegetica/profetas';
 import { evangelhos } from './exegetica/evangelhos';
+import { atos15 } from './exegetica/atos-15';
 import { generosLiterarios } from './exegetica/generos-literarios';
 import { igrejaAntiga } from './historica/igreja-antiga';
 import { igrejaImperial } from './historica/igreja-imperial';
@@ -126,6 +127,7 @@ export const verbetes: Verbete[] = [
   salmos,
   profetas,
   evangelhos,
+  atos15,
   generosLiterarios,
   igrejaAntiga,
   igrejaImperial,
