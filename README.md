@@ -18,7 +18,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.339** (1.995 tópicos) |
 | Referências bibliográficas oficiais | **1.237** |
-| Verbetes redigidos | 90 |
+| Verbetes redigidos | 91 |
 | Obras livres mapeadas | 135 |
 
 Os cinco departamentos, conforme o documento oficial:
@@ -68,11 +68,14 @@ primário aberto — Calvino, Hodge, Turretin e Bavinck estão todos livres.
 
 ## Auditorias automáticas
 
-Há duas garantias diferentes e complementares. A auditoria de integridade
-confere as relações internas; a auditoria de links verifica a rede:
+Há três garantias complementares. A auditoria de integridade confere relações
+internas e cobertura do acervo; a auditoria semântica impede que um link válido
+prometa no título conteúdo que a URL não entrega; a auditoria de links verifica
+a disponibilidade da rede:
 
 ```bash
 npm run validar             # ids, índice, verMais, fonteId e acervo
+npm run auditar:metadados   # coerência semântica entre título e URL de acervos
 npm run auditar             # falha se houver link quebrado
 npm run auditar:relatorio   # grava relatorio-auditoria.md
 ```
@@ -86,10 +89,10 @@ qualquer verbete que aponte para ele. Assim a reciprocidade não depende de
 copiar manualmente a mesma relação para dois arquivos.
 
 O workflow [`.github/workflows/auditoria.yml`](.github/workflows/auditoria.yml)
-roda a validação estrutural, a auditoria de fontes e a checagem de tipos em todo
-PR e push para `main`, e semanalmente às segundas para pegar link que morreu
-desde a última checagem. O relatório de rede fica no resumo do job e como
-artefato.
+roda a validação estrutural, a auditoria semântica, a auditoria de fontes e a
+checagem de tipos em todo PR e push para `main`, e semanalmente às segundas para
+pegar link que morreu desde a última checagem. O relatório de rede fica no
+resumo do job e como artefato.
 
 ### Domínios restritos
 

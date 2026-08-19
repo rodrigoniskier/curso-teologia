@@ -46,6 +46,7 @@ import { historiaIPB } from './historica/ipb';
 import { pensamentoCristao } from './historica/pensamento-cristao';
 import { pensamentoCristao2 } from './historica/pensamento-cristao-2';
 import { reforma } from './historica/reforma';
+import { historiaPraticaMissoes } from './historica/historia-pratica-missoes';
 import { homiletica } from './pastoral/homiletica';
 import { governoPresbiteriano } from './pastoral/governo-presbiteriano';
 import { vocacao } from './pastoral/vocacao';
@@ -142,6 +143,7 @@ export const verbetes: Verbete[] = [
   historiaIPB,
   pensamentoCristao,
   pensamentoCristao2,
+  historiaPraticaMissoes,
   homiletica,
   governoPresbiteriano,
   vocacao,
