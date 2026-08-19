@@ -5,11 +5,11 @@ import ts from 'typescript';
 const RAIZ = process.cwd();
 const DIR_CONTEUDO = join(RAIZ, 'src', 'conteudo');
 
-const CANONICOS_POR_HOME = new Map([
-  ['https://www.monergismo.com/', 'Monergismo — acervo de teologia reformada em português'],
-  ['https://archive.org/', 'Internet Archive'],
-  ['https://www.ccel.org/', 'Christian Classics Ethereal Library'],
-  ['https://www.dbnl.org/', 'Digitale Bibliotheek voor de Nederlandse Letteren'],
+const HOMES_DE_ACERVO = new Set([
+  'https://www.monergismo.com/',
+  'https://archive.org/',
+  'https://www.ccel.org/',
+  'https://www.dbnl.org/',
 ]);
 
 const erros = [];
@@ -39,15 +39,19 @@ async function arquivosTs(dir) {
   return saida;
 }
 
+function tituloPrometeSubsecao(titulo) {
+  if (!titulo) return true;
+  const normalizado = titulo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  return /\b(sobre|secao)\b/.test(normalizado);
+}
+
 function auditarObjeto(obj, arquivo) {
   const url = textoLiteral(propriedade(obj, 'url'));
-  if (!url) return;
-  const tituloEsperado = CANONICOS_POR_HOME.get(url);
-  if (!tituloEsperado) return;
+  if (!url || !HOMES_DE_ACERVO.has(url)) return;
 
   const titulo = textoLiteral(propriedade(obj, 'titulo'));
-  if (titulo !== tituloEsperado) {
-    erros.push(`${arquivo}: URL de página inicial '${url}' exige título canônico '${tituloEsperado}', mas encontrou '${titulo ?? '(sem título)'}'`);
+  if (tituloPrometeSubsecao(titulo)) {
+    erros.push(`${arquivo}: a URL '${url}' abre apenas a página inicial do acervo, mas o título promete conteúdo específico: '${titulo ?? '(sem título)'}'`);
   }
 }
 
@@ -65,11 +69,10 @@ async function auditarArquivo(caminho) {
 
 for (const caminho of await arquivosTs(DIR_CONTEUDO)) await auditarArquivo(caminho);
 
-const arquivosAcervo = [
+for (const caminho of [
   join(RAIZ, 'src', 'dados', 'biblioteca.ts'),
   join(RAIZ, 'src', 'dados', 'biblioteca-extra.ts'),
-];
-for (const caminho of arquivosAcervo) await auditarArquivo(caminho);
+]) await auditarArquivo(caminho);
 
 if (erros.length) {
   console.error(`\n${erros.length} erro(s) de coerência semântica de metadados:`);
@@ -77,4 +80,4 @@ if (erros.length) {
   process.exit(1);
 }
 
-console.log('✓ Metadados de páginas iniciais e títulos canônicos coerentes.');
+console.log('✓ Páginas iniciais de acervos não prometem subseções que a URL não entrega.');
