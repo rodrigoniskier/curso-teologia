@@ -33,6 +33,7 @@ import { metodologiaExegetica } from './exegetica/metodologia-exegetica';
 import { genesis22 } from './exegetica/genesis-22';
 import { geografiaArqueologia } from './exegetica/geografia-arqueologia';
 import { salmos } from './exegetica/salmos';
+import { profetas } from './exegetica/profetas';
 import { evangelhos } from './exegetica/evangelhos';
 import { generosLiterarios } from './exegetica/generos-literarios';
 import { igrejaAntiga } from './historica/igreja-antiga';
@@ -119,6 +120,7 @@ export const verbetes: Verbete[] = [
   genesis22,
   geografiaArqueologia,
   salmos,
+  profetas,
   evangelhos,
   generosLiterarios,
   igrejaAntiga,
