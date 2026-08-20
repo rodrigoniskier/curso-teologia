@@ -82,6 +82,7 @@ import { disciplinaEclesiastica } from './pastoral/disciplina-eclesiastica';
 import { gestaoEclesiastica } from './pastoral/gestao-eclesiastica';
 import { acampamentosRetiros } from './pastoral/acampamentos-retiros';
 import { tecnicasComunicacao } from './pastoral/tecnicas-comunicacao';
+import { comunicacaoSocial } from './pastoral/comunicacao-social';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
@@ -190,6 +191,7 @@ export const verbetes: Verbete[] = [
   gestaoEclesiastica,
   acampamentosRetiros,
   tecnicasComunicacao,
+  comunicacaoSocial,
   filosofia,
   historiaFilosofia,
   historiaFilosofiaModerna,
