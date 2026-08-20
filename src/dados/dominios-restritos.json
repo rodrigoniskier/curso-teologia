@@ -16,5 +16,11 @@
     "motivo": "O Project Gutenberg apresentou HTTP 503/504 de forma repetida e variável para diferentes ebooks nos runners do GitHub Actions, inclusive alternando quais itens falham entre execuções. As mesmas páginas foram abertas manualmente em 20/08/2026 e retornaram normalmente com título, metadados e downloads. O padrão é de limitação/instabilidade do acesso automatizado em nuvem, não de itens removidos.",
     "confirmadoEm": "2026-08-20",
     "comoVerificar": "Abrir a URL do ebook em navegador comum e confirmar título, autor, número do ebook e opções de leitura/download. Reavaliar esta exceção periodicamente; se os runners voltarem a responder de forma estável, remova o domínio da lista."
+  },
+  {
+    "dominio": "scielo.br",
+    "motivo": "O SciELO devolveu HTTP 403 para a mesma página de artigo em duas execuções independentes do GitHub Actions, em runners e regiões Azure diferentes, embora o artigo continue publicamente acessível e indexado no próprio SciELO. O padrão é de bloqueio ao acesso automatizado em nuvem, não de item removido.",
+    "confirmadoEm": "2026-08-20",
+    "comoVerificar": "Abrir https://www.scielo.br/j/ha/a/g35m5TSrGjDp9HxYGjBqNGg em navegador comum e confirmar o artigo de Reginaldo Prandi, 'Referências sociais das religiões afro-brasileiras: sincretismo, branqueamento, africanização'. Reavaliar periodicamente e remover a exceção se a CI voltar a receber HTTP 200 de forma estável."
   }
 ]
