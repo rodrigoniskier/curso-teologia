@@ -11,7 +11,8 @@
     "auditar": "node scripts/auditar-links.mjs",
     "auditar:relatorio": "node scripts/auditar-links.mjs --relatorio",
     "auditar:metadados": "node scripts/auditar-metadados.mjs",
-    "validar": "node scripts/validar-integridade.mjs",
+    "validar": "node scripts/validar-integridade.mjs && node scripts/validar-curriculo.mjs",
+    "validar:curriculo": "node scripts/validar-curriculo.mjs",
     "estado": "node scripts/estado.mjs",
     "conferir": "node scripts/estado.mjs --conferir"
   },
