@@ -54,7 +54,13 @@ async function arquivosDeConteudo(dir) {
   return saida;
 }
 
-const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
+const ementasBase = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
+const correcoesEmenta = JSON.parse(
+  await readFile(join(RAIZ, 'src/dados/ementas-correcoes.json'), 'utf8'),
+);
+const correcoesPorCodigo = new Map(correcoesEmenta.map((d) => [d.codigo, d]));
+const ementas = ementasBase.map((d) => ({ ...d, ...(correcoesPorCodigo.get(d.codigo) ?? {}) }));
+
 const depPorCodigo = new Map(ementas.map((d) => [d.codigo, d.departamento]));
 const depPorSigla = new Map(ementas.map((d) => [d.sigla, d.departamento]));
 const discPorDep = new Map();
@@ -134,7 +140,13 @@ console.log(
     [...idiomas.entries()].sort((a, b) => b[1] - a[1]).map(([i, n]) => `${i} ${n}`).join(' · '),
 );
 console.log('domínios não auditáveis: ' + (restritos.map((r) => r.dominio).join(', ') || 'nenhum'));
-console.log(`\npróximo alvo: ${linhas[0].dep} (menor razão)\n`);
+
+const descobertas = ementas.filter((d) => !SEM_VERBETE.has(d.codigo) && !disciplinasCobertas.has(d.codigo));
+if (descobertas.length === 0) {
+  console.log('\npróximo alvo: cobertura curricular aplicável completa; priorizar revisão, aprofundamento e lacunas internas.\n');
+} else {
+  console.log(`\npróximo alvo: ${linhas[0].dep} (menor razão)\n`);
+}
 
 if (!process.argv.includes('--conferir')) process.exit(0);
 

@@ -1,0 +1,29 @@
+[
+  {
+    "codigo": "CG13",
+    "preRequisito": "Monografia 1",
+    "ementa": "Atividade prática de conclusão da execução do projeto da monografia, sob acompanhamento do orientador. O discente deverá entregar o trabalho monográfico para apresentação pública e avaliação da banca examinadora.",
+    "unidades": [
+      {
+        "numero": 1,
+        "titulo": "Projeto de Pesquisa: pesquisa prévia; determinação do tema e seu enquadramento na CFW.",
+        "topicos": []
+      },
+      {
+        "numero": 2,
+        "titulo": "Pesquisa bibliográfica: técnicas de pesquisa; anotações e fichamentos; métodos de estudo. Construção dos esboços da monografia (preliminares, definitivos) e atividades práticas de pesquisa na biblioteca.",
+        "topicos": []
+      },
+      {
+        "numero": 3,
+        "titulo": "Estrutura da monografia: regras gerais da ABNT e adaptações ao padrão da IPB; organização e distribuição da matéria em seções e partes; citações diretas e indiretas, referências bibliográficas (citações, referência e plágio).",
+        "topicos": []
+      },
+      {
+        "numero": 4,
+        "titulo": "Redação do texto: orientações gerais sobre estilo, clareza, adequação gramatical: linguagem impessoal.",
+        "topicos": []
+      }
+    ]
+  }
+]

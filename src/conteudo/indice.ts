@@ -1,4 +1,5 @@
 import ementasJson from '../dados/ementas.json';
+import ementasCorrecoesJson from '../dados/ementas-correcoes.json';
 import type { Disciplina, Verbete } from '../tipos';
 
 import { prolegomenos } from './sistematica/prolegomenos';
@@ -97,6 +98,7 @@ import { realidadesRegionais } from './geral/realidades-regionais';
 import { oratoria } from './geral/oratoria';
 import { metodologia } from './geral/metodologia';
 import { monografia1 } from './geral/monografia-1';
+import { monografia2 } from './geral/monografia-2';
 import { musica } from './geral/musica';
 import { antropologia } from './geral/antropologia';
 import { psicologia } from './geral/psicologia';
@@ -106,8 +108,20 @@ import { sociologia } from './geral/sociologia';
 import { linguisticaAplicada } from './geral/linguistica-aplicada';
 import { projetoLinguisticoMissiologico } from './geral/projeto-linguistico-missiologico';
 
-/** Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018). */
-export const disciplinas = ementasJson as Disciplina[];
+/**
+ * Currículo oficial da JET/IPB, extraído do Conteúdo Programático (2ª ed., 2018).
+ *
+ * O PDF põe CG12 e CG13 na mesma página e o parser histórico recortou CG13 no
+ * lugar errado. As correções pequenas e auditáveis vivem em arquivo separado
+ * até que o JSON-base seja regenerado pelo pipeline com o recorte corrigido.
+ */
+const correcoesEmenta = new Map<string, Partial<Disciplina>>(
+  (ementasCorrecoesJson as Array<Partial<Disciplina> & { codigo: string }>).map((d) => [d.codigo, d]),
+);
+export const disciplinas = (ementasJson as Disciplina[]).map((d) => ({
+  ...d,
+  ...(correcoesEmenta.get(d.codigo) ?? {}),
+}));
 
 /** Verbetes já redigidos. Cresce a cada ciclo de trabalho. */
 export const verbetes: Verbete[] = [
@@ -207,6 +221,7 @@ export const verbetes: Verbete[] = [
   oratoria,
   metodologia,
   monografia1,
+  monografia2,
   musica,
   antropologia,
   psicologia,

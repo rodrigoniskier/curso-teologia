@@ -16,10 +16,10 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | | |
 | --- | --- |
 | Disciplinas mapeadas | **121** (5 departamentos) |
-| Unidades do programa | **1.339** (1.995 tópicos) |
+| Unidades do programa | **1.342** (1.995 tópicos) |
 | Referências bibliográficas oficiais | **1.237** |
-| Verbetes redigidos | 104 |
-| Obras livres mapeadas | 147 |
+| Verbetes redigidos | 105 |
+| Obras livres mapeadas | 148 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -83,6 +83,8 @@ npm run auditar:relatorio   # grava relatorio-auditoria.md
 `npm run validar` reprova, entre outras coisas, verbete não registrado no
 índice, id duplicado, destino de `verMais` inexistente, auto-remissão, fonte de
 citação sem `fonteId` resolvível e obra usada em verbete sem entrada no acervo.
+Também valida o arquivo de correções curriculares: código inexistente, código
+repetido ou números de unidade duplicados interrompem a integração.
 As remissões são editoriais num sentido e **navegáveis nos dois**: a interface
 mostra as escolhas do verbete e gera automaticamente o caminho de volta para
 qualquer verbete que aponte para ele. Assim a reciprocidade não depende de
@@ -135,6 +137,18 @@ palavras como *Filosofia*, *Definição*, *Confissão* e *influência*. As 241
 palavras afetadas foram inspecionadas e são resolvidas deterministicamente
 por `ligaduras.py`.
 
+Há ainda uma classe diferente de falha: **duas disciplinas na mesma página**.
+Em CG12/CG13, o código aparece no fim do cabeçalho (`MONOGRAFIA 2 CG13`) em vez
+de uma linha isolada; o recortador antigo não reconhecia esse formato e
+misturava os dois blocos. O parser agora reconhece ambos os formatos. Como o
+JSON-base não é regenerado sem o `texto.txt` produzido na etapa anterior, a
+correção factual já conferida no PDF fica temporariamente em
+[`src/dados/ementas-correcoes.json`](src/dados/ementas-correcoes.json) e é
+aplicada pela interface, pelo relatório de estado e pelo validador. O exame do
+PDF também mostrou que **CG12 realmente não possui unidades programáticas**;
+a ausência delas não é perda de extração. A perda conhecida que permanece para
+revisão é CG10, cuja página ainda precisa de reconstrução específica.
+
 ## Desenvolvimento
 
 ```bash
@@ -174,6 +188,6 @@ conjunto de `Unidade N` presentes nas páginas do PDF com o que foi extraído.
 Foi assim que se descobriu que o flag de bibliografia era de mão única e
 descartava tudo o que viesse depois de `BIBLIOGRAFIA` na ordem de leitura —
 **140 unidades perdidas em 18 disciplinas**, incluindo justificação e
-santificação em TS04. Restam perdas conhecidas em CG10, CG12 e CG13, que
-dividem páginas entre si; por isso divergência de `unidade` é tratada pela
-validação como aviso para conferência contra o PDF, não como erro automático.
+santificação em TS04. A correção do recorte de páginas compartilhadas resolveu
+a reconstrução de CG13 e retirou CG12 da lista de falsas perdas; CG10 continua
+marcada para reconstrução contra o PDF antes de qualquer alteração automática.
