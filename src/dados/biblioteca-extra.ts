@@ -75,4 +75,10 @@ export const bibliotecaExtra: ObraLivre[] = [
   {
     id: 'worldbank-internet-2026', autor: 'World Bank', ano: '2026', titulo: 'The Unfinished Digital Revolution: Expanding Internet Access', publicacao: 'Atlas of Global Development', url: 'https://data360.worldbank.org/en/atlas/internet-access/', idioma: 'en', acesso: 'livre', disciplinas: ['TH52'], nota: 'Síntese contemporânea do Banco Mundial sobre expansão e desigualdade de conectividade, usada para avaliar possibilidades e limites da presença missionária mediada por plataformas.', base: 'edição autorizada',
   },
+  {
+    id: 'cal-aramaic-daniel7', autor: 'Comprehensive Aramaic Lexicon Project', ano: '2026', titulo: 'Comprehensive Aramaic Lexicon — Biblical Aramaic, Daniel 7', publicacao: 'Hebrew Union College', url: 'https://cal.huc.edu/showachapter.php?fullcoord=32000728', idioma: 'en', acesso: 'livre', disciplinas: ['TE53'], nota: 'Texto aramaico de Daniel 7 tokenizado e ligado às ferramentas lexicais do CAL. O projeto do Hebrew Union College reúne milhões de formas aramaicas historicamente analisáveis e declara explicitamente que a base continua em desenvolvimento; citações acadêmicas devem registrar a data de consulta.', base: 'edição autorizada',
+  },
+  {
+    id: 'calvino-daniel2', autor: 'João Calvino', ano: '1561', titulo: 'Commentary on Daniel — Volume 2', publicacao: 'Christian Classics Ethereal Library', url: 'https://ccel.org/ccel/calvin/calcom25/calcom25.toc.html', idioma: 'en', acesso: 'livre', disciplinas: ['TE53', 'TE54', 'TE55'], nota: 'Comentário reformado clássico em domínio público. A exposição de Daniel 7.13–14 interpreta a figura humana cristologicamente e sua aproximação ao Ancião de Dias em chave de exaltação e governo, oferecendo um contraponto histórico reformado à leitura moderna.', base: 'domínio público',
+  },
 ];
