@@ -25,6 +25,7 @@ import { etica } from './sistematica/etica';
 import { teologiaDoCulto } from './sistematica/teologia-do-culto';
 import { apologetica } from './sistematica/apologetica';
 import { catolicismoAfrobrasileiro } from './sistematica/catolicismo-afrobrasileiro';
+import { credosConfissoes } from './sistematica/credos-confissoes';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { canonNT } from './exegetica/canon-nt';
@@ -150,6 +151,7 @@ export const verbetes: Verbete[] = [
   teologiaDoCulto,
   apologetica,
   catolicismoAfrobrasileiro,
+  credosConfissoes,
   hermeneutica,
   canonAT,
   canonNT,
