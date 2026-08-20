@@ -18,8 +18,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.375** (2.032 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 107 |
-| Obras livres mapeadas | 152 |
+| Verbetes redigidos | 108 |
+| Obras livres mapeadas | 155 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -32,11 +32,11 @@ Os cinco departamentos, conforme o documento oficial:
 | `CG` | Cultura Geral | 30 |
 
 A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
-conta **disciplinas distintas**: hoje há conteúdo em **98 das 101 disciplinas
-em que um verbete se aplica**. Três lacunas permanecem, todas em Teologia
-Sistemática: TS53, TS54 e TS55. A diferença entre 107 verbetes e 98
-disciplinas cobertas existe porque algumas disciplinas sistemáticas possuem
-mais de um verbete.
+conta **disciplinas distintas**: hoje há conteúdo em **99 das 101 disciplinas
+em que um verbete se aplica**. Duas lacunas permanecem, ambas em Teologia
+Sistemática: TS54 e TS55. A diferença entre 108 verbetes e 99 disciplinas
+cobertas existe porque algumas disciplinas sistemáticas possuem mais de um
+verbete.
 
 ## Como o conteúdo é escrito
 
@@ -61,8 +61,9 @@ bibliografia cara para se formar.
 
 ## Biblioteca
 
-O acervo está nos arquivos [`src/dados/biblioteca.ts`](src/dados/biblioteca.ts)
-e [`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts), reunidos por
+O acervo está nos arquivos [`src/dados/biblioteca.ts`](src/dados/biblioteca.ts),
+[`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts) e
+[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts), reunidos por
 [`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele mapeia o que
 dá para ler legalmente sem pagar nada, cruzado com os códigos de disciplina —
 cada página de disciplina mostra a leitura gratuita correspondente.
