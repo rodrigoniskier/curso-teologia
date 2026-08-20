@@ -28,6 +28,7 @@ import { canonNT } from './exegetica/canon-nt';
 import { teologiaBiblica } from './exegetica/teologia-biblica';
 import { teologiaBiblicaNT } from './exegetica/teologia-biblica-nt';
 import { manuscritologia } from './exegetica/manuscritologia';
+import { daniel7Aramaico } from './exegetica/daniel-7-aramaico';
 import { apocaliptica } from './exegetica/apocaliptica';
 import { apocalipse5 } from './exegetica/apocalipse-5';
 import { metodologiaExegetica } from './exegetica/metodologia-exegetica';
@@ -137,6 +138,7 @@ export const verbetes: Verbete[] = [
   teologiaBiblica,
   teologiaBiblicaNT,
   manuscritologia,
+  daniel7Aramaico,
   apocaliptica,
   apocalipse5,
   metodologiaExegetica,
