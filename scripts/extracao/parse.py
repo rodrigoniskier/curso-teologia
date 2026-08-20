@@ -51,17 +51,33 @@ for e in entries:
         ls += linhas(p)
     registros.append((e, ls))
 
-# páginas compartilhadas (ex.: TP15..TP19 na mesma página): corta pelo código
+# páginas compartilhadas (ex.: TP15..TP19 e CG12/CG13): corta pelo código.
+# O PDF usa dois formatos de marcador: às vezes o código fica sozinho na linha;
+# em outras, sobretudo CG12/CG13, aparece no fim do cabeçalho em caixa alta
+# ("MONOGRAFIA 2 CG13"). O parser antigo reconhecia apenas o primeiro caso e
+# por isso misturava pré-requisito, ementa e unidades das duas monografias.
+CODIGO_SOZINHO = re.compile(r'^\(?((?:CG|TE|TH|TP|TS)\d{2})\)?$')
+CODIGO_EM_CABECALHO = re.compile(
+    r'^[A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9][A-ZÁÉÍÓÚÂÊÔÃÕÇ0-9 .,/()–—-]{2,}\s+((?:CG|TE|TH|TP|TS)\d{2})$'
+)
+
+def codigo_de_marca(l):
+    m = CODIGO_SOZINHO.fullmatch(l) or CODIGO_EM_CABECALHO.fullmatch(l)
+    return m.group(1) if m else None
+
+
 def recortar(codigo, ls, vizinhos):
     marcas = {}
     for i, l in enumerate(ls):
-        m = re.fullmatch(r'\(?((?:CG|TE|TH|TP|TS)\d{2})\)?', l)
-        if m and m.group(1) in vizinhos:
-            marcas.setdefault(m.group(1), i)
+        c = codigo_de_marca(l)
+        if c and c in vizinhos:
+            marcas.setdefault(c, i)
     if codigo not in marcas or len(marcas) < 2:
         return ls
     ordem = sorted(marcas.items(), key=lambda kv: kv[1])
     pos = [i for i, (c, _) in enumerate(ordem) if c == codigo][0]
+    # A ordem de leitura do PDF pode colocar Pré-requisito e Ementa até três
+    # linhas antes do cabeçalho; o recuo preserva esses campos no bloco correto.
     ini = 0 if pos == 0 else ordem[pos][1] - 3
     fim = ordem[pos + 1][1] - 3 if pos + 1 < len(ordem) else len(ls)
     return ls[max(0, ini):fim]
