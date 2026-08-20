@@ -80,6 +80,8 @@ import { capelania } from './pastoral/capelania';
 import { denominacoesSeitas } from './pastoral/denominacoes-seitas';
 import { disciplinaEclesiastica } from './pastoral/disciplina-eclesiastica';
 import { gestaoEclesiastica } from './pastoral/gestao-eclesiastica';
+import { acampamentosRetiros } from './pastoral/acampamentos-retiros';
+import { tecnicasComunicacao } from './pastoral/tecnicas-comunicacao';
 import { filosofia } from './geral/filosofia';
 import { historiaFilosofia } from './geral/historia-filosofia';
 import { historiaFilosofiaModerna } from './geral/historia-filosofia-moderna';
@@ -186,6 +188,8 @@ export const verbetes: Verbete[] = [
   denominacoesSeitas,
   disciplinaEclesiastica,
   gestaoEclesiastica,
+  acampamentosRetiros,
+  tecnicasComunicacao,
   filosofia,
   historiaFilosofia,
   historiaFilosofiaModerna,
