@@ -1,5 +1,62 @@
 [
   {
+    "codigo": "CG10",
+    "unidades": [
+      {
+        "numero": 1,
+        "titulo": "Significado e história da Sociologia",
+        "topicos": [
+          "Comparação com outras ciências sociais"
+        ]
+      },
+      {
+        "numero": 2,
+        "titulo": "Sociedade e cultura: as instituições sociais",
+        "topicos": []
+      },
+      {
+        "numero": 3,
+        "titulo": "As normas sociais e a sociedade",
+        "topicos": []
+      },
+      {
+        "numero": 4,
+        "titulo": "A estratificação social",
+        "topicos": []
+      },
+      {
+        "numero": 5,
+        "titulo": "Status e papel na sociedade",
+        "topicos": []
+      },
+      {
+        "numero": 6,
+        "titulo": "Os processos sociais básicos",
+        "topicos": []
+      },
+      {
+        "numero": 7,
+        "titulo": "Os grupos e agregados sociais",
+        "topicos": []
+      },
+      {
+        "numero": 8,
+        "titulo": "Desenvolvimento e mudança social",
+        "topicos": []
+      },
+      {
+        "numero": 9,
+        "titulo": "A igreja e os problemas sociais",
+        "topicos": [
+          "Pobreza",
+          "Preconceito e educação",
+          "Corrupção",
+          "Política"
+        ]
+      }
+    ]
+  },
+  {
     "codigo": "CG13",
     "preRequisito": "Monografia 1",
     "ementa": "Atividade prática de conclusão da execução do projeto da monografia, sob acompanhamento do orientador. O discente deverá entregar o trabalho monográfico para apresentação pública e avaliação da banca examinadora.",
