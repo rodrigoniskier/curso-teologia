@@ -72,6 +72,7 @@ for (const caminho of await arquivosTs(DIR_CONTEUDO)) await auditarArquivo(camin
 for (const caminho of [
   join(RAIZ, 'src', 'dados', 'biblioteca.ts'),
   join(RAIZ, 'src', 'dados', 'biblioteca-extra.ts'),
+  join(RAIZ, 'src', 'dados', 'biblioteca-final.ts'),
 ]) await auditarArquivo(caminho);
 
 if (erros.length) {
