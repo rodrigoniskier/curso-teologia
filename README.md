@@ -16,10 +16,10 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | | |
 | --- | --- |
 | Disciplinas mapeadas | **121** (5 departamentos) |
-| Unidades do programa | **1.342** (1.995 tópicos) |
+| Unidades do programa | **1.349** (1.996 tópicos) |
 | Referências bibliográficas oficiais | **1.237** |
 | Verbetes redigidos | 105 |
-| Obras livres mapeadas | 148 |
+| Obras livres mapeadas | 150 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -137,17 +137,18 @@ palavras como *Filosofia*, *Definição*, *Confissão* e *influência*. As 241
 palavras afetadas foram inspecionadas e são resolvidas deterministicamente
 por `ligaduras.py`.
 
-Há ainda uma classe diferente de falha: **duas disciplinas na mesma página**.
-Em CG12/CG13, o código aparece no fim do cabeçalho (`MONOGRAFIA 2 CG13`) em vez
-de uma linha isolada; o recortador antigo não reconhecia esse formato e
-misturava os dois blocos. O parser agora reconhece ambos os formatos. Como o
-JSON-base não é regenerado sem o `texto.txt` produzido na etapa anterior, a
-correção factual já conferida no PDF fica temporariamente em
-[`src/dados/ementas-correcoes.json`](src/dados/ementas-correcoes.json) e é
-aplicada pela interface, pelo relatório de estado e pelo validador. O exame do
-PDF também mostrou que **CG12 realmente não possui unidades programáticas**;
-a ausência delas não é perda de extração. A perda conhecida que permanece para
-revisão é CG10, cuja página ainda precisa de reconstrução específica.
+Há ainda uma classe diferente de falha: **duas disciplinas ou duas colunas na
+mesma página**. Em CG12/CG13, o código aparece no fim do cabeçalho
+(`MONOGRAFIA 2 CG13`) em vez de uma linha isolada; o recortador antigo não
+reconhecia esse formato e misturava os dois blocos. Em CG10, a bibliografia na
+coluna direita interrompia visualmente a sequência das unidades da coluna
+esquerda, fazendo as unidades 7–9 serem absorvidas pelo título da unidade 6.
+O parser foi corrigido para o primeiro caso e as reconstruções factuais de CG10
+e CG13, conferidas diretamente no PDF, ficam temporariamente em
+[`src/dados/ementas-correcoes.json`](src/dados/ementas-correcoes.json) até que o
+JSON-base seja regenerado a partir do `texto.txt`. O exame do original também
+confirmou que **CG12 realmente não possui unidades programáticas**; sua ausência
+não era erro de extração.
 
 ## Desenvolvimento
 
@@ -188,6 +189,8 @@ conjunto de `Unidade N` presentes nas páginas do PDF com o que foi extraído.
 Foi assim que se descobriu que o flag de bibliografia era de mão única e
 descartava tudo o que viesse depois de `BIBLIOGRAFIA` na ordem de leitura —
 **140 unidades perdidas em 18 disciplinas**, incluindo justificação e
-santificação em TS04. A correção do recorte de páginas compartilhadas resolveu
-a reconstrução de CG13 e retirou CG12 da lista de falsas perdas; CG10 continua
-marcada para reconstrução contra o PDF antes de qualquer alteração automática.
+santificação em TS04. As últimas perdas conhecidas em páginas compartilhadas ou
+multicolunares — CG10 e CG13 — foram reconstruídas contra o PDF; CG12 foi
+confirmada como disciplina sem unidades programáticas no documento. O próximo
+passo de manutenção é regenerar o `ementas.json` a partir do pipeline corrigido
+e comparar o resultado com as correções auditadas antes de removê-las.
