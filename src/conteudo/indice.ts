@@ -23,6 +23,7 @@ import { cosmovisao } from './sistematica/cosmovisao';
 import { subscricaoConfessional } from './sistematica/subscricao-confessional';
 import { etica } from './sistematica/etica';
 import { teologiaDoCulto } from './sistematica/teologia-do-culto';
+import { apologetica } from './sistematica/apologetica';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { canonNT } from './exegetica/canon-nt';
@@ -146,6 +147,7 @@ export const verbetes: Verbete[] = [
   subscricaoConfessional,
   etica,
   teologiaDoCulto,
+  apologetica,
   hermeneutica,
   canonAT,
   canonNT,
