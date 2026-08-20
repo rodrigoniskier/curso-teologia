@@ -24,6 +24,7 @@ import { subscricaoConfessional } from './sistematica/subscricao-confessional';
 import { etica } from './sistematica/etica';
 import { teologiaDoCulto } from './sistematica/teologia-do-culto';
 import { apologetica } from './sistematica/apologetica';
+import { catolicismoAfrobrasileiro } from './sistematica/catolicismo-afrobrasileiro';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { canonNT } from './exegetica/canon-nt';
@@ -148,6 +149,7 @@ export const verbetes: Verbete[] = [
   etica,
   teologiaDoCulto,
   apologetica,
+  catolicismoAfrobrasileiro,
   hermeneutica,
   canonAT,
   canonNT,
