@@ -10,5 +10,11 @@
     "motivo": "A página oficial Figures at a glance responde normalmente em navegação pública, mas devolveu HTTP 403 de forma repetida aos runners do GitHub Actions em execuções independentes. Trata-se de bloqueio do acesso automatizado em nuvem, não de URL removida.",
     "confirmadoEm": "2026-08-20",
     "comoVerificar": "Abrir https://www.unhcr.org/about-unhcr/overview/figures-glance em navegador comum e confirmar o título 'Figures at a glance' e os dados do Global Trends mais recente."
+  },
+  {
+    "dominio": "gutenberg.org",
+    "motivo": "O Project Gutenberg apresentou HTTP 503/504 de forma repetida e variável para diferentes ebooks nos runners do GitHub Actions, inclusive alternando quais itens falham entre execuções. As mesmas páginas foram abertas manualmente em 20/08/2026 e retornaram normalmente com título, metadados e downloads. O padrão é de limitação/instabilidade do acesso automatizado em nuvem, não de itens removidos.",
+    "confirmadoEm": "2026-08-20",
+    "comoVerificar": "Abrir a URL do ebook em navegador comum e confirmar título, autor, número do ebook e opções de leitura/download. Reavaliar esta exceção periodicamente; se os runners voltarem a responder de forma estável, remova o domínio da lista."
   }
 ]
