@@ -219,10 +219,15 @@ for (const v of verbetes) {
 }
 for (const n of indice.lista) if (!indice.importes.has(n)) erro(`indice.ts: '${n}' está no array sem import`);
 
-const acervo = [
-  ...lerAcervo(await readFile(join(RAIZ, 'src/dados/biblioteca.ts'), 'utf8'), 'src/dados/biblioteca.ts', ['biblioteca']),
-  ...lerAcervo(await readFile(join(RAIZ, 'src/dados/biblioteca-extra.ts'), 'utf8'), 'src/dados/biblioteca-extra.ts', ['bibliotecaExtra']),
+const arquivosAcervo = [
+  ['src/dados/biblioteca.ts', ['biblioteca']],
+  ['src/dados/biblioteca-extra.ts', ['bibliotecaExtra']],
+  ['src/dados/biblioteca-final.ts', ['bibliotecaFinal']],
 ];
+const acervo = [];
+for (const [arquivo, nomes] of arquivosAcervo) {
+  acervo.push(...lerAcervo(await readFile(join(RAIZ, arquivo), 'utf8'), arquivo, nomes));
+}
 const acervoPorId = new Map();
 const acervoPorUrl = new Map();
 for (const o of acervo) {
