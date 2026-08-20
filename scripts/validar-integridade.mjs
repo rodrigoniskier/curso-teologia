@@ -137,8 +137,24 @@ function lerIndice(texto) {
   return { importes, lista };
 }
 
-const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
+const ementasBase = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
+const correcoesEmenta = JSON.parse(
+  await readFile(join(RAIZ, 'src/dados/ementas-correcoes.json'), 'utf8'),
+);
+const basePorCodigo = new Map(ementasBase.map((d) => [d.codigo, d]));
+const codigosCorrecao = new Set();
+for (const c of correcoesEmenta) {
+  if (!c.codigo) erro('ementas-correcoes.json: correção sem código');
+  else if (codigosCorrecao.has(c.codigo)) erro(`ementas-correcoes.json: código duplicado '${c.codigo}'`);
+  else codigosCorrecao.add(c.codigo);
+  if (c.codigo && !basePorCodigo.has(c.codigo)) erro(`ementas-correcoes.json: disciplina inexistente '${c.codigo}'`);
+  if (c.unidades && new Set(c.unidades.map((u) => u.numero)).size !== c.unidades.length)
+    erro(`ementas-correcoes.json: unidades duplicadas em '${c.codigo}'`);
+}
+const correcoesPorCodigo = new Map(correcoesEmenta.map((d) => [d.codigo, d]));
+const ementas = ementasBase.map((d) => ({ ...d, ...(correcoesPorCodigo.get(d.codigo) ?? {}) }));
 const ementaPorCodigo = new Map(ementas.map((d) => [d.codigo, d]));
+
 const verbetes = [];
 for (const caminho of await arquivosConteudo(DIR)) {
   const v = lerVerbete(caminho, await readFile(caminho, 'utf8'));
@@ -154,7 +170,7 @@ for (const v of verbetes) {
   const d = ementaPorCodigo.get(v.disciplina);
   if (!d) erro(`${v.rel}: disciplina inexistente '${v.disciplina}'`);
   if (d && v.unidade !== undefined && d.unidades?.length > 0 && !d.unidades.some((u) => u.numero === v.unidade)) {
-    aviso(`${v.rel}: unidade ${v.unidade} não aparece no JSON de ${v.disciplina}; conferir o PDF antes de alterar`);
+    aviso(`${v.rel}: unidade ${v.unidade} não aparece no currículo efetivo de ${v.disciplina}; conferir o PDF antes de alterar`);
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(v.atualizadoEm ?? '')) erro(`${v.rel}: atualizadoEm inválido`);
   if (v.verMais.length < 2 || v.verMais.length > 3) erro(`${v.rel}: verMais deve ter 2–3 ids; tem ${v.verMais.length}`);
@@ -234,6 +250,7 @@ for (const v of verbetes) {
 console.log(`✓ ${verbetes.length} verbetes e ${arestas} remissões autorais verificados.`);
 console.log(`✓ ${voltasAutomaticas} remissões unilaterais recebem backlink pela navegação automática.`);
 console.log(`✓ ${citacoes} citações de fonte cruzadas com ${acervo.length} entradas do acervo.`);
+console.log(`✓ ${correcoesEmenta.length} correção(ões) curricular(es) auditável(is) aplicada(s).`);
 
 if (avisos.length) {
   console.log(`\n${avisos.length} aviso(s) não bloqueantes:`);
