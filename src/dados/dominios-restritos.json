@@ -4,5 +4,11 @@
     "motivo": "A Christian Classics Ethereal Library recusa conexões vindas de faixas de IP de datacenter — os runners do GitHub Actions caem em UND_ERR_CONNECT_TIMEOUT tanto em ccel.org quanto em www.ccel.org, por IPv4 e por IPv6. O acervo responde normalmente a navegadores comuns.",
     "confirmadoEm": "2026-08-14",
     "comoVerificar": "Abrir a URL no navegador, ou consultar o índice de um buscador. Não use curl a partir de nuvem."
+  },
+  {
+    "dominio": "unhcr.org",
+    "motivo": "A página oficial Figures at a glance responde normalmente em navegação pública, mas devolveu HTTP 403 de forma repetida aos runners do GitHub Actions em execuções independentes. Trata-se de bloqueio do acesso automatizado em nuvem, não de URL removida.",
+    "confirmadoEm": "2026-08-20",
+    "comoVerificar": "Abrir https://www.unhcr.org/about-unhcr/overview/figures-glance em navegador comum e confirmar o título 'Figures at a glance' e os dados do Global Trends mais recente."
   }
 ]
