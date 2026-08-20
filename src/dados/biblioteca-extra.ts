@@ -81,4 +81,7 @@ export const bibliotecaExtra: ObraLivre[] = [
   {
     id: 'calvino-daniel2', autor: 'João Calvino', ano: '1561', titulo: 'Commentary on Daniel — Volume 2', publicacao: 'Christian Classics Ethereal Library', url: 'https://ccel.org/ccel/calvin/calcom25/calcom25.toc.html', idioma: 'en', acesso: 'livre', disciplinas: ['TE53', 'TE54', 'TE55'], nota: 'Comentário reformado clássico em domínio público. A exposição de Daniel 7.13–14 interpreta a figura humana cristologicamente e sua aproximação ao Ancião de Dias em chave de exaltação e governo, oferecendo um contraponto histórico reformado à leitura moderna.', base: 'domínio público',
   },
+  {
+    id: 'unifal-normalizacao-2025', autor: 'Universidade Federal de Alfenas', ano: '2025', titulo: 'Manual de normalização e apresentação de trabalhos acadêmicos da UNIFAL-MG: com base nas normas de documentação da ABNT', publicacao: 'Sistema de Bibliotecas da UNIFAL-MG', url: 'https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2025/05/Manual-de-normalizacao-2-edicao-revista-e-atualizada-12-05-2025.pdf', idioma: 'pt', acesso: 'livre', disciplinas: ['CG06', 'CG12', 'CG13'], nota: 'Manual institucional público, revisto e atualizado em 2025 com base nas normas ABNT vigentes. Cobre estrutura, apresentação, projeto de pesquisa, citações, notas e referências; a própria publicação autoriza reprodução de trechos com citação da fonte. Serve como guia operacional aberto, sem substituir adaptações exigidas pela IPB ou pelo seminário.', base: 'edição autorizada',
+  },
 ];
