@@ -87,10 +87,12 @@ for (const codigo of cobertasAplicaveis) {
   if (dep) cobertasPorDep.set(dep, (cobertasPorDep.get(dep) ?? 0) + 1);
 }
 
-// O acervo está dividido em um arquivo histórico e um complemento pequeno.
+// O acervo está dividido em um arquivo histórico e complementos pequenos,
+// mantidos separados para que novas entradas continuem auditáveis por diff.
 const bib = [
   await readFile(join(RAIZ, 'src/dados/biblioteca.ts'), 'utf8'),
   await readFile(join(RAIZ, 'src/dados/biblioteca-extra.ts'), 'utf8'),
+  await readFile(join(RAIZ, 'src/dados/biblioteca-final.ts'), 'utf8'),
 ].join('\n');
 const obras = [...bib.matchAll(/^ {4}id: '([^']+)',/gm)].length;
 const idiomas = new Map();
