@@ -31,6 +31,13 @@ Os cinco departamentos, conforme o documento oficial:
 | `TP` | Teologia Pastoral | 37 |
 | `CG` | Cultura Geral | 30 |
 
+A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
+conta **disciplinas distintas**: hoje há conteúdo em **96 das 101 disciplinas
+em que um verbete se aplica**. Cinco lacunas permanecem, todas em Teologia
+Sistemática: TS51, TS52, TS53, TS54 e TS55. A diferença entre 105 verbetes e 96
+disciplinas cobertas existe porque algumas disciplinas sistemáticas possuem
+mais de um verbete.
+
 ## Como o conteúdo é escrito
 
 Cada verbete segue uma **estrutura progressiva**: nunca começa pela definição.
@@ -43,7 +50,10 @@ Os blocos disponíveis estão tipados em [`src/tipos.ts`](src/tipos.ts):
 `lista`, `definicao` e `pastoral`.
 
 Toda fonte externa é um objeto tipado com autor, ano, obra, veículo, idioma,
-tipo e nível de acesso — e sempre com link para o original.
+tipo e nível de acesso — e sempre com link para o original. A tipagem distingue
+obra primária, tradução, livro, artigo, verbete, relatório, curso, documento e
+acervo; assim um censo institucional não precisa ser classificado como livro,
+nem um livro-texto como artigo apenas para satisfazer o compilador.
 
 O verbete precisa **ensinar a doutrina**, não resumi-la e remeter ao manual.
 O alvo declarado do portal é que quem estuda por ele não dependa de comprar
