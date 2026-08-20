@@ -40,7 +40,7 @@ export const bibliotecaExtra: ObraLivre[] = [
     id: 'sep-aristotle-logic', autor: 'Stanford Encyclopedia of Philosophy', ano: '—', titulo: "Aristotle's Logic", publicacao: 'Stanford University', url: 'https://plato.stanford.edu/entries/aristotle-logic/', idioma: 'en', acesso: 'livre', disciplinas: ['CG58'], nota: 'Introdução acadêmica aberta à lógica aristotélica, ao silogismo e à tradição formal que dele se desenvolveu.', base: 'edição autorizada',
   },
   {
-    id: 'sep-weber', autor: 'Stanford Encyclopedia of Philosophy', ano: '—', titulo: 'Max Weber', publicacao: 'Stanford University', url: 'https://plato.stanford.edu/entries/weber/', idioma: 'en', acesso: 'livre', disciplinas: ['CG10'], nota: 'Verbete acadêmico aberto sobre Weber, racionalização, ação social, religião e modernidade.', base: 'edição autorizada',
+    id: 'sep-weber', autor: 'Stanford Encyclopedia of Philosophy', ano: '—', titulo: 'Max Weber', publicacao: 'Stanford University', url: 'https://plato.stanford.edu/entries/weber/', idioma: 'en', acesso: 'livre', disciplinas: ['CG65'], nota: 'Verbete acadêmico aberto sobre Weber, racionalização, ação social, religião e modernidade.', base: 'edição autorizada',
   },
   {
     id: 'openstax-sociology3', autor: 'Tonja R. Conerly, Kathleen Holmes e Asha Lal Tamang', ano: '2021', titulo: 'Introduction to Sociology 3e', publicacao: 'OpenStax / Rice University', url: 'https://openstax.org/details/books/introduction-sociology-3e', idioma: 'en', acesso: 'livre', disciplinas: ['CG10'], nota: 'Livro-texto universitário aberto e revisado por pares para sociologia introdutória. Cobre sociedade, cultura, instituições, grupos, socialização, estratificação, desigualdade, mudança social, educação, política e religião. Disponível gratuitamente sob licença CC BY-NC-SA 4.0.', base: 'edição autorizada',
@@ -89,5 +89,11 @@ export const bibliotecaExtra: ObraLivre[] = [
   },
   {
     id: 'unifal-normalizacao-2025', autor: 'Universidade Federal de Alfenas', ano: '2025', titulo: 'Manual de normalização e apresentação de trabalhos acadêmicos da UNIFAL-MG: com base nas normas de documentação da ABNT', publicacao: 'Sistema de Bibliotecas da UNIFAL-MG', url: 'https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2025/05/Manual-de-normalizacao-2-edicao-revista-e-atualizada-12-05-2025.pdf', idioma: 'pt', acesso: 'livre', disciplinas: ['CG06', 'CG12', 'CG13'], nota: 'Manual institucional público, revisto e atualizado em 2025 com base nas normas ABNT vigentes. Cobre estrutura, apresentação, projeto de pesquisa, citações, notas e referências; a própria publicação autoriza reprodução de trechos com citação da fonte. Serve como guia operacional aberto, sem substituir adaptações exigidas pela IPB ou pelo seminário.', base: 'edição autorizada',
+  },
+  {
+    id: 'prandi-sincretismo-1998', autor: 'Reginaldo Prandi', ano: '1998', titulo: 'Referências sociais das religiões afro-brasileiras: sincretismo, branqueamento, africanização', publicacao: 'Horizontes Antropológicos / SciELO', url: 'https://www.scielo.br/j/ha/a/g35m5TSrGjDp9HxYGjBqNGg', idioma: 'pt', acesso: 'livre', disciplinas: ['TS52', 'CG10', 'TH05'], nota: 'Artigo acadêmico aberto que descreve a formação histórica das religiões afro-brasileiras em momentos de sincretização, formação da Umbanda e reafricanização do Candomblé. Serve para descrever tradições e processos sociais antes de qualquer avaliação teológica reformada.', base: 'edição autorizada',
+  },
+  {
+    id: 'iphan-terreiros', autor: 'Instituto do Patrimônio Histórico e Artístico Nacional', ano: '2015', titulo: 'Terreiros do Brasil: guardiões de tradição milenar', publicacao: 'IPHAN', url: 'https://portal.iphan.gov.br/noticias/detalhes/3221/terreiros-do-brasil-guardioes-de-tradicao-milenar', idioma: 'pt', acesso: 'livre', disciplinas: ['TS52', 'TH05', 'CG63'], nota: 'Fonte institucional pública sobre a história, patrimônio, terreiros, saberes e tradições de matriz africana no Brasil. É usada descritivamente para evitar reduzir Candomblé e Umbanda a estereótipos apologéticos ou confundi-los entre si.', base: 'edição autorizada',
   },
 ];
