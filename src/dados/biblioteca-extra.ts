@@ -43,6 +43,12 @@ export const bibliotecaExtra: ObraLivre[] = [
     id: 'sep-weber', autor: 'Stanford Encyclopedia of Philosophy', ano: '—', titulo: 'Max Weber', publicacao: 'Stanford University', url: 'https://plato.stanford.edu/entries/weber/', idioma: 'en', acesso: 'livre', disciplinas: ['CG10'], nota: 'Verbete acadêmico aberto sobre Weber, racionalização, ação social, religião e modernidade.', base: 'edição autorizada',
   },
   {
+    id: 'openstax-sociology3', autor: 'Tonja R. Conerly, Kathleen Holmes e Asha Lal Tamang', ano: '2021', titulo: 'Introduction to Sociology 3e', publicacao: 'OpenStax / Rice University', url: 'https://openstax.org/details/books/introduction-sociology-3e', idioma: 'en', acesso: 'livre', disciplinas: ['CG10'], nota: 'Livro-texto universitário aberto e revisado por pares para sociologia introdutória. Cobre sociedade, cultura, instituições, grupos, socialização, estratificação, desigualdade, mudança social, educação, política e religião. Disponível gratuitamente sob licença CC BY-NC-SA 4.0.', base: 'edição autorizada',
+  },
+  {
+    id: 'ibge-censo2022-religioes', autor: 'Instituto Brasileiro de Geografia e Estatística', ano: '2025', titulo: 'Censo Demográfico 2022 — Religiões: resultados preliminares da amostra', publicacao: 'IBGE / SIDRA', url: 'https://sidra.ibge.gov.br/pesquisa/censo-demografico/demografico-2022/amostra-religioes', idioma: 'pt', acesso: 'livre', disciplinas: ['CG10', 'CG63', 'TH05'], nota: 'Fonte oficial para o perfil religioso brasileiro do Censo 2022, com tabelas por religião, sexo, idade, cor ou raça, escolaridade e território. Permite substituir generalizações impressionistas por dados públicos com recorte e ano de referência explícitos.', base: 'edição autorizada',
+  },
+  {
     id: 'schaff-hcc2-pdf', autor: 'Philip Schaff', ano: '1885', titulo: 'History of the Christian Church, vol. II — PDF integral', publicacao: 'Christian Classics Ethereal Library', url: 'https://www.ccel.org/ccel/s/schaff/hcc2/cache/hcc2.pdf', idioma: 'en', acesso: 'livre', disciplinas: ['TH01'], nota: 'O segundo volume de Schaff em arquivo único, útil para leitura offline e citação; a mesma obra também está disponível em HTML.', base: 'domínio público',
   },
   {

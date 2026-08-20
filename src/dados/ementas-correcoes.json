@@ -1,29 +1,265 @@
 [
   {
+    "codigo": "CG10",
+    "unidades": [
+      { "numero": 1, "titulo": "Significado e história da Sociologia", "topicos": ["Comparação com outras ciências sociais"] },
+      { "numero": 2, "titulo": "Sociedade e cultura: as instituições sociais", "topicos": [] },
+      { "numero": 3, "titulo": "As normas sociais e a sociedade", "topicos": [] },
+      { "numero": 4, "titulo": "A estratificação social", "topicos": [] },
+      { "numero": 5, "titulo": "Status e papel na sociedade", "topicos": [] },
+      { "numero": 6, "titulo": "Os processos sociais básicos", "topicos": [] },
+      { "numero": 7, "titulo": "Os grupos e agregados sociais", "topicos": [] },
+      { "numero": 8, "titulo": "Desenvolvimento e mudança social", "topicos": [] },
+      { "numero": 9, "titulo": "A igreja e os problemas sociais", "topicos": ["Pobreza", "Preconceito e educação", "Corrupção", "Política"] }
+    ]
+  },
+  {
     "codigo": "CG13",
     "preRequisito": "Monografia 1",
     "ementa": "Atividade prática de conclusão da execução do projeto da monografia, sob acompanhamento do orientador. O discente deverá entregar o trabalho monográfico para apresentação pública e avaliação da banca examinadora.",
     "unidades": [
-      {
-        "numero": 1,
-        "titulo": "Projeto de Pesquisa: pesquisa prévia; determinação do tema e seu enquadramento na CFW.",
-        "topicos": []
-      },
-      {
-        "numero": 2,
-        "titulo": "Pesquisa bibliográfica: técnicas de pesquisa; anotações e fichamentos; métodos de estudo. Construção dos esboços da monografia (preliminares, definitivos) e atividades práticas de pesquisa na biblioteca.",
-        "topicos": []
-      },
-      {
-        "numero": 3,
-        "titulo": "Estrutura da monografia: regras gerais da ABNT e adaptações ao padrão da IPB; organização e distribuição da matéria em seções e partes; citações diretas e indiretas, referências bibliográficas (citações, referência e plágio).",
-        "topicos": []
-      },
-      {
-        "numero": 4,
-        "titulo": "Redação do texto: orientações gerais sobre estilo, clareza, adequação gramatical: linguagem impessoal.",
-        "topicos": []
-      }
+      { "numero": 1, "titulo": "Projeto de Pesquisa: pesquisa prévia; determinação do tema e seu enquadramento na CFW.", "topicos": [] },
+      { "numero": 2, "titulo": "Pesquisa bibliográfica: técnicas de pesquisa; anotações e fichamentos; métodos de estudo. Construção dos esboços da monografia (preliminares, definitivos) e atividades práticas de pesquisa na biblioteca.", "topicos": [] },
+      { "numero": 3, "titulo": "Estrutura da monografia: regras gerais da ABNT e adaptações ao padrão da IPB; organização e distribuição da matéria em seções e partes; citações diretas e indiretas, referências bibliográficas (citações, referência e plágio).", "topicos": [] },
+      { "numero": 4, "titulo": "Redação do texto: orientações gerais sobre estilo, clareza, adequação gramatical: linguagem impessoal.", "topicos": [] }
     ]
+  },
+  {
+    "codigo": "TH01",
+    "unidades": [
+      { "numero": 1, "titulo": "Questões introdutórias", "topicos": ["O que é história", "Filosofia da história", "Metodologia aplicada ao curso"] },
+      { "numero": 2, "titulo": "O contexto inicial do Cristianismo 1", "topicos": ["As contribuições dos povos romano, grego e judeu"] },
+      { "numero": 3, "titulo": "O contexto inicial do Cristianismo 2", "topicos": ["Condições religiosas, intelectuais e morais"] },
+      { "numero": 4, "titulo": "Jesus e seus discípulos 1", "topicos": ["O conceito de igreja no Antigo e no Novo Testamento", "Os discípulos como início da igreja neotestamentária"] },
+      { "numero": 5, "titulo": "Jesus e seus discípulos 2", "topicos": ["A atuação dos apóstolos", "O apóstolo Paulo", "Missões"] },
+      { "numero": 6, "titulo": "A Igreja Apostólica 1 (até o ano 100)", "topicos": ["A expansão da igreja"] },
+      { "numero": 7, "titulo": "A Igreja Apostólica 2 (até o ano 100)", "topicos": ["A vida da igreja"] },
+      { "numero": 8, "titulo": "A Igreja Apostólica 3 (até o ano 100)", "topicos": ["O culto da igreja"] },
+      { "numero": 9, "titulo": "A Igreja Apostólica 4 (até o ano 100)", "topicos": ["A fé da igreja", "O governo da igreja"] },
+      { "numero": 10, "titulo": "A Igreja Antiga 1 (100-313)", "topicos": ["O início do período patrístico", "Os pais apostólicos"] },
+      { "numero": 11, "titulo": "A Igreja Antiga 2 (100-313)", "topicos": ["Primeiras heresias", "A defesa da fé (apologistas e polemistas)"] },
+      { "numero": 12, "titulo": "A Igreja Antiga 3 (100-313)", "topicos": ["A expansão e influência da igreja"] },
+      { "numero": 13, "titulo": "A Igreja Antiga 4 (100-313)", "topicos": ["Primeiras manifestações do monasticismo (Egito e Síria)"] },
+      { "numero": 14, "titulo": "A Igreja Antiga 5 (100-313)", "topicos": ["A era dos mártires"] },
+      { "numero": 15, "titulo": "A Igreja Antiga 6 (100-313)", "topicos": ["Primeiros grandes teólogos: Irineu de Lião e Tertuliano de Cartago"] },
+      { "numero": 16, "titulo": "A Igreja Antiga 7 (100-313)", "topicos": ["Vida e culto da igreja"] },
+      { "numero": 17, "titulo": "A Igreja Antiga 8 (100-313)", "topicos": ["A escola de Alexandria", "Clemente e Orígenes"] },
+      { "numero": 18, "titulo": "A Igreja Antiga 9 (100-313)", "topicos": ["A escola de Antioquia", "Interpretação bíblica: literal e alegórica"] },
+      { "numero": 19, "titulo": "A Igreja Antiga 10 (100-313)", "topicos": ["As últimas perseguições: Décio, Valeriano, Diocleciano, Galério"] },
+      { "numero": 20, "titulo": "A Igreja Imperial 1 (313-590)", "topicos": ["Constantino e o Edito de Milão"] },
+      { "numero": 21, "titulo": "A Igreja Imperial 2 (313-590)", "topicos": ["A controvérsia ariana e o Concílio de Niceia"] },
+      { "numero": 22, "titulo": "A Igreja Imperial 3 (313-590)", "topicos": ["A oficialização do Cristianismo (Teodósio)", "O Concílio de Constantinopla"] },
+      { "numero": 23, "titulo": "A Igreja Imperial 4 (313-590)", "topicos": ["As controvérsias cristológicas", "Concílios de Éfeso e Calcedônia"] },
+      { "numero": 24, "titulo": "A Igreja Imperial 5 (313-590)", "topicos": ["Igrejas dissidentes: nestorianos, monofisitas e outros"] },
+      { "numero": 25, "titulo": "A Igreja Imperial 6 (313-590)", "topicos": ["O desenvolvimento do monasticismo", "Bento de Núrsia e sua regra"] },
+      { "numero": 26, "titulo": "A Igreja Imperial 7 (313-590)", "topicos": ["Jerônimo", "Agostinho de Hipona"] },
+      { "numero": 27, "titulo": "A Igreja Imperial 8 (313-590)", "topicos": ["Missões aos povos bárbaros"] },
+      { "numero": 28, "titulo": "A Igreja Imperial 9 (313-590)", "topicos": ["Desenvolvimento hierárquico"] },
+      { "numero": 29, "titulo": "A Igreja Imperial 10 (313-590)", "topicos": ["Desenvolvimento litúrgico e sacramental"] },
+      { "numero": 30, "titulo": "Recapitulação", "topicos": [] }
+    ],
+    "bibliografia": {
+      "basica": [
+        "ARÓSTEGUI, Julio. A Pesquisa Histórica: Teoria e Método. Bauru: Edusc, 2006.",
+        "BAUMGARTNER, Mireille. A Igreja no Ocidente: Das Origens às Reformas no Século 16. Lisboa: Edições 70, 2001.",
+        "BLOCH, Marc. Apologia da História Ou o Ofício do Historiador. Rio de Janeiro: Jorge Zahar, 2001.",
+        "CADIOU, François. Como Se Faz a História: Historiografia, Método e Pesquisa. Rio de Janeiro: Vozes, 2007.",
+        "CAVALCANTE, Ronaldo. Espiritualidade Cristã na História. São Paulo: Paulinas, 2007.",
+        "COLLINGWOOD, R. G. A Ideia de História. Queluz de Baixo: Presença, 1981.",
+        "DONINI, Ambrogio. História do Cristianismo: Das Origens a Justiniano. Lisboa: Edições 70, 1988.",
+        "FERREIRA, Franklin. Gigantes da Fé. Caxias do Sul: Vida Acadêmica, 2006.",
+        "GONZÁLEZ, Justo L. Dicionário Ilustrado dos Intérpretes da Fé. Santo André: Academia Cristã, 2005.",
+        "HALL, Christopher A. Lendo as Escrituras com os Pais da Igreja. Viçosa: Ultimato, 2007.",
+        "IRVIN, Dale T. e SUNQUIST, Scott W. História do Movimento Cristão Mundial (vol. 1). São Paulo: Paulus, 2004.",
+        "LE GOFF, Jacques. Reflexões sobre a História. Lisboa: Edições 70, 1982.",
+        "MCGRATH, Alister E. Teologia Sistemática, Histórica e Filosófica. São Paulo: Shedd, 2005.",
+        "MOMIGLIANO, Arnaldo. As Raízes Clássicas da Historiografia Moderna. São Paulo: Edusc, 2004.",
+        "SHELLEY, Bruce L. História do Cristianismo ao Alcance de Todos. São Paulo: Shedd, 2004.",
+        "VON CAMPENHAUSEN, Hans. Os Pais da Igreja. São Paulo: CPAD, 2005.",
+        "WALTON, Robert C. História da Igreja em Quadros. São Paulo: Vida, 2000."
+      ],
+      "complementar": []
+    }
+  },
+  {
+    "codigo": "TH02",
+    "preRequisito": "História da Igreja 1",
+    "ementa": "Estuda a história da Igreja Medieval (590-1517), desde o pontificado de Gregório Magno até o início da Reforma Protestante.",
+    "unidades": [
+      { "numero": 1, "titulo": "A Igreja no início da Idade Média 1 (590-800)", "topicos": ["Gregório Magno e o pleno desenvolvimento do papado"] },
+      { "numero": 2, "titulo": "A Igreja no início da Idade Média 2 (590-800)", "topicos": ["O mundo em que a igreja vivia"] },
+      { "numero": 3, "titulo": "A Igreja no início da Idade Média 3 (590-800)", "topicos": ["Missões às ilhas britânicas", "O Cristianismo celta"] },
+      { "numero": 4, "titulo": "A Igreja no início da Idade Média 4 (590-800)", "topicos": ["O surgimento do Islamismo"] },
+      { "numero": 5, "titulo": "A Igreja no início da Idade Média 5 (590-800)", "topicos": ["As invasões dos povos bárbaros", "A conversão dos francos (Clóvis)"] },
+      { "numero": 6, "titulo": "A Igreja no início da Idade Média 6 (590-800)", "topicos": ["Carlos Martel e a batalha de Tours", "Pepino e os Estados pontifícios"] },
+      { "numero": 7, "titulo": "A Igreja e o Sacro Império 1 (800-1073)", "topicos": ["Carlos Magno e o Sacro Império Romano"] },
+      { "numero": 8, "titulo": "A Igreja e o Sacro Império 2 (800-1073)", "topicos": ["O renascimento carolíngio (Alcuíno de York)"] },
+      { "numero": 9, "titulo": "A Igreja e o Sacro Império 3 (800-1073)", "topicos": ["Missão aos eslavos (Cirilo e Metódio)", "Missões na Europa ocidental"] },
+      { "numero": 10, "titulo": "A Igreja e o Sacro Império 4 (800-1073)", "topicos": ["O império germânico (Oto I)"] },
+      { "numero": 11, "titulo": "A Igreja e o Sacro Império 5 (800-1073)", "topicos": ["Controvérsias teológicas: Eucaristia, Predestinação"] },
+      { "numero": 12, "titulo": "A Igreja e o Sacro Império 6 (800-1073)", "topicos": ["A Controvérsia Iconoclástica e o II Concílio de Niceia"] },
+      { "numero": 13, "titulo": "A Igreja e o Sacro Império 7 (800-1073)", "topicos": ["A decadência do papado"] },
+      { "numero": 14, "titulo": "A Igreja e o Sacro Império 8 (800-1073)", "topicos": ["A consumação do cisma católico-ortodoxo"] },
+      { "numero": 15, "titulo": "O apogeu da Idade Média 1 (1073-1305)", "topicos": ["O mosteiro de Cluny e Gregório VII (Hildebrando)"] },
+      { "numero": 16, "titulo": "O apogeu da Idade Média 2 (1073-1305)", "topicos": ["Igreja e Estado: a controvérsia das investiduras"] },
+      { "numero": 17, "titulo": "O apogeu da Idade Média 3 (1073-1305)", "topicos": ["As Cruzadas", "A Reconquista (Península Ibérica)"] },
+      { "numero": 18, "titulo": "O apogeu da Idade Média 4 (1073-1305)", "topicos": ["Precursores do Escolasticismo: Anselmo e Abelardo"] },
+      { "numero": 19, "titulo": "O apogeu da Idade Média 5 (1073-1305)", "topicos": ["Movimentos de protesto: Cátaros e Valdenses"] },
+      { "numero": 20, "titulo": "O apogeu da Idade Média 6 (1073-1305)", "topicos": ["O auge do poder papal: Inocêncio III"] },
+      { "numero": 21, "titulo": "O apogeu da Idade Média 7 (1073-1305)", "topicos": ["O Renascimento do século 12", "Catedrais, redescoberta de Aristóteles, novas ordens religiosas, missões"] },
+      { "numero": 22, "titulo": "O apogeu da Idade Média 8 (1073-1305)", "topicos": ["O apogeu do Escolasticismo: Alberto Magno e Tomás de Aquino"] },
+      { "numero": 23, "titulo": "O apogeu da Idade Média 9 (1073-1305)", "topicos": ["O declínio do papado", "Bonifácio VIII e a bula Unam Sanctam"] },
+      { "numero": 24, "titulo": "O alvorecer da Reforma 1 (1305-1517)", "topicos": ["O Cativeiro Babilônico da Igreja", "O Grande Cisma"] },
+      { "numero": 25, "titulo": "O alvorecer da Reforma 2 (1305-1517)", "topicos": ["O conciliarismo: concílios reformistas"] },
+      { "numero": 26, "titulo": "O alvorecer da Reforma 3 (1305-1517)", "topicos": ["Os pré-reformadores: John Wycliff e Jan Hus"] },
+      { "numero": 27, "titulo": "O alvorecer da Reforma 4 (1305-1517)", "topicos": ["Tensões entre Igreja e Estado", "A queda de Constantinopla"] },
+      { "numero": 28, "titulo": "O alvorecer da Reforma 5 (1305-1517)", "topicos": ["Movimentos devocionais", "Amigos de Deus, Irmãos da Vida Comum"] },
+      { "numero": 29, "titulo": "O alvorecer da Reforma 6 (1305-1517)", "topicos": ["Renascimento e humanismo"] },
+      { "numero": 30, "titulo": "Recapitulação", "topicos": [] }
+    ],
+    "bibliografia": {
+      "basica": [
+        "BAUMGARTNER, Mireille. A Igreja no Ocidente: Das Origens às Reformas no Século 16. Lisboa: Edições 70, 2001.",
+        "DEANESLY, Margaret. História da Igreja Medieval. São Paulo: Custom, 2004.",
+        "DELUMEAU, Jean. A Civilização do Renascimento. Lisboa: Estampa, 1983.",
+        "DUBY, Georges. A Idade Média. 2 vols. São Paulo: Paz e Terra, 2002.",
+        "FERREIRA, Franklin. Gigantes da Fé. São Paulo: Vida, 2006.",
+        "GONZÁLEZ, Justo L. Dicionário Ilustrado dos Intérpretes da Fé. Santo André: Academia Cristã, 2005.",
+        "IRVIN, Dale T. e SUNQUIST, Scott W. História do Movimento Cristão Mundial: Do Cristianismo Primitivo a 1453. São Paulo: Paulus, 2004.",
+        "LE GOFF, Jacques. As Raízes Medievais da Europa. Rio de Janeiro: Vozes, 2007.",
+        "LIBERA, Alain de. Pensar a Idade Média. São Paulo: Editora 34, 1999.",
+        "MCGRATH, Alister E. Teologia Sistemática, Histórica e Filosófica. São Paulo: Shedd, 2005.",
+        "SHELLEY, Bruce L. História do Cristianismo ao Alcance de Todos. São Paulo: Shedd, 2004.",
+        "WALTON, Robert C. História da Igreja em Quadros. São Paulo: Vida, 2000."
+      ],
+      "complementar": []
+    }
+  },
+  {
+    "codigo": "TH03",
+    "preRequisito": "História da Igreja 2",
+    "ementa": "Estuda a história da Reforma Protestante (1517-1648), desde as Noventa e Cinco Teses de Lutero até o fim da Guerra dos Trinta Anos.",
+    "unidades": [
+      { "numero": 1, "titulo": "O contexto em que ocorreu a Reforma", "topicos": ["Mudanças políticas e econômicas", "Mudanças intelectuais e sociais"] },
+      { "numero": 2, "titulo": "Lutero e a Reforma na Alemanha 1", "topicos": ["A vida de Lutero"] },
+      { "numero": 3, "titulo": "Lutero e a Reforma na Alemanha 2", "topicos": ["As 95 teses", "A ação papal", "O rompimento com Roma"] },
+      { "numero": 4, "titulo": "Lutero e a Reforma na Alemanha 3", "topicos": ["O apoio do povo", "Melanchton", "A excomunhão", "O avanço da Reforma na Alemanha e na Escandinávia"] },
+      { "numero": 5, "titulo": "Zuínglio e a Reforma na Suíça", "topicos": ["A vida de Zuínglio", "Os cantões alemães e o norte da Suíça"] },
+      { "numero": 6, "titulo": "A Reforma Radical 1", "topicos": ["Os anabatistas"] },
+      { "numero": 7, "titulo": "A Reforma Radical 2", "topicos": ["Os radicais místicos", "Os radicais socinianos racionalistas"] },
+      { "numero": 8, "titulo": "Calvino e a Reforma 1", "topicos": ["A vida de Calvino"] },
+      { "numero": 9, "titulo": "Calvino e a Reforma 2", "topicos": ["As Institutas"] },
+      { "numero": 10, "titulo": "Calvino e a Reforma 3", "topicos": ["O governo reformado em Genebra", "Missões: Europa, França Antártica", "A Academia de Genebra"] },
+      { "numero": 11, "titulo": "A Reforma na França", "topicos": ["Liderança de Calvino", "Os huguenotes e a Confissão Galicana", "A noite de São Bartolomeu"] },
+      { "numero": 12, "titulo": "A Reforma nos Países Baixos", "topicos": ["A Confissão Belga (Guido de Bres)", "Guilherme de Orange", "Guerra contra a Espanha"] },
+      { "numero": 13, "titulo": "A Reforma na Escócia 1", "topicos": ["A vida de John Knox"] },
+      { "numero": 14, "titulo": "A Reforma na Escócia 2", "topicos": ["Criação da Igreja Reformada Escocesa", "O presbiterianismo na Escócia"] },
+      { "numero": 15, "titulo": "A Reforma na Inglaterra 1", "topicos": ["Causas da Reforma na Inglaterra", "Reforma eclesiástica sob Henrique VIII"] },
+      { "numero": 16, "titulo": "A Reforma na Inglaterra 2", "topicos": ["Eduardo VI e seus conselheiros", "A reação de Maria Tudor", "A era Elizabetana"] },
+      { "numero": 17, "titulo": "A Reforma na Inglaterra 3", "topicos": ["Os Puritanos", "Os Separatistas"] },
+      { "numero": 18, "titulo": "A Contrarreforma 1", "topicos": ["Renovação e reforma", "Reação contra o Protestantismo"] },
+      { "numero": 19, "titulo": "A Contrarreforma 2", "topicos": ["Inácio de Loyola", "A Sociedade de Jesus"] },
+      { "numero": 20, "titulo": "A Contrarreforma 3", "topicos": ["O Concílio de Trento"] },
+      { "numero": 21, "titulo": "A Contrarreforma 4", "topicos": ["A Inquisição e o Índex"] },
+      { "numero": 22, "titulo": "A Contrarreforma 5", "topicos": ["A reforma católica na Espanha", "O misticismo", "A inquisição espanhola"] },
+      { "numero": 23, "titulo": "A Contrarreforma 6", "topicos": ["As navegações e os descobrimentos", "Missões católicas na América, África e Ásia"] },
+      { "numero": 24, "titulo": "O escolasticismo protestante", "topicos": ["Escolasticismo luterano", "Escolasticismo reformado"] },
+      { "numero": 25, "titulo": "O Sínodo de Dort", "topicos": ["Contexto histórico e documentos", "O Arminianismo"] },
+      { "numero": 26, "titulo": "A Assembleia de Westminster 1", "topicos": ["O longo Parlamento", "A guerra civil e o protetorado", "Os movimentos radicais no período"] },
+      { "numero": 27, "titulo": "A Assembleia de Westminster 2", "topicos": ["História e documentos"] },
+      { "numero": 28, "titulo": "O protestantismo na América do Norte", "topicos": ["A colônia da Virgínia e os anglicanos", "Chegada dos puritanos na Nova Inglaterra"] },
+      { "numero": 29, "titulo": "A Guerra dos Trinta Anos", "topicos": ["Causas da guerra", "Gustavo Adolfo", "A Paz de Westfália (1648)"] },
+      { "numero": 30, "titulo": "Protestantismo e sociedade", "topicos": ["Educação, cultura, política e economia"] }
+    ]
+  },
+  {
+    "codigo": "TP02",
+    "unidades": [
+      { "numero": 1, "titulo": "O pastor e as suas disciplinas espirituais", "topicos": ["Oração", "Jejum", "Meditação na Palavra"] },
+      { "numero": 2, "titulo": "O pastor e sua confiança na direção de Deus", "topicos": ["Submissão à vontade de Deus", "Comprometimento com a vontade de Deus"] },
+      { "numero": 3, "titulo": "O pastor e as tentações e frustrações do ministério", "topicos": ["As ciladas do ministério", "A vigilância para não cair", "Cuidado com o que vê, ouve e lê", "As pressões internas e externas que o pastor enfrenta"] },
+      { "numero": 4, "titulo": "O pastor e o cuidado com seu corpo", "topicos": ["Cuidados com a saúde física", "Cuidados com a saúde mental", "O pastor e o cuidado com a aparência", "Cuidados com a higiene", "Cuidados com a vestimenta"] },
+      { "numero": 5, "titulo": "O pastor e o cuidado com sua vida financeira", "topicos": ["Os perigos das finanças mal administradas", "A saúde financeira é fundamental para um pastorado sadio"] },
+      { "numero": 6, "titulo": "O pastor e sua vida intelectual", "topicos": ["Cultivo do intelecto", "Importância da atividade intelectual"] },
+      { "numero": 7, "titulo": "O pastor, seu relacionamento social e o lazer", "topicos": ["O convívio social do pastor fora da igreja", "A importância do lazer para o pastor e sua família"] },
+      { "numero": 8, "titulo": "O pastor como líder e o aperfeiçoamento dos seus dons", "topicos": ["Tipos de líder", "Um líder espiritual que serve de modelo para o rebanho", "Reconhecendo seus principais dons", "Dedicando tempo ao aperfeiçoamento dos dons"] },
+      { "numero": 9, "titulo": "O pastor e sua responsabilidade espiritual pelo rebanho", "topicos": ["O pastor pode fortalecer sua igreja espiritualmente", "O pastor pode enfraquecer sua igreja espiritualmente"] },
+      { "numero": 10, "titulo": "Diferentes configurações da vocação", "topicos": ["Pastor de tempo parcial", "Trabalhos fora da igreja"] },
+      { "numero": 11, "titulo": "Diferentes configurações da vocação", "topicos": ["Pastor auxiliar", "Pastor efetivo"] },
+      { "numero": 12, "titulo": "O pastor e sua filosofia de ministério e planejamento", "topicos": ["Conduta ministerial", "Planejamento pessoal e para a igreja", "O uso do seu tempo (organização, prioridades e planejamento)"] },
+      { "numero": 13, "titulo": "O pastor e as sociedades internas da igreja", "topicos": ["Organização das sociedades internas", "Relacionamento com as sociedades internas"] },
+      { "numero": 14, "titulo": "O pastor e a Escola Dominical", "topicos": ["Parceria com o superintendente da ED", "Escola dominical com projetos e organização", "Preparação de professores e futuros professores"] },
+      { "numero": 15, "titulo": "O pastor e a música da igreja", "topicos": ["Critérios para a música na igreja", "Instrução das pessoas responsáveis pela música na igreja"] }
+    ],
+    "bibliografia": {
+      "basica": [
+        "BICHERS, Dennis W. O Pastor Desnecessário. São Paulo: Textus, 2001.",
+        "FOSTER, Richard. Dinheiro, Sexo e Poder. São Paulo: Mundo Cristão, 1988.",
+        "FRIESEN, Albert. Cuidando do Ser. Curitiba: Esperança, 2012.",
+        "HANSEN, David. A Arte de Pastorear. São Paulo: Shedd Publicações, 2001.",
+        "HOUSTON, James M. Mentoria Espiritual. São Paulo: Textus, 2003.",
+        "JOWETT, John Henry. O Pregador: Sua Vida e Obra. São Paulo: Casa Editora Presbiteriana, 1969.",
+        "LAWRENCE, Bill. Autoridade Pastoral. São Paulo: Vida, 2002.",
+        "LONDON Jr., H. B. e WISEMAN, N. B., Despertando para Um Grande Ministério. São Paulo: Mundo Cristão, 1996.",
+        "MACARTHUR, John. Redescobrindo o Ministério Pastoral. São Paulo: CPAD, 1998.",
+        "NEWTON, Phil. Pastoreando a Igreja de Deus. São José dos Campos: Fiel, 2007.",
+        "PACKER, James I. A Redescoberta da Santidade. São Paulo: Cultura Cristã, 2002.",
+        "PETERSON, Eugene. O Pastor Contemplativo. São Paulo: Textus, 2002.",
+        "PETERSON, Eugene. O Pastor que Deus Usa. São Paulo: Textus, 2003.",
+        "PIPER, John. Irmãos, Não Somos Profissionais. São Paulo: Shedd Publicações, 2009.",
+        "PLANTINGA, Cornelius. Não Era para Ser Assim. São Paulo: Cultura Cristã, 1998.",
+        "SITTEMA, John. Coração de Pastor. São Paulo: Cultura Cristã, 2008.",
+        "STOWELL, Joseph M. Pastoreando a Igreja. São Paulo: Vida, 2000.",
+        "TIDBALL, Derek. Ministério segundo o Novo Testamento. São Paulo: Cultura Cristã, 2012.",
+        "WHITE, Peter. O Pastor Mestre. São Paulo: Cultura Cristã, 2003."
+      ],
+      "complementar": []
+    }
+  },
+  {
+    "codigo": "TP03",
+    "unidades": [
+      { "numero": 1, "titulo": "O ministério da Palavra: pregação, ensino e aconselhamento", "topicos": ["O caráter independente do ministério da Palavra", "Características do Ministério da Palavra no Antigo Testamento", "Características do Ministério da Palavra no Novo Testamento", "Calvino e o ministério público e privado da Palavra"] },
+      { "numero": 2, "titulo": "História do Aconselhamento Bíblico", "topicos": ["Reformadores", "Puritanos", "O surgimento do aconselhamento secular", "O moderno movimento de aconselhamento bíblico"] },
+      { "numero": 3, "titulo": "O que faz o aconselhamento ser bíblico?", "topicos": ["Reconhece a Bíblia como alicerce", "Reconhece a Bíblia como suficiente", "É reconhecido por todo crente em crescimento", "É elástico para crescer com o conhecimento do conselheiro"] },
+      { "numero": 4, "titulo": "O perfil do conselheiro bíblico", "topicos": ["Maturidade cristã", "Profundo desejo de restaurar o outro", "Humildade sincera", "Confrontação amorosa", "Leva o pecado a sério", "Buscar viver e não apenas falar", "Confiança na suficiência das Escrituras"] },
+      { "numero": 5, "titulo": "O uso das Escrituras no aconselhamento (suficiência, uso e alvo)", "topicos": ["Suficiência definida", "Usando as Escrituras quando há instruções diretas", "Usando as Escrituras quando há instruções indiretas", "Usando as Escrituras quando há direções gerais", "Usando as Escrituras quando não há instruções", "O alvo do aconselhamento (o coração vs. comportamento/mudança visa a glória de Deus)"] },
+      { "numero": 6, "titulo": "O conceito bíblico de coração", "topicos": ["Como o coração é definido na Bíblia", "Qual é a definição reformada de coração?", "O coração do problema é o problema do coração"] },
+      { "numero": 7, "titulo": "Antropologia aplicada ao aconselhamento", "topicos": ["O que é o homem? Implicações da tricotomia, dicotomia e unidade psicossomática", "Qual a situação atual do homem? (Qual o problema básico do homem? Bondade intrínseca vs. pecado original – melhoramos, evoluímos ou somos os mesmos?)", "Como consertar o homem? (terapia ou redenção)"] },
+      { "numero": 8, "titulo": "A dinâmica da mudança bíblica", "topicos": ["Ensino", "Convicção", "Correção", "Educação na justiça", "Despojar e revestir"] },
+      { "numero": 9, "titulo": "Visão bíblica da doença", "topicos": ["Culpa e medo em períodos de doença", "Tenatologia"] },
+      { "numero": 10, "titulo": "Uma perspectiva bíblica da autoimagem, autoestima e amor próprio", "topicos": ["Origem do movimento da autoestima", "Visão secular da autoestima", "Perspectiva bíblica da autoestima"] },
+      { "numero": 11, "titulo": "Uma visão bíblica do passado", "topicos": ["Uma visão bíblica do passado", "Lidando com pecado do passado cometido contra a pessoa", "Entendendo a reação no passado contra o pecado cometido", "Aprendendo a lidar no presente com o passado"] },
+      { "numero": 12, "titulo": "Verdades básicas do casamento", "topicos": ["O que é o casamento?", "Propósitos do casamento", "Deixar e unir", "Papéis no casamento", "Comunicação no casamento", "Sexualidade no casamento"] },
+      { "numero": 13, "titulo": "Características da igreja conselheira", "topicos": ["O foco da pessoa é a igreja crescer em Cristo", "Equipa os santos", "Promove crescimento em todos os aspectos da vida", "Sadia visão bíblico-teológica é ensinada", "Onde há prestação de contas e confrontação amorosa", "Onde cada pessoa é serva uma da outra"] },
+      { "numero": 14, "titulo": "Psicopatologias", "topicos": ["Doenças mentais", "Ocultismo"] },
+      { "numero": 15, "titulo": "O conselheiro como capelão", "topicos": ["O que é capelania?", "O papel fundamental do capelão", "Capelania hospitalar", "Capelania militar", "Capelania prisional", "Capelania escolar", "Aconselhamento no contexto da capelania"] }
+    ],
+    "bibliografia": {
+      "basica": [
+        "ADAMS, Jay E. Autoestima: Uma Perspectiva Bíblica. São Paulo: Nutra Publicações, 2007.",
+        "ADAMS, Jay E. Conselheiro Capaz. São José dos Campos: Fiel, 2003.",
+        "ADAMS, Jay E. O Manual do Conselheiro Cristão. São José dos Campos: Fiel, 1988.",
+        "ADAMS, Jay E. Vida Cristã no Lar. São José dos Campos: Fiel, 1988.",
+        "ANKERBERG, John; WELDON, John. Os Fatos Sobre Autoestima, Psicologia e O Movimento de Recuperação. Porto Alegre: Chamada, 1995.",
+        "EYRICH, Howard; HINES, William. Cura para o Coração. São Paulo: Cultura Cristã, 2007.",
+        "FITZPATRICK, Elyse. Ídolos do Coração. São Paulo: Batista Regular, 2009.",
+        "GOMES, Wadislau Martins. Aconselhamento Redentivo. São Paulo: Cultura Cristã, 2004.",
+        "JONES, Robert D. Más Lembranças, Superando o seu Passado. São Bernardo do Campo: Nutra Publicações, 2010.",
+        "KÖSTENBERGER, Andreas J.; JONES, David W. Deus, Casamento e Família. São Paulo: Vida Nova, 2011.",
+        "LAMBERT, Heath. The Biblical Counseling Movement after Adams. Crossway, 2012.",
+        "LANE, Timothy; TRIPP, Paul. Como as Pessoas Mudam. São Paulo: Cultura Cristã, 2012.",
+        "LANE, Timothy; TRIPP, Paul. Relacionamentos – Uma Confusão que Vale a Pena. São Paulo: Cultura Cristã, 2011.",
+        "MACARTHUR, John & MACK, Wayne. Introdução ao Aconselhamento Bíblico. São Paulo: Hagnos, 2004.",
+        "POWLISON, David. Ídolos do Coração & Feira das Vaidades. Brasília: Refúgio, 2004.",
+        "POWLISON, David. Uma Nova Visão. São Paulo: Cultura Cristã, 2010.",
+        "POWLISON, David. The Biblical Counseling Movement: History and Context. Greensboro: New Growth Press, 2010.",
+        "PRIOLO, Lou. Maridos Perseguindo a Excelência. São Bernardo do Campo: Nutra, 2011.",
+        "TRIPP, Paul David. Instrumentos nas Mãos do Redentor. São Bernardo do Campo: Nutra Publicações, 2009.",
+        "VIARS, Steve. Colocando o seu Passado no Devido Lugar. São Bernardo do Campo: Nutra Publicações, 2012.",
+        "VITZ, Paul C. Psychology as Religion: the Cult of Self-worship. Grand Rapids: Eerdmans Publishing, 1994."
+      ],
+      "complementar": []
+    }
   }
 ]
