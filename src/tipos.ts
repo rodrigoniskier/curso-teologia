@@ -5,8 +5,10 @@ export type Idioma = 'pt' | 'en' | 'de' | 'nl' | 'es' | 'la' | 'fr' | 'grc' | 'h
 export type TipoFonte =
   | 'obra-primaria'   // o próprio autor: Institutas, Suma, Confissões
   | 'traducao'        // tradução de obra primária
+  | 'livro'           // monografia ou livro-texto usado como fonte secundária
   | 'artigo'          // artigo acadêmico ou de divulgação
   | 'verbete'         // enciclopédia, dicionário teológico
+  | 'relatorio'       // censo, relatório técnico ou publicação institucional de dados
   | 'curso'           // aula, série, currículo
   | 'documento'       // símbolo de fé, ata conciliar, constituição
   | 'acervo';         // biblioteca digital, repositório
@@ -83,6 +85,9 @@ export interface Disciplina {
   preRequisito: string;
   ementa: string;
   unidades: Unidade[];
-  bibliografia: { basica: string[]; complementar: string[] };
+  bibliografia: {
+    basica: string[];
+    complementar: string[];
+  };
   paginaPdf: number;
 }
