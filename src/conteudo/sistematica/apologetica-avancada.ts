@@ -9,7 +9,7 @@ export const apologeticaAvancada: Verbete = {
   objetivo:
     'Ao final, você saberá aplicar a apologética reformada a contextos religiosos e culturais distintos sem transformar pessoas em rótulos; distinguirá diversidade religiosa de pluralismo filosófico; analisará cosmovisões pela autoridade, realidade última, condição humana, salvação, conhecimento e história; saberá dialogar com islamismo, tradições hindus e budistas, ateísmo e agnosticismo, espiritualidades sincréticas e grupos de autoridade extracânonica; distinguirá ciência de naturalismo metafísico; e terá um roteiro para construir respostas contextualizadas, cristocêntricas, verificáveis e respeitosas.',
   atualizadoEm: '2026-08-21',
-  verMais: ['ts51-apologetica', 'ts54-religiao-sociedade-posmoderna', 'ts12-cosmovisao', 'tp56-denominacoes-seitas'],
+  verMais: ['ts51-apologetica', 'ts54-religiao-sociedade-posmoderna', 'tp56-denominacoes-seitas'],
   blocos: [
     {
       tipo: 'paragrafo',
