@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { biblioteca } from '../dados/biblioteca-completa';
-import { porCodigo } from '../conteudo/indice';
+import { porCodigo } from '../infra/catalogo';
 
 const NOME_IDIOMA: Record<string, string> = {
   pt: 'português', en: 'inglês', de: 'alemão', nl: 'holandês',

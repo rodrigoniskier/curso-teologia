@@ -1,11 +1,45 @@
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { porCodigo, verbetesDe } from '../conteudo/indice';
+import { porCodigo, verbetesDe } from '../infra/catalogo';
+import { carregarVerbete } from '../infra/carregar-verbete';
 import { porDisciplina } from '../dados/biblioteca-completa';
 import { Verbete } from '../componentes/Verbete';
+import type { Verbete as TVerbete } from '../tipos';
 
 export function PaginaDisciplina() {
   const { codigo = '', verbeteId } = useParams();
   const d = porCodigo.get(codigo);
+  const vs = verbetesDe(codigo);
+  const resumoAtual = verbeteId ? vs.find((v) => v.id === verbeteId) : undefined;
+  const [atual, setAtual] = useState<TVerbete>();
+  const [falhou, setFalhou] = useState(false);
+
+  useEffect(() => {
+    let ativo = true;
+    setFalhou(false);
+
+    if (!verbeteId || !resumoAtual) {
+      setAtual(undefined);
+      return () => {
+        ativo = false;
+      };
+    }
+
+    void carregarVerbete(resumoAtual.id)
+      .then((v) => {
+        if (!ativo) return;
+        if (v) setAtual(v);
+        else setFalhou(true);
+      })
+      .catch((erro: unknown) => {
+        console.error(erro);
+        if (ativo) setFalhou(true);
+      });
+
+    return () => {
+      ativo = false;
+    };
+  }, [verbeteId, resumoAtual?.id]);
 
   if (!d) {
     return (
@@ -15,11 +49,7 @@ export function PaginaDisciplina() {
     );
   }
 
-  const vs = verbetesDe(codigo);
-  const livres = porDisciplina(codigo);
-  const atual = verbeteId ? vs.find((v) => v.id === verbeteId) : undefined;
-
-  if (verbeteId && !atual) {
+  if (verbeteId && !resumoAtual) {
     return (
       <div>
         <p className="font-sans text-neutral-600">Verbete não encontrado.</p>
@@ -33,7 +63,25 @@ export function PaginaDisciplina() {
     );
   }
 
-  if (atual) {
+  const atualDaRota = atual?.id === resumoAtual?.id ? atual : undefined;
+
+  if (verbeteId && resumoAtual && !atualDaRota) {
+    return (
+      <div>
+        <Link
+          to={`/disciplina/${codigo}`}
+          className="mb-7 inline-block font-sans text-[0.8rem] text-tinta-600 hover:underline"
+        >
+          ← {d.codigo} · {d.titulo}
+        </Link>
+        <p className="font-sans text-[0.9rem] text-neutral-500">
+          {falhou ? 'Não foi possível carregar este verbete.' : 'Carregando verbete…'}
+        </p>
+      </div>
+    );
+  }
+
+  if (atualDaRota) {
     return (
       <>
         <Link
@@ -42,10 +90,12 @@ export function PaginaDisciplina() {
         >
           ← {d.codigo} · {d.titulo}
         </Link>
-        <Verbete verbete={atual} />
+        <Verbete verbete={atualDaRota} />
       </>
     );
   }
+
+  const livres = porDisciplina(codigo);
 
   return (
     <article>
@@ -83,7 +133,7 @@ export function PaginaDisciplina() {
                   )}
                   <p className="mt-2 font-sans text-[0.82rem] leading-relaxed text-neutral-600">{v.objetivo}</p>
                   <p className="mt-2.5 font-sans text-[0.7rem] uppercase tracking-wide text-neutral-400">
-                    {v.blocos.length} blocos · {v.fontes.length} fontes
+                    {v.quantidadeBlocos} blocos · {v.quantidadeFontes} fontes
                   </p>
                 </Link>
               </li>

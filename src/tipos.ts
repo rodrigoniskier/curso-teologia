@@ -68,6 +68,27 @@ export interface Verbete {
   atualizadoEm: string;
 }
 
+/**
+ * Parte de um verbete necessária para navegação, listas, relações e busca.
+ * O corpo completo é carregado apenas quando a rota do verbete é aberta.
+ */
+export interface VerbeteResumo {
+  id: string;
+  disciplina: string;
+  unidade?: number;
+  titulo: string;
+  subtitulo?: string;
+  objetivo: string;
+  verMais?: string[];
+  atualizadoEm: string;
+  quantidadeBlocos: number;
+  quantidadeFontes: number;
+  /** Caminho usado pelo import.meta.glob, relativo a src/conteudo. */
+  arquivo: string;
+  /** Nome do export que contém o objeto Verbete dentro do módulo. */
+  exportado: string;
+}
+
 /* ---- currículo oficial (extraído do PDF da JET/IPB) ---- */
 
 export interface Unidade {
