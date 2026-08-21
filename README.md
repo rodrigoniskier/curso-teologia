@@ -85,18 +85,19 @@ um link válido prometa no título conteúdo que a URL não entrega; e a auditor
 de links verifica a disponibilidade da rede:
 
 ```bash
-npm run validar             # ids, índice, verMais, fonteId, acervo e currículo efetivo
+npm run validar             # gera o índice e valida ids, verMais, fontes, acervo e currículo
 npm run validar:curriculo   # sequência e contaminação estrutural das unidades
 npm run auditar:metadados   # coerência semântica entre título e URL de acervos
 npm run auditar             # falha se houver link quebrado
 npm run auditar:relatorio   # grava relatorio-auditoria.md
 ```
 
-`npm run validar` reprova, entre outras coisas, verbete não registrado no
-índice, id duplicado, destino de `verMais` inexistente, auto-remissão, fonte de
-citação sem `fonteId` resolvível e obra usada em verbete sem entrada no acervo.
-Também valida o arquivo de correções curriculares: código inexistente, código
-repetido ou números de unidade duplicados interrompem a integração. O validador
+`npm run validar` primeiro regenera `src/conteudo/indice.ts` a partir dos
+próprios arquivos de verbete. Em seguida, reprova, entre outras coisas, id
+duplicado, destino de `verMais` inexistente, auto-remissão, fonte de citação sem
+`fonteId` resolvível e obra usada em verbete sem entrada no acervo. Também
+valida o arquivo de correções curriculares: código inexistente, código repetido
+ou números de unidade duplicados interrompem a integração. O validador
 curricular adicional procura sequências quebradas e sinais de que título ou
 tópico absorveu marcadores de outra `Unidade` ou de `BIBLIOGRAFIA`.
 

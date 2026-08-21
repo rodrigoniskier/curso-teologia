@@ -152,7 +152,7 @@ npm run auditar:relatorio   # rede + relatório persistido
 
 `npm run validar` deve permanecer **offline e determinístico**. Ele verifica:
 
-- um Verbete exportado por arquivo, importado e registrado uma vez no índice;
+- um Verbete exportado por arquivo e registrado uma vez no índice gerado;
 - ids de verbete únicos e códigos de disciplina existentes;
 - `atualizadoEm` no formato esperado;
 - `verMais` com 2–3 destinos existentes, sem repetição nem auto-remissão;
@@ -183,19 +183,19 @@ diferentes.
 3. Ler verbetes vizinhos para não repetir
 4. Verificar as fontes antes de escrever
 5. Escrever src/conteudo/<departamento>/<nome>.ts
-6. Registrar em src/conteudo/indice.ts
+6. Não editar src/conteudo/indice.ts; ele é gerado dos próprios verbetes
 7. Acrescentar fontes novas ao acervo, quando necessário
 8. Atualizar as contagens do README
-9. npm run validar
+9. npm run validar — regenerar os artefatos e validar a integridade
 10. npm run build
 11. npm run conferir
 12. Verificar a interface real no navegador
 13. Commit, push, PR, esperar CI, merge
 ```
 
-Como os merges são por squash, **não reutilize um ramo antigo como base do
-próximo ciclo**. Isso já produziu conflitos em `README.md`, `indice.ts` e
-biblioteca. Novo ciclo começa no `main` já incorporado.
+Independentemente do método de merge, **não reutilize um ramo antigo como base
+do próximo ciclo**. Isso já produziu conflitos em `README.md` e na biblioteca.
+Novo ciclo começa no `main` já incorporado.
 
 A contagem do README é escrita para o leitor, mas conferida por código. Se
 esquecer de atualizá-la, a CI precisa falhar. Não mantenha instantâneos mutáveis
