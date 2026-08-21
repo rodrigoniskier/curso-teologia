@@ -27,6 +27,7 @@ import { apologetica } from './sistematica/apologetica';
 import { catolicismoAfrobrasileiro } from './sistematica/catolicismo-afrobrasileiro';
 import { credosConfissoes } from './sistematica/credos-confissoes';
 import { religiaoSociedadePosmoderna } from './sistematica/religiao-sociedade-posmoderna';
+import { apologeticaAvancada } from './sistematica/apologetica-avancada';
 import { hermeneutica } from './exegetica/hermeneutica';
 import { canonAT } from './exegetica/canon-at';
 import { canonNT } from './exegetica/canon-nt';
@@ -154,6 +155,7 @@ export const verbetes: Verbete[] = [
   catolicismoAfrobrasileiro,
   credosConfissoes,
   religiaoSociedadePosmoderna,
+  apologeticaAvancada,
   hermeneutica,
   canonAT,
   canonNT,
