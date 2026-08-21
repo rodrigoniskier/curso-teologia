@@ -1,4 +1,4 @@
-import { verbetePorId, verbetes } from './catalogo';
+import { verbetePorId, verbetes } from '../infra/catalogo';
 import type { VerbeteResumo } from '../tipos';
 
 export interface RelacoesVerbete {
