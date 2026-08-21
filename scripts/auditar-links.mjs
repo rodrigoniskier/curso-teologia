@@ -28,9 +28,9 @@ const TEMPO_LIMITE = 25_000;
 const CONCORRENCIA = 6;
 const TENTATIVAS = 3;
 
-const VERDE = '[32m OK  [0m';
-const VERMELHO = '[31mFALHA[0m';
-const AMARELO = '[33mREST.[0m';
+const VERDE = '\u001b[32m OK  \u001b[0m';
+const VERMELHO = '\u001b[31mFALHA\u001b[0m';
+const AMARELO = '\u001b[33mREST.\u001b[0m';
 
 const args = new Set(process.argv.slice(2));
 const gerarRelatorio = args.has('--relatorio');
@@ -213,6 +213,7 @@ for (const f of unicas) {
   if (h) urlsPorHost.set(h, (urlsPorHost.get(h) ?? 0) + 1);
 }
 const sondagens = await Promise.all(representantes.map((f) => verificar(f, { sondagem: true })));
+const sondagemPorUrl = new Map(sondagens.map((s) => [s.url, s]));
 for (const s of sondagens) {
   const h = hostDe(s.url);
   if (!s.ok && !s.status && (urlsPorHost.get(h) ?? 0) > 1) hostsMudos.add(h);
@@ -274,16 +275,48 @@ const naoVerificaveis = resultados.filter((r) => !r.ok && r.restrito);
 const foraDoAr = resultados.filter(
   (r) => !r.ok && !r.restrito && hostsForaDoAr.has(hostDe(r.url)),
 );
+/**
+ * Para hosts com uma única URL, a sondagem testa exatamente o mesmo endereço
+ * antes da verificação final. Se a própria execução obteve 2xx nessa URL e,
+ * minutos depois, o ciclo final terminou apenas em timeout/erro de conexão,
+ * já existe evidência positiva nesta mesma auditoria de que o link não está
+ * morto. Classificá-lo como quebrado seria contradizer a própria medição.
+ *
+ * A exceção é estreita de propósito: só vale para status 0 (nunca para 404/410),
+ * exige sucesso prévio da URL idêntica e não mascara resposta HTTP de erro.
+ */
+const transientesConfirmados = resultados.filter(
+  (r) =>
+    !r.ok &&
+    !r.restrito &&
+    !hostsForaDoAr.has(hostDe(r.url)) &&
+    !r.status &&
+    sondagemPorUrl.get(r.url)?.ok,
+);
+const urlsTransientes = new Set(transientesConfirmados.map((r) => r.url));
 const quebrados = resultados.filter(
-  (r) => !r.ok && !r.restrito && !hostsForaDoAr.has(hostDe(r.url)),
+  (r) =>
+    !r.ok &&
+    !r.restrito &&
+    !hostsForaDoAr.has(hostDe(r.url)) &&
+    !urlsTransientes.has(r.url),
 );
 const redirecionados = resultados.filter((r) => r.ok && r.urlFinal);
 
 console.log(
-  `\n${acessiveis.length}/${resultados.length} acessíveis · ${quebrados.length} com falha · ` +
+  `\n${acessiveis.length}/${resultados.length} acessíveis na verificação final · ` +
+    `${transientesConfirmados.length} confirmado(s) pela sondagem · ${quebrados.length} com falha · ` +
     `${foraDoAr.length} em acervo fora do ar · ` +
     `${naoVerificaveis.length} em domínio restrito · ${redirecionados.length} redirecionadas`,
 );
+
+if (transientesConfirmados.length) {
+  console.log(
+    '\nOscilação de rede após confirmação positiva: a própria sondagem desta execução ' +
+      'obteve resposta 2xx para estas URLs antes de a verificação final sofrer erro de conexão. ' +
+      'Não são tratadas como links mortos; respostas HTTP 404/410 nunca entram nesta categoria.',
+  );
+}
 
 if (foraDoAr.length) {
   console.log(
@@ -312,13 +345,30 @@ if (gerarRelatorio) {
     `Gerado em ${new Date().toISOString()}`,
     '',
     `- URLs verificadas: **${resultados.length}**`,
-    `- Acessíveis: **${acessiveis.length}**`,
+    `- Acessíveis na verificação final: **${acessiveis.length}**`,
+    `- Confirmadas pela sondagem antes de oscilação de rede: **${transientesConfirmados.length}**`,
     `- Com falha: **${quebrados.length}**`,
     `- Em acervo fora do ar: **${foraDoAr.length}**`,
     `- Em domínio restrito (não verificável na CI): **${naoVerificaveis.length}**`,
     `- Redirecionadas: **${redirecionados.length}**`,
     '',
   ];
+  if (transientesConfirmados.length) {
+    linhas.push(
+      '## Confirmadas pela sondagem; falha transitória posterior',
+      '',
+      'A mesma execução recebeu resposta 2xx da URL exata durante a sondagem e',
+      'depois encontrou apenas erro de conexão na verificação final. Isso prova',
+      'que a URL estava acessível nesta execução; portanto não é classificada como',
+      'link morto. Respostas HTTP terminais, como 404/410, não recebem esta exceção.',
+      '',
+      '| URL | Verbete | Erro posterior |',
+      '| --- | --- | --- |',
+    );
+    for (const r of transientesConfirmados)
+      linhas.push(`| ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
+    linhas.push('');
+  }
   if (foraDoAr.length) {
     linhas.push(
       '## Acervos fora do ar',
