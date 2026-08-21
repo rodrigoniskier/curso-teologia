@@ -122,11 +122,11 @@ export function PaginaBiblioteca() {
 
       <p className="mt-14 border-t border-margem pt-6 font-sans text-[0.8rem] leading-relaxed text-neutral-500">
         Todos estes endereços passam pela mesma auditoria automática das fontes
-        dos verbetes, e a verificação semanal acusa se algum sair do ar. Um único
-        hospedeiro fica fora do alcance dela por motivo alheio ao conteúdo: a
-        CCEL recusa conexões vindas de servidores em nuvem, embora responda
-        normalmente a navegadores comuns. O motivo fica registrado no
-        repositório.
+        dos verbetes, e a verificação semanal acusa se algum sair do ar. Alguns
+        acervos recusam ou limitam conexões automatizadas vindas de servidores em
+        nuvem; esses casos ficam registrados no repositório com o motivo e a data
+        da última confirmação manual e não são confundidos automaticamente com
+        link morto.
       </p>
     </div>
   );

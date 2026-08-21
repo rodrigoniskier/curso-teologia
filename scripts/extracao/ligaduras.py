@@ -4,7 +4,11 @@ O corpus tem 241 palavras distintas com ligadura; todas foram inspecionadas.
 A ligadura é 'fi' em ~85% dos casos, então 'fi' é o padrão e as exceções
 ('fl', 'ff' e o espaço) entram por lista explícita.
 """
+from pathlib import Path
 import re
+
+RAIZ = Path(__file__).resolve().parents[2]
+TEXTO = RAIZ / 'texto.txt'
 
 # ▮ que na verdade é separador (espaço) — casos observados no corpus
 ESPACO = [
@@ -57,9 +61,9 @@ def resolver(texto: str) -> str:
 
 
 if __name__ == '__main__':
-    t = open('texto.txt', encoding='utf-8').read()
+    t = TEXTO.read_text(encoding='utf-8')
     t = resolver(t)
-    open('texto.txt', 'w', encoding='utf-8').write(t)
+    TEXTO.write_text(t, encoding='utf-8')
     print('ligaduras restantes:', t.count('▮'))
     for w in ('Filosofia', 'Definição', 'Confissão', 'influência', 'conflito',
               'santificação', 'Reflexões', 'Bonhoeffer', 'Rio de Janeiro'):

@@ -1,7 +1,13 @@
 """Extrai texto do PDF resolvendo ligaduras via CMaps /ToUnicode por fonte."""
-import re, zlib, json
+from pathlib import Path
+import re
+import zlib
 
-pdf = open('ementas.pdf', 'rb').read()
+RAIZ = Path(__file__).resolve().parents[2]
+PDF = RAIZ / 'ConteudoProgramatico20192.pdf'
+TEXTO = RAIZ / 'texto.txt'
+
+pdf = PDF.read_bytes()
 
 # ---- 1. index every indirect object -------------------------------------
 objs = {}
@@ -152,7 +158,7 @@ _P = r'[\w▮]'
 full = re.sub(rf'({_P})[ \t]*\n[ \t]*-[ \t]*\n[ \t]*({_P})', r'\1\2', full)
 full = re.sub(rf'({_P})-[ \t]*\n[ \t]*({_P})', r'\1\2', full)
 full = re.sub(rf'({_P})[ \t]+-[ \t]*\n[ \t]*({_P})', r'\1\2', full)
-open('texto.txt', 'w', encoding='utf-8').write(full)
+TEXTO.write_text(full, encoding='utf-8')
 
 leftovers = sum(full.count(chr(c)) for c in range(0x1b, 0x20))
 print(f'páginas: {len(out_pages)} | fontes com cmap: {len(font_cmap)} | chars: {len(full)}')
