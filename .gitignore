@@ -11,6 +11,7 @@ relatorio-auditoria.json
 relatorio-auditoria.md
 texto.txt
 src/conteudo/catalogo-gerado.json
+src/conteudo/indice.ts
 src/infra/curriculo-gerado.json
 public/indice-busca.json
 public/disciplinas/

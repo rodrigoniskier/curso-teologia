@@ -7,6 +7,7 @@ import { removerMarcacaoEnfase } from './lib/texto-busca.mjs';
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTEUDO = join(RAIZ, 'src', 'conteudo');
 const CATALOGO = join(CONTEUDO, 'catalogo-gerado.json');
+const INDICE = join(CONTEUDO, 'indice.ts');
 const BUSCA = join(RAIZ, 'public', 'indice-busca.json');
 const PASTAS = ['exegetica', 'sistematica', 'historica', 'pastoral', 'geral'];
 const ORDEM_SIGLA = new Map(['TE', 'TS', 'TH', 'TP', 'CG'].map((s, i) => [s, i]));
@@ -149,11 +150,32 @@ for (const { meta } of registros) {
   ids.add(meta.id);
 }
 
+function gerarIndice() {
+  const importes = registros.map(({ meta }) => {
+    const modulo = meta.arquivo.replace(/\.ts$/, '');
+    return `import { ${meta.exportado} } from '${modulo}';`;
+  });
+  const nomes = registros.map(({ meta }) => `  ${meta.exportado},`);
+  return [
+    '/** Arquivo gerado por scripts/gerar-catalogo.mjs. Não edite manualmente. */',
+    "import type { Verbete } from '../tipos';",
+    '',
+    ...importes,
+    '',
+    'export const verbetes: Verbete[] = [',
+    ...nomes,
+    '];',
+    '',
+  ].join('\n');
+}
+
 await mkdir(dirname(CATALOGO), { recursive: true });
 await mkdir(dirname(BUSCA), { recursive: true });
 await writeFile(CATALOGO, JSON.stringify(registros.map((r) => r.meta), null, 2) + '\n');
 await writeFile(BUSCA, JSON.stringify(registros.map((r) => r.busca)) + '\n');
+await writeFile(INDICE, gerarIndice());
 
 console.log(`✓ catálogo gerado: ${registros.length} verbetes`);
 console.log(`  ${relative(RAIZ, CATALOGO)} · metadados leves`);
 console.log(`  ${relative(RAIZ, BUSCA)} · texto integral carregado apenas na busca`);
+console.log(`  ${relative(RAIZ, INDICE)} · registro TypeScript gerado para validação`);
