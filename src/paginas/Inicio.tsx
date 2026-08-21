@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { departamentos, estatisticas, verbetes } from '../conteudo/indice';
+import { departamentos, estatisticas, verbetes } from '../conteudo/catalogo';
 
 function Numero({ valor, rotulo }: { valor: number; rotulo: string }) {
   return (
