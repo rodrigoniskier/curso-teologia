@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { buscarVerbetes, departamentos, verbetesDe } from '../conteudo/indice';
+import { departamentos, verbetesDe } from '../conteudo/catalogo';
+import { buscarVerbetes, type Achado } from '../conteudo/busca';
 
 /**
  * Abrir todo departamento que tenha verbete enterrava a Sistemática abaixo das
@@ -27,6 +28,7 @@ function departamentoInicial(codigo?: string): string {
 export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
   const { codigo } = useParams();
   const [busca, setBusca] = useState('');
+  const [achados, setAchados] = useState<Achado[]>([]);
   const [abertos, setAbertos] = useState<Record<string, boolean>>(() => ({
     [departamentoInicial(codigo)]: true,
   }));
@@ -44,7 +46,23 @@ export function Sumario({ aoNavegar }: { aoNavegar?: () => void }) {
     ativoRef.current?.scrollIntoView({ block: 'nearest' });
   }, [codigo, abertos]);
 
-  const achados = useMemo(() => buscarVerbetes(busca), [busca]);
+  // O arquivo com o texto integral não entra no JavaScript inicial. Ele só é
+  // solicitado quando há uma consulta com tamanho suficiente para busca útil.
+  useEffect(() => {
+    const q = busca.trim();
+    if (q.length < 3) {
+      setAchados([]);
+      return;
+    }
+
+    let ativo = true;
+    void buscarVerbetes(q).then((resultados) => {
+      if (ativo) setAchados(resultados);
+    });
+    return () => {
+      ativo = false;
+    };
+  }, [busca]);
 
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase();
