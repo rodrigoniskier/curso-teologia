@@ -1,6 +1,12 @@
-import re, json
+from pathlib import Path
+import json
+import re
 
-t = open('texto.txt', encoding='utf-8').read()
+RAIZ = Path(__file__).resolve().parents[2]
+TEXTO = RAIZ / 'texto.txt'
+EMENTAS = RAIZ / 'src' / 'dados' / 'ementas.json'
+
+t = TEXTO.read_text(encoding='utf-8')
 blocks = re.split(r'===== PAG (\d+) =====', t)
 pages = {int(blocks[i]): blocks[i + 1] for i in range(1, len(blocks), 2)}
 
@@ -228,7 +234,7 @@ def limpar_disciplina(d):
 
 
 out = [limpar_disciplina(parse(e, ls)) for e, ls in registros]
-json.dump(out, open('ementas.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+EMENTAS.write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 ok_e = sum(1 for d in out if len(d['ementa']) > 30)
 ok_u = sum(1 for d in out if d['unidades'])
