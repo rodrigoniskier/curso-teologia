@@ -61,7 +61,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install
+      - run: npm ci
 
       # TypeScript não detecta ids sem destino, relações unilaterais nem obras
       # citadas fora da biblioteca. Esta etapa torna essas invariantes parte da CI.
