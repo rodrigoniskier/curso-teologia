@@ -10,6 +10,8 @@ coverage/
 relatorio-auditoria.json
 relatorio-auditoria.md
 texto.txt
+src/conteudo/catalogo-gerado.json
+public/indice-busca.json
 
 # scripts de verificação avulsos
 vt*.mjs
