@@ -107,7 +107,9 @@ export function PaginaDisciplina() {
 
   const atualDaRota = atual?.id === resumoAtual?.id ? atual : undefined;
   const falhouVerbete =
-    falhaVerbete?.id === resumoAtual?.id && falhaVerbete.tentativa === tentativa;
+    falhaVerbete !== undefined &&
+    falhaVerbete.id === resumoAtual?.id &&
+    falhaVerbete.tentativa === tentativa;
 
   if (verbeteId && resumoAtual && !atualDaRota) {
     return (
@@ -150,7 +152,9 @@ export function PaginaDisciplina() {
 
   const programaDaRota = programa?.codigo === codigo ? programa : undefined;
   const falhouDisciplina =
-    falhaDisciplina?.codigo === codigo && falhaDisciplina.tentativa === tentativa;
+    falhaDisciplina !== undefined &&
+    falhaDisciplina.codigo === codigo &&
+    falhaDisciplina.tentativa === tentativa;
 
   if (!programaDaRota) {
     return (
