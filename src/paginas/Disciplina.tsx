@@ -1,25 +1,37 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { porCodigo, verbetesDe } from '../infra/catalogo';
+import { carregarDisciplina } from '../infra/carregar-disciplina';
+import { carregarLeituras } from '../infra/carregar-leituras';
 import { carregarVerbete } from '../infra/carregar-verbete';
-import { porDisciplina } from '../dados/biblioteca-completa';
 import { Verbete } from '../componentes/Verbete';
-import type { Verbete as TVerbete } from '../tipos';
+import type { ObraLivre } from '../dados/biblioteca';
+import type { Disciplina, Verbete as TVerbete } from '../tipos';
+
+interface ProgramaCarregado {
+  codigo: string;
+  disciplina: Disciplina;
+  livres: ObraLivre[];
+}
 
 export function PaginaDisciplina() {
   const { codigo = '', verbeteId } = useParams();
-  const d = porCodigo.get(codigo);
+  const resumoDisciplina = porCodigo.get(codigo);
   const vs = verbetesDe(codigo);
   const resumoAtual = verbeteId ? vs.find((v) => v.id === verbeteId) : undefined;
   const [atual, setAtual] = useState<TVerbete>();
-  const [falhou, setFalhou] = useState(false);
+  const [falhaVerbete, setFalhaVerbete] = useState<{ id: string; tentativa: number }>();
+  const [programa, setPrograma] = useState<ProgramaCarregado>();
+  const [falhaDisciplina, setFalhaDisciplina] = useState<{
+    codigo: string;
+    tentativa: number;
+  }>();
+  const [tentativa, setTentativa] = useState(0);
 
   useEffect(() => {
     let ativo = true;
-    setFalhou(false);
 
     if (!verbeteId || !resumoAtual) {
-      setAtual(undefined);
       return () => {
         ativo = false;
       };
@@ -29,19 +41,49 @@ export function PaginaDisciplina() {
       .then((v) => {
         if (!ativo) return;
         if (v) setAtual(v);
-        else setFalhou(true);
+        else setFalhaVerbete({ id: resumoAtual.id, tentativa });
       })
       .catch((erro: unknown) => {
         console.error(erro);
-        if (ativo) setFalhou(true);
+        if (ativo) setFalhaVerbete({ id: resumoAtual.id, tentativa });
       });
 
     return () => {
       ativo = false;
     };
-  }, [verbeteId, resumoAtual?.id]);
+  }, [verbeteId, resumoAtual?.id, tentativa]);
 
-  if (!d) {
+  useEffect(() => {
+    let ativo = true;
+
+    // Um verbete precisa apenas do resumo da disciplina e do seu próprio chunk.
+    // Programa completo e biblioteca só são baixados na página geral da disciplina.
+    if (!resumoDisciplina || verbeteId) {
+      return () => {
+        ativo = false;
+      };
+    }
+
+    void Promise.all([carregarDisciplina(codigo), carregarLeituras(codigo)])
+      .then(([d, obras]) => {
+        if (!ativo) return;
+        if (!d) {
+          setFalhaDisciplina({ codigo, tentativa });
+          return;
+        }
+        setPrograma({ codigo, disciplina: d, livres: obras });
+      })
+      .catch((erro: unknown) => {
+        console.error(erro);
+        if (ativo) setFalhaDisciplina({ codigo, tentativa });
+      });
+
+    return () => {
+      ativo = false;
+    };
+  }, [codigo, verbeteId, resumoDisciplina?.codigo, tentativa]);
+
+  if (!resumoDisciplina) {
     return (
       <p className="font-sans text-neutral-600">
         Disciplina não encontrada. <Link to="/" className="text-tinta-600 underline">Voltar ao início</Link>.
@@ -57,13 +99,17 @@ export function PaginaDisciplina() {
           to={`/disciplina/${codigo}`}
           className="mt-3 inline-block font-sans text-[0.85rem] text-tinta-600 underline"
         >
-          Voltar para {d.codigo} · {d.titulo}
+          Voltar para {resumoDisciplina.codigo} · {resumoDisciplina.titulo}
         </Link>
       </div>
     );
   }
 
   const atualDaRota = atual?.id === resumoAtual?.id ? atual : undefined;
+  const falhouVerbete =
+    falhaVerbete !== undefined &&
+    falhaVerbete.id === resumoAtual?.id &&
+    falhaVerbete.tentativa === tentativa;
 
   if (verbeteId && resumoAtual && !atualDaRota) {
     return (
@@ -72,11 +118,20 @@ export function PaginaDisciplina() {
           to={`/disciplina/${codigo}`}
           className="mb-7 inline-block font-sans text-[0.8rem] text-tinta-600 hover:underline"
         >
-          ← {d.codigo} · {d.titulo}
+          ← {resumoDisciplina.codigo} · {resumoDisciplina.titulo}
         </Link>
         <p className="font-sans text-[0.9rem] text-neutral-500">
-          {falhou ? 'Não foi possível carregar este verbete.' : 'Carregando verbete…'}
+          {falhouVerbete ? 'Não foi possível carregar este verbete.' : 'Carregando verbete…'}
         </p>
+        {falhouVerbete && (
+          <button
+            type="button"
+            onClick={() => setTentativa((n) => n + 1)}
+            className="mt-3 font-sans text-[0.82rem] font-medium text-tinta-600 underline"
+          >
+            Tentar novamente
+          </button>
+        )}
       </div>
     );
   }
@@ -88,14 +143,53 @@ export function PaginaDisciplina() {
           to={`/disciplina/${codigo}`}
           className="mb-7 inline-block font-sans text-[0.8rem] text-tinta-600 hover:underline"
         >
-          ← {d.codigo} · {d.titulo}
+          ← {resumoDisciplina.codigo} · {resumoDisciplina.titulo}
         </Link>
         <Verbete verbete={atualDaRota} />
       </>
     );
   }
 
-  const livres = porDisciplina(codigo);
+  const programaDaRota = programa?.codigo === codigo ? programa : undefined;
+  const falhouDisciplina =
+    falhaDisciplina !== undefined &&
+    falhaDisciplina.codigo === codigo &&
+    falhaDisciplina.tentativa === tentativa;
+
+  if (!programaDaRota) {
+    return (
+      <article>
+        <header className="border-b border-margem pb-7">
+          <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-tinta-600">
+            {resumoDisciplina.departamento} · {resumoDisciplina.codigo}
+            {resumoDisciplina.eletiva && ' · eletiva'}
+          </p>
+          <h1 className="mt-2 font-serif text-[2rem] font-semibold leading-tight text-tinta-900">
+            {resumoDisciplina.titulo}
+          </h1>
+          {resumoDisciplina.ementa && (
+            <p className="prosa mt-4 max-w-[62ch] text-[1.05rem] text-neutral-700">
+              {resumoDisciplina.ementa}
+            </p>
+          )}
+        </header>
+        <p className="mt-7 font-sans text-[0.9rem] text-neutral-500">
+          {falhouDisciplina ? 'Não foi possível carregar o programa desta disciplina.' : 'Carregando programa e leituras…'}
+        </p>
+        {falhouDisciplina && (
+          <button
+            type="button"
+            onClick={() => setTentativa((n) => n + 1)}
+            className="mt-3 font-sans text-[0.82rem] font-medium text-tinta-600 underline"
+          >
+            Tentar novamente
+          </button>
+        )}
+      </article>
+    );
+  }
+
+  const { disciplina: d, livres } = programaDaRota;
 
   return (
     <article>

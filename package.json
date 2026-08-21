@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "catalogo": "node scripts/gerar-catalogo.mjs",
+    "catalogo": "node scripts/gerar-catalogo.mjs && node scripts/gerar-curriculo-cliente.mjs",
     "predev": "npm run catalogo",
     "dev": "vite --port=3000 --host=0.0.0.0",
     "prebuild": "npm run catalogo",
