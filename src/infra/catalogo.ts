@@ -1,16 +1,30 @@
-import ementasJson from '../dados/ementas.json';
-import ementasCorrecoesJson from '../dados/ementas-correcoes.json';
 import catalogoJson from '../conteudo/catalogo-gerado.json';
-import type { Disciplina, VerbeteResumo } from '../tipos';
+import curriculoJson from './curriculo-gerado.json';
+import type { VerbeteResumo } from '../tipos';
 
-const correcoesEmenta = new Map<string, Partial<Disciplina>>(
-  (ementasCorrecoesJson as Array<Partial<Disciplina> & { codigo: string }>).map((d) => [d.codigo, d]),
-);
+export interface DisciplinaResumo {
+  codigo: string;
+  titulo: string;
+  departamento: string;
+  sigla: string;
+  eletiva: boolean;
+  preRequisito: string;
+  ementa: string;
+  paginaPdf: number;
+  quantidadeUnidades: number;
+}
 
-export const disciplinas = (ementasJson as Disciplina[]).map((d) => ({
-  ...d,
-  ...(correcoesEmenta.get(d.codigo) ?? {}),
-}));
+interface CurriculoCliente {
+  disciplinas: DisciplinaResumo[];
+  estatisticas: {
+    disciplinas: number;
+    unidades: number;
+    referencias: number;
+  };
+}
+
+const curriculo = curriculoJson as CurriculoCliente;
+export const disciplinas = curriculo.disciplinas;
 
 /**
  * Índice leve gerado a partir dos próprios arquivos de conteúdo. Não contém
@@ -29,7 +43,7 @@ export const ORDEM_DEPARTAMENTOS = [
 export interface Departamento {
   nome: string;
   sigla: string;
-  disciplinas: Disciplina[];
+  disciplinas: DisciplinaResumo[];
 }
 
 export const departamentos: Departamento[] = ORDEM_DEPARTAMENTOS.map((nome) => {
@@ -45,11 +59,6 @@ export function verbetesDe(codigo: string): VerbeteResumo[] {
 }
 
 export const estatisticas = {
-  disciplinas: disciplinas.length,
-  unidades: disciplinas.reduce((n, d) => n + d.unidades.length, 0),
-  referencias: disciplinas.reduce(
-    (n, d) => n + d.bibliografia.basica.length + d.bibliografia.complementar.length,
-    0,
-  ),
+  ...curriculo.estatisticas,
   verbetes: verbetes.length,
 };
