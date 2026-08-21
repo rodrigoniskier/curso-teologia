@@ -2,6 +2,7 @@ import ts from 'typescript';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { removerMarcacaoEnfase } from './lib/texto-busca.mjs';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTEUDO = join(RAIZ, 'src', 'conteudo');
@@ -92,11 +93,15 @@ function lerVerbete(caminho, pasta) {
     const fontesNo = propriedade(obj, 'fontes')?.initializer;
     const textosBlocos = coletarTextos(blocosNo);
     const textosFontes = coletarTextos(fontesNo);
-    const bruto = [titulo, objetivo, ...textosBlocos].join(' ').replace(/\s+/g, ' ').trim();
-    const completo = [disciplina, titulo, subtitulo ?? '', objetivo, ...textosBlocos, ...textosFontes]
-      .join(' ')
-      .replace(/\s+/g, ' ')
-      .trim();
+    const bruto = removerMarcacaoEnfase(
+      [titulo, objetivo, ...textosBlocos].join(' ').replace(/\s+/g, ' ').trim(),
+    );
+    const completo = removerMarcacaoEnfase(
+      [disciplina, titulo, subtitulo ?? '', objetivo, ...textosBlocos, ...textosFontes]
+        .join(' ')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    );
     const arquivo = './' + [pasta, caminho.split(sep).at(-1)].join('/');
 
     return {
