@@ -16,6 +16,8 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setDefaultResultOrder } from 'node:dns';
 import { encontrarRestricao } from './lib/dominios-restritos.mjs';
+import { mapearComConcorrencia } from './lib/mapear-com-concorrencia.mjs';
+import { statusHttpTransitorio } from './lib/status-http-transitorio.mjs';
 
 setDefaultResultOrder('ipv4first');
 
@@ -117,7 +119,7 @@ async function verificar(fonte, { sondagem = false, forcarCompleto = false } = {
       clearTimeout(t);
       await res.body?.cancel().catch(() => {});
 
-      if ((res.status === 429 || res.status >= 500) && tentativa < tentativas) {
+      if (statusHttpTransitorio(res.status) && tentativa < tentativas) {
         ultimoErro = `HTTP ${res.status}`;
         await new Promise((r) => setTimeout(r, 2000 * 2 ** (tentativa - 1)));
         continue;
@@ -142,14 +144,6 @@ async function verificar(fonte, { sondagem = false, forcarCompleto = false } = {
     }
   }
   return { ...fonte, status: 0, ok: false, erro: ultimoErro };
-}
-
-async function emLotes(itens, n, fn) {
-  const saida = [];
-  for (let i = 0; i < itens.length; i += n) {
-    saida.push(...(await Promise.all(itens.slice(i, i + n).map(fn))));
-  }
-  return saida;
 }
 
 const fontes = await coletarFontes();
@@ -181,7 +175,7 @@ if (hostsMudos.size) {
   );
 }
 
-const resultadosIniciais = await emLotes(unicas, CONCORRENCIA, async (f) => {
+const resultadosIniciais = await mapearComConcorrencia(unicas, CONCORRENCIA, async (f) => {
   const r = await verificar(f);
   r.restrito = r.ok ? undefined : dominioRestrito(r.url);
   const marca = r.ok ? VERDE : r.restrito ? AMARELO : VERMELHO;
@@ -190,11 +184,11 @@ const resultadosIniciais = await emLotes(unicas, CONCORRENCIA, async (f) => {
 });
 
 /**
- * Timeout, 429 e 5xx não demonstram que um endereço deixou de existir. Depois
- * que o lote paralelo termina, cada candidato desse tipo recebe uma confirmação
- * serial com três tentativas completas. Assim um 404/410 continua terminal,
- * mas congestionamento de Archive.org, IPHAN ou outro acervo não transforma
- * uma fonte boa em link "morto" só porque o runner a atingiu num instante ruim.
+ * Timeout, 403 de WAF/CDN, 408, 425, 429 e 5xx não demonstram que um endereço
+ * deixou de existir. Depois que o passe paralelo termina, cada candidato desse
+ * tipo recebe uma confirmação serial com três tentativas completas. Assim um
+ * 404/410 continua terminal, mas congestionamento ou proteção automatizada de
+ * um acervo não transforma uma fonte boa em link "morto" por uma medição ruim.
  *
  * A confirmação serial não é uma exceção ao gate: se também falhar, a fonte
  * continua vermelha. Ela apenas coleta uma segunda medição em condições menos
@@ -206,7 +200,7 @@ for (const r of resultadosIniciais) {
   const candidatoTransitorio =
     !r.ok &&
     !r.restrito &&
-    (r.status === 0 || r.status === 429 || r.status >= 500);
+    (r.status === 0 || statusHttpTransitorio(r.status));
 
   if (!candidatoTransitorio) {
     resultados.push(r);
