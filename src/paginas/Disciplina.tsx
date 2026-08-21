@@ -19,6 +19,20 @@ export function PaginaDisciplina() {
   const livres = porDisciplina(codigo);
   const atual = verbeteId ? vs.find((v) => v.id === verbeteId) : undefined;
 
+  if (verbeteId && !atual) {
+    return (
+      <div>
+        <p className="font-sans text-neutral-600">Verbete não encontrado.</p>
+        <Link
+          to={`/disciplina/${codigo}`}
+          className="mt-3 inline-block font-sans text-[0.85rem] text-tinta-600 underline"
+        >
+          Voltar para {d.codigo} · {d.titulo}
+        </Link>
+      </div>
+    );
+  }
+
   if (atual) {
     return (
       <>
@@ -84,7 +98,8 @@ export function PaginaDisciplina() {
             Programa oficial · {d.unidades.length} unidades
           </h2>
           <p className="mt-1.5 font-sans text-[0.78rem] text-neutral-500">
-            Conteúdo aprovado pelo Supremo Concílio da IPB. Cada unidade receberá seu verbete.
+            Conteúdo aprovado pelo Supremo Concílio da IPB. As unidades abaixo orientam a cobertura
+            curricular dos verbetes publicados para esta disciplina.
           </p>
           <ol className="mt-5 space-y-3">
             {d.unidades.map((u) => (
