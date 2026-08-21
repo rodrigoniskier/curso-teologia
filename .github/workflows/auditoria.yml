@@ -16,7 +16,7 @@ concurrency:
   # Em PRs, um commit novo torna a auditoria anterior obsoleta. Pushes no main,
   # execuções manuais e a varredura semanal mantêm grupos únicos e nunca se
   # cancelam entre si.
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
