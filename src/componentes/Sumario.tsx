@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
-import { departamentos, verbetesDe } from '../conteudo/catalogo';
-import { buscarVerbetes, type Achado } from '../conteudo/busca';
+import { departamentos, verbetesDe } from '../infra/catalogo';
+import { buscarVerbetes, type Achado } from '../infra/busca';
 
 /**
  * Abrir todo departamento que tenha verbete enterrava a Sistemática abaixo das
