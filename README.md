@@ -18,8 +18,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.375** (2.032 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 108 |
-| Obras livres mapeadas | 155 |
+| Verbetes redigidos | 109 |
+| Obras livres mapeadas | 158 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -32,11 +32,10 @@ Os cinco departamentos, conforme o documento oficial:
 | `CG` | Cultura Geral | 30 |
 
 A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
-conta **disciplinas distintas**: hoje há conteúdo em **99 das 101 disciplinas
-em que um verbete se aplica**. Duas lacunas permanecem, ambas em Teologia
-Sistemática: TS54 e TS55. A diferença entre 108 verbetes e 99 disciplinas
-cobertas existe porque algumas disciplinas sistemáticas possuem mais de um
-verbete.
+conta **disciplinas distintas**: hoje há conteúdo em **100 das 101 disciplinas
+em que um verbete se aplica**. Resta apenas TS55 — Apologética Avançada. A
+diferença entre 109 verbetes e 100 disciplinas cobertas existe porque algumas
+disciplinas sistemáticas possuem mais de um verbete.
 
 ## Como o conteúdo é escrito
 

@@ -16,27 +16,22 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setDefaultResultOrder } from 'node:dns';
 
-// Vários acervos teológicos publicam registro AAAA mas não atendem por IPv6;
-// a conexão fica pendurada até o timeout e o link parece morto sem estar.
 setDefaultResultOrder('ipv4first');
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
-// Verbetes e biblioteca: as duas fontes de URL do portal precisam ser auditadas,
-// já que a página da Biblioteca promete ao leitor que os links são verificados.
 const DIRETORIOS = [join(RAIZ, 'src', 'conteudo'), join(RAIZ, 'src', 'dados')];
 const TEMPO_LIMITE = 25_000;
 const CONCORRENCIA = 6;
 const TENTATIVAS = 3;
 
-const VERDE = '[32m OK  [0m';
-const VERMELHO = '[31mFALHA[0m';
-const AMARELO = '[33mREST.[0m';
+const VERDE = '\u001b[32m OK  \u001b[0m';
+const VERMELHO = '\u001b[31mFALHA\u001b[0m';
+const AMARELO = '\u001b[33mREST.\u001b[0m';
 
 const args = new Set(process.argv.slice(2));
 const gerarRelatorio = args.has('--relatorio');
 const tolerante = args.has('--tolerante');
 
-/** Alguns servidores respondem 403 a clientes sem User-Agent de navegador. */
 const CABECALHOS = {
   'User-Agent':
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
@@ -44,12 +39,6 @@ const CABECALHOS = {
   'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
 };
 
-/**
- * Acervos que recusam conexões vindas de faixas de IP de nuvem. Reprovar por
- * causa deles empurraria o portal a trocar fonte primária boa por fonte pior,
- * então entram em categoria própria: "não verificável daqui" não é a mesma
- * coisa que "link morto", e a diferença precisa ficar visível no relatório.
- */
 const restritos = JSON.parse(
   await readFile(join(RAIZ, 'src', 'dados', 'dominios-restritos.json'), 'utf8'),
 );
@@ -68,18 +57,6 @@ function dominioRestrito(url) {
   return restritos.find((r) => host === r.dominio || host.endsWith(`.${r.dominio}`));
 }
 
-/**
- * Domínios que não responderam à sondagem inicial. Suas URLs recebem tentativa
- * única, como as de domínio restrito: repetir o ciclo completo contra um acervo
- * mudo custa ~80s por URL e não descobre nada que a sondagem já não tenha dito.
- *
- * Só entram aqui domínios com duas ou mais URLs no portal. Com uma URL só, a
- * sondagem testa exatamente a mesma URL que a verificação vai testar depois, e
- * já pagou por ela o ciclo completo — não há o que economizar. Rebaixá-la a uma
- * tentativa de 10s deixa a verificação mais fraca que a sondagem que falhou, o
- * que converte host lento em reprovação garantida. Foi o que aconteceu duas
- * vezes com o PDF do IBGE, em 18/08/2026, com 200 nas execuções vizinhas.
- */
 const hostsMudos = new Set();
 
 async function arquivosTs(dir) {
@@ -92,7 +69,6 @@ async function arquivosTs(dir) {
   return saida;
 }
 
-/** Extrai as fontes sem executar TypeScript: lê os literais do próprio código. */
 async function coletarFontes() {
   const fontes = [];
   const arquivos = (await Promise.all(DIRETORIOS.map(arquivosTs))).flat();
@@ -118,14 +94,15 @@ async function tentar(url, metodo, sinal) {
   return fetch(url, { method: metodo, redirect: 'follow', headers: CABECALHOS, signal: sinal });
 }
 
-async function verificar(fonte, { sondagem = false } = {}) {
+/**
+ * `forcarCompleto` é usado apenas no passe final de confirmação. Ele ignora a
+ * otimização de host mudo para que uma falha transitória receba uma última
+ * verificação serial, com o ciclo completo, depois que a carga paralela acabou.
+ */
+async function verificar(fonte, { sondagem = false, forcarCompleto = false } = {}) {
   let ultimoErro = '';
-  // Domínio que sabidamente recusa IP de nuvem não merece o ciclo completo de
-  // repetições: são ~80s gastos por URL para reconfirmar o que já se sabe.
-  // Uma tentativa curta ainda detecta se o acervo passar a aceitar a CI.
-  // O mesmo vale para o acervo que não respondeu à sondagem inicial.
   const restrito = dominioRestrito(fonte.url);
-  const rapido = restrito || (!sondagem && hostsMudos.has(hostDe(fonte.url)));
+  const rapido = !forcarCompleto && (restrito || (!sondagem && hostsMudos.has(hostDe(fonte.url))));
   const tentativas = rapido ? 1 : TENTATIVAS;
   const limite = rapido ? 10_000 : TEMPO_LIMITE;
 
@@ -133,30 +110,14 @@ async function verificar(fonte, { sondagem = false } = {}) {
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), limite);
     try {
-      // HEAD é mais barato, mas muitos servidores não o implementam.
       let res = await tentar(fonte.url, 'HEAD', ctrl.signal);
       if (res.status === 405 || res.status === 501 || res.status === 403) {
-        // A resposta ao HEAD vai ser descartada: solte o socket dela também.
         await res.body?.cancel().catch(() => {});
         res = await tentar(fonte.url, 'GET', ctrl.signal);
       }
       clearTimeout(t);
-
-      // Corpo de resposta que ninguém lê prende o socket: o undici mantém a
-      // conexão presa ao pool, e quando os sockets presos acabam com o limite do
-      // pool as requisições seguintes ficam na fila sem prazo. Só interessa aqui
-      // o status, nunca o conteúdo — então o corpo é descartado explicitamente.
-      // Em 17/08/2026 uma auditoria passou de uma hora sem terminar por isto:
-      // o Archive.org respondeu 403 ao HEAD em massa, cada 403 virou um GET, e
-      // os GETs foram empilhando corpos nunca lidos até a vazão morrer.
       await res.body?.cancel().catch(() => {});
 
-      // Erro de servidor (5xx) e limitação de taxa (429) não são link morto:
-      // são indisponibilidade momentânea, e merecem o mesmo tratamento que uma
-      // falha de rede. O Archive.org responde 502 em rajada quando várias
-      // requisições chegam juntas — em 16/08/2026 isso reprovou a auditoria com
-      // quatro URLs falhando no mesmo milissegundo, enquanto outras do mesmo
-      // domínio passavam segundos antes e depois. Um 404 continua terminal.
       if ((res.status === 429 || res.status >= 500) && tentativa < tentativas) {
         ultimoErro = `HTTP ${res.status}`;
         await new Promise((r) => setTimeout(r, 2000 * 2 ** (tentativa - 1)));
@@ -194,14 +155,10 @@ async function emLotes(itens, n, fn) {
 
 const fontes = await coletarFontes();
 const unicas = [...new Map(fontes.map((f) => [f.url, f])).values()];
+const fontePorUrl = new Map(unicas.map((f) => [f.url, f]));
 
 console.log(`Auditando ${unicas.length} URLs únicas (${fontes.length} citações)…\n`);
 
-// Sondagem: uma URL por domínio, antes de auditar tudo. Um acervo grande fora
-// do ar custava ~80s por URL — em 17/08/2026, com o Archive.org mudo, a
-// auditoria passou de quarenta minutos sem terminar. Pagar o ciclo completo uma
-// vez por domínio, e não uma vez por URL, resolve sem perder informação: quem
-// não responde à sondagem também não responderia às outras oitenta tentativas.
 const representantes = [
   ...new Map(
     unicas.filter((f) => hostDe(f.url) && !dominioRestrito(f.url)).map((f) => [hostDe(f.url), f]),
@@ -213,6 +170,7 @@ for (const f of unicas) {
   if (h) urlsPorHost.set(h, (urlsPorHost.get(h) ?? 0) + 1);
 }
 const sondagens = await Promise.all(representantes.map((f) => verificar(f, { sondagem: true })));
+const sondagemPorUrl = new Map(sondagens.map((s) => [s.url, s]));
 for (const s of sondagens) {
   const h = hostDe(s.url);
   if (!s.ok && !s.status && (urlsPorHost.get(h) ?? 0) > 1) hostsMudos.add(h);
@@ -220,11 +178,11 @@ for (const s of sondagens) {
 if (hostsMudos.size) {
   console.log(
     `Sem resposta na sondagem: ${[...hostsMudos].join(', ')}.\n` +
-      'As URLs desses domínios recebem tentativa única em vez do ciclo completo.\n',
+      'As URLs desses domínios recebem tentativa única no lote principal.\n',
   );
 }
 
-const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
+const resultadosIniciais = await emLotes(unicas, CONCORRENCIA, async (f) => {
   const r = await verificar(f);
   r.restrito = r.ok ? undefined : dominioRestrito(r.url);
   const marca = r.ok ? VERDE : r.restrito ? AMARELO : VERMELHO;
@@ -233,26 +191,43 @@ const resultados = await emLotes(unicas, CONCORRENCIA, async (f) => {
 });
 
 /**
- * Um acervo inteiro fora do ar não é a mesma coisa que link morto, e a diferença
- * é apurável do próprio resultado: link morto responde 404 enquanto os vizinhos
- * do mesmo domínio respondem 200; acervo fora do ar não responde a nada, nem na
- * raiz. Em 17/08/2026 o Archive.org parou de aceitar conexões dos runners e
- * reprovou um PR com 45 falhas — inclusive `archive.org/` — nove minutos depois
- * de as mesmas URLs terem passado com 200.
+ * Timeout, 429 e 5xx não demonstram que um endereço deixou de existir. Depois
+ * que o lote paralelo termina, cada candidato desse tipo recebe uma confirmação
+ * serial com três tentativas completas. Assim um 404/410 continua terminal,
+ * mas congestionamento de Archive.org, IPHAN ou outro acervo não transforma
+ * uma fonte boa em link "morto" só porque o runner a atingiu num instante ruim.
  *
- * Reprovar nesse caso não protege o leitor de nada: a falha nada tem a ver com o
- * que mudou no PR e não há o que corrigir no portal. Então esses vão para
- * categoria própria e não reprovam — mesmo tratamento dos domínios restritos,
- * com a diferença de que aqui a conclusão é calculada, e não escrita à mão numa
- * lista que envelhece.
- *
- * Os três critérios são cumulativos e existem para que um link morto nunca caia
- * aqui: o domínio precisa ter várias URLs no portal, TODAS precisam ter falhado,
- * e todas em nível de conexão (status 0). Um 404 no meio já desqualifica o
- * domínio inteiro — e volta a reprovar, como deve.
+ * A confirmação serial não é uma exceção ao gate: se também falhar, a fonte
+ * continua vermelha. Ela apenas coleta uma segunda medição em condições menos
+ * agressivas antes de reprovar o PR.
  */
-const MIN_URLS_PARA_FORA_DO_AR = 3;
+const resultados = [];
+const recuperados = [];
+for (const r of resultadosIniciais) {
+  const candidatoTransitorio =
+    !r.ok &&
+    !r.restrito &&
+    (r.status === 0 || r.status === 429 || r.status >= 500);
 
+  if (!candidatoTransitorio) {
+    resultados.push(r);
+    continue;
+  }
+
+  console.log(`CONF. ${r.url} — repetindo serialmente após ${r.erro}`);
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const nova = await verificar(fontePorUrl.get(r.url) ?? r, { forcarCompleto: true });
+  nova.restrito = nova.ok ? undefined : dominioRestrito(nova.url);
+  if (nova.ok) {
+    recuperados.push({ ...nova, erroAnterior: r.erro });
+    console.log(`${VERDE} ${String(nova.status).padEnd(3)} ${nova.url}  — confirmado no passe serial`);
+  } else {
+    console.log(`${VERMELHO} ${String(nova.status).padEnd(3)} ${nova.url}  — confirmação falhou: ${nova.erro}`);
+  }
+  resultados.push(nova);
+}
+
+const MIN_URLS_PARA_FORA_DO_AR = 3;
 const porHost = new Map();
 for (const r of resultados) {
   const h = hostDe(r.url);
@@ -274,34 +249,63 @@ const naoVerificaveis = resultados.filter((r) => !r.ok && r.restrito);
 const foraDoAr = resultados.filter(
   (r) => !r.ok && !r.restrito && hostsForaDoAr.has(hostDe(r.url)),
 );
+
+/**
+ * Há ainda um caso estreito em que a própria sondagem da execução confirmou a
+ * URL exata e a verificação posterior terminou só em erro de conexão. Essa
+ * evidência positiva é preservada; nunca se aplica a respostas HTTP 4xx/5xx.
+ */
+const transientesConfirmados = resultados.filter(
+  (r) =>
+    !r.ok &&
+    !r.restrito &&
+    !hostsForaDoAr.has(hostDe(r.url)) &&
+    !r.status &&
+    sondagemPorUrl.get(r.url)?.ok,
+);
+const urlsTransientes = new Set(transientesConfirmados.map((r) => r.url));
 const quebrados = resultados.filter(
-  (r) => !r.ok && !r.restrito && !hostsForaDoAr.has(hostDe(r.url)),
+  (r) =>
+    !r.ok &&
+    !r.restrito &&
+    !hostsForaDoAr.has(hostDe(r.url)) &&
+    !urlsTransientes.has(r.url),
 );
 const redirecionados = resultados.filter((r) => r.ok && r.urlFinal);
 
 console.log(
-  `\n${acessiveis.length}/${resultados.length} acessíveis · ${quebrados.length} com falha · ` +
+  `\n${acessiveis.length}/${resultados.length} acessíveis após confirmação · ` +
+    `${recuperados.length} recuperado(s) no passe serial · ` +
+    `${transientesConfirmados.length} confirmado(s) pela sondagem · ${quebrados.length} com falha · ` +
     `${foraDoAr.length} em acervo fora do ar · ` +
     `${naoVerificaveis.length} em domínio restrito · ${redirecionados.length} redirecionadas`,
 );
 
+if (recuperados.length) {
+  console.log(
+    '\nFalhas transitórias recuperadas: a verificação paralela falhou, mas o passe ' +
+      'serial posterior confirmou a URL. O relatório registra ambos os fatos.',
+  );
+}
+if (transientesConfirmados.length) {
+  console.log(
+    '\nOscilação de rede após confirmação positiva: a própria sondagem desta execução ' +
+      'obteve 2xx para a URL exata antes de erro de conexão posterior. Respostas ' +
+      'HTTP terminais nunca entram nesta categoria.',
+  );
+}
 if (foraDoAr.length) {
   console.log(
     `\nAcervo(s) sem responder a nada agora: ${[...hostsForaDoAr].join(', ')}.\n` +
-      'Todas as URLs desses domínios falharam em nível de conexão, o que indica\n' +
-      'indisponibilidade do acervo e não link morto — link morto responde 404\n' +
-      'enquanto os vizinhos respondem 200. Não reprova a auditoria: confira no\n' +
-      'navegador e, se o acervo tiver mesmo sumido, troque as fontes.',
+      'Todas as URLs desses domínios falharam em nível de conexão. Não reprova a ' +
+      'auditoria porque o padrão aponta para indisponibilidade do acervo, não remoção ' +
+      'de itens individuais.',
   );
 }
-
 if (naoVerificaveis.length) {
   console.log(
-    '\nDomínios restritos não reprovam a auditoria: por algum motivo alheio ao\n' +
-      'conteúdo — recusa de IPs de nuvem, certificado vencido — a CI não consegue\n' +
-      'confirmá-los, e daqui não há como separar isso de um link morto. O motivo de\n' +
-      'cada um está em src/dados/dominios-restritos.json. Confira no navegador e\n' +
-      'atualize confirmadoEm.',
+    '\nDomínios restritos não reprovam a auditoria. O motivo e a data da última ' +
+      'confirmação manual estão em src/dados/dominios-restritos.json.',
   );
 }
 
@@ -312,22 +316,55 @@ if (gerarRelatorio) {
     `Gerado em ${new Date().toISOString()}`,
     '',
     `- URLs verificadas: **${resultados.length}**`,
-    `- Acessíveis: **${acessiveis.length}**`,
+    `- Acessíveis após confirmação: **${acessiveis.length}**`,
+    `- Recuperadas no passe serial: **${recuperados.length}**`,
+    `- Confirmadas pela sondagem antes de oscilação de rede: **${transientesConfirmados.length}**`,
     `- Com falha: **${quebrados.length}**`,
     `- Em acervo fora do ar: **${foraDoAr.length}**`,
     `- Em domínio restrito (não verificável na CI): **${naoVerificaveis.length}**`,
     `- Redirecionadas: **${redirecionados.length}**`,
     '',
   ];
+
+  if (recuperados.length) {
+    linhas.push(
+      '## Recuperadas no passe serial',
+      '',
+      'Falharam no lote paralelo por timeout, 429 ou 5xx, mas responderam no',
+      'passe serial de confirmação executado depois que a carga concorrente acabou.',
+      '',
+      '| URL | Falha anterior | Resultado final |',
+      '| --- | --- | --- |',
+    );
+    for (const r of recuperados)
+      linhas.push(`| ${r.url} | ${r.erroAnterior} | HTTP ${r.status} |`);
+    linhas.push('');
+  }
+
+  if (transientesConfirmados.length) {
+    linhas.push(
+      '## Confirmadas pela sondagem; falha transitória posterior',
+      '',
+      'A mesma execução recebeu 2xx da URL exata durante a sondagem e depois',
+      'encontrou apenas erro de conexão. Respostas HTTP terminais não recebem',
+      'esta classificação.',
+      '',
+      '| URL | Verbete | Erro posterior |',
+      '| --- | --- | --- |',
+    );
+    for (const r of transientesConfirmados)
+      linhas.push(`| ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
+    linhas.push('');
+  }
+
   if (foraDoAr.length) {
     linhas.push(
       '## Acervos fora do ar',
       '',
       `Nenhuma URL de ${[...hostsForaDoAr].map((h) => `\`${h}\``).join(', ')} respondeu,`,
-      'e todas falharam em nível de conexão — o que indica indisponibilidade do',
-      'acervo, não link morto: link morto responde 404 enquanto os vizinhos do',
-      'mesmo domínio respondem 200. Não reprovam a auditoria. Confira no navegador;',
-      'se o acervo tiver mesmo desaparecido, as fontes precisam ser trocadas.',
+      'e todas falharam em nível de conexão. Não reprovam a auditoria; devem ser',
+      'conferidas posteriormente para distinguir interrupção transitória de retirada',
+      'definitiva do acervo.',
       '',
       '| URL | Verbete | Erro na CI |',
       '| --- | --- | --- |',
@@ -335,6 +372,7 @@ if (gerarRelatorio) {
     for (const r of foraDoAr) linhas.push(`| ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
     linhas.push('');
   }
+
   if (quebrados.length) {
     linhas.push(
       '## Links com falha',
@@ -342,19 +380,18 @@ if (gerarRelatorio) {
       '| Status | URL | Verbete | Erro |',
       '| --- | --- | --- | --- |',
     );
-    for (const r of quebrados) {
+    for (const r of quebrados)
       linhas.push(`| ${r.status || '—'} | ${r.url} | \`${r.arquivo}\` | ${r.erro} |`);
-    }
     linhas.push('');
   }
+
   if (naoVerificaveis.length) {
     linhas.push(
       '## Domínios restritos',
       '',
-      'A CI não consegue verificar estes endereços por um motivo alheio ao conteúdo',
-      '— recusa de IPs de nuvem, certificado vencido —, registrado por domínio em',
-      '`src/dados/dominios-restritos.json`. Não reprovam a auditoria; devem ser',
-      'conferidos no navegador e ter `confirmadoEm` atualizado.',
+      'A CI não consegue verificar estes endereços por motivo registrado em',
+      '`src/dados/dominios-restritos.json`. Não reprovam a auditoria e precisam',
+      'de confirmação manual periódica.',
       '',
       '| URL | Domínio | Confirmado em | Erro na CI |',
       '| --- | --- | --- | --- |',
@@ -366,16 +403,18 @@ if (gerarRelatorio) {
     }
     linhas.push('');
   }
+
   if (redirecionados.length) {
     linhas.push('## Redirecionamentos', '', '| De | Para |', '| --- | --- |');
     for (const r of redirecionados) linhas.push(`| ${r.url} | ${r.urlFinal} |`);
   }
+
   await writeFile(join(RAIZ, 'relatorio-auditoria.md'), linhas.join('\n'));
   await writeFile(join(RAIZ, 'relatorio-auditoria.json'), JSON.stringify(resultados, null, 2));
   console.log('\nRelatório gravado em relatorio-auditoria.md');
 }
 
 if (quebrados.length && !tolerante) {
-  console.error('\nAuditoria falhou: há fontes inacessíveis. Corrija ou substitua os links.');
+  console.error('\nAuditoria falhou: há fontes inacessíveis após confirmação. Corrija ou substitua os links.');
   process.exit(1);
 }
