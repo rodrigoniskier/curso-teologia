@@ -15,6 +15,7 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setDefaultResultOrder } from 'node:dns';
+import { encontrarRestricao } from './lib/dominios-restritos.mjs';
 
 setDefaultResultOrder('ipv4first');
 
@@ -52,9 +53,7 @@ function hostDe(url) {
 }
 
 function dominioRestrito(url) {
-  const host = hostDe(url);
-  if (!host) return undefined;
-  return restritos.find((r) => host === r.dominio || host.endsWith(`.${r.dominio}`));
+  return encontrarRestricao(url, restritos);
 }
 
 const hostsMudos = new Set();
