@@ -1,10 +1,17 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Marca } from './componentes/Marca';
 import { Sumario } from './componentes/Sumario';
-import { PaginaInicio } from './paginas/Inicio';
-import { PaginaDisciplina } from './paginas/Disciplina';
-import { PaginaBiblioteca } from './paginas/Biblioteca';
+
+const PaginaInicio = lazy(() =>
+  import('./paginas/Inicio').then((m) => ({ default: m.PaginaInicio })),
+);
+const PaginaDisciplina = lazy(() =>
+  import('./paginas/Disciplina').then((m) => ({ default: m.PaginaDisciplina })),
+);
+const PaginaBiblioteca = lazy(() =>
+  import('./paginas/Biblioteca').then((m) => ({ default: m.PaginaBiblioteca })),
+);
 
 export default function App() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -75,24 +82,28 @@ export default function App() {
 
         <main className="min-w-0 flex-1 px-6 py-10 sm:px-10 lg:px-14">
           <div className="mx-auto max-w-[68ch]">
-            <Routes>
-              <Route path="/" element={<PaginaInicio />} />
-              <Route path="/biblioteca" element={<PaginaBiblioteca />} />
-              <Route path="/disciplina/:codigo" element={<PaginaDisciplina />} />
-              <Route path="/disciplina/:codigo/:verbeteId" element={<PaginaDisciplina />} />
-              <Route
-                path="*"
-                element={
-                  <p className="font-sans text-neutral-600">
-                    Página não encontrada.{' '}
-                    <Link to="/" className="text-tinta-600 underline">
-                      Voltar ao início
-                    </Link>
-                    .
-                  </p>
-                }
-              />
-            </Routes>
+            <Suspense
+              fallback={<p className="font-sans text-[0.9rem] text-neutral-500">Carregando página…</p>}
+            >
+              <Routes>
+                <Route path="/" element={<PaginaInicio />} />
+                <Route path="/biblioteca" element={<PaginaBiblioteca />} />
+                <Route path="/disciplina/:codigo" element={<PaginaDisciplina />} />
+                <Route path="/disciplina/:codigo/:verbeteId" element={<PaginaDisciplina />} />
+                <Route
+                  path="*"
+                  element={
+                    <p className="font-sans text-neutral-600">
+                      Página não encontrada.{' '}
+                      <Link to="/" className="text-tinta-600 underline">
+                        Voltar ao início
+                      </Link>
+                      .
+                    </p>
+                  }
+                />
+              </Routes>
+            </Suspense>
           </div>
         </main>
       </div>
