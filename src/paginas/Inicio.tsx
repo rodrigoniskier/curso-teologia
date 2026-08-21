@@ -49,7 +49,10 @@ export function PaginaInicio() {
           </h2>
           <ul className="mt-5 grid gap-4 sm:grid-cols-2">
             {verbetes.map((v) => (
-              <li key={v.id}>
+              <li
+                key={v.id}
+                className="[contain-intrinsic-size:auto_180px] [content-visibility:auto]"
+              >
                 <Link
                   to={`/disciplina/${v.disciplina}/${v.id}`}
                   className="flex h-full flex-col border border-margem bg-white px-5 py-5 transition-colors hover:border-tinta-400 hover:bg-papel-quente"

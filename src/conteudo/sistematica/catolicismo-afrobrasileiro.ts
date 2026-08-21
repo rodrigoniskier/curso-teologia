@@ -9,7 +9,7 @@ export const catolicismoAfrobrasileiro: Verbete = {
     'Discordar teologicamente exige primeiro descrever corretamente — Roma não é a romaria, Candomblé não é Umbanda e sincretismo não é uma fotografia imóvel do Brasil',
   objetivo:
     'Ao final, você saberá distinguir doutrina católica romana oficial de catolicismo popular; examinará cânon, papado, Eucaristia, santos, imagens, purgatório, penitência, Maria e sacramentos a partir das próprias fontes romanas e da resposta reformada; compreenderá a formação histórica e a diversidade das religiões afro-brasileiras sem reduzi-las a uma única categoria; distinguirá Candomblé, Umbanda e usos do termo Quimbanda; reconhecerá limites das categorias animismo, reencarnação, incorporação e sincretismo; e será capaz de formular uma avaliação bíblico-reformada firme que preserve rigor descritivo, liberdade religiosa e dignidade dos interlocutores.',
-  atualizadoEm: '2026-08-20',
+  atualizadoEm: '2026-08-21',
   verMais: ['tp56-denominacoes-seitas', 'th05-igreja-brasileira', 'ts11-subscricao-confessional'],
   blocos: [
     {
@@ -320,15 +320,15 @@ export const catolicismoAfrobrasileiro: Verbete = {
     {
       id: 'iphan-terreiros',
       autor: 'Instituto do Patrimônio Histórico e Artístico Nacional',
-      ano: '2015',
-      titulo: 'Terreiros do Brasil: guardiões de tradição milenar',
+      ano: '2025',
+      titulo: 'Mesa-redonda debate a preservação de terreiros de religiões de matriz africana',
       publicacao: 'IPHAN',
-      url: 'https://portal.iphan.gov.br/noticias/detalhes/3221/terreiros-do-brasil-guardioes-de-tradicao-milenar',
+      url: 'https://www.gov.br/iphan/pt-br/assuntos/noticias/mesa-redonda-debate-a-preservacao-de-terreiros-de-religioes-de-matriz-africana',
       idioma: 'pt',
       tipo: 'documento',
       acesso: 'livre',
       nota:
-        'Fonte pública de patrimônio cultural utilizada para história social dos terreiros, resistência de populações escravizadas e preservação de saberes de matriz africana.',
+        'Fonte oficial atual do IPHAN sobre a importância histórica e cultural dos terreiros e os processos públicos de reconhecimento e proteção desses espaços.',
     },
     {
       id: 'cfw-ipib',
