@@ -2,7 +2,7 @@ name: Auditoria de fontes
 
 # Sem filtro de paths: ele existia para poupar execuções, mas gatilhava também
 # o job de build, e um PR que só mexesse na interface passava sem checagem de
-# tipos nenhuma. A auditoria leva menos de um minuto — não vale o risco.
+# tipos nenhuma. Ambos são gates obrigatórios — não vale o risco de ignorá-los.
 on:
   push:
     branches: [main]
@@ -12,14 +12,21 @@ on:
     - cron: '0 6 * * 1'
   workflow_dispatch:
 
+concurrency:
+  # Em PRs, um commit novo torna a auditoria anterior obsoleta. Pushes no main,
+  # execuções manuais e a varredura semanal mantêm grupos únicos e nunca se
+  # cancelam entre si.
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   links:
     name: Verificar todas as fontes citadas
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
 
@@ -45,7 +52,7 @@ jobs:
 
       - name: Guardar relatório
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: relatorio-auditoria
           path: |
@@ -57,8 +64,8 @@ jobs:
     name: Compilar e validar o portal
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: npm ci

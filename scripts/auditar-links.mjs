@@ -16,6 +16,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setDefaultResultOrder } from 'node:dns';
 import { encontrarRestricao } from './lib/dominios-restritos.mjs';
+import { mapearComConcorrencia } from './lib/mapear-com-concorrencia.mjs';
 
 setDefaultResultOrder('ipv4first');
 
@@ -144,14 +145,6 @@ async function verificar(fonte, { sondagem = false, forcarCompleto = false } = {
   return { ...fonte, status: 0, ok: false, erro: ultimoErro };
 }
 
-async function emLotes(itens, n, fn) {
-  const saida = [];
-  for (let i = 0; i < itens.length; i += n) {
-    saida.push(...(await Promise.all(itens.slice(i, i + n).map(fn))));
-  }
-  return saida;
-}
-
 const fontes = await coletarFontes();
 const unicas = [...new Map(fontes.map((f) => [f.url, f])).values()];
 const fontePorUrl = new Map(unicas.map((f) => [f.url, f]));
@@ -181,7 +174,7 @@ if (hostsMudos.size) {
   );
 }
 
-const resultadosIniciais = await emLotes(unicas, CONCORRENCIA, async (f) => {
+const resultadosIniciais = await mapearComConcorrencia(unicas, CONCORRENCIA, async (f) => {
   const r = await verificar(f);
   r.restrito = r.ok ? undefined : dominioRestrito(r.url);
   const marca = r.ok ? VERDE : r.restrito ? AMARELO : VERMELHO;
