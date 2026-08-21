@@ -22,9 +22,13 @@ function semAcento(s: string): string {
 
 function carregarIndice(): Promise<RegistroBusca[]> {
   if (!indicePromise) {
-    indicePromise = fetch('/indice-busca.json').then(async (r) => {
+    const carregamento = fetch('/indice-busca.json').then(async (r) => {
       if (!r.ok) throw new Error(`Falha ao carregar índice de busca: HTTP ${r.status}`);
       return (await r.json()) as RegistroBusca[];
+    });
+    indicePromise = carregamento;
+    void carregamento.catch(() => {
+      if (indicePromise === carregamento) indicePromise = undefined;
     });
   }
   return indicePromise;
