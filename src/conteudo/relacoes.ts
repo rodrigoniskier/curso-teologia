@@ -1,17 +1,17 @@
-import { verbetePorId, verbetes } from './indice';
-import type { Verbete } from '../tipos';
+import { verbetePorId, verbetes } from './catalogo';
+import type { VerbeteResumo } from '../tipos';
 
 export interface RelacoesVerbete {
   /** Relações escolhidas editorialmente no próprio verbete. */
-  diretas: Verbete[];
+  diretas: VerbeteResumo[];
   /** Verbetes que apontam para este e, portanto, oferecem a volta recíproca. */
-  inversas: Verbete[];
+  inversas: VerbeteResumo[];
 }
 
 /**
- * Resolve `verMais` como grafo navegável em duas direções sem obrigar cada
- * arquivo a duplicar manualmente a relação. A reciprocidade passa a ser uma
- * propriedade da interface, não uma tarefa editorial sujeita a esquecimento.
+ * Resolve `verMais` como grafo navegável em duas direções sem carregar o corpo
+ * dos verbetes relacionados. A reciprocidade continua sendo propriedade da
+ * interface, mas agora opera apenas sobre metadados leves.
  */
 export function relacoesDe(id: string): RelacoesVerbete {
   const atual = verbetePorId.get(id);
@@ -20,7 +20,7 @@ export function relacoesDe(id: string): RelacoesVerbete {
   const idsDiretos = new Set(atual.verMais ?? []);
   const diretas = [...idsDiretos]
     .map((alvo) => verbetePorId.get(alvo))
-    .filter((v): v is Verbete => Boolean(v));
+    .filter((v): v is VerbeteResumo => Boolean(v));
 
   const inversas = verbetes.filter(
     (v) => v.id !== id && !idsDiretos.has(v.id) && (v.verMais ?? []).includes(id),
