@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { porCodigo, verbetesDe } from '../conteudo/catalogo';
-import { carregarVerbete } from '../conteudo/carregar-verbete';
+import { porCodigo, verbetesDe } from '../infra/catalogo';
+import { carregarVerbete } from '../infra/carregar-verbete';
 import { porDisciplina } from '../dados/biblioteca-completa';
 import { Verbete } from '../componentes/Verbete';
 import type { Verbete as TVerbete } from '../tipos';
