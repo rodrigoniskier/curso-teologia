@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { relacoesDe } from '../conteudo/relacoes';
-import type { Bloco, Fonte, Verbete as TVerbete } from '../tipos';
+import type { Bloco, Fonte, TipoFonte, Verbete as TVerbete } from '../tipos';
 
 /**
  * Ênfase inline no texto dos blocos: `**forte**` e `*itálico*`.
@@ -39,9 +39,16 @@ const NOME_IDIOMA: Record<string, string> = {
   la: 'latim', fr: 'francês', grc: 'grego', he: 'hebraico',
 };
 
-const NOME_TIPO: Record<string, string> = {
-  'obra-primaria': 'obra primária', traducao: 'tradução', artigo: 'artigo',
-  verbete: 'verbete', curso: 'curso', documento: 'documento', acervo: 'acervo',
+const NOME_TIPO: Record<TipoFonte, string> = {
+  'obra-primaria': 'obra primária',
+  traducao: 'tradução',
+  livro: 'livro',
+  artigo: 'artigo',
+  verbete: 'verbete',
+  relatorio: 'relatório',
+  curso: 'curso',
+  documento: 'documento',
+  acervo: 'acervo',
 };
 
 function RenderBloco({ bloco, fontes }: { bloco: Bloco; fontes: Fonte[] }) {
