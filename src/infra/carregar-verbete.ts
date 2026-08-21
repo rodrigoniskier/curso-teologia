@@ -37,5 +37,8 @@ export function carregarVerbete(id: string): Promise<Verbete | undefined> {
   })();
 
   cache.set(id, promessa);
+  void promessa.catch(() => {
+    if (cache.get(id) === promessa) cache.delete(id);
+  });
   return promessa;
 }

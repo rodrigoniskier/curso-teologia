@@ -76,7 +76,10 @@ export function PaginaBiblioteca() {
             </h2>
             <ul className="mt-5 space-y-6">
               {obras.map((o) => (
-                <li key={o.id} className="border-l-2 border-margem pl-5">
+                <li
+                  key={o.id}
+                  className="border-l-2 border-margem pl-5 [contain-intrinsic-size:auto_190px] [content-visibility:auto]"
+                >
                   <a
                     href={o.url}
                     target="_blank"

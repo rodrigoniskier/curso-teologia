@@ -8,23 +8,30 @@ import { Verbete } from '../componentes/Verbete';
 import type { ObraLivre } from '../dados/biblioteca';
 import type { Disciplina, Verbete as TVerbete } from '../tipos';
 
+interface ProgramaCarregado {
+  codigo: string;
+  disciplina: Disciplina;
+  livres: ObraLivre[];
+}
+
 export function PaginaDisciplina() {
   const { codigo = '', verbeteId } = useParams();
   const resumoDisciplina = porCodigo.get(codigo);
   const vs = verbetesDe(codigo);
   const resumoAtual = verbeteId ? vs.find((v) => v.id === verbeteId) : undefined;
   const [atual, setAtual] = useState<TVerbete>();
-  const [falhouVerbete, setFalhouVerbete] = useState(false);
-  const [disciplina, setDisciplina] = useState<Disciplina>();
-  const [livres, setLivres] = useState<ObraLivre[]>([]);
-  const [falhouDisciplina, setFalhouDisciplina] = useState(false);
+  const [falhaVerbete, setFalhaVerbete] = useState<{ id: string; tentativa: number }>();
+  const [programa, setPrograma] = useState<ProgramaCarregado>();
+  const [falhaDisciplina, setFalhaDisciplina] = useState<{
+    codigo: string;
+    tentativa: number;
+  }>();
+  const [tentativa, setTentativa] = useState(0);
 
   useEffect(() => {
     let ativo = true;
-    setFalhouVerbete(false);
 
     if (!verbeteId || !resumoAtual) {
-      setAtual(undefined);
       return () => {
         ativo = false;
       };
@@ -34,27 +41,24 @@ export function PaginaDisciplina() {
       .then((v) => {
         if (!ativo) return;
         if (v) setAtual(v);
-        else setFalhouVerbete(true);
+        else setFalhaVerbete({ id: resumoAtual.id, tentativa });
       })
       .catch((erro: unknown) => {
         console.error(erro);
-        if (ativo) setFalhouVerbete(true);
+        if (ativo) setFalhaVerbete({ id: resumoAtual.id, tentativa });
       });
 
     return () => {
       ativo = false;
     };
-  }, [verbeteId, resumoAtual?.id]);
+  }, [verbeteId, resumoAtual?.id, tentativa]);
 
   useEffect(() => {
     let ativo = true;
-    setFalhouDisciplina(false);
 
     // Um verbete precisa apenas do resumo da disciplina e do seu próprio chunk.
     // Programa completo e biblioteca só são baixados na página geral da disciplina.
     if (!resumoDisciplina || verbeteId) {
-      setDisciplina(undefined);
-      setLivres([]);
       return () => {
         ativo = false;
       };
@@ -64,21 +68,20 @@ export function PaginaDisciplina() {
       .then(([d, obras]) => {
         if (!ativo) return;
         if (!d) {
-          setFalhouDisciplina(true);
+          setFalhaDisciplina({ codigo, tentativa });
           return;
         }
-        setDisciplina(d);
-        setLivres(obras);
+        setPrograma({ codigo, disciplina: d, livres: obras });
       })
       .catch((erro: unknown) => {
         console.error(erro);
-        if (ativo) setFalhouDisciplina(true);
+        if (ativo) setFalhaDisciplina({ codigo, tentativa });
       });
 
     return () => {
       ativo = false;
     };
-  }, [codigo, verbeteId, resumoDisciplina?.codigo]);
+  }, [codigo, verbeteId, resumoDisciplina?.codigo, tentativa]);
 
   if (!resumoDisciplina) {
     return (
@@ -103,6 +106,8 @@ export function PaginaDisciplina() {
   }
 
   const atualDaRota = atual?.id === resumoAtual?.id ? atual : undefined;
+  const falhouVerbete =
+    falhaVerbete?.id === resumoAtual?.id && falhaVerbete.tentativa === tentativa;
 
   if (verbeteId && resumoAtual && !atualDaRota) {
     return (
@@ -116,6 +121,15 @@ export function PaginaDisciplina() {
         <p className="font-sans text-[0.9rem] text-neutral-500">
           {falhouVerbete ? 'Não foi possível carregar este verbete.' : 'Carregando verbete…'}
         </p>
+        {falhouVerbete && (
+          <button
+            type="button"
+            onClick={() => setTentativa((n) => n + 1)}
+            className="mt-3 font-sans text-[0.82rem] font-medium text-tinta-600 underline"
+          >
+            Tentar novamente
+          </button>
+        )}
       </div>
     );
   }
@@ -134,7 +148,11 @@ export function PaginaDisciplina() {
     );
   }
 
-  if (!disciplina) {
+  const programaDaRota = programa?.codigo === codigo ? programa : undefined;
+  const falhouDisciplina =
+    falhaDisciplina?.codigo === codigo && falhaDisciplina.tentativa === tentativa;
+
+  if (!programaDaRota) {
     return (
       <article>
         <header className="border-b border-margem pb-7">
@@ -154,11 +172,20 @@ export function PaginaDisciplina() {
         <p className="mt-7 font-sans text-[0.9rem] text-neutral-500">
           {falhouDisciplina ? 'Não foi possível carregar o programa desta disciplina.' : 'Carregando programa e leituras…'}
         </p>
+        {falhouDisciplina && (
+          <button
+            type="button"
+            onClick={() => setTentativa((n) => n + 1)}
+            className="mt-3 font-sans text-[0.82rem] font-medium text-tinta-600 underline"
+          >
+            Tentar novamente
+          </button>
+        )}
       </article>
     );
   }
 
-  const d = disciplina;
+  const { disciplina: d, livres } = programaDaRota;
 
   return (
     <article>

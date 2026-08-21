@@ -13,5 +13,13 @@ export function carregarDisciplina(codigo: string): Promise<Disciplina | undefin
   });
 
   cache.set(codigo, promessa);
+  void promessa.then(
+    (disciplina) => {
+      if (!disciplina && cache.get(codigo) === promessa) cache.delete(codigo);
+    },
+    () => {
+      if (cache.get(codigo) === promessa) cache.delete(codigo);
+    },
+  );
   return promessa;
 }
