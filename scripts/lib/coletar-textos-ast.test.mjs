@@ -44,3 +44,30 @@ test('mantém o acumulador informado pelo chamador', () => {
   assert.equal(coletarTextosAst(inicializador, acumulador), acumulador);
   assert.deepEqual(acumulador, ['antes', 'um', 'dois']);
 });
+
+test('pode excluir metadados técnicos sem perder texto visível', () => {
+  const inicializador = inicializadorDaConstante(`
+    const fonte = {
+      id: 'cfw-ipib',
+      autor: 'Assembleia de Westminster',
+      titulo: 'Confissão de Fé de Westminster',
+      url: 'https://exemplo.invalid/cfw',
+      idioma: 'pt',
+      acesso: 'livre',
+      nota: 'Texto integral em português.',
+    };
+  `);
+
+  assert.deepEqual(
+    coletarTextosAst(
+      inicializador,
+      [],
+      new Set(['id', 'url', 'idioma', 'acesso']),
+    ),
+    [
+      'Assembleia de Westminster',
+      'Confissão de Fé de Westminster',
+      'Texto integral em português.',
+    ],
+  );
+});

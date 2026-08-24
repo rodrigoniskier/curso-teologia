@@ -10,6 +10,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
+import { coletarTextosAst } from './lib/coletar-textos-ast.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CONTEUDO = join(RAIZ, 'src', 'conteudo');
@@ -53,21 +54,6 @@ function numeroLiteral(no) {
 
 function contarArray(no) {
   return no && ts.isArrayLiteralExpression(no) ? no.elements.length : 0;
-}
-
-function coletarTextoVisivel(no, saida = []) {
-  if (!no) return saida;
-  if (ts.isPropertyAssignment(no) && CAMPOS_TECNICOS.has(nomePropriedade(no.name))) {
-    return saida;
-  }
-  if (ts.isStringLiteralLike(no) || ts.isNoSubstitutionTemplateLiteral(no)) {
-    saida.push(no.text);
-    return saida;
-  }
-  no.forEachChild((filho) => {
-    coletarTextoVisivel(filho, saida);
-  });
-  return saida;
 }
 
 function contarPalavras(texto) {
@@ -136,7 +122,12 @@ async function lerVerbete(caminho) {
     }
   }
 
-  const texto = [titulo, subtitulo, objetivo, ...coletarTextoVisivel(blocos)].join(' ');
+  const texto = [
+    titulo,
+    subtitulo,
+    objetivo,
+    ...coletarTextosAst(blocos, [], CAMPOS_TECNICOS),
+  ].join(' ');
   return {
     id,
     disciplina,

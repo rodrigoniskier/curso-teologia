@@ -12,6 +12,8 @@ const INDICE = join(CONTEUDO, 'indice.ts');
 const BUSCA = join(RAIZ, 'public', 'indice-busca.json');
 const PASTAS = ['exegetica', 'sistematica', 'historica', 'pastoral', 'geral'];
 const ORDEM_SIGLA = new Map(['TE', 'TS', 'TH', 'TP', 'CG'].map((s, i) => [s, i]));
+const CAMPOS_TECNICOS_BLOCO = new Set(['tipo', 'fonteId']);
+const CAMPOS_TECNICOS_FONTE = new Set(['id', 'url', 'tipo', 'idioma', 'acesso']);
 
 function nomePropriedade(nome) {
   if (ts.isIdentifier(nome) || ts.isStringLiteralLike(nome) || ts.isNumericLiteral(nome)) return nome.text;
@@ -79,8 +81,8 @@ function lerVerbete(caminho, pasta) {
     const verMais = listaDeTextos(propriedade(obj, 'verMais')?.initializer) ?? [];
     const blocosNo = propriedade(obj, 'blocos')?.initializer;
     const fontesNo = propriedade(obj, 'fontes')?.initializer;
-    const textosBlocos = coletarTextosAst(blocosNo);
-    const textosFontes = coletarTextosAst(fontesNo);
+    const textosBlocos = coletarTextosAst(blocosNo, [], CAMPOS_TECNICOS_BLOCO);
+    const textosFontes = coletarTextosAst(fontesNo, [], CAMPOS_TECNICOS_FONTE);
 
     if (contarArray(blocosNo) && textosBlocos.length === 0) {
       throw new Error(`${relative(RAIZ, caminho)}: blocos não entraram no índice de busca`);
