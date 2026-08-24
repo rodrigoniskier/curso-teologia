@@ -178,7 +178,15 @@ npm run dev      # http://localhost:3000
 npm run validar  # consistência de conteúdo, acervo e currículo
 npm run build    # checagem de tipos + build de produção
 npm run estado   # cobertura real por disciplina e contagens calculadas do código
+npm run priorizar # fila editorial por profundidade, carga curricular e fontes
 ```
+
+Depois de completar a cobertura aplicável, `npm run priorizar` substitui a
+escolha por simples presença/ausência. Ele mostra, separadamente, disciplinas
+com muitos tópicos para pouco conteúdo, os verbetes mais curtos, os textos com
+poucas fontes e ausências estruturais que merecem leitura humana. Esses sinais
+não são nota automática de qualidade nem gate: servem para decidir onde uma
+revisão ou um novo verbete terá maior efeito.
 
 Stack: Vite + React 19 + TypeScript (estrito) + Tailwind CSS 4 + React Router.
 

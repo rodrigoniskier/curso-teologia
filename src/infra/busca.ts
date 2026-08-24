@@ -1,12 +1,15 @@
 import { verbetePorId } from './catalogo';
 import type { VerbeteResumo } from '../tipos';
 
-interface RegistroBusca {
+interface RegistroBuscaSerializado {
   id: string;
-  /** Texto já normalizado e sem acentos, gerado no build. */
+  /** Texto original usado tanto na busca quanto no trecho contextual. */
   texto: string;
-  /** Texto original usado apenas para produzir o trecho contextual. */
-  bruto: string;
+}
+
+interface RegistroBusca extends RegistroBuscaSerializado {
+  /** Cópia sem acentos criada uma vez, apenas em memória. */
+  normalizado: string;
 }
 
 export interface Achado {
@@ -24,7 +27,11 @@ function carregarIndice(): Promise<RegistroBusca[]> {
   if (!indicePromise) {
     const carregamento = fetch('/indice-busca.json').then(async (r) => {
       if (!r.ok) throw new Error(`Falha ao carregar índice de busca: HTTP ${r.status}`);
-      return (await r.json()) as RegistroBusca[];
+      const registros = (await r.json()) as RegistroBuscaSerializado[];
+      return registros.map((registro) => ({
+        ...registro,
+        normalizado: semAcento(registro.texto),
+      }));
     });
     indicePromise = carregamento;
     void carregamento.catch(() => {
@@ -42,16 +49,16 @@ export async function buscarVerbetes(consulta: string, limite = 8): Promise<Acha
     const indice = await carregarIndice();
     const achados: Achado[] = [];
     for (const registro of indice) {
-      if (!registro.texto.includes(q)) continue;
+      if (!registro.normalizado.includes(q)) continue;
       const verbete = verbetePorId.get(registro.id);
       if (!verbete) continue;
 
-      const j = semAcento(registro.bruto).indexOf(q);
+      const j = registro.normalizado.indexOf(q);
       const trecho =
         j === -1
           ? undefined
           : (j > 40 ? '…' : '') +
-            registro.bruto.slice(Math.max(0, j - 40), j + q.length + 70).trim() +
+            registro.texto.slice(Math.max(0, j - 40), j + q.length + 70).trim() +
             '…';
       achados.push({ verbete, trecho });
       if (achados.length >= limite) break;

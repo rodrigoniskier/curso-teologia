@@ -90,3 +90,8 @@ jobs:
       # poucas horas. Conferir aqui é mais barato que conferir de memória.
       - name: Conferir os números do README
         run: npm run conferir
+
+      # A cobertura por disciplina já está completa. Esta etapa garante que a
+      # fila de aprofundamento e revisão continue calculável a cada mudança.
+      - name: Verificar diagnóstico editorial
+        run: npm run priorizar -- --json > /dev/null

@@ -179,6 +179,9 @@ diferentes.
 ```text
 0. Partir sempre do main mais recente em um ramo novo
 1. npm run estado — escolher o alvo pelo desequilíbrio
+   com cobertura completa, usar também `npm run priorizar` para escolher entre
+   aprofundamento curricular, revisão de extensão, reforço de fontes e revisão
+   estrutural; os sinais não substituem leitura editorial
 2. Ler a ementa oficial em src/dados/ementas.json
 3. Ler verbetes vizinhos para não repetir
 4. Verificar as fontes antes de escrever
@@ -276,6 +279,12 @@ O script calcula cobertura por departamento, disciplinas aplicáveis, verbetes,
 acervo e idiomas diretamente do código. A escolha padrão é o departamento com
 menor razão verbetes/disciplina aplicável. Sistemática ficou historicamente bem
 à frente e não deve receber novos verbetes enquanto os demais estiverem atrás.
+
+Quando todas as disciplinas aplicáveis estiverem cobertas, `npm run priorizar`
+mede o segundo ciclo: pressão de tópicos da ementa sobre o conteúdo já escrito,
+extensão, densidade de fontes e ausência de blocos estruturais. São filas para
+revisão humana, não uma nota automática; a granularidade das ementas varia e
+um verbete curto pode estar completo.
 
 A razão exclui aquisição de língua e estágio supervisionado. A lista fica no
 topo de `scripts/estado.mjs` e pode ser discutida, mas não deve ser alterada só
