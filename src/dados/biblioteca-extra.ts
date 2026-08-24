@@ -96,4 +96,22 @@ export const bibliotecaExtra: ObraLivre[] = [
   {
     id: 'iphan-terreiros', autor: 'Instituto do Patrimônio Histórico e Artístico Nacional', ano: '2025', titulo: 'Mesa-redonda debate a preservação de terreiros de religiões de matriz africana', publicacao: 'IPHAN', url: 'https://www.gov.br/iphan/pt-br/assuntos/noticias/mesa-redonda-debate-a-preservacao-de-terreiros-de-religioes-de-matriz-africana', idioma: 'pt', acesso: 'livre', disciplinas: ['TS52', 'TH05', 'CG63'], nota: 'Fonte oficial atual do IPHAN sobre preservação, reconhecimento e proteção do patrimônio cultural de terreiros e de religiões de matriz africana. Substitui a notícia legada de 2015, cujo endereço antigo deixou de apontar de forma estável para o conteúdo prometido.', base: 'edição autorizada',
   },
+  {
+    id: 'dort-crcna', autor: 'Sínodo de Dort', ano: '1619', titulo: 'The Canons of Dort', publicacao: 'Christian Reformed Church in North America', url: 'https://www.crcna.org/welcome/beliefs/confessions/canons-dort', idioma: 'en', acesso: 'livre', disciplinas: ['TH03', 'TS04', 'TS53'], nota: 'Texto integral oficial em inglês, com introdução histórica e a estrutura original dos Cânones. Permite estudar a controvérsia sobre eleição, expiação, conversão e perseverança sem substituir o documento pelo acrônimo TULIP.', base: 'edição autorizada',
+  },
+  {
+    id: 'meeter-dort', autor: 'H. Henry Meeter Center for Calvin Studies', ano: '2018', titulo: 'Synod of Dordt — historical introduction and conference resources', publicacao: 'Calvin University', url: 'https://calvin.edu/meeter-center/events/past-conferences-and-exhibits', idioma: 'en', acesso: 'livre', disciplinas: ['TH03', 'TS53'], nota: 'Introdução acadêmica do quarto centenário com cronologia, participantes e panorama das decisões sobre cânones, tradução bíblica, catequese, ordem eclesiástica e formação teológica.', base: 'edição autorizada',
+  },
+  {
+    id: 'schaff-creeds-1', autor: 'Philip Schaff', ano: '1877', titulo: 'The Creeds of Christendom, vol. I — History of the Creeds', publicacao: 'Christian Classics Ethereal Library', url: 'https://www.ccel.org/ccel/schaff/creeds1.html', idioma: 'en', acesso: 'livre', disciplinas: ['TH03', 'TS11', 'TS53'], nota: 'Volume histórico em domínio público com capítulos documentados sobre a controvérsia arminiana, Dort e Westminster. Complementa o terceiro volume, já presente no acervo, que reúne os textos confessionais.', base: 'domínio público',
+  },
+  {
+    id: 'westminster-opc', autor: 'Orthodox Presbyterian Church', ano: '—', titulo: 'Westminster Standards — Historical Preface', publicacao: 'Orthodox Presbyterian Church', url: 'https://opc.org/preface.html', idioma: 'en', acesso: 'livre', disciplinas: ['TH03', 'TS11', 'TS53'], nota: 'Síntese denominacional que distingue convocação parlamentar, participação escocesa, produção dos padrões e recepção posterior na Escócia e no presbiterianismo mundial.', base: 'edição autorizada',
+  },
+  {
+    id: 'westminster-ordinance-1643', autor: 'Parlamento da Inglaterra', ano: '1643', titulo: 'Ordinance for the calling of an Assembly of Learned and Godly Divines', publicacao: 'British History Online', url: 'https://www.british-history.ac.uk/no-series/acts-ordinances-interregnum/pp180-184', idioma: 'en', acesso: 'livre', disciplinas: ['TH03', 'TS11'], nota: 'Texto primário da ordenança que convocou a Assembleia de Westminster, preservado na coleção Acts and Ordinances of the Interregnum, 1642–1660.', base: 'domínio público',
+  },
+  {
+    id: 'westphalia-yale', autor: 'Sacro Império Romano-Germânico, França e aliados', ano: '1648', titulo: 'Treaty of Westphalia', publicacao: 'Avalon Project — Yale Law School', url: 'https://avalon.law.yale.edu/17th_century/westphal.asp', idioma: 'en', acesso: 'livre', disciplinas: ['TH03', 'TH04', 'CG65'], nota: 'Tradução histórica de um dos instrumentos da Paz de Westfália em acervo jurídico universitário, com cláusulas de paz, anistia, restituição, religião e organização imperial.', base: 'domínio público',
+  },
 ];
