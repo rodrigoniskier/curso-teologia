@@ -145,7 +145,9 @@ console.log('domínios não auditáveis: ' + (restritos.map((r) => r.dominio).jo
 
 const descobertas = ementas.filter((d) => !SEM_VERBETE.has(d.codigo) && !cobertasAplicaveis.has(d.codigo));
 if (descobertas.length === 0) {
-  console.log('\npróximo alvo: cobertura curricular aplicável completa; priorizar revisão, aprofundamento e lacunas internas.\n');
+  console.log(
+    '\npróximo alvo: cobertura curricular aplicável completa; rode `npm run priorizar` para a fila de aprofundamento e revisão.\n',
+  );
 } else {
   console.log(`\nlacunas aplicáveis (${descobertas.length}):`);
   for (const d of descobertas)

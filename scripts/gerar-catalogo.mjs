@@ -2,6 +2,7 @@ import ts from 'typescript';
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { coletarTextosAst } from './lib/coletar-textos-ast.mjs';
 import { removerMarcacaoEnfase } from './lib/texto-busca.mjs';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -11,6 +12,8 @@ const INDICE = join(CONTEUDO, 'indice.ts');
 const BUSCA = join(RAIZ, 'public', 'indice-busca.json');
 const PASTAS = ['exegetica', 'sistematica', 'historica', 'pastoral', 'geral'];
 const ORDEM_SIGLA = new Map(['TE', 'TS', 'TH', 'TP', 'CG'].map((s, i) => [s, i]));
+const CAMPOS_TECNICOS_BLOCO = new Set(['tipo', 'fonteId']);
+const CAMPOS_TECNICOS_FONTE = new Set(['id', 'url', 'tipo', 'idioma', 'acesso']);
 
 function nomePropriedade(nome) {
   if (ts.isIdentifier(nome) || ts.isStringLiteralLike(nome) || ts.isNumericLiteral(nome)) return nome.text;
@@ -43,20 +46,6 @@ function listaDeTextos(no) {
 
 function contarArray(no) {
   return no && ts.isArrayLiteralExpression(no) ? no.elements.length : 0;
-}
-
-function coletarTextos(no, saida = []) {
-  if (!no) return saida;
-  if (ts.isStringLiteralLike(no) || ts.isNoSubstitutionTemplateLiteral(no)) {
-    saida.push(no.text);
-    return saida;
-  }
-  no.forEachChild((filho) => coletarTextos(filho, saida));
-  return saida;
-}
-
-function semAcento(s) {
-  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
 
 function lerVerbete(caminho, pasta) {
@@ -92,12 +81,14 @@ function lerVerbete(caminho, pasta) {
     const verMais = listaDeTextos(propriedade(obj, 'verMais')?.initializer) ?? [];
     const blocosNo = propriedade(obj, 'blocos')?.initializer;
     const fontesNo = propriedade(obj, 'fontes')?.initializer;
-    const textosBlocos = coletarTextos(blocosNo);
-    const textosFontes = coletarTextos(fontesNo);
-    const bruto = removerMarcacaoEnfase(
-      [titulo, objetivo, ...textosBlocos].join(' ').replace(/\s+/g, ' ').trim(),
-    );
-    const completo = removerMarcacaoEnfase(
+    const textosBlocos = coletarTextosAst(blocosNo, [], CAMPOS_TECNICOS_BLOCO);
+    const textosFontes = coletarTextosAst(fontesNo, [], CAMPOS_TECNICOS_FONTE);
+
+    if (contarArray(blocosNo) && textosBlocos.length === 0) {
+      throw new Error(`${relative(RAIZ, caminho)}: blocos não entraram no índice de busca`);
+    }
+
+    const textoBusca = removerMarcacaoEnfase(
       [disciplina, titulo, subtitulo ?? '', objetivo, ...textosBlocos, ...textosFontes]
         .join(' ')
         .replace(/\s+/g, ' ')
@@ -120,7 +111,9 @@ function lerVerbete(caminho, pasta) {
         arquivo,
         exportado: nome,
       },
-      busca: { id, texto: semAcento(completo), bruto },
+      // O cliente normaliza este texto uma vez ao carregar o índice. Manter
+      // também uma cópia normalizada quase dobrava o arquivo transferido.
+      busca: { id, texto: textoBusca },
     };
   });
 }
