@@ -343,6 +343,6 @@ export const bibliotecaFinal: ObraLivre[] = [
     acesso: 'livre',
     disciplinas: ['TH06'],
     nota: 'Edição histórica do órgão oficial às vésperas do centenário, útil para observar campanhas, prioridades institucionais e expectativas da própria igreja ao entrar no segundo século.',
-    base: 'domínio público',
+    base: 'edição autorizada',
   },
 ];
