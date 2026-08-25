@@ -112,7 +112,12 @@ async function verificar(fonte, { sondagem = false, forcarCompleto = false } = {
     const t = setTimeout(() => ctrl.abort(), limite);
     try {
       let res = await tentar(fonte.url, 'HEAD', ctrl.signal);
-      if (res.status === 405 || res.status === 501 || res.status === 403) {
+      // HEAD é uma otimização, não a definição de disponibilidade. Alguns
+      // servidores (inclusive acervos institucionais) entregam o documento por
+      // GET mas devolvem 403/404 a HEAD. Nesses casos confirmamos o recurso com
+      // o método que um navegador realmente usa; se o GET também falhar, o gate
+      // permanece estrito e a URL continua vermelha.
+      if ([403, 404, 405, 501].includes(res.status)) {
         await res.body?.cancel().catch(() => {});
         res = await tentar(fonte.url, 'GET', ctrl.signal);
       }
@@ -187,8 +192,9 @@ const resultadosIniciais = await mapearComConcorrencia(unicas, CONCORRENCIA, asy
  * Timeout, 403 de WAF/CDN, 408, 425, 429 e 5xx não demonstram que um endereço
  * deixou de existir. Depois que o passe paralelo termina, cada candidato desse
  * tipo recebe uma confirmação serial com três tentativas completas. Assim um
- * 404/410 continua terminal, mas congestionamento ou proteção automatizada de
- * um acervo não transforma uma fonte boa em link "morto" por uma medição ruim.
+ * 404/410 continua terminal depois da confirmação por GET, mas congestionamento
+ * ou proteção automatizada de um acervo não transforma uma fonte boa em link
+ * "morto" por uma medição ruim.
  *
  * A confirmação serial não é uma exceção ao gate: se também falhar, a fonte
  * continua vermelha. Ela apenas coleta uma segunda medição em condições menos
