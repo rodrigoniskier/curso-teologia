@@ -18,8 +18,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.375** (2.032 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 113 |
-| Obras livres mapeadas | 169 |
+| Verbetes redigidos | 114 |
+| Obras livres mapeadas | 177 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -34,7 +34,7 @@ Os cinco departamentos, conforme o documento oficial:
 A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
 conta **disciplinas distintas**: hoje há conteúdo em **101 das 101 disciplinas
 em que um verbete se aplica**. O primeiro ciclo de cobertura curricular está,
-portanto, completo. A diferença entre 113 verbetes e 101 disciplinas cobertas
+portanto, completo. A diferença entre 114 verbetes e 101 disciplinas cobertas
 existe porque algumas disciplinas possuem mais de um verbete.
 
 ## Como o conteúdo é escrito
@@ -61,11 +61,12 @@ bibliografia cara para se formar.
 ## Biblioteca
 
 O acervo está nos arquivos [`src/dados/biblioteca.ts`](src/dados/biblioteca.ts),
-[`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts) e
-[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts), reunidos por
-[`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele mapeia o que
-dá para ler legalmente sem pagar nada, cruzado com os códigos de disciplina —
-cada página de disciplina mostra a leitura gratuita correspondente.
+[`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts),
+[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts) e
+[`src/dados/biblioteca-seculo20.ts`](src/dados/biblioteca-seculo20.ts), reunidos
+por [`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele mapeia o
+que dá para ler legalmente sem pagar nada, cruzado com os códigos de disciplina
+— cada página de disciplina mostra a leitura gratuita correspondente.
 
 O critério de entrada é estreito de propósito: **domínio público**, **edição
 digital autorizada** ou **empréstimo de biblioteca**. Cópia não autorizada de
