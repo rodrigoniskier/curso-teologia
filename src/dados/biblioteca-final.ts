@@ -257,6 +257,7 @@ export const bibliotecaFinal: ObraLivre[] = [
   {
     id: 'ipb-historia-detalhada',
     autor: 'Alderi Souza de Matos',
+    ano: 's.d.',
     titulo: 'História da Igreja Presbiteriana do Brasil',
     publicacao: 'IPB: História e Identidade — Curadoria dos Museus da IPB',
     url: 'https://www.ipbhistoriaeidentidade.com.br/materiais/historia-da-igreja-presbiteriana-do-brasil/',
@@ -295,6 +296,7 @@ export const bibliotecaFinal: ObraLivre[] = [
   {
     id: 'bu-erasmo-braga',
     autor: 'Alderi Souza de Matos',
+    ano: 's.d.',
     titulo: 'Braga, Erasmo (1877–1932)',
     publicacao: 'Boston University — History of Missiology',
     url: 'https://www.bu.edu/missiology/missionary-biography/a-c/braga-erasmo-1877-1932/',
