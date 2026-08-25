@@ -18,8 +18,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.375** (2.032 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 114 |
-| Obras livres mapeadas | 177 |
+| Verbetes redigidos | 115 |
+| Obras livres mapeadas | 184 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -34,7 +34,7 @@ Os cinco departamentos, conforme o documento oficial:
 A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
 conta **disciplinas distintas**: hoje há conteúdo em **101 das 101 disciplinas
 em que um verbete se aplica**. O primeiro ciclo de cobertura curricular está,
-portanto, completo. A diferença entre 114 verbetes e 101 disciplinas cobertas
+portanto, completo. A diferença entre 115 verbetes e 101 disciplinas cobertas
 existe porque algumas disciplinas possuem mais de um verbete.
 
 ## Como o conteúdo é escrito
