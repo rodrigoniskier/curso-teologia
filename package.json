@@ -19,6 +19,7 @@
     "validar": "node scripts/validar-integridade.mjs && node scripts/validar-curriculo.mjs",
     "validar:curriculo": "node scripts/validar-curriculo.mjs",
     "estado": "node scripts/estado.mjs",
+    "planejar:conteudo": "node scripts/planejar-conteudo.mjs",
     "conferir": "node scripts/estado.mjs --conferir"
   },
   "dependencies": {
