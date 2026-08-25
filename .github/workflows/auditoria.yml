@@ -94,4 +94,4 @@ jobs:
       # A cobertura por disciplina já está completa. Esta etapa garante que a
       # fila de aprofundamento e revisão continue calculável a cada mudança.
       - name: Verificar diagnóstico editorial
-        run: npm run priorizar
+        run: npm run priorizar -- --json > /dev/null
