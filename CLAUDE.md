@@ -178,19 +178,20 @@ diferentes.
 
 ```text
 0. Partir sempre do main mais recente em um ramo novo
-1. npm run estado — escolher o alvo pelo desequilíbrio
-2. Ler a ementa oficial em src/dados/ementas.json
-3. Ler verbetes vizinhos para não repetir
-4. Verificar as fontes antes de escrever
-5. Escrever src/conteudo/<departamento>/<nome>.ts
-6. Não editar src/conteudo/indice.ts; ele é gerado dos próprios verbetes
-7. Acrescentar fontes novas ao acervo, quando necessário
-8. Atualizar as contagens do README
-9. npm run validar — regenerar os artefatos e validar a integridade
-10. npm run build
-11. npm run conferir
-12. Verificar a interface real no navegador
-13. Commit, push, PR, esperar CI, merge
+1. npm run estado — confirmar a cobertura por disciplina
+2. npm run planejar:conteudo — escolher o alvo pelas lacunas internas
+3. Ler a ementa oficial em src/dados/ementas.json
+4. Ler verbetes vizinhos para não repetir
+5. Verificar as fontes antes de escrever
+6. Escrever src/conteudo/<departamento>/<nome>.ts
+7. Não editar src/conteudo/indice.ts; ele é gerado dos próprios verbetes
+8. Acrescentar fontes novas ao acervo, quando necessário
+9. Atualizar as contagens do README
+10. npm run validar — regenerar os artefatos e validar a integridade
+11. npm run build
+12. npm run conferir
+13. Verificar a interface real no navegador
+14. Commit, push, PR, esperar CI, merge
 ```
 
 Independentemente do método de merge, **não reutilize um ramo antigo como base
@@ -280,6 +281,14 @@ menor razão verbetes/disciplina aplicável. Sistemática ficou historicamente b
 A razão exclui aquisição de língua e estágio supervisionado. A lista fica no
 topo de `scripts/estado.mjs` e pode ser discutida, mas não deve ser alterada só
 para melhorar um número.
+
+Depois de alcançada a cobertura aplicável completa, **não use mais a mera
+contagem de verbetes por departamento para escolher o alvo**. Rode
+`npm run planejar:conteudo`: ele separa disciplina iniciada de unidade
+explicitamente representada, ordena as maiores lacunas internas e aponta os
+textos menores para revisão de profundidade. O vínculo de unidade é indicador
+de rastreabilidade, não prova automática de ausência: leia a ementa e o verbete
+antes de decidir entre ampliar o texto existente ou criar outro.
 
 ---
 
