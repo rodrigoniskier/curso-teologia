@@ -61,12 +61,11 @@ bibliografia cara para se formar.
 ## Biblioteca
 
 O acervo está nos arquivos [`src/dados/biblioteca.ts`](src/dados/biblioteca.ts),
-[`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts),
-[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts) e
-[`src/dados/biblioteca-seculo20.ts`](src/dados/biblioteca-seculo20.ts), reunidos
-por [`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele mapeia o
-que dá para ler legalmente sem pagar nada, cruzado com os códigos de disciplina
-— cada página de disciplina mostra a leitura gratuita correspondente.
+[`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts) e
+[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts), reunidos por
+[`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele mapeia o que
+dá para ler legalmente sem pagar nada, cruzado com os códigos de disciplina —
+cada página de disciplina mostra a leitura gratuita correspondente.
 
 O critério de entrada é estreito de propósito: **domínio público**, **edição
 digital autorizada** ou **empréstimo de biblioteca**. Cópia não autorizada de
