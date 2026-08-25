@@ -18,8 +18,8 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.375** (2.032 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 110 |
-| Obras livres mapeadas | 163 |
+| Verbetes redigidos | 111 |
+| Obras livres mapeadas | 166 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -178,7 +178,15 @@ npm run dev      # http://localhost:3000
 npm run validar  # consistência de conteúdo, acervo e currículo
 npm run build    # checagem de tipos + build de produção
 npm run estado   # cobertura real por disciplina e contagens calculadas do código
+npm run planejar:conteudo # lacunas por unidade e fila editorial de aprofundamento
 ```
+
+`estado` e `planejar:conteudo` medem coisas diferentes. O primeiro informa se
+cada disciplina aplicável já possui ao menos um verbete; o segundo mostra quais
+unidades do programa estão explicitamente vinculadas a um verbete e ordena as
+lacunas internas. Unidade ainda sem vínculo não é automaticamente conteúdo
+ausente: um verbete pode sintetizar mais de uma unidade. O relatório serve para
+localizar o que precisa de conferência editorial antes da próxima expansão.
 
 Stack: Vite + React 19 + TypeScript (estrito) + Tailwind CSS 4 + React Router.
 
