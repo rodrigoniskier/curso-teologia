@@ -75,4 +75,6 @@ jobs:
       - name: Conferir os números do README
         run: npm run conferir
       - name: Verificar diagnóstico editorial
-        run: npm run priorizar -- --json
+        run: |
+          npm run priorizar -- --json
+          node -e "const fs=require('fs');const e=JSON.parse(fs.readFileSync('src/dados/ementas.json','utf8'));console.log('TE01_CURRICULO');console.log(JSON.stringify(e.find(x=>x.codigo==='TE01'),null,2));"
