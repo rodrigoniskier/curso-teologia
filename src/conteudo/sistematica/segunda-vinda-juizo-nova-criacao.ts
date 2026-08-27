@@ -194,7 +194,7 @@ export const segundaVindaJuizoNovaCriacao: Verbete = {
     {
       tipo: 'paragrafo',
       texto:
-        'A habitação eterna dos justos é definida прежде de tudo pela presença de Deus. Ver seu rosto, pertencer ao Cordeiro, servir sem maldição e participar da glória de Cristo é mais central do que perguntas sobre atividades específicas. Isso não torna a nova criação menos concreta; torna claro que a maior recompensa não é um objeto criado, mas comunhão sem impedimento com o Criador dentro de uma criação curada.',
+        'A habitação eterna dos justos é definida antes de tudo pela presença de Deus. Ver seu rosto, pertencer ao Cordeiro, servir sem maldição e participar da glória de Cristo é mais central do que perguntas sobre atividades específicas. Isso não torna a nova criação menos concreta; torna claro que a maior recompensa não é um objeto criado, mas comunhão sem impedimento com o Criador dentro de uma criação curada.',
     },
     {
       tipo: 'paragrafo',
