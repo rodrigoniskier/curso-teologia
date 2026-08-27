@@ -1,21 +1,17 @@
 name: Auditoria de fontes
 
-# Sem filtro de paths: ele existia para poupar execuções, mas gatilhava também
-# o job de build, e um PR que só mexesse na interface passava sem checagem de
-# tipos nenhuma. Ambos são gates obrigatórios — não vale o risco de ignorá-los.
 on:
   push:
     branches: [main]
   pull_request:
   schedule:
-    # Toda segunda-feira às 06:00 UTC — pega link que morreu desde a última checagem.
     - cron: '0 6 * * 1'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
-  # Em PRs, um commit novo torna a auditoria anterior obsoleta. Pushes no main,
-  # execuções manuais e a varredura semanal mantêm grupos únicos e nunca se
-  # cancelam entre si.
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
@@ -25,31 +21,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
-
       - name: Auditar links
-        id: auditoria
         env:
-          # Alguns servidores de acervo (ccel.org entre eles) anunciam AAAA mas
-          # não respondem por IPv6 a partir dos runners, e a conexão fica
-          # pendurada até o timeout. Resolver IPv4 primeiro evita o falso negativo.
           NODE_OPTIONS: --dns-result-order=ipv4first
-        # Em execução agendada não quebramos o build por link fora do ar
-        # temporariamente; o relatório fica no resumo do job.
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             node scripts/auditar-links.mjs --relatorio --tolerante
           else
             node scripts/auditar-links.mjs --relatorio
           fi
-
       - name: Publicar relatório no resumo
         if: always()
         run: cat relatorio-auditoria.md >> "$GITHUB_STEP_SUMMARY" || true
-
       - name: Guardar relatório
         if: always()
         uses: actions/upload-artifact@v6
@@ -63,49 +49,37 @@ jobs:
   build:
     name: Compilar e validar o portal
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: npm ci
 
-      # Diagnóstico do ciclo C: regenera o PDF inteiro e exige que as sete
-      # reconstruções auditadas de layout reproduzam o currículo efetivo atual.
-      - name: Verificar regeneração integral do currículo
+      # Passagem única do ciclo C. O script regenera ementas.json, remove os
+      # overlays de runtime, instala o gate permanente e se apaga antes do commit.
+      - name: Finalizar arquitetura curricular
+        if: github.event_name == 'pull_request' && github.head_ref == 'maintenance/curriculo-regeneravel'
         run: |
-          cp src/dados/ementas.json /tmp/ementas-base.json
-          python3 scripts/extracao/extract.py
-          python3 scripts/extracao/ligaduras.py
-          python3 scripts/extracao/parse.py
-          python3 scripts/extracao/aplicar-correcoes-layout.py
-          python3 scripts/extracao/comparar-regeneracao.py \
-            /tmp/ementas-base.json \
-            src/dados/ementas.json \
-            scripts/extracao/correcoes-layout.json
+          python3 scripts/extracao/finalizar-ciclo-c.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Tornar currículo regenerável sem overlay em runtime'
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Testar regras de infraestrutura
         run: node --test scripts/lib/*.test.mjs
-
-      # TypeScript não detecta ids sem destino, relações unilaterais nem obras
-      # citadas fora da biblioteca. Esta etapa torna essas invariantes parte da CI.
       - name: Validar integridade do conteúdo
         run: npm run validar
-
-      # Links que respondem 200 ainda podem prometer conteúdo que a URL não entrega.
-      # Esta etapa protege títulos canônicos de páginas iniciais conhecidas.
       - name: Auditar coerência semântica dos metadados
         run: npm run auditar:metadados
-
       - run: npm run build
-
-      # Os números do README são derivados do currículo, dos verbetes e da
-      # biblioteca. Já divergiram duas vezes por edição manual — a segunda em
-      # poucas horas. Conferir aqui é mais barato que conferir de memória.
       - name: Conferir os números do README
         run: npm run conferir
-
-      # A cobertura por disciplina já está completa. Esta etapa garante que a
-      # fila de aprofundamento e revisão continue calculável a cada mudança.
       - name: Verificar diagnóstico editorial
         run: npm run priorizar -- --json > /dev/null
