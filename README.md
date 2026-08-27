@@ -18,7 +18,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Disciplinas mapeadas | **121** (5 departamentos) |
 | Unidades do programa | **1.375** (2.032 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 115 |
+| Verbetes redigidos | 118 |
 | Obras livres mapeadas | 184 |
 
 Os cinco departamentos, conforme o documento oficial:
@@ -34,7 +34,7 @@ Os cinco departamentos, conforme o documento oficial:
 A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
 conta **disciplinas distintas**: hoje há conteúdo em **101 das 101 disciplinas
 em que um verbete se aplica**. O primeiro ciclo de cobertura curricular está,
-portanto, completo. A diferença entre 115 verbetes e 101 disciplinas cobertas
+portanto, completo. A diferença entre 118 verbetes e 101 disciplinas cobertas
 existe porque algumas disciplinas possuem mais de um verbete.
 
 ## Como o conteúdo é escrito
@@ -95,11 +95,15 @@ npm run auditar:relatorio   # grava relatorio-auditoria.md
 `npm run validar` primeiro regenera `src/conteudo/indice.ts` a partir dos
 próprios arquivos de verbete. Em seguida, reprova, entre outras coisas, id
 duplicado, destino de `verMais` inexistente, auto-remissão, fonte de citação sem
-`fonteId` resolvível e obra usada em verbete sem entrada no acervo. Também
-valida o arquivo de correções curriculares: código inexistente, código repetido
-ou números de unidade duplicados interrompem a integração. O validador
+`fonteId` resolvível e obra usada em verbete sem entrada no acervo. O validador
 curricular adicional procura sequências quebradas e sinais de que título ou
 tópico absorveu marcadores de outra `Unidade` ou de `BIBLIOGRAFIA`.
+
+A reprodutibilidade do currículo é verificada antes dessas validações: a CI
+regenera `ementas.json` a partir do PDF original, aplica as sete reconstruções
+de layout auditadas dentro do próprio pipeline e exige igualdade byte a byte
+com o artefato versionado. Assim, os validadores e o portal consomem diretamente
+o currículo final, sem overlay aplicado em tempo de execução.
 
 As remissões são editoriais num sentido e **navegáveis nos dois**: a interface
 mostra as escolhas do verbete e gera automaticamente o caminho de volta para
