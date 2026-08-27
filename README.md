@@ -142,10 +142,13 @@ O currículo não foi digitado à mão: foi extraído do PDF oficial. O pipeline
 está em [`scripts/extracao/`](scripts/extracao/) e é reproduzível:
 
 ```bash
-python3 scripts/extracao/extract.py     # PDF -> texto (resolve CMaps por fonte)
-python3 scripts/extracao/ligaduras.py   # corrige ligaduras fi/fl/ff
-python3 scripts/extracao/parse.py       # texto -> src/dados/ementas.json
+npm run regenerar:curriculo  # PDF -> texto -> ligaduras -> parser -> correções de layout
 ```
+
+O produto desse comando é o próprio `src/dados/ementas.json`. A CI repete a
+regeneração em checkout limpo e reprova qualquer diferença em relação ao JSON
+versionado; assim, o currículo servido pelo portal é um artefato reproduzível,
+não um arquivo corrigido silenciosamente em tempo de execução.
 
 O PDF gerado pela editora tem os CMaps `/ToUnicode` defeituosos para as
 ligaduras (mapeiam `ﬁ`, `ﬂ` e `ﬀ` para `\xa0`), o que apagava as letras de
@@ -162,13 +165,19 @@ esquerda. O novo validador revelou a mesma família de defeitos em TH01–TH03 e
 TP02–TP03: unidades e bibliografias de uma disciplina haviam sido absorvidas
 pela disciplina seguinte por causa da ordem de leitura das colunas.
 
-As reconstruções factuais de **CG10, CG13, TH01, TH02, TH03, TP02 e TP03**,
-conferidas diretamente no PDF, ficam temporariamente em
-[`src/dados/ementas-correcoes.json`](src/dados/ementas-correcoes.json) até que o
-JSON-base seja regenerado pelo pipeline e comparado contra esse conjunto
-independente de correções. O exame do original também confirmou que **CG12
-realmente não possui unidades programáticas**; sua ausência não era erro de
-extração.
+Uma regeneração integral em checkout limpo mostrou que o parser genérico
+reproduz exatamente **114 das 121 disciplinas**. As sete exceções são os layouts
+irregulares já conhecidos — **CG10, CG13, TH01, TH02, TH03, TP02 e TP03**. Suas
+reconstruções, conferidas diretamente no PDF, ficam em
+[`scripts/extracao/correcoes-layout.json`](scripts/extracao/correcoes-layout.json)
+e são aplicadas **durante a extração**. O portal, os validadores e as ferramentas
+editoriais leem diretamente `ementas.json` e não aplicam overlay algum.
+
+Essa escolha é deliberada: preservar sete exceções explícitas e auditáveis é mais
+seguro do que introduzir heurísticas de ordem de colunas capazes de corromper
+silenciosamente as outras 114 disciplinas. O exame do original também confirmou
+que **CG12 realmente não possui unidades programáticas**; sua ausência não era
+erro de extração.
 
 ## Desenvolvimento
 
@@ -176,6 +185,7 @@ extração.
 npm install
 npm run dev      # http://localhost:3000
 npm run validar  # consistência de conteúdo, acervo e currículo
+npm run regenerar:curriculo # reproduz ementas.json a partir do PDF original
 npm run build    # checagem de tipos + build de produção
 npm run estado   # cobertura real por disciplina e contagens calculadas do código
 npm run priorizar # fila editorial por profundidade, carga curricular e fontes
@@ -221,6 +231,7 @@ de TH01 deslocadas para TH02, unidades 27–30 de TH02 inseridas em TH03, e a
 unidade 15 de TP02 mais sua bibliografia inseridas em TP03.
 
 Com as reconstruções auditadas atuais, não há perda curricular conhecida entre
-esses casos já identificados. O próximo passo de manutenção é regenerar o
-`ementas.json` a partir do pipeline corrigido e comparar automaticamente o
-resultado com `ementas-correcoes.json` antes de remover qualquer overlay.
+esses casos já identificados. A CI agora regenera `ementas.json` a partir do PDF
+original e exige igualdade com o artefato versionado. Não existe mais overlay
+curricular em runtime: qualquer mudança futura no PDF, no extrator, nas ligaduras,
+no parser ou no manifesto de layout precisa aparecer explicitamente no diff.

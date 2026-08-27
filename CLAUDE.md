@@ -144,6 +144,7 @@ Há três camadas e elas protegem coisas diferentes:
 
 ```bash
 npm run validar             # integridade interna de conteúdo e acervo
+npm run regenerar:curriculo # reproduz ementas.json a partir do PDF original
 npm run build               # TypeScript + build de produção
 npm run conferir            # números do README contra o repositório
 npm run auditar             # rede: disponibilidade das URLs
@@ -163,9 +164,10 @@ npm run auditar:relatorio   # rede + relatório persistido
 - ids únicos no acervo e códigos de disciplina válidos;
 - marcações que sabemos vazar asteriscos na interface.
 
-Divergência entre o número de `unidade` do verbete e o JSON é **aviso**, não
-erro automático, porque a extração do PDF tem lacunas documentadas. Confirme
-contra o PDF antes de alterar conteúdo ou ementa.
+Divergência entre o número de `unidade` do verbete e o JSON permanece **aviso**,
+não erro automático, porque a ancoragem editorial de um verbete pode ser mais
+ampla que uma unidade. O currículo, porém, não depende mais de lacunas conhecidas
+da extração: a CI o regenera do PDF e exige igualdade com o artefato versionado.
 
 A CI em `.github/workflows/auditoria.yml` executa a validação estrutural antes
 do build, confere o README e roda a auditoria de rede em job separado. Não
@@ -296,8 +298,6 @@ para melhorar um número.
 
 Não são esquecimentos; foram recusas conscientes até que surja fonte adequada:
 
-- **TH06 · História da IPB** — ainda sem fonte livre única à altura de todo o
-  programa; há material secundário disperso.
 - **Cânones de Dort em português** — não localizado texto integral em endereço
   estável e juridicamente claro.
 - **Eduardo Carlos Pereira, O Problema Religioso da América Latina** — só foi
