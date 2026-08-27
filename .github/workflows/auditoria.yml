@@ -1,5 +1,6 @@
 name: Auditoria de fontes
 
+# Sem filtro de paths: ambos os jobs são gates obrigatórios.
 on:
   push:
     branches: [main]
@@ -7,9 +8,6 @@ on:
   schedule:
     - cron: '0 6 * * 1'
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
@@ -25,6 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Auditar links
+        id: auditoria
         env:
           NODE_OPTIONS: --dns-result-order=ipv4first
         run: |
@@ -49,28 +48,22 @@ jobs:
   build:
     name: Compilar e validar o portal
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v7
-        with:
-          ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: npm ci
 
-      # Passagem única do ciclo C. O script regenera ementas.json, remove os
-      # overlays de runtime, instala o gate permanente e se apaga antes do commit.
-      - name: Finalizar arquitetura curricular
-        if: github.event_name == 'pull_request' && github.head_ref == 'maintenance/curriculo-regeneravel'
+      - name: Conferir reprodutibilidade do currículo
         run: |
-          python3 scripts/extracao/finalizar-ciclo-c.py
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
-          git commit -m 'Tornar currículo regenerável sem overlay em runtime'
-          git push origin HEAD:${{ github.head_ref }}
+          cp src/dados/ementas.json /tmp/ementas-versionado.json
+          npm run regenerar:curriculo
+          if ! cmp -s /tmp/ementas-versionado.json src/dados/ementas.json; then
+            echo '::error::ementas.json diverge da regeneração a partir do PDF original'
+            diff -u /tmp/ementas-versionado.json src/dados/ementas.json | head -n 400 || true
+            exit 1
+          fi
 
       - name: Testar regras de infraestrutura
         run: node --test scripts/lib/*.test.mjs

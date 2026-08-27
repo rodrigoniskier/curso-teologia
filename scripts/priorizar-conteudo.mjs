@@ -140,17 +140,7 @@ async function lerVerbete(caminho) {
   };
 }
 
-const ementasBase = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
-const correcoes = JSON.parse(
-  await readFile(join(RAIZ, 'src/dados/ementas-correcoes.json'), 'utf8'),
-);
-const correcoesPorCodigo = new Map(
-  correcoes.map((disciplina) => [disciplina.codigo, disciplina]),
-);
-const ementas = ementasBase.map((disciplina) => ({
-  ...disciplina,
-  ...(correcoesPorCodigo.get(disciplina.codigo) ?? {}),
-}));
+const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 const ementaPorCodigo = new Map(ementas.map((disciplina) => [disciplina.codigo, disciplina]));
 
 const verbetes = [];

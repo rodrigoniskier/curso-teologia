@@ -41,12 +41,7 @@ async function arquivosDeConteudo(dir) {
   return saida;
 }
 
-const ementasBase = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
-const correcoesEmenta = JSON.parse(
-  await readFile(join(RAIZ, 'src/dados/ementas-correcoes.json'), 'utf8'),
-);
-const correcoesPorCodigo = new Map(correcoesEmenta.map((d) => [d.codigo, d]));
-const ementas = ementasBase.map((d) => ({ ...d, ...(correcoesPorCodigo.get(d.codigo) ?? {}) }));
+const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 
 const depPorCodigo = new Map(ementas.map((d) => [d.codigo, d.departamento]));
 const depPorSigla = new Map(ementas.map((d) => [d.sigla, d.departamento]));

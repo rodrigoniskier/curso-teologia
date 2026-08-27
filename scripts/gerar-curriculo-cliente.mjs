@@ -4,14 +4,12 @@ import { fileURLToPath } from 'node:url';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = join(RAIZ, 'src', 'dados', 'ementas.json');
-const CORRECOES = join(RAIZ, 'src', 'dados', 'ementas-correcoes.json');
 const RESUMO = join(RAIZ, 'src', 'infra', 'curriculo-gerado.json');
 const DIR_DISCIPLINAS = join(RAIZ, 'public', 'disciplinas');
 
-const base = JSON.parse(await readFile(BASE, 'utf8'));
-const correcoes = JSON.parse(await readFile(CORRECOES, 'utf8'));
-const correcoesPorCodigo = new Map(correcoes.map((d) => [d.codigo, d]));
-const disciplinas = base.map((d) => ({ ...d, ...(correcoesPorCodigo.get(d.codigo) ?? {}) }));
+// ementas.json já é o produto final do pipeline PDF -> extração -> reconstrução
+// de layouts irregulares. Nenhum patch curricular é aplicado no cliente.
+const disciplinas = JSON.parse(await readFile(BASE, 'utf8'));
 
 const resumo = disciplinas.map((d) => ({
   codigo: d.codigo,
@@ -37,13 +35,9 @@ const estatisticas = {
 await mkdir(dirname(RESUMO), { recursive: true });
 await rm(DIR_DISCIPLINAS, { recursive: true, force: true });
 await mkdir(DIR_DISCIPLINAS, { recursive: true });
-
 await writeFile(RESUMO, JSON.stringify({ disciplinas: resumo, estatisticas }, null, 2) + '\n');
 for (const disciplina of disciplinas) {
-  await writeFile(
-    join(DIR_DISCIPLINAS, `${disciplina.codigo}.json`),
-    JSON.stringify(disciplina) + '\n',
-  );
+  await writeFile(join(DIR_DISCIPLINAS, `${disciplina.codigo}.json`), JSON.stringify(disciplina) + '\n');
 }
 
 console.log(`✓ currículo cliente gerado: ${disciplinas.length} disciplinas`);
