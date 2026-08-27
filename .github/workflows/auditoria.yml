@@ -70,6 +70,20 @@ jobs:
           node-version: '22'
       - run: npm ci
 
+      # Diagnóstico temporário do ciclo C. O checkout limpo conserva o PDF
+      # original; texto.txt é regenerado e nunca versionado. A comparação usa
+      # como referência o ementas.json atual com os overlays auditados aplicados.
+      - name: Diagnosticar regeneração integral do currículo
+        run: |
+          cp src/dados/ementas.json /tmp/ementas-base.json
+          python3 scripts/extracao/extract.py
+          python3 scripts/extracao/ligaduras.py
+          python3 scripts/extracao/parse.py
+          python3 scripts/extracao/comparar-regeneracao.py \
+            /tmp/ementas-base.json \
+            src/dados/ementas.json \
+            src/dados/ementas-correcoes.json || true
+
       - name: Testar regras de infraestrutura
         run: node --test scripts/lib/*.test.mjs
 
