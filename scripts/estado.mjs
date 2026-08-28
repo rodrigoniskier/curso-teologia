@@ -88,6 +88,7 @@ const bib = [
   await readFile(join(RAIZ, 'src/dados/biblioteca.ts'), 'utf8'),
   await readFile(join(RAIZ, 'src/dados/biblioteca-extra.ts'), 'utf8'),
   await readFile(join(RAIZ, 'src/dados/biblioteca-final.ts'), 'utf8'),
+  await readFile(join(RAIZ, 'src/dados/biblioteca-aprofundamento.ts'), 'utf8'),
 ].join('\n');
 const obras = [...bib.matchAll(/^ {4}id: '([^']+)',/gm)].length;
 const idiomas = new Map();
