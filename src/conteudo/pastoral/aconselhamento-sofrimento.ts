@@ -10,7 +10,7 @@ export const aconselhamentoSofrimento: Verbete = {
   objetivo:
     'Ao final, você saberá distinguir sofrimento como consequência da condição criada, consequência de escolhas, mal sofrido e provação providencial; entenderá por que nem toda aflição é punição por um pecado específico; saberá relacionar sofrimento e santificação sem transformar dor em técnica; reconhecerá quando lamento, presença, cuidado corporal e encaminhamento são mais fiéis que uma explicação rápida; e saberá oferecer esperança cristã que não dependa da promessa de melhora imediata.',
   atualizadoEm: '2026-08-27',
-  verMais: ['tp04-aconselhamento-2', 'cg64-psicopatologia', 'tp52-cura-de-almas'],
+  verMais: ['tp04-aconselhamento-2', 'cg64-psicopatologia', 'tp03-cura-de-almas'],
   blocos: [
     {
       tipo: 'paragrafo',
