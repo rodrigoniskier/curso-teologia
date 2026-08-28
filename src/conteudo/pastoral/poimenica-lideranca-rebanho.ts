@@ -9,7 +9,7 @@ export const poimenicaLiderancaRebanho: Verbete = {
   objetivo:
     'Ao final, você saberá relacionar liderança pastoral, dons e responsabilidade espiritual sem clericalismo; distinguir responsabilidade de controle; avaliar como o pastor aperfeiçoa seus próprios dons sem monopolizar o ministério; reconhecer sinais pelos quais a liderança fortalece ou enfraquece espiritualmente uma igreja; e construir práticas de supervisão, delegação e formação coerentes com o governo presbiteriano.',
   atualizadoEm: '2026-08-28',
-  verMais: ['tp05-lideranca', 'tp57-dons-ministerios', 'tp12-governo-presbiteriano', 'tp02-poimenica'],
+  verMais: ['tp05-lideranca', 'tp57-dons-ministerios', 'tp12-governo-presbiteriano'],
   blocos: [
     {
       tipo: 'paragrafo',
