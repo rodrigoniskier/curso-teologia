@@ -9,7 +9,7 @@ export const poimenicaEstruturasEnsinoMusica: Verbete = {
   objetivo:
     'Ao final, você saberá relacionar o pastor com sociedades internas, Escola Dominical e ministério de música sem microgestão; compreenderá por que essas estruturas pertencem à vida da igreja e não funcionam como departamentos autônomos; poderá definir critérios de supervisão, formação e prestação de contas; e distinguir responsabilidade pastoral sobre ensino e culto de execução técnica que pode e deve ser compartilhada.',
   atualizadoEm: '2026-08-28',
-  verMais: ['tp10-educacao-crista', 'cg59-musica', 'tp06-forcas-integracao-ipb', 'tp12-governo-presbiteriano'],
+  verMais: ['tp10-educacao-crista', 'cg59-musica', 'tp06-forcas-integracao-ipb'],
   blocos: [
     {
       tipo: 'paragrafo',
