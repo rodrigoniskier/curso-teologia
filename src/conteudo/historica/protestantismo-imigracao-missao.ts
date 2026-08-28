@@ -173,12 +173,12 @@ export const protestantismoImigracaoMissao: Verbete = {
   ],
   fontes: [
     {
-      id: 'loc-kidder-fletcher-1866',
+      id: 'archive-kidder-fletcher-1857',
       autor: 'Daniel P. Kidder; James C. Fletcher',
-      ano: '1866',
+      ano: '1857',
       titulo: 'Brazil and the Brazilians: Portrayed in Historical and Descriptive Sketches',
-      publicacao: 'Library of Congress',
-      url: 'https://www.loc.gov/item/36004087/',
+      publicacao: 'Internet Archive',
+      url: 'https://archive.org/details/brazilbrazilians00kidduoft',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',
