@@ -75,4 +75,4 @@ jobs:
       - name: Conferir os números do README
         run: npm run conferir
       - name: Verificar diagnóstico editorial
-        run: npm run priorizar -- --json
+        run: npm run priorizar -- --json > /dev/null
