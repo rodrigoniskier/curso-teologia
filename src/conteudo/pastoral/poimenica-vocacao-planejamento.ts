@@ -9,7 +9,7 @@ export const poimenicaVocacaoPlanejamento: Verbete = {
   objetivo:
     'Ao final, você saberá distinguir pastorado de tempo integral, bivocacional, auxiliar e efetivo sem criar hierarquias espirituais artificiais; compreenderá o que uma filosofia de ministério deve conter; relacionará planejamento pessoal e eclesiástico à providência e ao governo presbiteriano; e poderá organizar prioridades e tempo de modo coerente com o ofício, a família e os limites criacionais.',
   atualizadoEm: '2026-08-28',
-  verMais: ['tp01-vocacao', 'tp02-poimenica', 'tp05-lideranca', 'tp06-planejamento-controle-tempo'],
+  verMais: ['tp01-vocacao', 'tp02-poimenica', 'tp06-planejamento-controle-tempo'],
   blocos: [
     {
       tipo: 'paragrafo',
