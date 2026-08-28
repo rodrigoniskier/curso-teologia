@@ -8,7 +8,7 @@ export const igrejaBrasileira: Verbete = {
   subtitulo: 'Duas chegadas reformadas que fracassaram, e a terceira que ficou',
   objetivo:
     'Ao final, você saberá que a primeira confissão reformada das Américas foi escrita na Guanabara em 1558, entenderá por que aquela tentativa e a holandesa em Pernambuco não deixaram igreja, distinguirá protestantismo de imigração de protestantismo de missão, saberá por que o presbiterianismo brasileiro se dividiu três vezes, e terá um quadro honesto de por que o pentecostalismo cresceu onde as igrejas históricas não cresceram.',
-  atualizadoEm: '2026-08-16',
+  atualizadoEm: '2026-08-28',
   verMais: ['th04-igreja-moderna', 'tp07-teologia-de-missoes', 'ts11-subscricao-confessional'],
   blocos: [
     {
@@ -61,7 +61,6 @@ export const igrejaBrasileira: Verbete = {
       tipo: 'paragrafo',
       texto:
         'Setenta anos depois vem a tentativa mais organizada. A Companhia das Índias Ocidentais toma Pernambuco e instala ali, por vinte e quatro anos, uma administração holandesa reformada. Sob Maurício de Nassau há tolerância religiosa incomum para a época — católicos e judeus mantêm culto, e a primeira sinagoga das Américas é aberta no Recife.',
-
     },
     {
       tipo: 'paragrafo',
@@ -181,7 +180,7 @@ export const igrejaBrasileira: Verbete = {
     {
       tipo: 'paragrafo',
       texto:
-        'Sobre a história da própria IPB — atas, controvérsias internas e documentos oficiais — o portal ainda não tem verbete, e o motivo é declarado: não encontramos fontes livres à altura, apenas material secundário disperso. Enquanto não houver, é melhor não ter verbete do que ter um mal fundamentado.',
+        'A história específica da Igreja Presbiteriana do Brasil — sua formação, o cisma de 1903, a autonomia nacional, o Plano Brasileiro e o desenvolvimento institucional posterior — agora é tratada nos verbetes de TH06 com fontes primárias e institucionais abertas. Este panorama de TH05 permanece como porta de entrada para a história mais ampla do cristianismo no país.',
     },
   ],
   fontes: [
