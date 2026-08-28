@@ -208,6 +208,7 @@ const arquivosAcervo = [
   ['src/dados/biblioteca.ts', ['biblioteca']],
   ['src/dados/biblioteca-extra.ts', ['bibliotecaExtra']],
   ['src/dados/biblioteca-final.ts', ['bibliotecaFinal']],
+  ['src/dados/biblioteca-aprofundamento.ts', ['bibliotecaAprofundamento']],
 ];
 const acervo = [];
 for (const [arquivo, nomes] of arquivosAcervo) {
