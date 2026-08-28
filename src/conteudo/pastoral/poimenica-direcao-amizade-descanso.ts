@@ -9,7 +9,7 @@ export const poimenicaDirecaoAmizadeDescanso: Verbete = {
   objetivo:
     'Ao final, você saberá distinguir providência, sabedoria e impressão subjetiva na tomada de decisões; compreenderá por que submissão à vontade de Deus não elimina planejamento nem conselho; reconhecerá amizade, convivência social e lazer como dimensões legítimas da vida pastoral; e poderá construir limites que protejam o ministro e sua família sem converter descanso em isolamento ou irresponsabilidade.',
   atualizadoEm: '2026-08-28',
-  verMais: ['tp02-poimenica', 'tp01-vocacao', 'ts01-providencia', 'tp05-lideranca'],
+  verMais: ['tp02-poimenica', 'tp01-vocacao', 'ts01-providencia'],
   blocos: [
     {
       tipo: 'paragrafo',
