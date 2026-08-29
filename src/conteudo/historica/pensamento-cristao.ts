@@ -10,7 +10,7 @@ export const pensamentoCristao: Verbete = {
   objetivo:
     'Ao final, você saberá por que doutrinas centrais só foram formuladas séculos depois sem que isso as torne invenções, entenderá que cada definição carrega a forma do erro que respondeu, conhecerá a regula fidei e como a igreja operava antes de ter credos, saberá o que estava em jogo no realismo e no nominalismo, distinguirá as três avaliações do desenvolvimento doutrinário, e saberá ler um teólogo antigo sem anacronismo.',
   atualizadoEm: '2026-08-18',
-  verMais: ['th01-igreja-antiga', 'th02-igreja-imperial', 'ts11-subscricao-confessional'],
+  verMais: ['th01-igreja-antiga', 'th01-igreja-imperial', 'ts11-subscricao-confessional'],
   blocos: [
     {
       tipo: 'paragrafo',
