@@ -74,5 +74,5 @@ jobs:
       - run: npm run build
       - name: Conferir os números do README
         run: npm run conferir
-      - name: Recalcular fila editorial
-        run: npm run priorizar -- --json
+      - name: Verificar diagnóstico editorial
+        run: npm run priorizar -- --json > /dev/null
