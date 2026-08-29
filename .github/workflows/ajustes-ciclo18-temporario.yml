@@ -1,0 +1,57 @@
+name: Ajustes ciclo 18 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-18]
+    paths:
+      - '.github/workflows/ajustes-ciclo18-temporario.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  ajustar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-18
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Sincronizar README e associação do acervo
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('README.md')
+          s = p.read_text(encoding='utf-8')
+          pares = [
+            ('| Verbetes redigidos | 179 |', '| Verbetes redigidos | 182 |'),
+            ('A diferença entre 179 verbetes e 101 disciplinas cobertas', 'A diferença entre 182 verbetes e 101 disciplinas cobertas'),
+          ]
+          for antigo, novo in pares:
+            if s.count(antigo) != 1:
+              raise SystemExit(f'README: esperada 1 ocorrência de {antigo!r}; encontradas {s.count(antigo)}')
+            s = s.replace(antigo, novo)
+          p.write_text(s, encoding='utf-8')
+
+          p = Path('src/dados/biblioteca-aprofundamento.ts')
+          s = p.read_text(encoding='utf-8')
+          antigo = "disciplinas: ['TP04', 'CG07'],"
+          novo = "disciplinas: ['TP03', 'TP04', 'CG07'],"
+          if s.count(antigo) != 1:
+            raise SystemExit(f'biblioteca: esperada 1 ocorrência; encontradas {s.count(antigo)}')
+          p.write_text(s.replace(antigo, novo), encoding='utf-8')
+          PY
+      - name: Validar conteúdo antes de versionar
+        run: npm run validar
+      - name: Conferir estado
+        run: npm run conferir
+      - name: Versionar ajustes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md src/dados/biblioteca-aprofundamento.ts
+          git commit -m 'Sincronizar contagens e acervo de TP03'
+          git push origin HEAD:content/ciclo-editorial-18
