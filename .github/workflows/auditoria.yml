@@ -22,9 +22,6 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
-      - run: npm ci
-      - name: Imprimir diagnóstico editorial
-        run: npm run priorizar -- --json
       - name: Auditar links
         id: auditoria
         env:
@@ -78,4 +75,4 @@ jobs:
       - name: Conferir os números do README
         run: npm run conferir
       - name: Verificar diagnóstico editorial
-        run: npm run priorizar -- --json
+        run: npm run priorizar -- --json > /dev/null
