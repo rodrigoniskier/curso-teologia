@@ -236,6 +236,12 @@ export const ipb1959a1986: Verbete = {
         'As perguntas centrais, entretanto, continuaram: como preservar confessionalidade sem transformar uniformidade administrativa em medida de ortodoxia? Como permitir estudo sério sem dissolver identidade? Como atuar publicamente sem converter a igreja em braço de projeto partidário? Como exercer disciplina sem perder devido processo e cuidado pastoral? A fase seguinte herdaria todas elas.',
     },
     {
+      tipo: 'definicao',
+      termo: 'IPB entre 1959 e 1986',
+      texto:
+        'Período de forte polarização teológica, institucional e política na história da Igreja Presbiteriana do Brasil, marcado por disputas sobre ecumenismo, responsabilidade social, educação teológica, disciplina e governo; pela reação confessional conservadora consolidada a partir de 1966; pela nacionalização e reorganização de instituições; pela expansão missionária e editorial; e por dissidências que reconfiguraram o campo presbiteriano brasileiro. Seu estudo exige distinguir preocupações doutrinárias legítimas, métodos institucionais concretos e o contexto político nacional, evitando tanto hagiografia quanto redução partidária da história.',
+    },
+    {
       tipo: 'pastoral',
       texto:
         'O período 1959–1986 é especialmente útil para líderes porque destrói a fantasia de que **boas intenções protegem automaticamente contra abuso de poder ou erro doutrinário**. Uma igreja pode defender uma verdade real com métodos inadequados; pode denunciar métodos inadequados e, ao mesmo tempo, adotar teologia frágil. O aprendizado pastoral é recusar a escolha preguiçosa entre convicção e humildade. Confissão precisa de coragem; governo precisa de limites; disciplina precisa de justiça; abertura precisa de critérios; e memória precisa ser honesta o suficiente para agradecer realizações sem transformar conflitos em hagiografia institucional.',
