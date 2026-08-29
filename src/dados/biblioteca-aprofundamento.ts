@@ -177,4 +177,17 @@ export const bibliotecaAprofundamento: ObraLivre[] = [
     nota: 'Revisão crítica da literatura sobre Canudos, Contestado e Juazeiro. É especialmente útil para evitar que a categoria “messianismo” substitua a análise das relações entre catolicismo popular, coronelismo, classe e conflito social.',
     base: 'edição autorizada',
   },
+  {
+    id: 'lausanne-plantacao-igrejas',
+    autor: 'Movimento de Lausanne',
+    ano: '2026',
+    titulo: 'Plantação de Igrejas',
+    publicacao: 'Lausanne Movement',
+    url: 'https://lausanne.org/pt-br/network/plantacao-de-igrejas',
+    idioma: 'pt',
+    acesso: 'livre',
+    disciplinas: ['TP20', 'TP07'],
+    nota: 'Página institucional contemporânea da rede temática de plantação de igrejas. É usada como referência missiológica descritiva para proclamação, discipulado, reunião, capacitação, colaboração e multiplicação; não substitui a norma bíblica e confessional do portal.',
+    base: 'edição autorizada',
+  },
 ];
