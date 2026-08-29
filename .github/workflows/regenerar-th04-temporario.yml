@@ -22,35 +22,17 @@ jobs:
       - run: npm ci
       - name: Regenerar currículo a partir do PDF original
         run: npm run regenerar:curriculo
-      - name: Mostrar bibliografias suspeitas
+      - name: Mostrar unidades dos casos contaminados
         run: |
           node --input-type=module <<'NODE'
           import { readFile } from 'node:fs/promises';
           const ds = JSON.parse(await readFile('src/dados/ementas.json', 'utf8'));
-          const re = /\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b/i;
-          for (const d of ds) {
-            for (const grupo of ['basica', 'complementar']) {
-              const itens = d.bibliografia?.[grupo] ?? [];
-              itens.forEach((item, i) => {
-                if (re.test(String(item))) {
-                  console.log(`\n=== ${d.codigo} | ${grupo} #${i + 1} ===`);
-                  console.log(String(item));
-                }
-              });
-            }
+          const codigos = ['CG04','CG65','TE12','TE17','TE20','TE21','TE22','TH05','TP04','TP05','TS04','TS08'];
+          for (const codigo of codigos) {
+            const d = ds.find((x) => x.codigo === codigo);
+            console.log(`\n=== ${codigo} | ${d?.titulo} | pagina ${d?.paginaPdf} ===`);
+            console.log(JSON.stringify({preRequisito:d?.preRequisito, ementa:d?.ementa, unidades:d?.unidades}, null, 2));
           }
           NODE
       - name: Validar currículo regenerado
         run: npm run validar:curriculo
-      - name: Versionar artefato regenerado
-        if: success()
-        run: |
-          if git diff --quiet -- src/dados/ementas.json; then
-            echo 'Nenhuma alteração em ementas.json.'
-            exit 0
-          fi
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/dados/ementas.json
-          git commit -m 'Regenerar currículo com correção auditada de TH04'
-          git push origin HEAD:content/ciclo-editorial-17
