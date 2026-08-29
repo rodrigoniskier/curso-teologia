@@ -5,7 +5,8 @@ visual. O parser genérico reproduz 113/121 disciplinas sem reconstrução; as o
 exceções conhecidas foram conferidas diretamente no original. Há ainda casos em
 que as unidades são extraídas corretamente, mas uma cópia do texto programático
 fica anexada ao último item bibliográfico por causa da ordem interna dos objetos
-do PDF. Esses cortes também são explícitos e verificáveis nos manifestos.
+do PDF. Esses cortes e eventuais tópicos deslocados também são explícitos e
+verificáveis nos manifestos.
 
 Esta etapa produz o ementas.json final — o portal não aplica patches em runtime.
 """
@@ -50,8 +51,25 @@ for manifesto, correcao in correcoes:
 
     destino = por_codigo[codigo]
     for chave, valor in correcao.items():
-        if chave not in {'codigo', 'bibliografiaItens'}:
+        if chave not in {'codigo', 'bibliografiaItens', 'unidadeTopicos'}:
             destino[chave] = deepcopy(valor)
+
+    ajustes_topicos = correcao.get('unidadeTopicos', [])
+    if not isinstance(ajustes_topicos, list):
+        raise SystemExit(f'{manifesto}: unidadeTopicos deve ser array em {codigo}')
+    for ajuste in ajustes_topicos:
+        numero = ajuste.get('numero')
+        esperado = ajuste.get('esperado')
+        valor = ajuste.get('valor')
+        unidade = next((u for u in destino.get('unidades', []) if u.get('numero') == numero), None)
+        if unidade is None:
+            raise SystemExit(f'{manifesto}: unidade {numero} inexistente em {codigo}')
+        atuais = unidade.get('topicos', [])
+        if atuais != esperado:
+            raise SystemExit(f'{manifesto}: tópicos inesperados em {codigo} unidade {numero}: {atuais!r}')
+        if not isinstance(valor, list) or not all(isinstance(t, str) and t.strip() for t in valor):
+            raise SystemExit(f'{manifesto}: tópicos saneados inválidos em {codigo} unidade {numero}')
+        unidade['topicos'] = deepcopy(valor)
 
     itens_bibliografia = correcao.get('bibliografiaItens', [])
     if not isinstance(itens_bibliografia, list):
