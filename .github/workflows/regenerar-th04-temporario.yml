@@ -22,9 +22,28 @@ jobs:
       - run: npm ci
       - name: Regenerar currículo a partir do PDF original
         run: npm run regenerar:curriculo
+      - name: Mostrar bibliografias suspeitas
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const ds = JSON.parse(await readFile('src/dados/ementas.json', 'utf8'));
+          const re = /\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b/i;
+          for (const d of ds) {
+            for (const grupo of ['basica', 'complementar']) {
+              const itens = d.bibliografia?.[grupo] ?? [];
+              itens.forEach((item, i) => {
+                if (re.test(String(item))) {
+                  console.log(`\n=== ${d.codigo} | ${grupo} #${i + 1} ===`);
+                  console.log(String(item));
+                }
+              });
+            }
+          }
+          NODE
       - name: Validar currículo regenerado
         run: npm run validar:curriculo
       - name: Versionar artefato regenerado
+        if: success()
         run: |
           if git diff --quiet -- src/dados/ementas.json; then
             echo 'Nenhuma alteração em ementas.json.'
