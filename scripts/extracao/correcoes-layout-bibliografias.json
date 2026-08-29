@@ -78,6 +78,17 @@
   },
   {
     "codigo": "TH05",
+    "unidadeTopicos": [
+      {
+        "numero": 25,
+        "esperado": ["Igreja de Nova Vida"],
+        "valor": [
+          "Igreja de Nova Vida",
+          "Igreja Universal do Reino de Deus",
+          "Igreja Internacional da Graça de Deus"
+        ]
+      }
+    ],
     "bibliografiaItens": [
       {
         "grupo": "basica",
