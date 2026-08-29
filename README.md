@@ -16,10 +16,10 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | | |
 | --- | --- |
 | Disciplinas mapeadas | **121** (5 departamentos) |
-| Unidades do programa | **1.375** (2.032 tópicos) |
+| Unidades do programa | **1.375** (2.036 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
-| Verbetes redigidos | 175 |
-| Obras livres mapeadas | 201 |
+| Verbetes redigidos | 179 |
+| Obras livres mapeadas | 210 |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -34,7 +34,7 @@ Os cinco departamentos, conforme o documento oficial:
 A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
 conta **disciplinas distintas**: hoje há conteúdo em **101 das 101 disciplinas
 em que um verbete se aplica**. O primeiro ciclo de cobertura curricular está,
-portanto, completo. A diferença entre 175 verbetes e 101 disciplinas cobertas
+portanto, completo. A diferença entre 179 verbetes e 101 disciplinas cobertas
 existe porque algumas disciplinas possuem mais de um verbete.
 
 ## Como o conteúdo é escrito
@@ -62,8 +62,10 @@ bibliografia cara para se formar.
 
 O acervo está nos arquivos [`src/dados/biblioteca.ts`](src/dados/biblioteca.ts),
 [`src/dados/biblioteca-extra.ts`](src/dados/biblioteca-extra.ts),
-[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts) e
-[`src/dados/biblioteca-aprofundamento.ts`](src/dados/biblioteca-aprofundamento.ts),
+[`src/dados/biblioteca-final.ts`](src/dados/biblioteca-final.ts),
+[`src/dados/biblioteca-aprofundamento.ts`](src/dados/biblioteca-aprofundamento.ts)
+e complementos temáticos como
+[`src/dados/biblioteca-historia-moderna.ts`](src/dados/biblioteca-historia-moderna.ts),
 reunidos por [`biblioteca-completa.ts`](src/dados/biblioteca-completa.ts). Ele
 mapeia o que dá para ler legalmente sem pagar nada, cruzado com os códigos de
 disciplina — cada página de disciplina mostra a leitura gratuita correspondente.
@@ -87,7 +89,7 @@ de links verifica a disponibilidade da rede:
 
 ```bash
 npm run validar             # gera o índice e valida ids, verMais, fontes, acervo e currículo
-npm run validar:curriculo   # sequência e contaminação estrutural das unidades
+npm run validar:curriculo   # sequência e contaminação estrutural das unidades e bibliografias
 npm run auditar:metadados   # coerência semântica entre título e URL de acervos
 npm run auditar             # falha se houver link quebrado
 npm run auditar:relatorio   # grava relatorio-auditoria.md
@@ -97,14 +99,16 @@ npm run auditar:relatorio   # grava relatorio-auditoria.md
 próprios arquivos de verbete. Em seguida, reprova, entre outras coisas, id
 duplicado, destino de `verMais` inexistente, auto-remissão, fonte de citação sem
 `fonteId` resolvível e obra usada em verbete sem entrada no acervo. O validador
-curricular adicional procura sequências quebradas e sinais de que título ou
-tópico absorveu marcadores de outra `Unidade` ou de `BIBLIOGRAFIA`.
+curricular adicional procura sequências quebradas e sinais de que títulos,
+tópicos ou itens bibliográficos absorveram texto de outra `Unidade`, de
+`BIBLIOGRAFIA`, de `Pré-requisito` ou de `Ementa`.
 
 A reprodutibilidade do currículo é verificada antes dessas validações: a CI
-regenera `ementas.json` a partir do PDF original, aplica as sete reconstruções
-de layout auditadas dentro do próprio pipeline e exige igualdade byte a byte
-com o artefato versionado. Assim, os validadores e o portal consomem diretamente
-o currículo final, sem overlay aplicado em tempo de execução.
+regenera `ementas.json` a partir do PDF original, aplica as oito reconstruções
+de layout e os saneamentos bibliográficos auditados dentro do próprio pipeline
+e exige igualdade byte a byte com o artefato versionado. Assim, os validadores
+e o portal consomem diretamente o currículo final, sem overlay aplicado em
+tempo de execução.
 
 As remissões são editoriais num sentido e **navegáveis nos dois**: a interface
 mostra as escolhas do verbete e gera automaticamente o caminho de volta para
@@ -166,21 +170,30 @@ mesma página**. Em CG12/CG13, o código aparece no fim do cabeçalho
 (`MONOGRAFIA 2 CG13`) em vez de uma linha isolada; o recortador antigo não
 reconhecia esse formato e misturava os dois blocos. Em CG10, a bibliografia na
 coluna direita interrompia visualmente a sequência das unidades da coluna
-esquerda. O novo validador revelou a mesma família de defeitos em TH01–TH03 e
-TP02–TP03: unidades e bibliografias de uma disciplina haviam sido absorvidas
-pela disciplina seguinte por causa da ordem de leitura das colunas.
+esquerda. O validador revelou a mesma família de defeitos em TH01–TH04 e
+TP02–TP03: unidades, tópicos e bibliografias podiam ser absorvidos pela seção
+vizinha por causa da ordem de leitura dos objetos do PDF.
 
 Uma regeneração integral em checkout limpo mostrou que o parser genérico
-reproduz exatamente **114 das 121 disciplinas**. As sete exceções são os layouts
-irregulares já conhecidos — **CG10, CG13, TH01, TH02, TH03, TP02 e TP03**. Suas
-reconstruções, conferidas diretamente no PDF, ficam em
-[`scripts/extracao/correcoes-layout.json`](scripts/extracao/correcoes-layout.json)
-e são aplicadas **durante a extração**. O portal, os validadores e as ferramentas
-editoriais leem diretamente `ementas.json` e não aplicam overlay algum.
+reproduz exatamente **113 das 121 disciplinas**. As oito exceções de
+reconstrução são **CG10, CG13, TH01, TH02, TH03, TH04, TP02 e TP03**. Suas
+reconstruções, conferidas diretamente no PDF, ficam nos manifestos
+[`scripts/extracao/correcoes-layout*.json`](scripts/extracao/) e são aplicadas
+**durante a extração**. O portal, os validadores e as ferramentas editoriais
+leem diretamente `ementas.json` e não aplicam overlay algum.
 
-Essa escolha é deliberada: preservar sete exceções explícitas e auditáveis é mais
+A ampliação do validador detectou ainda uma segunda forma de corrupção: em
+**12 disciplinas** — CG04, CG65, TE12, TE17, TE20, TE21, TE22, TH05, TP04,
+TP05, TS04 e TS08 — o conteúdo das unidades já estava preservado, mas o fluxo
+do PDF havia anexado cópias do programa ao último item da bibliografia. Esses
+casos são saneados por índice e prefixo esperados, de modo que qualquer mudança
+no PDF faz o pipeline falhar em vez de cortar texto por heurística. Em TH05, a
+mesma inspeção recuperou ainda dois tópicos da unidade 25 que estavam apenas no
+vazamento bibliográfico.
+
+Essa escolha é deliberada: preservar exceções explícitas e auditáveis é mais
 seguro do que introduzir heurísticas de ordem de colunas capazes de corromper
-silenciosamente as outras 114 disciplinas. O exame do original também confirmou
+silenciosamente as demais disciplinas. O exame do original também confirmou
 que **CG12 realmente não possui unidades programáticas**; sua ausência não era
 erro de extração.
 
@@ -232,11 +245,14 @@ uma validação estrutural independente. Esse processo já revelou perdas e
 contaminações que permaneciam como JSON perfeitamente válido: **140 unidades
 perdidas em 18 disciplinas** na primeira grande correção, mistura CG12/CG13,
 unidades 7–9 de CG10 absorvidas por uma coluna de bibliografia, unidades 20–30
-de TH01 deslocadas para TH02, unidades 27–30 de TH02 inseridas em TH03, e a
-unidade 15 de TP02 mais sua bibliografia inseridas em TP03.
+de TH01 deslocadas para TH02, unidades 27–30 de TH02 inseridas em TH03, a
+unidade 15 de TP02 mais sua bibliografia inseridas em TP03, dois tópicos de
+TH04 presos na bibliografia e vazamentos programáticos em outros 12 registros
+bibliográficos.
 
-Com as reconstruções auditadas atuais, não há perda curricular conhecida entre
-esses casos já identificados. A CI agora regenera `ementas.json` a partir do PDF
-original e exige igualdade com o artefato versionado. Não existe mais overlay
-curricular em runtime: qualquer mudança futura no PDF, no extrator, nas ligaduras,
-no parser ou no manifesto de layout precisa aparecer explicitamente no diff.
+Com as reconstruções e saneamentos auditados atuais, não há perda curricular
+conhecida entre esses casos já identificados. A CI agora regenera `ementas.json`
+a partir do PDF original e exige igualdade com o artefato versionado. Não existe
+mais overlay curricular em runtime: qualquer mudança futura no PDF, no extrator,
+nas ligaduras, no parser ou nos manifestos de layout precisa aparecer
+explicitamente no diff.
