@@ -17,6 +17,7 @@ const avisos = [];
 const erro = (m) => erros.push(m);
 const aviso = (m) => avisos.push(m);
 
+const marcadorOutraSecao = /\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b/i;
 const codigos = new Set();
 for (const d of curriculo) {
   if (!d.codigo) erro('disciplina sem código');
@@ -44,13 +45,23 @@ for (const d of curriculo) {
   for (const u of d.unidades) {
     const titulo = String(u.titulo ?? '');
     const topicos = Array.isArray(u.topicos) ? u.topicos.map(String) : [];
-    if (/\bUnidade\s+\d+\b/i.test(titulo) || /\bBIBLIOGRAFIA\b/i.test(titulo))
+    if (marcadorOutraSecao.test(titulo))
       erro(`${d.codigo} unidade ${u.numero}: título parece conter texto de outra seção: "${titulo}"`);
     if ((titulo.match(/\bUnidade\b/gi) ?? []).length >= 2)
       erro(`${d.codigo} unidade ${u.numero}: múltiplos marcadores "Unidade" no título`);
     for (const t of topicos) {
-      if (/\bUnidade\s+\d+\b/i.test(t) || /^BIBLIOGRAFIA\b/i.test(t))
+      if (marcadorOutraSecao.test(t))
         erro(`${d.codigo} unidade ${u.numero}: tópico parece conter texto de outra seção: "${t}"`);
+    }
+  }
+
+  const bibliografia = d.bibliografia ?? {};
+  for (const grupo of ['basica', 'complementar']) {
+    const itens = Array.isArray(bibliografia[grupo]) ? bibliografia[grupo] : [];
+    for (const [i, item] of itens.entries()) {
+      const texto = String(item ?? '');
+      if (marcadorOutraSecao.test(texto))
+        erro(`${d.codigo} bibliografia ${grupo} #${i + 1}: parece conter texto programático de outra seção`);
     }
   }
 }
