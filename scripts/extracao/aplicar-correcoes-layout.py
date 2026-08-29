@@ -1,43 +1,99 @@
 """Aplica reconstruções auditadas para layouts que o fluxo textual do PDF embaralha.
 
 O PDF-fonte contém páginas/colunas cuja ordem de objetos não corresponde à ordem
-visual. O parser genérico reproduz corretamente 114/121 disciplinas; as sete
-exceções abaixo foram conferidas diretamente no original e ficam num manifesto
-versionado ao lado do pipeline. Esta etapa produz o ementas.json final — o portal
-não deve aplicar patches em tempo de execução.
+visual. O parser genérico reproduz 113/121 disciplinas sem reconstrução; as oito
+exceções conhecidas foram conferidas diretamente no original. Há ainda casos em
+que as unidades são extraídas corretamente, mas uma cópia do texto programático
+fica anexada ao último item bibliográfico por causa da ordem interna dos objetos
+do PDF. Esses cortes e eventuais tópicos deslocados também são explícitos e
+verificáveis nos manifestos.
+
+Esta etapa produz o ementas.json final — o portal não aplica patches em runtime.
 """
 from __future__ import annotations
 
 from copy import deepcopy
 from pathlib import Path
 import json
+import re
 
 RAIZ = Path(__file__).resolve().parents[2]
 EMENTAS = RAIZ / 'src' / 'dados' / 'ementas.json'
-CORRECOES = Path(__file__).with_name('correcoes-layout.json')
+DIR = Path(__file__).parent
+MANIFESTOS = sorted(DIR.glob('correcoes-layout*.json'))
+MARCADOR_PROGRAMATICO = re.compile(r'\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b|\bPré-requisito\s*:|\bEmenta\s*:', re.I)
 
 base = json.loads(EMENTAS.read_text(encoding='utf-8'))
-correcoes = json.loads(CORRECOES.read_text(encoding='utf-8'))
+correcoes = []
+for manifesto in MANIFESTOS:
+    dados = json.loads(manifesto.read_text(encoding='utf-8'))
+    if not isinstance(dados, list):
+        raise SystemExit(f'{manifesto.name}: esperado um array de correções')
+    for correcao in dados:
+        correcoes.append((manifesto.name, correcao))
+
 por_codigo = {d['codigo']: d for d in base}
 
 vistos = set()
-for correcao in correcoes:
+for manifesto, correcao in correcoes:
     codigo = correcao.get('codigo')
     if not codigo:
-        raise SystemExit('correcoes-layout.json: correção sem código')
+        raise SystemExit(f'{manifesto}: correção sem código')
     if codigo in vistos:
-        raise SystemExit(f'correcoes-layout.json: código duplicado {codigo}')
+        raise SystemExit(f'correção de layout duplicada para {codigo}')
     vistos.add(codigo)
     if codigo not in por_codigo:
-        raise SystemExit(f'correcoes-layout.json: disciplina inexistente {codigo}')
+        raise SystemExit(f'{manifesto}: disciplina inexistente {codigo}')
     if 'unidades' in correcao:
         numeros = [u.get('numero') for u in correcao['unidades']]
         if len(numeros) != len(set(numeros)):
-            raise SystemExit(f'correcoes-layout.json: unidades duplicadas em {codigo}')
+            raise SystemExit(f'{manifesto}: unidades duplicadas em {codigo}')
+
     destino = por_codigo[codigo]
     for chave, valor in correcao.items():
-        if chave != 'codigo':
+        if chave not in {'codigo', 'bibliografiaItens', 'unidadeTopicos'}:
             destino[chave] = deepcopy(valor)
 
+    ajustes_topicos = correcao.get('unidadeTopicos', [])
+    if not isinstance(ajustes_topicos, list):
+        raise SystemExit(f'{manifesto}: unidadeTopicos deve ser array em {codigo}')
+    for ajuste in ajustes_topicos:
+        numero = ajuste.get('numero')
+        esperado = ajuste.get('esperado')
+        valor = ajuste.get('valor')
+        unidade = next((u for u in destino.get('unidades', []) if u.get('numero') == numero), None)
+        if unidade is None:
+            raise SystemExit(f'{manifesto}: unidade {numero} inexistente em {codigo}')
+        atuais = unidade.get('topicos', [])
+        if atuais != esperado:
+            raise SystemExit(f'{manifesto}: tópicos inesperados em {codigo} unidade {numero}: {atuais!r}')
+        if not isinstance(valor, list) or not all(isinstance(t, str) and t.strip() for t in valor):
+            raise SystemExit(f'{manifesto}: tópicos saneados inválidos em {codigo} unidade {numero}')
+        unidade['topicos'] = deepcopy(valor)
+
+    itens_bibliografia = correcao.get('bibliografiaItens', [])
+    if not isinstance(itens_bibliografia, list):
+        raise SystemExit(f'{manifesto}: bibliografiaItens deve ser array em {codigo}')
+    for ajuste in itens_bibliografia:
+        grupo = ajuste.get('grupo')
+        indice = ajuste.get('indice')
+        comeca_com = ajuste.get('comecaCom')
+        valor = ajuste.get('valor')
+        if grupo not in {'basica', 'complementar'}:
+            raise SystemExit(f'{manifesto}: grupo bibliográfico inválido em {codigo}: {grupo}')
+        if not isinstance(indice, int) or indice < 1:
+            raise SystemExit(f'{manifesto}: índice bibliográfico inválido em {codigo}: {indice}')
+        itens = destino.get('bibliografia', {}).get(grupo, [])
+        if indice > len(itens):
+            raise SystemExit(f'{manifesto}: {codigo} {grupo} #{indice} não existe')
+        original = str(itens[indice - 1])
+        if not isinstance(comeca_com, str) or not original.startswith(comeca_com):
+            raise SystemExit(f'{manifesto}: início inesperado em {codigo} {grupo} #{indice}')
+        if not MARCADOR_PROGRAMATICO.search(original):
+            raise SystemExit(f'{manifesto}: {codigo} {grupo} #{indice} não contém contaminação programática')
+        if not isinstance(valor, str) or not valor.strip():
+            raise SystemExit(f'{manifesto}: valor saneado vazio em {codigo} {grupo} #{indice}')
+        itens[indice - 1] = valor
+
 EMENTAS.write_text(json.dumps(base, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-print(f'correções de layout aplicadas: {len(correcoes)} ({", ".join(sorted(vistos))})')
+print(f'correções auditadas aplicadas: {len(correcoes)} disciplinas ({", ".join(sorted(vistos))})')

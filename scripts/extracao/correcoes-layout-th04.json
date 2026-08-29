@@ -1,0 +1,49 @@
+[
+  {
+    "codigo": "TH04",
+    "unidades": [
+      { "numero": 1, "titulo": "Correntes intelectuais do século 18", "topicos": ["Racionalismo", "Iluminismo e Deísmo", "O Iluminismo português"] },
+      { "numero": 2, "titulo": "Espiritualismo", "topicos": ["Jacob Boehme", "George Fox", "Emanuel Swedenborg"] },
+      { "numero": 3, "titulo": "O Pietismo 1", "topicos": ["Philipp Spener e August Francke", "A missão dinamarquesa-Halle"] },
+      { "numero": 4, "titulo": "O Pietismo 2", "topicos": ["O conde Zinzendorf, os irmãos morávios e missões"] },
+      { "numero": 5, "titulo": "O protestantismo na Inglaterra no século 18 (1)", "topicos": ["A continuação do movimento puritano", "Declínio religioso no início do século 18"] },
+      { "numero": 6, "titulo": "O protestantismo na Inglaterra no século 18 (2)", "topicos": ["O avivamento evangélico", "John Wesley e George Whitefield", "Os resultados do avivamento"] },
+      { "numero": 7, "titulo": "O protestantismo na Escócia e na Irlanda", "topicos": ["Os pactuantes", "O século 18 na Escócia", "O presbiterianismo na Irlanda"] },
+      { "numero": 8, "titulo": "O catolicismo na Europa nos séculos 18 e 19", "topicos": ["A Revolução francesa e o papado", "Pio IX e o Concílio do Vaticano I", "A perda do poder temporal"] },
+      { "numero": 9, "titulo": "O protestantismo continental nos séculos 18 e 19", "topicos": ["Alemanha, França, Holanda, Suíça"] },
+      { "numero": 10, "titulo": "O protestantismo na Inglaterra no século 19 (1)", "topicos": ["Movimento evangélico", "Movimento liberal", "Movimento anglo-católico"] },
+      { "numero": 11, "titulo": "O protestantismo na Inglaterra no século 19 (2)", "topicos": ["John Nelson Darby", "Charles Spurgeon", "O Exército da Salvação"] },
+      { "numero": 12, "titulo": "O protestantismo na Escócia no século 19", "topicos": ["O despertamento religioso", "Descontentamento e rompimento", "Charles Simeon e Robert Murray M’Cheyne"] },
+      { "numero": 13, "titulo": "O Cristianismo na América do Norte 1", "topicos": ["Os Puritanos", "O Congregacionalismo na Nova Inglaterra", "As Igrejas Batistas"] },
+      { "numero": 14, "titulo": "O Cristianismo na América do Norte 2", "topicos": ["O Catolicismo em Maryland", "Os Quacres na Pensilvânia"] },
+      { "numero": 15, "titulo": "O Cristianismo na América do Norte 3", "topicos": ["O Presbiterianismo nas colônias", "A independência das 13 colônias"] },
+      { "numero": 16, "titulo": "O Cristianismo na América do Norte 4", "topicos": ["O Metodismo nas colônias", "O Canadá"] },
+      { "numero": 17, "titulo": "O Cristianismo na América Latina 1", "topicos": ["O Catolicismo latino-americano nos séculos 18 e 19"] },
+      { "numero": 18, "titulo": "O Cristianismo na América Latina 2", "topicos": ["A chegada do Protestantismo", "A atuação missionária"] },
+      { "numero": 19, "titulo": "O Cristianismo na África", "topicos": ["Madagascar, África do Sul, David Livingstone", "Robert e Mary Moffatt", "As colônias portuguesas"] },
+      { "numero": 20, "titulo": "O Cristianismo na Ásia 1", "topicos": ["Penetração na Índia e na Birmânia", "Península Malaia, Cingapura e Filipinas", "Indonésia e João Ferreira de Almeida"] },
+      { "numero": 21, "titulo": "O Cristianismo na Ásia 2", "topicos": ["Penetração na China, Hudson Taylor", "Reintrodução do Cristianismo no Japão", "Coreia"] },
+      { "numero": 22, "titulo": "O Cristianismo na Oceania e nas Ilhas do Pacífico", "topicos": ["Austrália", "Nova Zelândia", "Ilhas do Pacífico, John G. Paton"] },
+      { "numero": 23, "titulo": "Os avivamentos norte-americanos", "topicos": ["O 1º Grande Despertamento e Jonathan Edwards", "O 2º Grande Despertamento e Charles Finney", "O movimento missionário mundial"] },
+      { "numero": 24, "titulo": "Movimentos dissidentes", "topicos": ["Mormonismo, Adventistas", "Ciência Cristã, Testemunhas de Jeová"] },
+      { "numero": 25, "titulo": "O Cristianismo nos Estados Unidos no século 20 (1)", "topicos": ["A Igreja Católica Romana", "O Protestantismo", "A controvérsia Modernista-Fundamentalista"] },
+      { "numero": 26, "titulo": "O Cristianismo nos Estados Unidos no século 20 (2)", "topicos": ["Movimento de Santidade e Pentecostalismo", "Missões, Ecumenismo"] },
+      { "numero": 27, "titulo": "O Catolicismo na América Latina", "topicos": ["O Catolicismo nos séculos 19 e 20", "Separação entre Igreja e Estado"] },
+      { "numero": 28, "titulo": "O Protestantismo na América Latina no século 20", "topicos": ["México, Peru e Chile", "Conferências protestantes", "O movimento Pentecostal"] },
+      { "numero": 29, "titulo": "Os novos rumos da Igreja no século 20", "topicos": ["O movimento Ecumênico", "As igrejas e o Nazismo", "Vaticano II, Teologia da Libertação", "Movimento de Lausanne"] },
+      { "numero": 30, "titulo": "As ideologias", "topicos": ["Políticas", "Filosóficas", "Científicas"] }
+    ],
+    "bibliografia": {
+      "basica": [
+        "BERNAND, Carmen; GRUZINSKI, Serge. História do Novo Mundo. São Paulo: Edusp, 2001.",
+        "FERNÁNDEZ-ARMESTO, Felipe. Reforma: O Cristianismo e o Mundo 1500-2000. Rio de Janeiro: Record, 1997.",
+        "FERREIRA, Franklin. Gigantes da Fé. São Paulo: Vida, 2006.",
+        "HOTTOIS, Gilbert. Do Renascimento à Pós-Modernidade. São Paulo: Ideias e Letras, 2008.",
+        "SHELLEY, Bruce L. História do Cristianismo ao Alcance de Todos. São Paulo: Shedd, 2004.",
+        "WALTON, Robert C. História da Igreja em Quadros. São Paulo: Vida, 2000.",
+        "WINTER, Ralph D. e outros (orgs.). Perspectivas no Movimento Cristão Mundial. São Paulo: Vida Nova, 2009."
+      ],
+      "complementar": []
+    }
+  }
+]

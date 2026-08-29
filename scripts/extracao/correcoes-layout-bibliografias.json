@@ -1,0 +1,145 @@
+[
+  {
+    "codigo": "CG04",
+    "bibliografiaItens": [
+      {
+        "grupo": "complementar",
+        "indice": 1,
+        "comecaCom": "GARCIA, Othon Moacir",
+        "valor": "GARCIA, Othon Moacir. Comunicação em Prosa Moderna. Rio de Janeiro: FGV, 2010."
+      }
+    ]
+  },
+  {
+    "codigo": "CG65",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 12,
+        "comecaCom": "SCIACCA, M. História da Filosofia",
+        "valor": "SCIACCA, M. História da Filosofia. São Paulo: Mestre Jou, 1968."
+      }
+    ]
+  },
+  {
+    "codigo": "TE12",
+    "bibliografiaItens": [
+      {
+        "grupo": "complementar",
+        "indice": 1,
+        "comecaCom": "ANGLADA, Paulo R. B.",
+        "valor": "ANGLADA, Paulo R. B. “A Hermenêutica Reformada das Escrituras” em Fides Reformata 1/2 (1997) 103-122."
+      }
+    ]
+  },
+  {
+    "codigo": "TE17",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 8,
+        "comecaCom": "HALL, Christopher A. Lendo as Escrituras com os Pais da Igreja",
+        "valor": "HALL, Christopher A. Lendo as Escrituras com os Pais da Igreja. Pará: Ultimato, 2000."
+      }
+    ]
+  },
+  {
+    "codigo": "TE20",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 20,
+        "comecaCom": "SLOYAN, Gerard S. John",
+        "valor": "SLOYAN, Gerard S. John. Louisville: John Knox Press, 1988."
+      }
+    ]
+  },
+  {
+    "codigo": "TE21",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 19,
+        "comecaCom": "WITHERINGTON III, Bem. História e Histórias do Novo Testamento",
+        "valor": "WITHERINGTON III, Bem. História e Histórias do Novo Testamento. São Paulo: Vida Nova, 2005."
+      }
+    ]
+  },
+  {
+    "codigo": "TE22",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 16,
+        "comecaCom": "WITHERINGTON, Ben. Conflict and Community in Corinth",
+        "valor": "WITHERINGTON, Ben. Conflict and Community in Corinth: a Socio-Rhetorical Commentary on 1 and 2 Corinthians. Grand Rapids: Eerdmans, 1995."
+      }
+    ]
+  },
+  {
+    "codigo": "TH05",
+    "unidadeTopicos": [
+      {
+        "numero": 25,
+        "esperado": ["Igreja de Nova Vida"],
+        "valor": [
+          "Igreja de Nova Vida",
+          "Igreja Universal do Reino de Deus",
+          "Igreja Internacional da Graça de Deus"
+        ]
+      }
+    ],
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 4,
+        "comecaCom": "SCHALKWIJK, Frans Leonard. Igreja e Estado no Brasil Holandês",
+        "valor": "SCHALKWIJK, Frans Leonard. Igreja e Estado no Brasil Holandês. São Paulo: Cultura Cristã, 2004."
+      }
+    ]
+  },
+  {
+    "codigo": "TP04",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 4,
+        "comecaCom": "HARVEY, Dave. Quando Pecadores Dizem Sim",
+        "valor": "HARVEY, Dave. Quando Pecadores Dizem Sim. São José dos Campos: Fiel, 2009."
+      }
+    ]
+  },
+  {
+    "codigo": "TP05",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 17,
+        "comecaCom": "WOFFORD, Jerry C. Transforming Christian Leadership",
+        "valor": "WOFFORD, Jerry C. Transforming Christian Leadership. MI: Baker Books, 1999."
+      }
+    ]
+  },
+  {
+    "codigo": "TS04",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 19,
+        "comecaCom": "VOS, Johannes Goerhardus. Catecismo Maior Comentado",
+        "valor": "VOS, Johannes Goerhardus. Catecismo Maior Comentado. Recife: Editora Puritanos, 2007."
+      }
+    ]
+  },
+  {
+    "codigo": "TS08",
+    "bibliografiaItens": [
+      {
+        "grupo": "basica",
+        "indice": 14,
+        "comecaCom": "SHEDD, Russel P. Adoração Bíblica",
+        "valor": "SHEDD, Russel P. Adoração Bíblica. São Paulo: Vida Nova, 1991."
+      }
+    ]
+  }
+]
