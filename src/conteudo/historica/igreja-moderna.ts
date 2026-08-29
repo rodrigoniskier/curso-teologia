@@ -8,7 +8,7 @@ export const igrejaModerna: Verbete = {
   subtitulo: 'Como o protestantismo ganhou o mundo e teve de decidir no que ainda acreditava',
   objetivo:
     'Ao final, você entenderá o problema pastoral que a ortodoxia confessional criou sem querer, saberá distinguir o que o pietismo acertou do que ele cobrou, reconhecerá em Jonathan Edwards a recusa de escolher entre coração e doutrina, entenderá por que o século de maior expansão missionária foi também o de menor confiança teológica, e saberá em que termos a divisão do início do século XX foi posta.',
-  atualizadoEm: '2026-08-16',
+  atualizadoEm: '2026-08-29',
   verMais: ['th03-reforma', 'tp07-teologia-de-missoes', 'ts11-subscricao-confessional'],
   blocos: [
     {
@@ -48,7 +48,6 @@ export const igrejaModerna: Verbete = {
       tipo: 'paragrafo',
       texto:
         'Em 1675, Philipp Jakob Spener publica um prefácio que vira programa. O diagnóstico é que a igreja luterana tem doutrina viva e vida morta; a proposta é prática — reuniões domésticas para leitura da Bíblia, sacerdócio de todos os crentes levado a sério, formação pastoral que inclua piedade e não só erudição, pregação voltada à edificação e não à polêmica.',
-
     },
     {
       tipo: 'paragrafo',
@@ -175,6 +174,12 @@ export const igrejaModerna: Verbete = {
             'A obra é de Deus e os acompanhamentos são humanos, e a tarefa do pastor é distinguir os dois em vez de aceitar ou rejeitar o pacote. É a posição mais exigente, porque não fornece um veredito prévio: obriga a examinar caso a caso, pelos frutos que permanecem. É também a que a tradição reformada adotou.',
         },
       ],
+    },
+    {
+      tipo: 'definicao',
+      termo: 'Igreja moderna',
+      texto:
+        'Período da história cristã posterior à consolidação confessional da Reforma, especialmente de 1648 ao início do século XX, marcado pela tensão entre ortodoxia, renovação pietista e avivalista, crítica racionalista e liberal, expansão missionária e reorganização denominacional. A categoria não descreve uma única teologia; organiza transformações que obrigaram as igrejas a relacionar confissão, experiência, razão, missão e cultura.',
     },
     {
       tipo: 'pastoral',
