@@ -190,4 +190,17 @@ export const bibliotecaAprofundamento: ObraLivre[] = [
     nota: 'Página institucional contemporânea da rede temática de plantação de igrejas. É usada como referência missiológica descritiva para proclamação, discipulado, reunião, capacitação, colaboração e multiplicação; não substitui a norma bíblica e confessional do portal.',
     base: 'edição autorizada',
   },
+  {
+    id: 'openstax-organizational-behavior',
+    autor: 'J. Stewart Black; David S. Bright',
+    ano: '2019',
+    titulo: 'Organizational Behavior',
+    publicacao: 'OpenStax, Rice University',
+    url: 'https://openstax.org/books/organizational-behavior/pages/1-introduction',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['TP05', 'CG61'],
+    nota: 'Livro-texto universitário aberto usado descritivamente para liderança, gestão, poder, equipes, delegação, aprendizagem e mudança organizacional. No portal, suas observações empíricas permanecem subordinadas à Escritura, à confissão e à eclesiologia reformada.',
+    base: 'edição autorizada',
+  },
 ];
