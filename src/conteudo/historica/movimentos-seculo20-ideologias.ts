@@ -10,7 +10,7 @@ export const movimentosSeculo20Ideologias: Verbete = {
   objetivo:
     'Ao final, você saberá situar historicamente mormonismo, adventismo, Ciência Cristã e Testemunhas de Jeová; compreenderá a controvérsia modernista-fundamentalista, o movimento de santidade e o pentecostalismo; reconhecerá mudanças no catolicismo e protestantismo latino-americanos; e distinguirá crítica cristã a ideologias de rejeição indiscriminada da política, filosofia ou ciência.',
   atualizadoEm: '2026-08-29',
-  verMais: ['th04-igreja-seculo-20', 'th04-missoes-africa-asia-oceania', 'ts54-apologetica-avancada'],
+  verMais: ['th04-igreja-seculo-20', 'th04-missoes-africa-asia-oceania', 'ts55-apologetica-avancada'],
   blocos: [
     {
       tipo: 'paragrafo',
