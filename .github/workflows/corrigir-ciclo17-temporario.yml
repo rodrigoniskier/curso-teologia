@@ -1,0 +1,37 @@
+name: Corrigir remissão temporariamente
+
+on:
+  push:
+    branches: [content/ciclo-editorial-17]
+    paths:
+      - '.github/workflows/corrigir-ciclo17-temporario.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  corrigir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-17
+      - name: Corrigir exatamente uma remissão
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('src/conteudo/historica/movimentos-seculo20-ideologias.ts')
+          s = p.read_text(encoding='utf-8')
+          antigo = "'ts54-apologetica-avancada'"
+          novo = "'ts55-apologetica-avancada'"
+          if s.count(antigo) != 1:
+              raise SystemExit(f'esperada 1 ocorrência de {antigo}; encontradas {s.count(antigo)}')
+          p.write_text(s.replace(antigo, novo), encoding='utf-8')
+          PY
+      - name: Versionar correção
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/conteudo/historica/movimentos-seculo20-ideologias.ts
+          git commit -m 'Corrigir remissão para Apologética Avançada'
+          git push origin HEAD:content/ciclo-editorial-17
