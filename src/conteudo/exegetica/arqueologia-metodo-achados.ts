@@ -5,48 +5,61 @@ export const arqueologiaMetodoAchados: Verbete = {
   disciplina: 'TE03',
   unidade: 1,
   titulo: 'Arqueologia Bíblica: Método, Evidência e Grandes Achados',
-  subtitulo: 'Escavar não é procurar objetos que provem a Bíblia, mas reconstruir contextos a partir de vestígios incompletos',
+  subtitulo:
+    'Escavar não é procurar objetos que provem a Bíblia, mas reconstruir contextos a partir de vestígios incompletos',
   objetivo:
     'Ao final, você compreenderá como sítios arqueológicos são escavados, datados e interpretados; distinguirá artefato, contexto e inscrição; reconhecerá o valor e os limites de achados ligados aos patriarcas, Egito, Canaã, Assíria, Babilônia e Qumran; e saberá usar a arqueologia como disciplina auxiliar da exegese sem transformá-la em fundamento da autoridade bíblica.',
-  atualizadoEm: '2026-08-28',
-  verMais: ['te03-geografia-arqueologia', 'te03-geografia-fisica-humana', 'te01-antigo-testamento-inspiracao-critica'],
+  atualizadoEm: '2026-08-29',
+  verMais: ['te03-geografia-arqueologia', 'te03-geografia-fisica-humana', 'te01-at-inspiracao-critica'],
   blocos: [
     {
       tipo: 'paragrafo',
       texto:
-        'A pergunta popular “a arqueologia prova a Bíblia?” começa mal. Arqueologia não foi criada para confirmar ou refutar um livro específico. Ela investiga sociedades humanas por meio de cultura material: construções, cerâmica, restos orgânicos, inscrições, selos, ferramentas, moedas, ossos, estradas e camadas de ocupação. Quando esse material cruza o mundo descrito na Escritura, ele pode iluminar, corroborar, tensionar ou corrigir interpretações modernas do texto. O que não pode fazer é transformar fé em resultado de laboratório.',
+        'A pergunta popular “a arqueologia prova a Bíblia?” começa mal. Arqueologia não foi criada para confirmar ou refutar um livro específico. Ela investiga sociedades humanas por meio de sua cultura material: construções, cerâmica, restos orgânicos, inscrições, selos, ferramentas, moedas, ossos, estradas e camadas de ocupação. Quando esse material cruza o mundo descrito na Escritura, ele pode iluminar, corroborar, tensionar ou corrigir interpretações modernas. O que não pode fazer é transformar fé em resultado de laboratório.',
     },
     {
       tipo: 'paragrafo',
       texto:
-        'O valor teológico da disciplina está justamente em sua modéstia. A revelação bíblica aconteceu na história, entre povos que construíram cidades, pagaram impostos, fizeram guerras, escreveram cartas e enterraram mortos. Conhecer esse mundo impede que o intérprete leia Israel, Judá, Egito ou Roma como cenários imaginários. Mas o fragmento escavado continua sendo fragmento: ele não vem com interpretação pronta.',
+        'Seu valor para a exegese está justamente nessa modéstia. A revelação bíblica aconteceu na história, entre povos que construíram cidades, pagaram impostos, fizeram guerras, escreveram cartas e enterraram mortos. Conhecer esse mundo impede que Israel, Judá, Egito, Assíria ou Babilônia sejam lidos como cenários imaginários. Mas o fragmento escavado continua sendo fragmento: ele não vem com interpretação pronta.',
     },
-    { tipo: 'secao', titulo: 'Como um sítio arqueológico é lido', nivel: 2 },
+    {
+      tipo: 'secao',
+      titulo: 'O sítio arqueológico é uma sequência, não um depósito de objetos',
+    },
     {
       tipo: 'paragrafo',
       texto:
-        'Um tell — montículo formado por sucessivas ocupações humanas — contém camadas acumuladas ao longo de séculos. Escavar significa remover essas camadas de modo controlado, registrando posição, associação e sequência. Um vaso isolado em mercado de antiguidades pode ser bonito; arqueologicamente, perdeu grande parte do valor porque não sabemos em que camada, edifício ou conjunto foi encontrado. Contexto é parte da evidência.',
+        'Muitos sítios do antigo Oriente Próximo formam um tell, um montículo criado por sucessivas ocupações humanas. Casas são construídas, destruídas, niveladas e reconstruídas no mesmo lugar durante séculos. A escavação tenta recuperar essa sequência sem destruí-la antes de registrá-la. Por isso a posição de um objeto importa tanto quanto o próprio objeto.',
     },
     {
       tipo: 'lista',
       itens: [
-        'Estratigrafia observa a sequência relativa das camadas: em condições normais, uma camada inferior antecede a superior, embora fossas, erosão e reconstruções possam perturbar o quadro.',
-        'Tipologia cerâmica compara formas, técnicas e estilos que mudam ao longo do tempo; por isso cacos comuns podem ser mais úteis para datar uma ocupação do que objetos raros.',
-        'Datação absoluta usa, quando disponível, métodos como radiocarbono e materiais associados a datas conhecidas. Ela fornece intervalos e probabilidades, não relógios perfeitos.',
-        'Epigrafia e paleografia estudam inscrições e formas de escrita. O texto precisa ser lido no gênero em que foi produzido: anais reais, contratos, cartas e epitáfios não têm a mesma função.',
-        'Arqueologia ambiental examina sementes, pólen, fauna e paisagem para reconstruir dieta, agricultura, clima e uso do território.',
+        '**Estratigrafia** observa a ordem relativa das camadas e suas relações, levando em conta fossas, erosão, reformas e outros distúrbios.',
+        '**Tipologia cerâmica** compara formas, técnicas e estilos que mudam ao longo do tempo; cacos comuns frequentemente datam melhor uma camada do que objetos raros.',
+        '**Datação absoluta** usa, quando disponível, métodos como radiocarbono e materiais associados a cronologias independentes. O resultado é um intervalo probabilístico, não uma data impressa no solo.',
+        '**Epigrafia e paleografia** estudam inscrições e formas de escrita, mas o texto precisa ser interpretado segundo gênero, finalidade e público.',
+        '**Arqueologia ambiental** analisa sementes, pólen, fauna e paisagem para reconstruir alimentação, agricultura, clima e uso do território.',
       ],
     },
     {
-      tipo: 'paragrafo',
+      tipo: 'termo',
+      termo: 'Proveniência',
       texto:
-        'O princípio essencial é convergência. Uma conclusão forte raramente depende de um único objeto. Estratigrafia, cerâmica, inscrição, datação e comparação regional precisam conversar. Isso explica por que interpretações mudam: novos métodos ou novas escavações podem alterar a forma como uma camada antiga é entendida sem que o sítio “mude de opinião”.',
+        'História documentada do lugar e das circunstâncias em que um artefato foi encontrado e preservado. Um objeto sem proveniência perde grande parte de seu valor histórico porque já não pode ser relacionado com segurança a uma camada, edifício ou conjunto arqueológico.',
     },
-    { tipo: 'secao', titulo: 'Patriarcas: contexto é diferente de identificação', nivel: 2 },
     {
       tipo: 'paragrafo',
       texto:
-        'As narrativas patriarcais mencionam migração, pastoreio, alianças, compra de sepultura, cidades e rotas do antigo Oriente Próximo. A arqueologia pode reconstruir práticas e ambientes compatíveis com essas cenas, mas raramente identifica um indivíduo como Abraão, Isaque ou Jacó. Objetos cotidianos quase nunca trazem o nome das pessoas que os usaram, e famílias seminômades deixam registro material muito menor que palácios e cidades.',
+        'Uma conclusão forte raramente depende de um único objeto. Estratigrafia, cerâmica, inscrições, datações e comparação regional precisam convergir. Isso também explica por que interpretações arqueológicas mudam: novos métodos e novas escavações podem reformular a leitura de uma camada antiga sem que a ciência tenha “falhado”. Revisão é parte normal do método.',
+    },
+    {
+      tipo: 'secao',
+      titulo: 'Patriarcas: contexto plausível não é identificação pessoal',
+    },
+    {
+      tipo: 'paragrafo',
+      texto:
+        'As narrativas de Gênesis mencionam migração, pastoreio, alianças, compra de sepultura, cidades e rotas do antigo Oriente Próximo. A arqueologia consegue reconstruir práticas e ambientes compatíveis com essas cenas, mas quase nunca identifica indivíduos como Abraão, Isaque ou Jacó. Famílias seminômades deixam menos vestígios que palácios, muralhas e arquivos administrativos.',
     },
     {
       tipo: 'controversia',
@@ -55,47 +68,56 @@ export const arqueologiaMetodoAchados: Verbete = {
         {
           escola: 'Uso maximalista de paralelos',
           sintese:
-            'Costumes semelhantes aos de Gênesis em documentos do segundo milênio são tratados como confirmação cronológica direta. O ganho é mostrar que as narrativas pertencem plausivelmente ao mundo antigo; o risco é esquecer que várias práticas continuaram por longos períodos e não funcionam como marcador exclusivo de uma década ou século.',
+            'Costumes semelhantes aos de Gênesis em documentos do segundo milênio são tratados como confirmação cronológica direta. O ganho é mostrar plausibilidade cultural; o risco é esquecer que várias práticas continuaram por muitos séculos e não funcionam como marcador exclusivo de uma época.',
         },
         {
           escola: 'Ceticismo radical',
           sintese:
-            'Como não há inscrição contemporânea dizendo “Abraão esteve aqui”, conclui que a arqueologia nada oferece à historicidade patriarcal. O método evita excesso apologético, mas exige do mundo doméstico e pastoral um tipo de documentação que raramente existe para qualquer família antiga.',
+            'Como não existe uma inscrição contemporânea dizendo “Abraão esteve aqui”, conclui que a arqueologia nada oferece à historicidade patriarcal. O método evita exagero apologético, mas exige do mundo doméstico e pastoral um tipo de documentação que raramente sobrevive para qualquer família antiga.',
         },
         {
           escola: 'Realismo contextual',
           sintese:
-            'Usa a arqueologia para testar plausibilidade de ambiente, rotas e costumes sem fingir que contexto equivale a identificação pessoal. É uma conclusão menor, porém metodologicamente mais sólida.',
+            'Usa a arqueologia para testar ambiente, rotas e costumes sem fingir que contexto equivale a identificação pessoal. É uma conclusão mais limitada, porém metodologicamente mais robusta.',
         },
       ],
     },
-    { tipo: 'secao', titulo: 'Egito: monumentos, silêncio e a estela de Merneptá', nivel: 2 },
     {
-      tipo: 'paragrafo',
-      texto:
-        'O Egito oferece enorme quantidade de monumentos e textos, mas a documentação é seletiva e fortemente controlada pela elite. Registros reais celebram ordem e vitória; derrotas, crises e grupos marginais tendem a desaparecer. Por isso, ausência de um episódio em inscrições faraônicas não funciona automaticamente como refutação. A pergunta correta é se aquele tipo de evento, envolvendo aquele grupo, teria razões e condições para ser preservado na documentação que sobreviveu.',
+      tipo: 'secao',
+      titulo: 'Egito: abundância documental também tem silêncios',
     },
     {
       tipo: 'paragrafo',
       texto:
-        'A estela de Merneptá, do fim do século XIII a.C., é um ponto firme. Ao listar povos derrotados na campanha de Canaã, menciona Israel e usa um determinativo que o classifica como povo, não cidade-Estado. A inscrição não narra a origem desse Israel, mas mostra que um grupo com esse nome era conhecido em Canaã naquele momento. É um excelente exemplo do que um achado pode afirmar com segurança — e do que não pode.',
-    },
-    { tipo: 'secao', titulo: 'Canaã: cidades destruídas não vêm com legenda', nivel: 2 },
-    {
-      tipo: 'paragrafo',
-      texto:
-        'Escavações em Jericó, Hazor, Laquis e outros sítios revelaram sucessões de destruição, reconstrução e mudança populacional. O problema é ligar uma camada específica a um episódio textual específico. Uma cidade pode ter sido destruída mais de uma vez; cronologias cerâmicas podem ser refinadas; o nome bíblico de uma cidade precisa corresponder corretamente ao sítio moderno. Por isso, “foi encontrada uma camada de incêndio” é apenas o começo, não o fim, do argumento.',
+        'O Egito preservou enorme quantidade de monumentos e textos, mas essa documentação é seletiva e fortemente controlada pela elite. Inscrições reais celebram ordem, vitória e legitimidade; derrotas, crises e grupos marginais tendem a desaparecer. Ausência de um episódio em inscrições faraônicas, portanto, não funciona automaticamente como refutação. É preciso perguntar se aquele tipo de evento teria razões e condições para ser registrado e preservado.',
     },
     {
       tipo: 'paragrafo',
       texto:
-        'Jericó tornou-se símbolo dessa dificuldade porque escavadores competentes propuseram cronologias diferentes para as mesmas ruínas. A lição pedagógica não é que arqueologia seja inútil, mas que ela funciona por hipóteses revisáveis. Uma apologética que anuncia cada notícia de escavação como confirmação definitiva coloca a Escritura na dependência de uma manchete que poderá ser revista na próxima temporada de campo.',
+        'A estela de Merneptá, do fim do século XIII a.C., oferece um ponto cronológico importante. Ao listar povos derrotados em Canaã, menciona Israel com um determinativo que o caracteriza como povo, não como cidade-Estado. A inscrição não explica a origem desse Israel, mas demonstra que um grupo com esse nome era reconhecido em Canaã naquele período.',
     },
-    { tipo: 'secao', titulo: 'Assíria e Babilônia: quando os impérios escrevem sua versão', nivel: 2 },
+    {
+      tipo: 'secao',
+      titulo: 'Canaã: uma camada de destruição não vem com legenda',
+    },
     {
       tipo: 'paragrafo',
       texto:
-        'A partir do primeiro milênio a.C., a quantidade de documentação imperial cresce enormemente. Anais, prismas, relevos e crônicas permitem comparar eventos bíblicos com a memória oficial assíria e babilônica. Essa comparação é valiosa porque os documentos são independentes; também exige crítica de gênero, porque reis escrevem para exibir domínio, legitimar tronos e intimidar inimigos.',
+        'Escavações em Jericó, Hazor, Laquis e muitos outros sítios revelaram sucessões de destruição, reconstrução e mudança populacional. O passo difícil é relacionar uma camada específica a um episódio textual específico. Uma cidade pode ter sido destruída várias vezes; a identificação do sítio pode ser discutida; cronologias cerâmicas podem ser refinadas. Encontrar uma camada de incêndio é o começo do argumento, não o fim.',
+    },
+    {
+      tipo: 'paragrafo',
+      texto:
+        'Jericó tornou-se exemplo clássico porque escavadores competentes propuseram cronologias diferentes para as mesmas ruínas. A lição não é que arqueologia seja inútil, mas que ela trabalha com hipóteses revisáveis. Uma apologética que transforma cada manchete de escavação em confirmação definitiva coloca a confiança do leitor na dependência de uma interpretação que poderá ser revista.',
+    },
+    {
+      tipo: 'secao',
+      titulo: 'Assíria e Babilônia: impérios escrevem sua própria memória',
+    },
+    {
+      tipo: 'paragrafo',
+      texto:
+        'No primeiro milênio a.C., anais, prismas, relevos, cartas e crônicas permitem comparar acontecimentos bíblicos com a documentação imperial. Essa independência é valiosa, mas exige crítica de gênero. Reis escrevem para exibir poder, legitimar tronos e intimidar inimigos; um texto oficial não é uma câmera neutra apontada para o passado.',
     },
     {
       tipo: 'citacao',
@@ -107,35 +129,32 @@ export const arqueologiaMetodoAchados: Verbete = {
     {
       tipo: 'paragrafo',
       texto:
-        'Senaqueribe enumera cidades de Judá conquistadas e o tributo de Ezequias, mas não afirma ter capturado Jerusalém. O dado combina de modo interessante com 2 Reis 18—19: as fontes discordam na teologia e na perspectiva, mas convergem em que o rei assírio devastou Judá e não incorporou Jerusalém à lista de capitais tomadas. A comparação responsável não precisa fazer as duas fontes dizerem exatamente a mesma coisa.',
+        'Senaqueribe enumera cidades de Judá conquistadas e o tributo de Ezequias, mas não afirma ter capturado Jerusalém. Esse silêncio é significativo porque inscrições reais assírias celebram conquistas. A comparação com 2 Reis 18—19 mostra como duas fontes independentes podem divergir em perspectiva e teologia, mas convergir em elementos históricos importantes sem precisarem dizer exatamente a mesma coisa.',
     },
-    { tipo: 'secao', titulo: 'Qumran: a arqueologia encontra uma biblioteca', nivel: 2 },
     {
-      tipo: 'paragrafo',
-      texto:
-        'Os manuscritos do deserto da Judeia, descobertos a partir de 1947, mudaram sobretudo o estudo do texto bíblico e do judaísmo do Segundo Templo. As cavernas próximas de Qumran preservaram manuscritos bíblicos, comentários, regras comunitárias e outras obras judaicas. Seu valor não está em “provar” que o Antigo Testamento existia, mas em oferecer testemunhas muito anteriores da transmissão textual e uma janela para a diversidade religiosa judaica antes e no tempo de Jesus.',
+      tipo: 'secao',
+      titulo: 'Qumran: quando a arqueologia encontra uma biblioteca',
     },
     {
       tipo: 'paragrafo',
       texto:
-        'Qumran também ensina cautela interdisciplinar. Manuscrito, caverna e assentamento são tipos diferentes de evidência. Relacioná-los exige argumento histórico; não basta proximidade geográfica. A associação do sítio a uma comunidade essênia é influente e plausível, mas detalhes sobre quem escreveu cada documento ou como cada rolo chegou às cavernas continuam sujeitos a discussão.',
+        'Os manuscritos do deserto da Judeia, descobertos a partir de 1947, transformaram o estudo da transmissão textual do Antigo Testamento e do judaísmo do Segundo Templo. As cavernas próximas de Qumran preservaram manuscritos bíblicos, comentários, regras comunitárias e outras obras judaicas muito anteriores aos códices medievais completos.',
     },
     {
-      tipo: 'termo',
-      termo: 'Proveniência',
+      tipo: 'paragrafo',
       texto:
-        'História documentada do lugar e das circunstâncias em que um artefato foi encontrado e depois preservado. Sem proveniência, aumenta o risco de falsificação e diminui a capacidade de relacionar o objeto com uma camada, edifício ou contexto histórico.',
+        'Qumran também ensina cautela interdisciplinar. Manuscrito, caverna e assentamento são tipos diferentes de evidência. Relacioná-los exige argumento histórico; proximidade geográfica não resolve sozinha quem produziu cada texto ou como cada rolo chegou às cavernas. A associação do sítio com uma comunidade essênia continua importante, mas detalhes permanecem debatidos.',
     },
     {
       tipo: 'definicao',
-      termo: 'Método arqueológico aplicado à Bíblia',
+      termo: 'Arqueologia bíblica',
       texto:
-        'Investigação da cultura material dos mundos bíblicos por escavação controlada, estratigrafia, tipologia, datação, análise de inscrições e comparação regional. Seu objetivo é reconstruir contextos históricos e sociais, não validar teologicamente a Escritura. Achados podem corroborar ou tensionar interpretações, mas sua força depende de proveniência, contexto, gênero documental e convergência de evidências.',
+        'Aplicação dos métodos arqueológicos ao estudo das sociedades, territórios e culturas materiais relacionadas ao mundo bíblico. Como disciplina auxiliar da exegese, reconstrói contextos e testa hipóteses históricas; não fundamenta a inspiração da Escritura, não converte ausência de evidência em evidência de ausência e não dispensa a interpretação crítica dos próprios achados.',
     },
     {
       tipo: 'pastoral',
       texto:
-        'A fé cristã não precisa escolher entre entusiasmo ingênuo e medo da arqueologia. O aluno pode celebrar um achado que ilumina o texto e, no dia seguinte, estudar uma datação que levanta perguntas difíceis. A Escritura não ganha autoridade quando uma pá encontra um muro, nem perde autoridade quando uma camada é reinterpretada. A humildade intelectual é parte da piedade: Deus não nos pede que chamemos hipótese de fato para defendê-lo.',
+        'A fé cristã não precisa escolher entre entusiasmo ingênuo e medo da arqueologia. O estudante pode celebrar um achado que ilumina o texto e, no dia seguinte, estudar uma datação que levanta perguntas difíceis. A Escritura não ganha autoridade quando uma pá encontra um muro, nem perde autoridade quando uma camada é reinterpretada. Humildade intelectual também é disciplina cristã: não precisamos chamar hipótese de fato para defender a verdade.',
     },
   ],
   fontes: [
@@ -149,7 +168,8 @@ export const arqueologiaMetodoAchados: Verbete = {
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',
-      nota: 'Manual histórico de arqueologia e antologia de documentos do Oriente Próximo; a parte documental permanece útil, enquanto datações antigas exigem atualização crítica.',
+      nota:
+        'Manual histórico de arqueologia e antologia de documentos do Oriente Próximo; a parte documental permanece útil, enquanto datações antigas exigem atualização crítica.',
     },
     {
       id: 'breasted-egito-3',
@@ -161,7 +181,8 @@ export const arqueologiaMetodoAchados: Verbete = {
       idioma: 'en',
       tipo: 'traducao',
       acesso: 'livre',
-      nota: 'Reúne documentos egípcios da XIX dinastia, incluindo a estela de Merneptá e sua referência a Israel.',
+      nota:
+        'Reúne documentos egípcios da XIX dinastia, incluindo a estela de Merneptá e sua referência a Israel.',
     },
     {
       id: 'luckenbill-assiria-2',
@@ -173,19 +194,21 @@ export const arqueologiaMetodoAchados: Verbete = {
       idioma: 'en',
       tipo: 'traducao',
       acesso: 'livre',
-      nota: 'Tradução das inscrições reais assírias, inclusive os anais de Senaqueribe sobre a campanha contra Judá.',
+      nota:
+        'Traduções de inscrições reais assírias, incluindo os anais de Senaqueribe sobre a campanha contra Judá.',
     },
     {
-      id: 'smith-atlas',
+      id: 'smith-geografia',
       autor: 'George Adam Smith',
-      ano: '1915',
-      titulo: 'Atlas of the Historical Geography of the Holy Land',
+      ano: '1894',
+      titulo: 'The Historical Geography of the Holy Land',
       publicacao: 'Internet Archive',
-      url: 'https://archive.org/details/atlasofhistorica00smit',
+      url: 'https://archive.org/details/historicalgeogra00smit',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',
-      nota: 'Mapas históricos e físicos para situar sítios, rotas e regiões mencionadas na discussão arqueológica.',
+      nota:
+        'Geografia histórica clássica da Palestina, útil para relacionar sítios, rotas, relevo e acontecimentos históricos.',
     },
   ],
 };
