@@ -2,9 +2,9 @@
 /**
  * Valida a estrutura do currículo FINAL versionado.
  *
- * O pipeline de extração já resolve ligaduras e aplica as reconstruções de
- * layout auditadas. Este script deliberadamente não corrige nada: se o JSON
- * final estiver contaminado, a validação deve falhar.
+ * O pipeline de extração já resolve ligaduras e aplica as reconstruções e
+ * saneamentos de layout auditados. Este script deliberadamente não corrige
+ * nada: se o JSON final estiver contaminado, a validação deve falhar.
  */
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -17,7 +17,7 @@ const avisos = [];
 const erro = (m) => erros.push(m);
 const aviso = (m) => avisos.push(m);
 
-const marcadorOutraSecao = /\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b/i;
+const marcadorOutraSecao = /\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b|\bPré-requisito\s*:|\bEmenta\s*:/i;
 const codigos = new Set();
 for (const d of curriculo) {
   if (!d.codigo) erro('disciplina sem código');
