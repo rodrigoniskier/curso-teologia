@@ -1,0 +1,26 @@
+name: Diagnóstico TP03 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-18]
+    paths:
+      - '.github/workflows/diagnostico-tp03-temporario.yml'
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Mostrar ementa TP03
+        run: node -e "const e=require('./src/dados/ementas.json').find(x=>x.codigo==='TP03'); console.log(JSON.stringify(e,null,2))"
+      - name: Localizar e mostrar verbetes atuais TP03
+        run: |
+          files=$(grep -Rl "disciplina: 'TP03'" src/conteudo --include='*.ts' || true)
+          echo "$files"
+          for f in $files; do echo "===== $f ====="; cat "$f"; done
+      - name: Recalcular prioridade
+        run: npm run priorizar -- --json
