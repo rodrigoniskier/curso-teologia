@@ -24,6 +24,30 @@ jobs:
         run: npm run regenerar:curriculo
       - name: Validar currículo regenerado
         run: npm run validar:curriculo
+      - name: Conferir restaurações críticas
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const ds = JSON.parse(await readFile('src/dados/ementas.json', 'utf8'));
+          const th04 = ds.find((d) => d.codigo === 'TH04');
+          const th05 = ds.find((d) => d.codigo === 'TH05');
+          const u20 = th04.unidades.find((u) => u.numero === 20)?.topicos;
+          const u25 = th05.unidades.find((u) => u.numero === 25)?.topicos;
+          const esperado20 = ['Penetração na Índia e na Birmânia','Península Malaia, Cingapura e Filipinas','Indonésia e João Ferreira de Almeida'];
+          const esperado25 = ['Igreja de Nova Vida','Igreja Universal do Reino de Deus','Igreja Internacional da Graça de Deus'];
+          if (JSON.stringify(u20) !== JSON.stringify(esperado20)) throw new Error(`TH04 unidade 20 inesperada: ${JSON.stringify(u20)}`);
+          if (JSON.stringify(u25) !== JSON.stringify(esperado25)) throw new Error(`TH05 unidade 25 inesperada: ${JSON.stringify(u25)}`);
+          const re = /\bUnidade\s+\d+\b|\bBIBLIOGRAFIA\b|\bPré-requisito\s*:|\bEmenta\s*:/i;
+          const restos = [];
+          for (const d of ds) for (const grupo of ['basica','complementar']) for (const [i,item] of (d.bibliografia?.[grupo] ?? []).entries()) if (re.test(String(item))) restos.push(`${d.codigo} ${grupo} #${i+1}`);
+          if (restos.length) throw new Error(`contaminações restantes: ${restos.join(', ')}`);
+          console.log('✓ TH04 unidade 20 restaurada:', u20.join(' | '));
+          console.log('✓ TH05 unidade 25 restaurada:', u25.join(' | '));
+          console.log('✓ bibliografias sem marcadores programáticos residuais');
+          console.log('✓ total de tópicos curriculares:', ds.reduce((n,d) => n + d.unidades.reduce((m,u) => m + (u.topicos?.length ?? 0),0),0));
+          NODE
+      - name: Recalcular fila editorial
+        run: npm run priorizar -- --json
       - name: Versionar artefato regenerado
         run: |
           if git diff --quiet -- src/dados/ementas.json; then
@@ -33,5 +57,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/dados/ementas.json
-          git commit -m 'Regenerar currículo com correções auditadas de layout'
+          git commit -m 'Regenerar currículo com restaurações auditadas'
           git push origin HEAD:content/ciclo-editorial-17
