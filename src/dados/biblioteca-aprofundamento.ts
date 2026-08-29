@@ -17,7 +17,7 @@ export const bibliotecaAprofundamento: ObraLivre[] = [
     url: 'https://openstax.org/books/psychology-2e/pages/1-introduction',
     idioma: 'en',
     acesso: 'livre',
-    disciplinas: ['TP04', 'CG07'],
+    disciplinas: ['TP03', 'TP04', 'CG07'],
     nota: 'Livro-texto universitário aberto usado para caracterizar, em fonte acadêmica acessível, as contribuições e os limites históricos de Freud, Skinner, Jung, Maslow e Rogers. Serve ao portal como referência descritiva, não como norma antropológica ou teológica.',
     base: 'edição autorizada',
   },
