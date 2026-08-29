@@ -7,6 +7,7 @@ import ts from 'typescript';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = join(RAIZ, 'src/conteudo');
+const DADOS = join(RAIZ, 'src/dados');
 const erros = [];
 const avisos = [];
 const erro = (m) => erros.push(m);
@@ -93,22 +94,24 @@ function lerVerbete(caminho, texto) {
   };
 }
 
-function arrayExportado(texto, arquivo, nomes) {
+function lerAcervo(texto, arquivo) {
   const sf = parse(arquivo, texto);
+  const candidatos = [];
   for (const st of sf.statements) {
-    if (!ts.isVariableStatement(st)) continue;
+    if (!ts.isVariableStatement(st) || !st.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)) continue;
     for (const d of st.declarationList.declarations) {
-      if (ts.isIdentifier(d.name) && nomes.includes(d.name.text) && d.initializer && ts.isArrayLiteralExpression(d.initializer)) {
-        return d.initializer;
-      }
+      if (!ts.isIdentifier(d.name) || !d.initializer || !ts.isArrayLiteralExpression(d.initializer)) continue;
+      const objetos = d.initializer.elements.filter(ts.isObjectLiteralExpression);
+      if (!objetos.length) continue;
+      const pareceAcervo = objetos.every((o) => str(prop(o, 'id')) && str(prop(o, 'url')) && ts.isArrayLiteralExpression(prop(o, 'disciplinas')));
+      if (pareceAcervo) candidatos.push({ nome: d.name.text, lista: d.initializer });
     }
   }
-  erro(`${arquivo}: não encontrei ${nomes.join(' ou ')}`);
-  return undefined;
-}
-
-function lerAcervo(texto, arquivo, nomes) {
-  const lista = arrayExportado(texto, arquivo, nomes);
+  if (candidatos.length !== 1) {
+    erro(`${arquivo}: esperado 1 array exportado de acervo; encontrados ${candidatos.length}`);
+    return [];
+  }
+  const { lista } = candidatos[0];
   return arr(lista).filter(ts.isObjectLiteralExpression).map((o, i) => ({
     arquivo,
     pos: i + 1,
@@ -116,6 +119,13 @@ function lerAcervo(texto, arquivo, nomes) {
     url: str(prop(o, 'url')),
     disciplinas: strings(prop(o, 'disciplinas')),
   }));
+}
+
+async function arquivosAcervo() {
+  return (await readdir(DADOS, { withFileTypes: true }))
+    .filter((e) => e.isFile() && /^biblioteca(?:-[a-z0-9-]+)?\.ts$/i.test(e.name) && e.name !== 'biblioteca-completa.ts')
+    .map((e) => `src/dados/${e.name}`)
+    .sort();
 }
 
 function lerIndice(texto) {
@@ -204,15 +214,9 @@ for (const v of verbetes) {
 }
 for (const n of indice.lista) if (!indice.importes.has(n)) erro(`indice.ts: '${n}' está no array sem import`);
 
-const arquivosAcervo = [
-  ['src/dados/biblioteca.ts', ['biblioteca']],
-  ['src/dados/biblioteca-extra.ts', ['bibliotecaExtra']],
-  ['src/dados/biblioteca-final.ts', ['bibliotecaFinal']],
-  ['src/dados/biblioteca-aprofundamento.ts', ['bibliotecaAprofundamento']],
-];
 const acervo = [];
-for (const [arquivo, nomes] of arquivosAcervo) {
-  acervo.push(...lerAcervo(await readFile(join(RAIZ, arquivo), 'utf8'), arquivo, nomes));
+for (const arquivo of await arquivosAcervo()) {
+  acervo.push(...lerAcervo(await readFile(join(RAIZ, arquivo), 'utf8'), arquivo));
 }
 const acervoPorId = new Map();
 const acervoPorUrl = new Map();
