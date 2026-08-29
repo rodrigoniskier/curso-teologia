@@ -9,7 +9,7 @@ export const historiaFilosofia: Verbete = {
   objetivo:
     'Ao final, você saberá por que o vocabulário dos concílios é grego, distinguirá o que Platão e Aristóteles legaram à teologia e o que cada um cobrou em troca, entenderá o que Agostinho fez com o platonismo e o que Tomás fez com Aristóteles, e saberá avaliar a acusação de que a doutrina cristã foi helenizada.',
   atualizadoEm: '2026-08-15',
-  verMais: ['cg08-filosofia', 'th02-igreja-imperial', 'ts03-pessoa-de-cristo'],
+  verMais: ['cg08-filosofia', 'th01-igreja-imperial', 'ts03-pessoa-de-cristo'],
   blocos: [
     {
       tipo: 'paragrafo',
