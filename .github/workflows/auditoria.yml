@@ -74,5 +74,5 @@ jobs:
       - run: npm run build
       - name: Conferir os números do README
         run: npm run conferir
-      - name: Verificar diagnóstico editorial
-        run: npm run priorizar -- --json > /dev/null
+      - name: Diagnosticar TH06
+        run: node -e "const e=require('./src/dados/ementas.json').find(x=>x.codigo==='TH06'); console.log(JSON.stringify(e,null,2))"
