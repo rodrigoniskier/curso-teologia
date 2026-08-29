@@ -41,6 +41,14 @@ async function arquivosDeConteudo(dir) {
   return saida;
 }
 
+async function arquivosDeBiblioteca() {
+  const dir = join(RAIZ, 'src/dados');
+  return (await readdir(dir, { withFileTypes: true }))
+    .filter((ent) => ent.isFile() && /^biblioteca(?:-[a-z0-9-]+)?\.ts$/i.test(ent.name) && ent.name !== 'biblioteca-completa.ts')
+    .map((ent) => join(dir, ent.name))
+    .sort();
+}
+
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 
 const depPorCodigo = new Map(ementas.map((d) => [d.codigo, d.departamento]));
@@ -82,14 +90,9 @@ for (const codigo of cobertasAplicaveis) {
   if (dep) cobertasPorDep.set(dep, (cobertasPorDep.get(dep) ?? 0) + 1);
 }
 
-// O acervo está dividido em um arquivo histórico e complementos pequenos,
-// mantidos separados para que novas entradas continuem auditáveis por diff.
-const bib = [
-  await readFile(join(RAIZ, 'src/dados/biblioteca.ts'), 'utf8'),
-  await readFile(join(RAIZ, 'src/dados/biblioteca-extra.ts'), 'utf8'),
-  await readFile(join(RAIZ, 'src/dados/biblioteca-final.ts'), 'utf8'),
-  await readFile(join(RAIZ, 'src/dados/biblioteca-aprofundamento.ts'), 'utf8'),
-].join('\n');
+// O acervo pode crescer por arquivos temáticos. A contagem descobre todos os
+// biblioteca*.ts reais, excluindo apenas o agregador biblioteca-completa.ts.
+const bib = (await Promise.all((await arquivosDeBiblioteca()).map((f) => readFile(f, 'utf8')))).join('\n');
 const obras = [...bib.matchAll(/^ {4}id: '([^']+)',/gm)].length;
 const idiomas = new Map();
 for (const [, i] of bib.matchAll(/^ {4}idioma: '([^']+)',/gm))
