@@ -16,29 +16,36 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ref: content/ciclo-editorial-22
-      - uses: actions/setup-node@v7
-        with:
-          node-version: '22'
-      - name: Substituir digitalização instável
+      - name: Localizar e substituir todas as referências antigas
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          p = Path('src/dados/biblioteca.ts')
-          s = p.read_text(encoding='utf-8')
-          raiz = 'https://archive.org/details/'
-          old = raiz + 'varietiesofrelig00jameuoft'
-          new = raiz + 'thevarieties00jameuoft'
-          if old not in s and new not in s:
-              raise SystemExit('URL de William James não encontrada')
-          s = s.replace(old, new)
-          p.write_text(s, encoding='utf-8')
+          old = 'varietiesofrelig00jameuoft'
+          new = 'thevarieties00jameuoft'
+          alterados = []
+          for p in Path('src').rglob('*'):
+              if not p.is_file():
+                  continue
+              try:
+                  s = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              if old in s:
+                  print(f'corrigindo: {p}')
+                  p.write_text(s.replace(old, new), encoding='utf-8')
+                  alterados.append(str(p))
+          if not alterados:
+              raise SystemExit('Nenhuma referência antiga encontrada em src')
+          print(f'{len(alterados)} arquivo(s) corrigido(s)')
           PY
-      - name: Validar nova fonte no runner
-        run: node scripts/auditar-links.mjs --relatorio
+          if grep -R -n 'varietiesofrelig00jameuoft' src; then
+            echo 'Ainda há referência antiga em src'
+            exit 1
+          fi
       - name: Versionar correção
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add src/dados/biblioteca.ts
+          git add src
           git commit -m 'Estabilizar edição de William James'
           git push origin HEAD:content/ciclo-editorial-22
