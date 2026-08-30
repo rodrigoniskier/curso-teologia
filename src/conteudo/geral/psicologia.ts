@@ -174,7 +174,7 @@ export const psicologia: Verbete = {
       ano: '1902',
       titulo: 'The Varieties of Religious Experience: A Study in Human Nature',
       publicacao: 'Internet Archive',
-      url: 'https://archive.org/details/varietiesofrelig00jameuoft',
+      url: 'https://archive.org/details/thevarieties00jameuoft',
       idioma: 'en',
       tipo: 'obra-primaria',
       acesso: 'livre',

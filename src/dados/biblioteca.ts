@@ -909,7 +909,7 @@ export const biblioteca: ObraLivre[] = [
     ano: '1902',
     titulo: 'The Varieties of Religious Experience',
     publicacao: 'Internet Archive',
-    url: 'https://archive.org/details/varietiesofrelig00jameuoft',
+    url: 'https://archive.org/details/thevarieties00jameuoft',
     idioma: 'en',
     acesso: 'livre',
     disciplinas: ['CG62', 'CG07', 'CG11', 'TS51'],
