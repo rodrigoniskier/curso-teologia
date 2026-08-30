@@ -1,4 +1,4 @@
-name: Diagnóstico ciclo 20 temporário
+name: Validação ciclo 20 temporária
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
       - '.github/workflows/diagnostico-ciclo20-temporario.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  diagnostico:
+  validar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -20,31 +20,34 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - name: Confirmar fila editorial
-        run: npm run priorizar
-      - name: Ementa oficial TP13
+      - name: Sincronizar contagens do README
         run: |
           python3 - <<'PY'
-          import json
           from pathlib import Path
-          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
-          achados=[]
-          def walk(x):
-              if isinstance(x, dict):
-                  if any(x.get(k)=='TP13' for k in ('codigo','código','id','disciplina')):
-                      achados.append(x)
-                  for v in x.values(): walk(v)
-              elif isinstance(x, list):
-                  for v in x: walk(v)
-          walk(data)
-          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          p = Path('README.md')
+          s = p.read_text(encoding='utf-8')
+          pares = [
+            ('| Verbetes redigidos | 186 |', '| Verbetes redigidos | 189 |'),
+            ('A diferença entre 186 verbetes e 101 disciplinas cobertas', 'A diferença entre 189 verbetes e 101 disciplinas cobertas'),
+          ]
+          for antigo, novo in pares:
+            if s.count(antigo) != 1:
+              raise SystemExit(f'esperada 1 ocorrência de {antigo!r}; encontradas {s.count(antigo)}')
+            s = s.replace(antigo, novo)
+          p.write_text(s, encoding='utf-8')
           PY
-      - name: Verbetes TP13 existentes
+      - name: Validar integridade e currículo
+        run: npm run validar
+      - name: Compilar portal
+        run: npm run build
+      - name: Conferir estado e README
+        run: npm run conferir
+      - name: Recalcular fila editorial
+        run: npm run priorizar
+      - name: Versionar README sincronizado
         run: |
-          grep -R -n -B 8 -A 30 "disciplina: 'TP13'" src/conteudo || true
-      - name: Arquivos relacionados em Constituição e Ordem
-        run: |
-          grep -R -l -i -E "constitui[cç][aã]o|ordem eclesi[aá]stica|disciplina eclesi[aá]stica|conc[ií]lio|assembleia|recurso|apela[cç][aã]o|processo disciplinar|tribunal eclesi[aá]stico" src/conteudo/pastoral | sort | head -n 120
-      - name: Fontes potenciais já disponíveis
-        run: |
-          grep -R -n -i -E "constitui[cç][aã]o.*ipb|c[oó]digo.*disciplina|manual presbiteriano|princ[ií]pios.*liturgia|digesto presbiteriano|supremo conc[ií]lio|regimento|tribunal|disciplina eclesi[aá]stica|Westminster|cfw-ipib" src/dados/biblioteca*.ts | head -n 320 || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m 'Sincronizar contagens do ciclo 20'
+          git push origin HEAD:content/ciclo-editorial-20
