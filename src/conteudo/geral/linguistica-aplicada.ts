@@ -317,7 +317,7 @@ export const linguisticaAplicada: Verbete = {
       ano: '1990',
       titulo: 'Language Teaching Methods',
       publicacao: 'U.S. Department of State — American English',
-      url: 'https://americanenglish.state.gov/resources/language-teaching-methods',
+      url: 'https://americanenglish.state.gov/files/ae/resource_files/language_teaching_methods_teachers_handbook.pdf',
       idioma: 'en',
       tipo: 'curso',
       acesso: 'livre',
