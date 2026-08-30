@@ -1,0 +1,24 @@
+name: Diagnóstico ciclo 19 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-19]
+    paths:
+      - '.github/workflows/diagnostico-ciclo19-temporario.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-19
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Fila editorial
+        run: npm run priorizar
