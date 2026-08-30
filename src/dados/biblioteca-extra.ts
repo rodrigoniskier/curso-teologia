@@ -10,6 +10,12 @@ import type { ObraLivre } from './biblioteca';
  */
 export const bibliotecaExtra: ObraLivre[] = [
   {
+    id: 'sblgnt', autor: 'Michael W. Holmes (ed.)', ano: '2010', titulo: 'The Greek New Testament: SBL Edition', publicacao: 'Society of Biblical Literature', url: 'https://www.sblgnt.com/', idioma: 'grc', acesso: 'livre', disciplinas: ['TE16'], nota: 'Texto grego criticamente editado e disponibilizado gratuitamente pela Society of Biblical Literature. A própria SBL esclarece que seu aparato registra diferenças entre edições publicadas e não substitui um aparato manuscritológico completo.', base: 'edição autorizada',
+  },
+  {
+    id: 'stepbible', autor: 'Tyndale House, Cambridge', ano: '—', titulo: 'STEP Bible', publicacao: 'Tyndale House', url: 'https://www.stepbible.org/', idioma: 'en', acesso: 'livre', disciplinas: ['TE16'], nota: 'Ferramenta gratuita de leitura e pesquisa bíblica com recursos de línguas originais, busca e análise. Útil para conferência e exploração de dados; não substitui gramáticas, léxicos, edições críticas nem julgamento exegético.', base: 'edição autorizada',
+  },
+  {
     id: 'westminster-directory-1645', autor: 'Assembleia de Westminster', ano: '1645', titulo: 'A Directory for the Publike Worship of God', publicacao: 'Internet Archive / Westminster Assembly Project', url: 'https://archive.org/details/bim_early-english-books-1641-1700_a-directory-for-the-publ_1645_0', idioma: 'en', acesso: 'livre', disciplinas: ['TS09', 'TS08'], nota: 'Fac-símile público da edição de 1645, indicado pelo Westminster Assembly Project. Fonte primária para leitura pública, oração, pregação, sacramentos, Dia do Senhor, casamento, visitação, funerais, jejum, ações de graças e canto no horizonte da Assembleia de Westminster.', base: 'domínio público',
   },
   {
