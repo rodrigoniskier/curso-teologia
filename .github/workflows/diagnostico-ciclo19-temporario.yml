@@ -20,15 +20,24 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - name: Sincronizar contagens do README
+      - name: Corrigir referência compartilhada e sincronizar README
         run: |
           python3 - <<'PY'
           from pathlib import Path
+
+          p = Path('src/conteudo/historica/inglaterra-contrarreforma.ts')
+          s = p.read_text(encoding='utf-8')
+          antigo = 'https://ccel.org/ccel/schaff/creeds2.toc.html'
+          novo = 'https://ccel.org/ccel/schaff/creeds2/creeds2.toc.html'
+          if s.count(antigo) != 1:
+            raise SystemExit(f'URL antiga: esperada 1 ocorrência; encontradas {s.count(antigo)}')
+          p.write_text(s.replace(antigo, novo), encoding='utf-8')
+
           p = Path('README.md')
           s = p.read_text(encoding='utf-8')
           pares = [
             ('| Verbetes redigidos | 182 |', '| Verbetes redigidos | 186 |'),
-            ('| Obras livres mapeadas | 210 |', '| Obras livres mapeadas | 215 |'),
+            ('| Obras livres mapeadas | 210 |', '| Obras livres mapeadas | 214 |'),
             ('A diferença entre 182 verbetes e 101 disciplinas cobertas', 'A diferença entre 186 verbetes e 101 disciplinas cobertas'),
           ]
           for antigo, novo in pares:
@@ -45,10 +54,10 @@ jobs:
         run: npm run conferir
       - name: Recalcular fila editorial
         run: npm run priorizar
-      - name: Versionar README sincronizado
+      - name: Versionar ajustes validados
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md
-          git commit -m 'Sincronizar contagens do ciclo editorial 19'
+          git add README.md src/conteudo/historica/inglaterra-contrarreforma.ts
+          git commit -m 'Sincronizar referências e contagens do ciclo 19'
           git push origin HEAD:content/ciclo-editorial-19
