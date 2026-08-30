@@ -22,3 +22,23 @@ jobs:
       - run: npm ci
       - name: Fila editorial
         run: npm run priorizar
+      - name: Ementa oficial TH03
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
+          achados=[]
+          def walk(x):
+              if isinstance(x, dict):
+                  if any(x.get(k)=='TH03' for k in ('codigo','código','id','disciplina')):
+                      achados.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x, list):
+                  for v in x: walk(v)
+          walk(data)
+          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          PY
+      - name: Verbetes TH03 existentes
+        run: |
+          grep -R -n -B 5 -A 12 "disciplina: 'TH03'" src/conteudo || true
