@@ -1,0 +1,47 @@
+name: Diagnóstico ciclo 20 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-20]
+    paths:
+      - '.github/workflows/diagnostico-ciclo20-temporario.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-20
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Confirmar fila editorial
+        run: npm run priorizar
+      - name: Ementa oficial TP13
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
+          achados=[]
+          def walk(x):
+              if isinstance(x, dict):
+                  if any(x.get(k)=='TP13' for k in ('codigo','código','id','disciplina')):
+                      achados.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x, list):
+                  for v in x: walk(v)
+          walk(data)
+          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          PY
+      - name: Verbetes TP13 existentes
+        run: grep -R -n -B 8 -A 30 "disciplina: 'TP13'" src/conteudo || true
+      - name: Arquivos relacionados em Constituição e Ordem
+        run: grep -R -l -i -E "constitui[cç][aã]o|ordem eclesi[aá]stica|disciplina eclesi[aá]stica|conc[ií]lio|assembleia|recurso|apela[cç][aã]o|processo disciplinar|tribunal eclesi[aá]stico" src/conteudo/pastoral | sort | head -n 120
+      - name: Fontes potenciais já disponíveis
+        run: grep -R -n -i -E "constitui[cç][aã]o.*ipb|c[oó]digo.*disciplina|manual presbiteriano|princ[ií]pios.*liturgia|digesto presbiteriano|supremo conc[ií]lio|regimento|tribunal|disciplina eclesi[aá]stica|Westminster|cfw-ipib" src/dados/biblioteca*.ts | head -n 320 || true
