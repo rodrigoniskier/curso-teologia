@@ -40,8 +40,11 @@ jobs:
           print(json.dumps(achados, ensure_ascii=False, indent=2))
           PY
       - name: Verbetes TP13 existentes
-        run: grep -R -n -B 8 -A 30 "disciplina: 'TP13'" src/conteudo || true
+        run: |
+          grep -R -n -B 8 -A 30 "disciplina: 'TP13'" src/conteudo || true
       - name: Arquivos relacionados em Constituição e Ordem
-        run: grep -R -l -i -E "constitui[cç][aã]o|ordem eclesi[aá]stica|disciplina eclesi[aá]stica|conc[ií]lio|assembleia|recurso|apela[cç][aã]o|processo disciplinar|tribunal eclesi[aá]stico" src/conteudo/pastoral | sort | head -n 120
+        run: |
+          grep -R -l -i -E "constitui[cç][aã]o|ordem eclesi[aá]stica|disciplina eclesi[aá]stica|conc[ií]lio|assembleia|recurso|apela[cç][aã]o|processo disciplinar|tribunal eclesi[aá]stico" src/conteudo/pastoral | sort | head -n 120
       - name: Fontes potenciais já disponíveis
-        run: grep -R -n -i -E "constitui[cç][aã]o.*ipb|c[oó]digo.*disciplina|manual presbiteriano|princ[ií]pios.*liturgia|digesto presbiteriano|supremo conc[ií]lio|regimento|tribunal|disciplina eclesi[aá]stica|Westminster|cfw-ipib" src/dados/biblioteca*.ts | head -n 320 || true
+        run: |
+          grep -R -n -i -E "constitui[cç][aã]o.*ipb|c[oó]digo.*disciplina|manual presbiteriano|princ[ií]pios.*liturgia|digesto presbiteriano|supremo conc[ií]lio|regimento|tribunal|disciplina eclesi[aá]stica|Westminster|cfw-ipib" src/dados/biblioteca*.ts | head -n 320 || true
