@@ -1,0 +1,52 @@
+name: Hotfix American English temporário
+
+on:
+  push:
+    branches: [fix/auditoria-americanenglish]
+    paths:
+      - '.github/workflows/hotfix-americanenglish-temporario.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  corrigir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: fix/auditoria-americanenglish
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Trocar página instável pelo PDF oficial
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          antigo = 'https://americanenglish.state.gov/resources/language-teaching-methods'
+          novo = 'https://americanenglish.state.gov/files/ae/resource_files/language_teaching_methods_teachers_handbook.pdf'
+          arquivos = [
+            Path('src/conteudo/geral/linguistica-aplicada.ts'),
+            Path('src/dados/biblioteca-extra.ts'),
+          ]
+          total = 0
+          for p in arquivos:
+            s = p.read_text(encoding='utf-8')
+            n = s.count(antigo)
+            total += n
+            p.write_text(s.replace(antigo, novo), encoding='utf-8')
+          if total != 2:
+            raise SystemExit(f'esperadas 2 ocorrências; encontradas {total}')
+          PY
+      - name: Validar integridade
+        run: npm run validar
+      - name: Confirmar link auditável
+        run: node scripts/auditar-links.mjs --relatorio
+      - name: Versionar correção
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/conteudo/geral/linguistica-aplicada.ts src/dados/biblioteca-extra.ts
+          git commit -m 'Corrigir fonte Language Teaching Methods'
+          git push origin HEAD:fix/auditoria-americanenglish
