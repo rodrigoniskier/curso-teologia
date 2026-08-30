@@ -10,6 +10,9 @@ import type { ObraLivre } from './biblioteca';
  */
 export const bibliotecaExtra: ObraLivre[] = [
   {
+    id: 'westminster-directory-1645', autor: 'Assembleia de Westminster', ano: '1645', titulo: 'A Directory for the Publike Worship of God', publicacao: 'Internet Archive / Westminster Assembly Project', url: 'https://archive.org/details/bim_early-english-books-1641-1700_a-directory-for-the-publ_1645_0', idioma: 'en', acesso: 'livre', disciplinas: ['TS09', 'TS08'], nota: 'Fac-símile público da edição de 1645, indicado pelo Westminster Assembly Project. Fonte primária para leitura pública, oração, pregação, sacramentos, Dia do Senhor, casamento, visitação, funerais, jejum, ações de graças e canto no horizonte da Assembleia de Westminster.', base: 'domínio público',
+  },
+  {
     id: 'sep-faith', autor: 'Stanford Encyclopedia of Philosophy', ano: '—', titulo: 'Faith', publicacao: 'Stanford University', url: 'https://plato.stanford.edu/entries/faith/', idioma: 'en', acesso: 'livre', disciplinas: ['CG08'], nota: 'Verbete acadêmico revisado por especialistas sobre os conceitos de fé e sua relação com razão, evidência e conhecimento.', base: 'edição autorizada',
   },
   {
