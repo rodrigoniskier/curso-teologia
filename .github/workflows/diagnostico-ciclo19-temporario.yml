@@ -40,5 +40,7 @@ jobs:
           print(json.dumps(achados, ensure_ascii=False, indent=2))
           PY
       - name: Verbetes TH03 existentes
+        run: grep -R -n -B 5 -A 12 "disciplina: 'TH03'" src/conteudo || true
+      - name: Fontes já disponíveis para TH03
         run: |
-          grep -R -n -B 5 -A 12 "disciplina: 'TH03'" src/conteudo || true
+          grep -R -n -i -E "luther|lutero|zwing|zu[ií]ng|knox|trent|trento|loyola|jesu[ií]t|foxe|puritan|schaff.*creed|book of common prayer|westphal|westf[aá]l|belgic|confiss[aã]o belga" src/dados/biblioteca*.ts | head -n 260 || true
