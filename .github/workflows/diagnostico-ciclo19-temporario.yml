@@ -20,10 +20,25 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - name: Corrigir referência compartilhada e sincronizar README
+      - name: Normalizar tipagem, referência e contagens
         run: |
           python3 - <<'PY'
           from pathlib import Path
+
+          arquivos = [
+            Path('src/conteudo/historica/lutero-zwinglio-reforma-radical.ts'),
+            Path('src/conteudo/historica/calvino-expansao-reformada.ts'),
+            Path('src/conteudo/historica/inglaterra-contrarreforma.ts'),
+            Path('src/conteudo/historica/confessionalizacao-atlantico-sociedade.ts'),
+          ]
+          total = 0
+          for p in arquivos:
+            s = p.read_text(encoding='utf-8')
+            n = s.count("tipo: 'obra-secundaria'")
+            total += n
+            p.write_text(s.replace("tipo: 'obra-secundaria'", "tipo: 'livro'"), encoding='utf-8')
+          if total != 4:
+            raise SystemExit(f'esperadas 4 ocorrências de obra-secundaria; encontradas {total}')
 
           p = Path('src/conteudo/historica/inglaterra-contrarreforma.ts')
           s = p.read_text(encoding='utf-8')
@@ -58,6 +73,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md src/conteudo/historica/inglaterra-contrarreforma.ts
-          git commit -m 'Sincronizar referências e contagens do ciclo 19'
+          git add README.md src/conteudo/historica/lutero-zwinglio-reforma-radical.ts src/conteudo/historica/calvino-expansao-reformada.ts src/conteudo/historica/inglaterra-contrarreforma.ts src/conteudo/historica/confessionalizacao-atlantico-sociedade.ts
+          git commit -m 'Normalizar metadados e contagens do ciclo 19'
           git push origin HEAD:content/ciclo-editorial-19
