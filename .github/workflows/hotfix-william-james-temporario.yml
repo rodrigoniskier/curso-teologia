@@ -25,8 +25,9 @@ jobs:
           from pathlib import Path
           p = Path('src/dados/biblioteca.ts')
           s = p.read_text(encoding='utf-8')
-          old = 'https://archive.org/details/varietiesofrelig00jameuoft'
-          new = 'https://archive.org/details/thevarieties00jameuoft'
+          raiz = 'https://archive.org/details/'
+          old = raiz + 'varietiesofrelig00jameuoft'
+          new = raiz + 'thevarieties00jameuoft'
           if old not in s and new not in s:
               raise SystemExit('URL de William James não encontrada')
           s = s.replace(old, new)
