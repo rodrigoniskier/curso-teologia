@@ -1,4 +1,4 @@
-name: Diagnóstico ciclo 19 temporário
+name: Validação ciclo 19 temporária
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
       - '.github/workflows/diagnostico-ciclo19-temporario.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  diagnostico:
+  validar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -20,27 +20,35 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - name: Fila editorial
-        run: npm run priorizar
-      - name: Ementa oficial TH03
+      - name: Sincronizar contagens do README
         run: |
           python3 - <<'PY'
-          import json
           from pathlib import Path
-          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
-          achados=[]
-          def walk(x):
-              if isinstance(x, dict):
-                  if any(x.get(k)=='TH03' for k in ('codigo','código','id','disciplina')):
-                      achados.append(x)
-                  for v in x.values(): walk(v)
-              elif isinstance(x, list):
-                  for v in x: walk(v)
-          walk(data)
-          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          p = Path('README.md')
+          s = p.read_text(encoding='utf-8')
+          pares = [
+            ('| Verbetes redigidos | 182 |', '| Verbetes redigidos | 186 |'),
+            ('| Obras livres mapeadas | 210 |', '| Obras livres mapeadas | 215 |'),
+            ('A diferença entre 182 verbetes e 101 disciplinas cobertas', 'A diferença entre 186 verbetes e 101 disciplinas cobertas'),
+          ]
+          for antigo, novo in pares:
+            if s.count(antigo) != 1:
+              raise SystemExit(f'esperada 1 ocorrência de {antigo!r}; encontradas {s.count(antigo)}')
+            s = s.replace(antigo, novo)
+          p.write_text(s, encoding='utf-8')
           PY
-      - name: Verbetes TH03 existentes
-        run: grep -R -n -B 5 -A 12 "disciplina: 'TH03'" src/conteudo || true
-      - name: Fontes já disponíveis para TH03
+      - name: Validar integridade e currículo
+        run: npm run validar
+      - name: Compilar portal
+        run: npm run build
+      - name: Conferir estado e README
+        run: npm run conferir
+      - name: Recalcular fila editorial
+        run: npm run priorizar
+      - name: Versionar README sincronizado
         run: |
-          grep -R -n -i -E "luther|lutero|zwing|zu[ií]ng|knox|trent|trento|loyola|jesu[ií]t|foxe|puritan|schaff.*creed|book of common prayer|westphal|westf[aá]l|belgic|confiss[aã]o belga" src/dados/biblioteca*.ts | head -n 260 || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md
+          git commit -m 'Sincronizar contagens do ciclo editorial 19'
+          git push origin HEAD:content/ciclo-editorial-19
