@@ -1,0 +1,51 @@
+name: Diagnóstico ciclo 22 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-22]
+    paths:
+      - '.github/workflows/diagnostico-ciclo22-temporario.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-22
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Ementa oficial TE16
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
+          achados=[]
+          def walk(x):
+              if isinstance(x, dict):
+                  if any(x.get(k)=='TE16' for k in ('codigo','código','id','disciplina')):
+                      achados.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x, list):
+                  for v in x: walk(v)
+          walk(data)
+          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          PY
+      - name: Fonte e metadados do verbete atual
+        run: |
+          sed -n '1,420p' src/conteudo/exegetica/metodologia-exegetica.ts
+      - name: Fontes abertas ligadas a TE16
+        run: |
+          grep -R -n -B 3 -A 7 "TE16" src/dados/biblioteca*.ts || true
+      - name: Verbetes especializados potencialmente reutilizáveis
+        run: |
+          grep -R -n -B 6 -A 12 -E "id: 'te(12|13|52|53)-|id: '.*(manuscrit|hermeneut|aramaico|grego|hebraico)" src/conteudo/exegetica | head -n 500 || true
+      - name: Tipos e ferramentas mencionados no acervo
+        run: |
+          grep -R -n -i -E "concord|lexic|dicion|gram[aá]tic|interlinear|texto cr[ií]tico|apparatus|apparato|software|bibleworks|logos|stepbible|blue letter|biblehub" src/dados/biblioteca*.ts src/conteudo/exegetica | head -n 500 || true
