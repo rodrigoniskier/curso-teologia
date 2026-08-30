@@ -1,0 +1,43 @@
+name: Hotfix William James temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-22]
+    paths:
+      - '.github/workflows/hotfix-william-james-temporario.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  corrigir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-22
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Substituir digitalização instável
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('src/dados/biblioteca.ts')
+          s = p.read_text(encoding='utf-8')
+          old = 'https://archive.org/details/varietiesofrelig00jameuoft'
+          new = 'https://archive.org/details/thevarieties00jameuoft'
+          if old not in s and new not in s:
+              raise SystemExit('URL de William James não encontrada')
+          s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Validar nova fonte no runner
+        run: node scripts/auditar-links.mjs --relatorio
+      - name: Versionar correção
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/dados/biblioteca.ts
+          git commit -m 'Estabilizar edição de William James'
+          git push origin HEAD:content/ciclo-editorial-22
