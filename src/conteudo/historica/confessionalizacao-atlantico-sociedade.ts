@@ -193,7 +193,7 @@ export const confessionalizacaoAtlanticoSociedade: Verbete = {
       publicacao: 'CCEL',
       url: 'https://www.ccel.org/ccel/schaff/hcc2.all.html',
       idioma: 'en',
-      tipo: 'obra-secundaria',
+      tipo: 'livro',
       acesso: 'livre',
       nota: 'Síntese histórica em domínio público usada para relacionar a consolidação confessional ao arco mais amplo da Reforma.',
     },

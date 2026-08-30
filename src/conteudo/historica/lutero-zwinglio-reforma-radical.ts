@@ -161,7 +161,7 @@ export const luteroZwinglioReformaRadical: Verbete = {
       publicacao: 'CCEL',
       url: 'https://www.ccel.org/ccel/schaff/hcc2.all.html',
       idioma: 'en',
-      tipo: 'obra-secundaria',
+      tipo: 'livro',
       acesso: 'livre',
       nota: 'História clássica em domínio público usada para cronologia, contexto político e desenvolvimento das reformas alemã e suíça.',
     },

@@ -167,7 +167,7 @@ export const calvinoExpansaoReformada: Verbete = {
       publicacao: 'CCEL',
       url: 'https://www.ccel.org/ccel/schaff/hcc2.all.html',
       idioma: 'en',
-      tipo: 'obra-secundaria',
+      tipo: 'livro',
       acesso: 'livre',
       nota: 'Síntese histórica em domínio público usada para cronologia da Reforma suíça e sua expansão europeia.',
     },
