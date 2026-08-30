@@ -1,0 +1,44 @@
+name: Diagnóstico ciclo 23 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-23]
+    paths:
+      - '.github/workflows/diagnostico-ciclo23-temporario.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-23
+      - name: Ementa oficial TS11
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
+          achados=[]
+          def walk(x):
+              if isinstance(x, dict):
+                  if any(x.get(k)=='TS11' for k in ('codigo','código','id','disciplina')):
+                      achados.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x, list):
+                  for v in x: walk(v)
+          walk(data)
+          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          PY
+      - name: Verbetes atualmente ligados a TS11
+        run: |
+          grep -R -n -B 5 -A 12 "disciplina: 'TS11'" src/conteudo || true
+      - name: Fontes abertas ligadas a TS11
+        run: |
+          grep -R -n -B 3 -A 8 "TS11" src/dados/biblioteca*.ts || true
+      - name: Símbolos e fontes confessionais no acervo
+        run: |
+          grep -R -n -i -B 2 -A 6 -E "catecismo maior|breve catecismo|shorter catechism|larger catechism|westminster standards|confissão de fé|confession of faith|símbolos de fé|manual presbiteriano" src/dados/biblioteca*.ts | head -n 700 || true
