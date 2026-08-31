@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { disciplinaSemUnidadesEstaConcluida, unidadeEstaConcluida } from '../infra/cobertura-curricular';
 import type { Disciplina } from '../tipos';
 
@@ -46,10 +47,13 @@ export function ProgramaUnidades({ disciplina }: { disciplina: Disciplina }) {
           return (
             <li key={u.numero} className="border-l-2 border-margem pl-4">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <p className="flex-1 font-sans text-[0.9rem] font-semibold text-neutral-800">
+                <Link
+                  to={`/disciplina/${disciplina.codigo}/unidade/${u.numero}`}
+                  className="flex-1 font-sans text-[0.9rem] font-semibold text-neutral-800 hover:text-tinta-700 hover:underline"
+                >
                   <span className="mr-2 text-tinta-400">{u.numero}.</span>
                   {u.titulo}
-                </p>
+                </Link>
                 <span
                   className={`font-sans text-[0.65rem] font-semibold uppercase tracking-wide ${
                     concluida ? 'text-emerald-700' : 'text-neutral-400'
