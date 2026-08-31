@@ -1,6 +1,14 @@
+import questoesJson from './questoes.json';
 import { politicaAvaliativa } from './configuracao-curricular';
 import { coberturaDaDisciplina } from '../infra/cobertura-curricular';
-import type { AvaliacaoId, Disciplina, ModuloAvaliativo } from '../tipos';
+import type {
+  AvaliacaoId,
+  Disciplina,
+  ModuloAvaliativo,
+  QuestaoMultiplaEscolha,
+} from '../tipos';
+
+const questoes = questoesJson as QuestaoMultiplaEscolha[];
 
 function modulo(
   disciplina: Disciplina,
@@ -15,6 +23,9 @@ function modulo(
     .filter((u) => u.numero > politicaAvaliativa.av2.fimUnidade)
     .map((u) => u.numero);
   const cobertura = coberturaDaDisciplina(disciplina);
+  const questoesDoModulo = questoes.filter(
+    (q) => q.disciplina === disciplina.codigo && q.avaliacao === id,
+  );
 
   let status: ModuloAvaliativo['status'];
   if (disciplina.unidades.length === 0) {
@@ -22,9 +33,7 @@ function modulo(
   } else if (unidadesAlvo.length === 0) {
     status = 'sem-unidades-na-faixa';
   } else if (unidadesAlvo.every((numero) => cobertura.unidadesConcluidas.includes(numero))) {
-    // A estrutura existe, mas o banco de questões permanece vazio até uma etapa
-    // editorial posterior e deliberada.
-    status = 'pronto-para-elaboracao';
+    status = questoesDoModulo.length > 0 ? 'publicado' : 'pronto-para-elaboracao';
   } else {
     status = 'aguardando-conteudo';
   }
@@ -38,14 +47,14 @@ function modulo(
     unidadesAlvo,
     unidadesForaDoEscopo,
     status,
-    questoes: [],
+    questoes: questoesDoModulo,
   };
 }
 
 /**
- * Gera dois módulos avaliativos para TODA disciplina do currículo. O módulo é
- * estrutural; não gera questões e não transforma ausência de unidade oficial em
- * conteúdo inventado.
+ * Gera dois módulos avaliativos para TODA disciplina do currículo. O banco de
+ * questões é separado e começa vazio; o validador impede questões enquanto o
+ * bloco correspondente não estiver integralmente concluído.
  */
 export function avaliacoesDaDisciplina(disciplina: Disciplina): ModuloAvaliativo[] {
   return [
