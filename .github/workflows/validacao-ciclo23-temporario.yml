@@ -1,0 +1,42 @@
+name: Validação ciclo 23 temporária
+
+on:
+  push:
+    branches:
+      - content/ciclo-editorial-23
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-23
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Reprodutibilidade do currículo
+        run: npm run validar:curriculo
+      - name: Testes de infraestrutura
+        run: npm test
+      - name: Integridade
+        run: npm run validar
+      - name: Metadados
+        run: npm run auditar:metadados
+      - name: Build
+        run: npm run build
+      - name: Estado
+        run: npm run estado
+      - name: Priorizar
+        run: npm run priorizar
+      - name: Diagnóstico TS11
+        run: |
+          echo '--- TS11 verbetes ---'
+          grep -R -n -B 5 -A 8 "disciplina: 'TS11'" src/conteudo || true
+          echo '--- README números ---'
+          grep -n -E 'verbete|obra|101/101|101 de 101' README.md | head -n 30 || true
