@@ -17,6 +17,8 @@ function exigir(condicao, mensagem) {
   if (!condicao) erros.push(mensagem);
 }
 
+exigir(ementas.length === 121, `currículo deve conter 121 disciplinas; encontrou ${ementas.length}`);
+
 const idiomas = plano.naturezas?.idioma ?? [];
 const estagios = plano.naturezas?.estagio ?? [];
 const classificados = [...idiomas, ...estagios];
@@ -26,13 +28,17 @@ for (const codigo of classificados) exigir(codigos.has(codigo), `natureza curric
 for (const codigo of idiomas) exigir(!estagios.includes(codigo), `disciplina classificada simultaneamente como idioma e estágio: ${codigo}`);
 
 const ordemHistorico = plano.ordemHistorico ?? [];
+exigir(ordemHistorico.length === 93, `ordem do histórico deve conter 93 disciplinas; encontrou ${ordemHistorico.length}`);
 exigir(new Set(ordemHistorico.map((x) => x.codigo)).size === ordemHistorico.length, 'ordem do histórico contém disciplina duplicada');
 for (const item of ordemHistorico) exigir(codigos.has(item.codigo), `histórico usa código inexistente: ${item.codigo}`);
+const foraHistorico = ementas.filter((d) => !ordemHistorico.some((x) => x.codigo === d.codigo));
+exigir(foraHistorico.length === 28, `devem restar 28 disciplinas fora do histórico; encontrou ${foraHistorico.length}`);
 
 const av1 = plano.avaliacoes?.av1;
 const av2 = plano.avaliacoes?.av2;
 exigir(av1?.inicioUnidade === 1 && av1?.fimUnidade === 8, 'AV1 deve corresponder às unidades 1–8');
 exigir(av2?.inicioUnidade === 9 && av2?.fimUnidade === 15, 'AV2 deve corresponder às unidades 9–15');
+exigir(ementas.length * 2 === 242, 'o currículo deve gerar exatamente 242 módulos estruturais AV1/AV2');
 
 const unidadesConcluidas = cobertura.unidadesConcluidas ?? {};
 for (const [codigo, unidades] of Object.entries(unidadesConcluidas)) {
@@ -80,7 +86,7 @@ if (erros.length) {
 console.log('✓ plano curricular integral válido');
 console.log(`  ${ementas.length} disciplinas · ${ementas.reduce((n, d) => n + d.unidades.length, 0)} unidades oficiais`);
 console.log(`  naturezas: ${idiomas.length} idiomas · ${estagios.length} estágios · ${ementas.length - classificados.length} conteúdo`);
-console.log(`  ordem prioritária do histórico: ${ordemHistorico.length} disciplinas; ${ementas.length - ordemHistorico.length} ficam para o final`);
+console.log(`  ordem prioritária do histórico: ${ordemHistorico.length} disciplinas; ${foraHistorico.length} ficam para o final`);
 console.log(`  módulos avaliativos estruturais: ${ementas.length * 2} (AV1 + AV2 por disciplina)`);
 console.log(`  distribuição de unidades: ${JSON.stringify(distribuicao)}`);
 console.log(`  avisos estruturais esperados: ${avisos.length}`);
