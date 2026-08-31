@@ -1,0 +1,44 @@
+name: Diagnóstico ciclo 24 temporário
+
+on:
+  push:
+    branches: [content/ciclo-editorial-24]
+    paths:
+      - '.github/workflows/diagnostico-ciclo24-temporario.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-24
+      - name: Ementa oficial CG08
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('src/dados/ementas.json').read_text(encoding='utf-8'))
+          achados=[]
+          def walk(x):
+              if isinstance(x, dict):
+                  if any(x.get(k)=='CG08' for k in ('codigo','código','id','disciplina')):
+                      achados.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x, list):
+                  for v in x: walk(v)
+          walk(data)
+          print(json.dumps(achados, ensure_ascii=False, indent=2))
+          PY
+      - name: Verbetes ligados a CG08
+        run: |
+          grep -R -n -B 5 -A 12 "disciplina: 'CG08'" src/conteudo || true
+      - name: Conteúdo do verbete atual
+        run: sed -n '1,360p' src/conteudo/geral/filosofia.ts
+      - name: Fontes ligadas a CG08
+        run: grep -R -n -B 3 -A 8 "CG08" src/dados/biblioteca*.ts || true
+      - name: Fontes filosóficas já existentes
+        run: grep -R -n -i -B 2 -A 6 -E "plato|arist[oó]teles|s[oó]crates|aquinas|augustine|agostinho|descartes|hume|kant|nietzsche|epistem|metaf[ií]s|filosofia" src/dados/biblioteca*.ts | head -n 900 || true
