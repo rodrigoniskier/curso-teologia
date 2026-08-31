@@ -162,6 +162,7 @@ const conferencias = [
   ['Verbetes redigidos', [verbetes]],
   ['Obras livres mapeadas', [obras]],
   ['Unidades verificadas', [unidadesConcluidas, unidades]],
+  ['Disciplinas concluídas', [disciplinasConcluidas, ementas.length]],
   ['Módulos avaliativos estruturados', [ementas.length * 2]],
   ...[...depPorSigla].map(([sigla, dep]) => [`\`${sigla}\``, [discPorDep.get(dep) ?? 0]]),
 ];

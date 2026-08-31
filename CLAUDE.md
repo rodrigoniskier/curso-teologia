@@ -36,6 +36,10 @@ Deploy na Vercel a partir de `main`.
 - **Só links que funcionam.** Audite tudo.
 - **Toda obra citada precisa estar no acervo.**
 - **Sempre ramo → PR → CI → merge.** Nada vai direto para `main`.
+- **Currículo integral é a régua principal.** Todas as 121 disciplinas pertencem à meta; idiomas e estágios não são excluídos.
+- **Unidade concluída exige verificação explícita.** A existência de verbete ou material relacionado não basta.
+- **Não fure a fila de produção.** Siga as 93 disciplinas do histórico de referência e só depois as 28 ausentes.
+- **AV1/AV2 começam vazias.** Questões só podem ser criadas depois da conclusão integral do bloco correspondente.
 
 ---
 
@@ -143,7 +147,10 @@ subdomínios.
 Há três camadas e elas protegem coisas diferentes:
 
 ```bash
-npm run validar             # integridade interna de conteúdo e acervo
+npm run validar             # conteúdo, currículo integral, cobertura e avaliações
+npm run validar:plano       # invariantes do plano integral
+npm run validar:avaliacoes  # impede questões prematuras/inválidas
+npm run progresso:curriculo # régua principal de conclusão
 npm run regenerar:curriculo # reproduz ementas.json a partir do PDF original
 npm run build               # TypeScript + build de produção
 npm run conferir            # números do README contra o repositório
@@ -178,33 +185,27 @@ diferentes.
 
 ## 6. O ciclo de trabalho
 
+A partir do plano curricular integral, a seleção do alvo não é mais livre:
+
 ```text
 0. Partir sempre do main mais recente em um ramo novo
-1. npm run estado — escolher o alvo pelo desequilíbrio
-   com cobertura completa, usar também `npm run priorizar` para escolher entre
-   aprofundamento curricular, revisão de extensão, reforço de fontes e revisão
-   estrutural; os sinais não substituem leitura editorial
-2. Ler a ementa oficial em src/dados/ementas.json
-3. Ler verbetes vizinhos para não repetir
-4. Verificar as fontes antes de escrever
-5. Escrever src/conteudo/<departamento>/<nome>.ts
-6. Não editar src/conteudo/indice.ts; ele é gerado dos próprios verbetes
-7. Acrescentar fontes novas ao acervo, quando necessário
-8. Atualizar as contagens do README
-9. npm run validar — regenerar os artefatos e validar a integridade
-10. npm run build
-11. npm run conferir
-12. Verificar a interface real no navegador
-13. Commit, push, PR, esperar CI, merge
+1. npm run proxima — identificar a primeira disciplina ainda não concluída na ordem fixada
+2. Trabalhar somente nessa disciplina até concluir suas unidades oficiais
+3. Ler a ementa e todos os tópicos da unidade ativa
+4. Auditar o material já existente antes de produzir algo novo
+5. Usar o formato pedagógico adequado: conteúdo, idioma ou estágio
+6. Marcar uma unidade em cobertura-curricular.json somente depois de revisar todos os seus tópicos
+7. Só quando todas as unidades de AV1 estiverem concluídas, elaborar AV1; idem para AV2
+8. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora não entrem em AV1/AV2
+9. Disciplinas sem unidades oficiais são verificadas em nível de disciplina; nunca inventar unidades
+10. npm run validar && npm run build && npm run conferir
+11. Verificar a interface real no navegador
+12. PR, CI, Vercel, merge e validação pós-merge
 ```
 
-Independentemente do método de merge, **não reutilize um ramo antigo como base
-do próximo ciclo**. Isso já produziu conflitos em `README.md` e na biblioteca.
-Novo ciclo começa no `main` já incorporado.
+`npm run priorizar` e `npm run densidade:editorial` são diagnósticos secundários. Eles não podem escolher um alvo fora da fila nem promover cobertura automaticamente.
 
-A contagem do README é escrita para o leitor, mas conferida por código. Se
-esquecer de atualizá-la, a CI precisa falhar. Não mantenha instantâneos mutáveis
-no CLAUDE.md; rode `npm run estado`.
+Independentemente do método de merge, **não reutilize um ramo antigo como base do próximo ciclo**. Novo ciclo começa no `main` já incorporado.
 
 ---
 
@@ -269,28 +270,23 @@ plausibilidade.
 
 ---
 
-## 9. Estado e escolha do próximo alvo
+## 9. Estado, cobertura integral e avaliações
 
 **Não confie em número escrito aqui.** Rode:
 
 ```bash
 npm run estado
+npm run progresso:curriculo
+npm run proxima
 ```
 
-O script calcula cobertura por departamento, disciplinas aplicáveis, verbetes,
-acervo e idiomas diretamente do código. A escolha padrão é o departamento com
-menor razão verbetes/disciplina aplicável. Sistemática ficou historicamente bem
-à frente e não deve receber novos verbetes enquanto os demais estiverem atrás.
+A régua principal cobre as **121 disciplinas** e as **1.375 unidades oficiais**. O arquivo `src/dados/cobertura-curricular.json` é deliberadamente explícito: verbetes preexistentes não certificam unidades automaticamente. Aquisição de língua e estágio pertencem à meta integral, com formato pedagógico próprio.
 
-Quando todas as disciplinas aplicáveis estiverem cobertas, `npm run priorizar`
-mede o segundo ciclo: pressão de tópicos da ementa sobre o conteúdo já escrito,
-extensão, densidade de fontes e ausência de blocos estruturais. São filas para
-revisão humana, não uma nota automática; a granularidade das ementas varia e
-um verbete curto pode estar completo.
+A ordem de produção está versionada em `src/dados/plano-curricular.json`: primeiro as **93 disciplinas do histórico de referência**, na ordem documentada; depois as **28 ausentes**, na ordem do currículo oficial.
 
-A razão exclui aquisição de língua e estágio supervisionado. A lista fica no
-topo de `scripts/estado.mjs` e pode ser discutida, mas não deve ser alterada só
-para melhorar um número.
+Cada disciplina recebe dois módulos estruturais: **AV1 = unidades 1–8 existentes** e **AV2 = unidades 9–15 existentes**. O banco de questões começa vazio e `npm run validar:avaliacoes` reprova qualquer questão se o bloco correspondente ainda não estiver integralmente concluído. Unidades 16+ permanecem obrigatórias para a conclusão curricular, mas ficam fora desses dois recortes avaliativos. Disciplinas sem unidades numeradas não recebem unidades inventadas.
+
+O antigo indicador baseado em palavras permanece disponível como `npm run densidade:editorial`, mas é **secundário**: mede massa textual de disciplinas compatíveis com verbetes e não representa o percentual global de conclusão do curso.
 
 ---
 
