@@ -45,6 +45,9 @@ jobs:
       - name: Priorizar
         if: always()
         run: npm run priorizar || true
+      - name: Medir progresso editorial
+        if: always()
+        run: node scripts/progresso-editorial.mjs || true
 
   links:
     name: Auditar todas as fontes
