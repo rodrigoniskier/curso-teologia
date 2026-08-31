@@ -1,0 +1,62 @@
+name: Validar refatoração curricular integral temporária
+
+on:
+  push:
+    branches:
+      - refactor/curriculo-integral-avaliacoes
+
+permissions:
+  contents: read
+
+jobs:
+  estrutural:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: refactor/curriculo-integral-avaliacoes
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Conferir reprodutibilidade do currículo
+        run: |
+          cp src/dados/ementas.json /tmp/ementas-versionado.json
+          npm run regenerar:curriculo
+          cmp -s /tmp/ementas-versionado.json src/dados/ementas.json || {
+            echo '::error::ementas.json diverge da regeneração';
+            diff -u /tmp/ementas-versionado.json src/dados/ementas.json | head -n 400 || true;
+            exit 1;
+          }
+      - name: Testar infraestrutura
+        run: node --test scripts/lib/*.test.mjs
+      - name: Validar conteúdo, plano e avaliações
+        run: npm run validar
+      - name: Auditar metadados
+        run: npm run auditar:metadados
+      - name: Build de produção
+        run: npm run build
+      - name: Conferir README
+        run: npm run conferir
+      - name: Estado curricular integral
+        run: npm run progresso:curriculo
+      - name: Confirmar próximo alvo
+        run: npm run proxima -- --json
+      - name: Diagnóstico editorial secundário
+        run: npm run priorizar -- --json > /dev/null
+      - name: Densidade textual secundária
+        run: npm run densidade:editorial -- --json > /dev/null
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: refactor/curriculo-integral-avaliacoes
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Auditar todas as fontes
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
+        run: node scripts/auditar-links.mjs --relatorio
