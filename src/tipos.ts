@@ -55,7 +55,7 @@ export interface Verbete {
   id: string;
   /** Código da disciplina no currículo da JET/IPB, ex.: 'TS01'. */
   disciplina: string;
-  /** Unidade da ementa que este verbete cobre. */
+  /** Unidade da ementa usada como âncora editorial do verbete. Não certifica conclusão da unidade. */
   unidade?: number;
   titulo: string;
   subtitulo?: string;
@@ -111,4 +111,57 @@ export interface Disciplina {
     complementar: string[];
   };
   paginaPdf: number;
+}
+
+/* ---- planejamento curricular integral ---- */
+
+/**
+ * A forma pedagógica da disciplina. Idiomas e estágios pertencem ao currículo
+ * integral, mas não devem ser forçados ao formato de verbete doutrinário.
+ */
+export type NaturezaDisciplina = 'conteudo' | 'idioma' | 'estagio';
+
+export type AvaliacaoId = 'av1' | 'av2';
+export type LetraAlternativa = 'A' | 'B' | 'C' | 'D' | 'E';
+
+export interface AlternativaMultiplaEscolha {
+  letra: LetraAlternativa;
+  texto: string;
+}
+
+/**
+ * Estrutura reservada para as avaliações futuras. Nenhuma questão deve ser
+ * criada enquanto o bloco de unidades correspondente não estiver concluído.
+ * O par contexto + comando preserva a exigência de itens contextualizados.
+ */
+export interface QuestaoMultiplaEscolha {
+  id: string;
+  disciplina: string;
+  avaliacao: AvaliacaoId;
+  unidade: number;
+  contexto: string;
+  comando: string;
+  alternativas: AlternativaMultiplaEscolha[];
+  gabarito: LetraAlternativa;
+  justificativa: string;
+  atualizadoEm: string;
+}
+
+export type StatusModuloAvaliativo =
+  | 'aguardando-conteudo'
+  | 'pronto-para-elaboracao'
+  | 'sem-unidades-na-faixa'
+  | 'sem-unidades-oficiais'
+  | 'publicado';
+
+export interface ModuloAvaliativo {
+  id: AvaliacaoId;
+  rotulo: 'AV1' | 'AV2';
+  disciplina: string;
+  inicioUnidade: number;
+  fimUnidade: number;
+  unidadesAlvo: number[];
+  unidadesForaDoEscopo: number[];
+  status: StatusModuloAvaliativo;
+  questoes: QuestaoMultiplaEscolha[];
 }
