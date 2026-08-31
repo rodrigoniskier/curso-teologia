@@ -50,6 +50,14 @@ function contarPalavras(texto) {
   return (texto.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
 }
 
+function mediana(valores) {
+  const ordenados = [...valores].sort((a, b) => a - b);
+  const meio = Math.floor(ordenados.length / 2);
+  return ordenados.length % 2
+    ? ordenados[meio]
+    : (ordenados[meio - 1] + ordenados[meio]) / 2;
+}
+
 async function lerVerbete(caminho) {
   const fonte = await readFile(caminho, 'utf8');
   const arquivo = ts.createSourceFile(caminho, fonte, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
@@ -78,6 +86,7 @@ async function lerVerbete(caminho) {
 
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 const palavrasPorDisciplina = new Map();
+const palavrasPorVerbete = [];
 let verbetes = 0;
 let palavrasTotais = 0;
 
@@ -87,6 +96,7 @@ for (const pasta of PASTAS) {
     const verbete = await lerVerbete(join(dir, nome));
     verbetes += 1;
     palavrasTotais += verbete.palavras;
+    palavrasPorVerbete.push(verbete.palavras);
     palavrasPorDisciplina.set(
       verbete.disciplina,
       (palavrasPorDisciplina.get(verbete.disciplina) ?? 0) + verbete.palavras,
@@ -130,7 +140,7 @@ const concluidas = disciplinas.filter((d) => d.falta === 0).length;
 const pendentes = disciplinas
   .filter((d) => d.falta > 0)
   .sort((a, b) => b.falta - a.falta || a.codigo.localeCompare(b.codigo));
-const medianaAtual = 1741;
+const medianaAtual = mediana(palavrasPorVerbete);
 const equivalentesRestantes = Math.ceil(restante / medianaAtual);
 const totalEquivalenteProjetado = verbetes + equivalentesRestantes;
 
@@ -145,6 +155,7 @@ const relatorio = {
   totais: {
     verbetes,
     palavrasAutorais: palavrasTotais,
+    medianaPalavrasPorVerbete: medianaAtual,
     metaPalavrasDistribuida: metaTotal,
     creditoProduzido: produzidoUtil,
     restanteEstimado: restante,
@@ -170,6 +181,7 @@ console.log(`crédito produzido, sem compensação entre disciplinas: ${produzid
 console.log(`restante estimado: ${restante.toLocaleString('pt-BR')} palavras`);
 console.log(`avanço estimado: ${percentual.toFixed(1)}%`);
 console.log(`disciplinas na meta: ${concluidas}/${disciplinas.length}`);
+console.log(`mediana atual por verbete: ${medianaAtual.toLocaleString('pt-BR')} palavras`);
 console.log(`equivalente restante à mediana atual: ~${equivalentesRestantes} verbetes`);
 console.log(`total equivalente projetado: ~${totalEquivalenteProjetado} verbetes`);
 console.log('\nMaiores lacunas pela meta distribuída:');
