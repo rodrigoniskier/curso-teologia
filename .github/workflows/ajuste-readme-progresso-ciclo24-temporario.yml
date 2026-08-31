@@ -1,0 +1,39 @@
+name: Ajuste README e progresso ciclo 24 temporário
+
+on:
+  push:
+    branches:
+      - content/ciclo-editorial-24
+    paths:
+      - '.github/workflows/ajuste-readme-progresso-ciclo24-temporario.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  ajustar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-24
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Medir progresso editorial
+        run: node scripts/progresso-editorial.mjs
+      - name: Sincronizar contagens do README
+        run: |
+          sed -i 's/| Verbetes redigidos | 198 |/| Verbetes redigidos | 201 |/' README.md
+          sed -i 's/| Obras livres mapeadas | 217 |/| Obras livres mapeadas | 224 |/' README.md
+          sed -i 's/A diferença entre 198 verbetes e 101 disciplinas cobertas/A diferença entre 201 verbetes e 101 disciplinas cobertas/' README.md
+          git diff --check
+          git diff -- README.md
+      - name: Publicar ajuste no ramo
+        run: |
+          git config user.name 'dev.Rodrigo Niskier'
+          git config user.email 'niskier.rodrigo@gmail.com'
+          git add README.md
+          git commit -m 'Sincronizar README com o ciclo 24'
+          git push origin HEAD:content/ciclo-editorial-24
