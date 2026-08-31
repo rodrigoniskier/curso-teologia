@@ -1,0 +1,24 @@
+name: Auditoria de links ciclo 23 temporária
+
+on:
+  push:
+    branches:
+      - content/ciclo-editorial-23
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/ciclo-editorial-23
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Auditar links
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
+        run: node scripts/auditar-links.mjs --relatorio
