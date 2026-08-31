@@ -12,6 +12,9 @@ const PaginaDisciplina = lazy(() =>
 const PaginaAvaliacao = lazy(() =>
   import('./paginas/Avaliacao').then((m) => ({ default: m.PaginaAvaliacao })),
 );
+const PaginaUnidade = lazy(() =>
+  import('./paginas/Unidade').then((m) => ({ default: m.PaginaUnidade })),
+);
 const PaginaBiblioteca = lazy(() =>
   import('./paginas/Biblioteca').then((m) => ({ default: m.PaginaBiblioteca })),
 );
@@ -93,6 +96,7 @@ export default function App() {
                 <Route path="/biblioteca" element={<PaginaBiblioteca />} />
                 <Route path="/disciplina/:codigo" element={<PaginaDisciplina />} />
                 <Route path="/disciplina/:codigo/avaliacao/:avaliacaoId" element={<PaginaAvaliacao />} />
+                <Route path="/disciplina/:codigo/unidade/:numero" element={<PaginaUnidade />} />
                 <Route path="/disciplina/:codigo/:verbeteId" element={<PaginaDisciplina />} />
                 <Route
                   path="*"
