@@ -23,21 +23,23 @@ export function PaginaInicio() {
           Teologia Reformada, do texto à doutrina
         </h1>
         <p className="prosa mt-5 max-w-[64ch] text-[1.1rem] text-neutral-700">
-          Um curso completo em português, organizado segundo o{' '}
+          Um percurso de formação em português, organizado segundo o{' '}
           <em>Conteúdo Programático Curricular dos Seminários Teológicos da Igreja Presbiteriana do
           Brasil</em> — o currículo unificado aprovado pelo Supremo Concílio e adotado pelo Seminário
           Presbiteriano do Norte e demais seminários da IPB.
         </p>
         <p className="prosa mt-4 max-w-[64ch] text-[1.05rem] text-neutral-600">
-          Cada verbete é escrito de modo progressivo: parte do problema, percorre a exegese e a
-          história, e só então declara a doutrina. Toda afirmação relevante aponta para a fonte
-          original — e todo link é auditado automaticamente.
+          O plano agora acompanha as 121 disciplinas e cada unidade oficial separadamente. Idiomas e
+          estágios permanecem no currículo integral com formatos pedagógicos próprios, sem serem
+          artificialmente tratados como verbetes doutrinários.
         </p>
       </header>
 
-      <section className="mt-9 grid grid-cols-2 gap-6 sm:grid-cols-4">
-        <Numero valor={estatisticas.disciplinas} rotulo="disciplinas mapeadas" />
-        <Numero valor={estatisticas.unidades} rotulo="unidades do programa" />
+      <section className="mt-9 grid grid-cols-2 gap-6 sm:grid-cols-3">
+        <Numero valor={estatisticas.disciplinas} rotulo="disciplinas no plano" />
+        <Numero valor={estatisticas.unidades} rotulo="unidades oficiais" />
+        <Numero valor={estatisticas.unidadesConcluidas} rotulo="unidades verificadas" />
+        <Numero valor={estatisticas.modulosAvaliativos} rotulo="módulos AV1/AV2" />
         <Numero valor={estatisticas.referencias} rotulo="referências oficiais" />
         <Numero valor={estatisticas.verbetes} rotulo="verbetes publicados" />
       </section>
