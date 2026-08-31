@@ -1,4 +1,5 @@
 import catalogoJson from '../conteudo/catalogo-gerado.json';
+import coberturaJson from '../dados/cobertura-curricular.json';
 import curriculoJson from './curriculo-gerado.json';
 import type { VerbeteResumo } from '../tipos';
 
@@ -58,7 +59,12 @@ export function verbetesDe(codigo: string): VerbeteResumo[] {
   return verbetes.filter((v) => v.disciplina === codigo);
 }
 
+const unidadesRegistradas = coberturaJson.unidadesConcluidas as Record<string, number[]>;
+const unidadesConcluidas = Object.values(unidadesRegistradas).reduce((n, unidades) => n + unidades.length, 0);
+
 export const estatisticas = {
   ...curriculo.estatisticas,
   verbetes: verbetes.length,
+  unidadesConcluidas,
+  modulosAvaliativos: disciplinas.length * 2,
 };
