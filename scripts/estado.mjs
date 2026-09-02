@@ -35,6 +35,7 @@ async function arquivosDeBiblioteca() {
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 const plano = JSON.parse(await readFile(join(RAIZ, 'src/dados/plano-curricular.json'), 'utf8'));
 const cobertura = JSON.parse(await readFile(join(RAIZ, 'src/dados/cobertura-curricular.json'), 'utf8'));
+const questoes = JSON.parse(await readFile(join(RAIZ, 'src/dados/questoes.json'), 'utf8'));
 const unidadesRegistradas = cobertura.unidadesConcluidas ?? {};
 const semUnidadesConcluidas = new Set(cobertura.disciplinasSemUnidadesConcluidas ?? []);
 
@@ -116,6 +117,7 @@ console.log(`verbetes: ${verbetes} · disciplinas com ao menos um verbete: ${dis
 console.log(`unidades oficialmente verificadas: ${unidadesConcluidas}/${unidades}`);
 console.log(`disciplinas integralmente concluídas: ${disciplinasConcluidas}/${ementas.length}`);
 console.log(`módulos avaliativos estruturados: ${ementas.length * 2} (AV1 + AV2 para cada disciplina)`);
+console.log(`questões avaliativas publicadas: ${Array.isArray(questoes) ? questoes.length : 0}`);
 console.log(`obras na biblioteca: ${obras}`);
 console.log(
   'idiomas da biblioteca: ' +
@@ -164,6 +166,7 @@ const conferencias = [
   ['Unidades verificadas', [unidadesConcluidas, unidades]],
   ['Disciplinas concluídas', [disciplinasConcluidas, ementas.length]],
   ['Módulos avaliativos estruturados', [ementas.length * 2]],
+  ['Questões avaliativas publicadas', [Array.isArray(questoes) ? questoes.length : 0]],
   ...[...depPorSigla].map(([sigla, dep]) => [`\`${sigla}\``, [discPorDep.get(dep) ?? 0]]),
 ];
 
