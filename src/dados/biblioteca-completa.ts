@@ -5,6 +5,7 @@ import { bibliotecaAprofundamento } from './biblioteca-aprofundamento';
 import { bibliotecaHistoriaModerna } from './biblioteca-historia-moderna';
 import { bibliotecaReforma } from './biblioteca-reforma';
 import { bibliotecaFilosofia } from './biblioteca-filosofia';
+import { bibliotecaLinguas } from './biblioteca-linguas';
 
 /** Acervo completo consumido pela interface. */
 export const biblioteca = [
@@ -15,6 +16,7 @@ export const biblioteca = [
   ...bibliotecaHistoriaModerna,
   ...bibliotecaReforma,
   ...bibliotecaFilosofia,
+  ...bibliotecaLinguas,
 ];
 
 export const porDisciplina = (codigo: string) =>
