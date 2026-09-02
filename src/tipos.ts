@@ -113,6 +113,43 @@ export interface Disciplina {
   paginaPdf: number;
 }
 
+/* ---- material didático por unidade ---- */
+
+/**
+ * Blocos próprios de aulas, idiomas e percursos práticos. Eles são separados
+ * dos blocos de Verbete para não forçar toda disciplina à forma doutrinária.
+ */
+export type BlocoMaterialUnidade =
+  | { tipo: 'texto'; titulo?: string; paragrafos: string[] }
+  | { tipo: 'lista'; titulo?: string; itens: string[]; ordenada?: boolean }
+  | { tipo: 'exemplo'; titulo?: string; enunciado: string; explicacao: string }
+  | { tipo: 'quadro'; titulo: string; itens: string[] }
+  | {
+      tipo: 'atividade';
+      id: string;
+      titulo?: string;
+      enunciado: string;
+      itens?: string[];
+      resposta: string;
+    };
+
+/**
+ * Aula vinculada a exatamente uma unidade oficial. `topicosCobertos` repete
+ * literalmente os tópicos da JET/IPB para permitir validação automatizada de
+ * completude sem inferência por palavras-chave.
+ */
+export interface MaterialUnidade {
+  id: string;
+  disciplina: string;
+  unidade: number;
+  titulo: string;
+  objetivo: string;
+  topicosCobertos: string[];
+  blocos: BlocoMaterialUnidade[];
+  fontes: Fonte[];
+  atualizadoEm: string;
+}
+
 /* ---- planejamento curricular integral ---- */
 
 /**
