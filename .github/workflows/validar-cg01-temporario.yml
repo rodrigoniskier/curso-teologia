@@ -1,0 +1,45 @@
+name: Validar CG01 temporariamente
+
+on:
+  push:
+    branches:
+      - content/curriculo-integral-01-cg01
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/curriculo-integral-01-cg01
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Validar materiais unitários
+        run: npm run validar:materiais
+      - name: Validar integridade integral
+        run: npm run validar
+      - name: Auditar metadados
+        run: npm run auditar:metadados
+      - name: Build de produção
+        run: npm run build
+      - name: Estado curricular
+        run: npm run progresso:curriculo
+
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/curriculo-integral-01-cg01
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Auditar todas as fontes
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
+        run: node scripts/auditar-links.mjs --relatorio
