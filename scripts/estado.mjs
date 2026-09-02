@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 /**
- * Imprime o estado do portal: cobertura por departamento, contagens e idiomas
- * da biblioteca.
- *
- * A cobertura é calculada por DISCIPLINAS distintas, não pelo número bruto de
- * verbetes. Um departamento pode ter vários verbetes na mesma disciplina e
- * ainda conservar lacunas curriculares; usar `verbetes/aplicáveis` escondia
- * exatamente esse caso.
+ * Imprime o estado integral do portal. A régua principal agora é o currículo
+ * completo: 121 disciplinas e suas unidades oficiais. Ter um verbete numa
+ * disciplina continua sendo informação útil, mas não equivale a concluir suas
+ * unidades.
  *
  *   npm run estado
  *   npm run conferir
@@ -16,20 +13,6 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
-
-/**
- * Disciplinas em que um verbete doutrinário não se aplica: aquisição de língua
- * e estágio supervisionado. Não é possível aprender hebraico nem cumprir
- * estágio lendo um verbete, e contá-las como descobertas distorce a escolha do
- * próximo alvo.
- */
-const SEM_VERBETE = new Set([
-  // aquisição de língua
-  'CG01', 'CG02', 'CG03', 'CG04', 'CG05', 'CG54', 'CG56', 'CG57',
-  'TE04', 'TE05', 'TE06', 'TE07', 'TE08', 'TE09', 'TE10', 'TE11',
-  // estágio supervisionado
-  'TP21', 'TP22', 'TP23', 'TP24',
-]);
 
 async function arquivosDeConteudo(dir) {
   const saida = [];
@@ -50,121 +33,121 @@ async function arquivosDeBiblioteca() {
 }
 
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
+const plano = JSON.parse(await readFile(join(RAIZ, 'src/dados/plano-curricular.json'), 'utf8'));
+const cobertura = JSON.parse(await readFile(join(RAIZ, 'src/dados/cobertura-curricular.json'), 'utf8'));
+const unidadesRegistradas = cobertura.unidadesConcluidas ?? {};
+const semUnidadesConcluidas = new Set(cobertura.disciplinasSemUnidadesConcluidas ?? []);
 
 const depPorCodigo = new Map(ementas.map((d) => [d.codigo, d.departamento]));
 const depPorSigla = new Map(ementas.map((d) => [d.sigla, d.departamento]));
 const discPorDep = new Map();
-const aplicaveisPorDep = new Map();
+const unidadesPorDep = new Map();
+const unidadesConcluidasPorDep = new Map();
 let unidades = 0;
 let topicos = 0;
 let referencias = 0;
+let unidadesConcluidas = 0;
+let disciplinasConcluidas = 0;
+
 for (const d of ementas) {
   discPorDep.set(d.departamento, (discPorDep.get(d.departamento) ?? 0) + 1);
-  if (!SEM_VERBETE.has(d.codigo))
-    aplicaveisPorDep.set(d.departamento, (aplicaveisPorDep.get(d.departamento) ?? 0) + 1);
-  unidades += d.unidades?.length ?? 0;
-  for (const u of d.unidades ?? []) topicos += u.topicos?.length ?? 0;
-  referencias +=
-    (d.bibliografia?.basica?.length ?? 0) + (d.bibliografia?.complementar?.length ?? 0);
+  unidadesPorDep.set(d.departamento, (unidadesPorDep.get(d.departamento) ?? 0) + d.unidades.length);
+  unidades += d.unidades.length;
+  for (const u of d.unidades) topicos += u.topicos?.length ?? 0;
+  referencias += (d.bibliografia?.basica?.length ?? 0) + (d.bibliografia?.complementar?.length ?? 0);
+
+  const oficiais = new Set(d.unidades.map((u) => u.numero));
+  const feitas = [...new Set(unidadesRegistradas[d.codigo] ?? [])].filter((n) => oficiais.has(n));
+  unidadesConcluidas += feitas.length;
+  unidadesConcluidasPorDep.set(
+    d.departamento,
+    (unidadesConcluidasPorDep.get(d.departamento) ?? 0) + feitas.length,
+  );
+  const completa = d.unidades.length === 0
+    ? semUnidadesConcluidas.has(d.codigo)
+    : feitas.length === d.unidades.length;
+  if (completa) disciplinasConcluidas++;
 }
 
 const verbPorDep = new Map();
-const disciplinasCobertas = new Set();
+const disciplinasComVerbete = new Set();
 let verbetes = 0;
 for (const f of await arquivosDeConteudo(join(RAIZ, 'src/conteudo'))) {
   const s = await readFile(f, 'utf8');
   const m = s.match(/disciplina:\s*'([^']+)'/);
   if (!m) continue;
   verbetes++;
-  disciplinasCobertas.add(m[1]);
+  disciplinasComVerbete.add(m[1]);
   const dep = depPorCodigo.get(m[1]) ?? '(código desconhecido)';
   verbPorDep.set(dep, (verbPorDep.get(dep) ?? 0) + 1);
 }
 
-const cobertasAplicaveis = new Set(
-  [...disciplinasCobertas].filter((codigo) => !SEM_VERBETE.has(codigo)),
-);
-const cobertasPorDep = new Map();
-for (const codigo of cobertasAplicaveis) {
-  const dep = depPorCodigo.get(codigo);
-  if (dep) cobertasPorDep.set(dep, (cobertasPorDep.get(dep) ?? 0) + 1);
-}
-
-// O acervo pode crescer por arquivos temáticos. A contagem descobre todos os
-// biblioteca*.ts reais, excluindo apenas o agregador biblioteca-completa.ts.
 const bib = (await Promise.all((await arquivosDeBiblioteca()).map((f) => readFile(f, 'utf8')))).join('\n');
 const obras = [...bib.matchAll(/^ {4}id: '([^']+)',/gm)].length;
-const idiomas = new Map();
+const idiomasBiblioteca = new Map();
 for (const [, i] of bib.matchAll(/^ {4}idioma: '([^']+)',/gm))
-  idiomas.set(i, (idiomas.get(i) ?? 0) + 1);
+  idiomasBiblioteca.set(i, (idiomasBiblioteca.get(i) ?? 0) + 1);
 
-const restritos = JSON.parse(
-  await readFile(join(RAIZ, 'src/dados/dominios-restritos.json'), 'utf8'),
-);
-
-const linhas = [...discPorDep.entries()]
-  .map(([dep, nd]) => {
-    const nap = aplicaveisPorDep.get(dep) ?? 0;
-    const nc = cobertasPorDep.get(dep) ?? 0;
-    const nv = verbPorDep.get(dep) ?? 0;
-    return { dep, nd, nap, nc, nv, razao: nap ? nc / nap : 1 };
-  })
-  .sort((a, b) => a.razao - b.razao || a.dep.localeCompare(b.dep));
+const restritos = JSON.parse(await readFile(join(RAIZ, 'src/dados/dominios-restritos.json'), 'utf8'));
 
 console.log(
-  `\n${'DEPARTAMENTO'.padEnd(24)}${'disc'.padStart(5)}${'aplic'.padStart(7)}${'cob'.padStart(6)}${'verb'.padStart(6)}${'c/aplic'.padStart(9)}`,
+  `\n${'DEPARTAMENTO'.padEnd(24)}${'disc'.padStart(5)}${'verb'.padStart(6)}${'unid'.padStart(7)}${'ok'.padStart(7)}${'% unid'.padStart(8)}`,
 );
-for (const l of linhas)
+for (const [dep, nd] of discPorDep.entries()) {
+  const nv = verbPorDep.get(dep) ?? 0;
+  const nu = unidadesPorDep.get(dep) ?? 0;
+  const ok = unidadesConcluidasPorDep.get(dep) ?? 0;
+  const percentual = nu ? (ok / nu) * 100 : 0;
   console.log(
-    l.dep.padEnd(24) +
-      String(l.nd).padStart(5) +
-      String(l.nap).padStart(7) +
-      String(l.nc).padStart(6) +
-      String(l.nv).padStart(6) +
-      l.razao.toFixed(2).padStart(9),
+    dep.padEnd(24) +
+      String(nd).padStart(5) +
+      String(nv).padStart(6) +
+      String(nu).padStart(7) +
+      String(ok).padStart(7) +
+      `${percentual.toFixed(1)}%`.padStart(8),
   );
-console.log(
-  '\ncob = disciplinas aplicáveis distintas com ao menos um verbete; verb = total bruto de verbetes.',
-);
-console.log(
-  'aplic = disciplinas em que cabe verbete; exclui aquisição de língua e' +
-    ` estágio (${SEM_VERBETE.size} no total, lista no topo do script).`,
-);
+}
 
-const aplicaveis = ementas.length - SEM_VERBETE.size;
-console.log(
-  `\nverbetes: ${verbetes}  ·  disciplinas com verbete: ${cobertasAplicaveis.size}/${aplicaveis} aplicáveis` +
-    ` (${ementas.length} no currículo)  ·  obras na biblioteca: ${obras}`,
-);
+const idiomas = plano.naturezas.idioma.length;
+const estagios = plano.naturezas.estagio.length;
+const conteudo = ementas.length - idiomas - estagios;
+console.log(`\nnaturezas pedagógicas: conteúdo ${conteudo} · idiomas ${idiomas} · estágios ${estagios}`);
+console.log(`verbetes: ${verbetes} · disciplinas com ao menos um verbete: ${disciplinasComVerbete.size}/${ementas.length}`);
+console.log(`unidades oficialmente verificadas: ${unidadesConcluidas}/${unidades}`);
+console.log(`disciplinas integralmente concluídas: ${disciplinasConcluidas}/${ementas.length}`);
+console.log(`módulos avaliativos estruturados: ${ementas.length * 2} (AV1 + AV2 para cada disciplina)`);
+console.log(`obras na biblioteca: ${obras}`);
 console.log(
   'idiomas da biblioteca: ' +
-    [...idiomas.entries()].sort((a, b) => b[1] - a[1]).map(([i, n]) => `${i} ${n}`).join(' · '),
+    [...idiomasBiblioteca.entries()].sort((a, b) => b[1] - a[1]).map(([i, n]) => `${i} ${n}`).join(' · '),
 );
 console.log('domínios não auditáveis: ' + (restritos.map((r) => r.dominio).join(', ') || 'nenhum'));
 
-const descobertas = ementas.filter((d) => !SEM_VERBETE.has(d.codigo) && !cobertasAplicaveis.has(d.codigo));
-if (descobertas.length === 0) {
-  console.log(
-    '\npróximo alvo: cobertura curricular aplicável completa; rode `npm run priorizar` para a fila de aprofundamento e revisão.\n',
-  );
+const historico = plano.ordemHistorico.map((x) => ({ ...x, origem: 'histórico' }));
+const noHistorico = new Set(historico.map((x) => x.codigo));
+const ordem = [
+  ...historico,
+  ...ementas.filter((d) => !noHistorico.has(d.codigo)).map((d) => ({ codigo: d.codigo, origem: 'currículo' })),
+];
+const porCodigo = new Map(ementas.map((d) => [d.codigo, d]));
+const proximo = ordem.find((item) => {
+  const d = porCodigo.get(item.codigo);
+  if (!d) return false;
+  if (d.unidades.length === 0) return !semUnidadesConcluidas.has(d.codigo);
+  const feitas = new Set(unidadesRegistradas[d.codigo] ?? []);
+  return d.unidades.some((u) => !feitas.has(u.numero));
+});
+if (proximo) {
+  const d = porCodigo.get(proximo.codigo);
+  console.log(`\npróxima disciplina pela ordem fixada: ${d.codigo} — ${d.titulo} [${proximo.periodo ?? 'ausente do histórico'}]`);
 } else {
-  console.log(`\nlacunas aplicáveis (${descobertas.length}):`);
-  for (const d of descobertas)
-    console.log(`  · ${d.codigo} — ${d.titulo} [${d.departamento}]`);
-  const depAlvo = linhas.find((l) => l.nc < l.nap)?.dep;
-  console.log(`\npróximo alvo: ${depAlvo ?? descobertas[0].departamento} (menor cobertura real por disciplina)\n`);
+  console.log('\ncurrículo integral concluído.');
 }
+console.log();
 
 if (!process.argv.includes('--conferir')) process.exit(0);
 
-/* ------------------------------------------------------------------ *
- * Conferência do README                                              *
- * ------------------------------------------------------------------ */
-
 const readme = await readFile(join(RAIZ, 'README.md'), 'utf8');
-
-/** Números de uma linha de tabela, pelo rótulo da primeira célula.
- *  Aceita separador de milhar (`1.339`) e negrito (`**121**`). */
 function numerosDaLinha(rotulo) {
   const escapado = rotulo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const m = readme.match(new RegExp(`^\\|\\s*${escapado}\\s*\\|(.*)$`, 'm'));
@@ -178,27 +161,23 @@ const conferencias = [
   ['Referências bibliográficas oficiais', [referencias]],
   ['Verbetes redigidos', [verbetes]],
   ['Obras livres mapeadas', [obras]],
+  ['Unidades verificadas', [unidadesConcluidas, unidades]],
+  ['Disciplinas concluídas', [disciplinasConcluidas, ementas.length]],
+  ['Módulos avaliativos estruturados', [ementas.length * 2]],
   ...[...depPorSigla].map(([sigla, dep]) => [`\`${sigla}\``, [discPorDep.get(dep) ?? 0]]),
 ];
 
 const divergencias = [];
 for (const [rotulo, esperado] of conferencias) {
   const achado = numerosDaLinha(rotulo);
-  if (achado === null) {
-    divergencias.push(`${rotulo}: linha não encontrada no README`);
-  } else if (achado.length !== esperado.length || achado.some((n, i) => n !== esperado[i])) {
+  if (achado === null) divergencias.push(`${rotulo}: linha não encontrada no README`);
+  else if (achado.length !== esperado.length || achado.some((n, i) => n !== esperado[i]))
     divergencias.push(`${rotulo}: README diz ${achado.join(', ')} — o código diz ${esperado.join(', ')}`);
-  }
 }
 
 if (divergencias.length > 0) {
   console.error('README fora de sincronia com o repositório:\n');
   for (const d of divergencias) console.error(`  · ${d}`);
-  console.error(
-    '\nCorrija os números no README.md (ou o rótulo, se a linha foi renomeada).' +
-      ' Estes números são conferidos na CI justamente porque já divergiram à mão.\n',
-  );
   process.exit(1);
 }
-
 console.log(`README conferido: ${conferencias.length} linhas batem com o repositório.\n`);

@@ -5,6 +5,8 @@ import { carregarDisciplina } from '../infra/carregar-disciplina';
 import { carregarLeituras } from '../infra/carregar-leituras';
 import { carregarVerbete } from '../infra/carregar-verbete';
 import { Verbete } from '../componentes/Verbete';
+import { PainelCurricular } from '../componentes/PainelCurricular';
+import { ProgramaUnidades } from '../componentes/ProgramaUnidades';
 import type { ObraLivre } from '../dados/biblioteca';
 import type { Disciplina, Verbete as TVerbete } from '../tipos';
 
@@ -209,6 +211,8 @@ export function PaginaDisciplina() {
         </p>
       </header>
 
+      <PainelCurricular disciplina={d} />
+
       {vs.length > 0 && (
         <section className="mt-9">
           <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
@@ -236,32 +240,7 @@ export function PaginaDisciplina() {
         </section>
       )}
 
-      {d.unidades.length > 0 && (
-        <section className="mt-11">
-          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
-            Programa oficial · {d.unidades.length} unidades
-          </h2>
-          <p className="mt-1.5 font-sans text-[0.78rem] text-neutral-500">
-            Conteúdo aprovado pelo Supremo Concílio da IPB. As unidades abaixo orientam a cobertura
-            curricular dos verbetes publicados para esta disciplina.
-          </p>
-          <ol className="mt-5 space-y-3">
-            {d.unidades.map((u) => (
-              <li key={u.numero} className="border-l-2 border-margem pl-4">
-                <p className="font-sans text-[0.9rem] font-semibold text-neutral-800">
-                  <span className="mr-2 text-tinta-400">{u.numero}.</span>
-                  {u.titulo}
-                </p>
-                {u.topicos.map((t, i) => (
-                  <p key={i} className="mt-1 text-[0.95rem] leading-relaxed text-neutral-600">
-                    {t}
-                  </p>
-                ))}
-              </li>
-            ))}
-          </ol>
-        </section>
-      )}
+      <ProgramaUnidades disciplina={d} />
 
       {livres.length > 0 && (
         <section className="mt-11 border-t border-margem pt-7">

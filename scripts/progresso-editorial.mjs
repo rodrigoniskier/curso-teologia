@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Estima o avanço da produção editorial sem tratar volume como nota de qualidade.
+ * Indicador SECUNDÁRIO de densidade textual das disciplinas tratadas por verbetes.
  *
  * A meta é calculada disciplina por disciplina. Para cada uma das 101 disciplinas
  * em que um verbete se aplica, usa-se o maior entre:
@@ -10,7 +10,7 @@
  *
  * O avanço de cada disciplina é limitado a 100%, para que profundidade excedente
  * em uma área não compense uma lacuna em outra. O resultado é, portanto, uma
- * estimativa transparente da massa editorial planejada, não um gate de qualidade.
+ * estimativa de massa textual, não um gate de qualidade nem o progresso global do currículo.
  */
 import { readFile, readdir } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
@@ -173,7 +173,7 @@ if (process.argv.includes('--json')) {
   process.exit(0);
 }
 
-console.log('\nPROGRESSO EDITORIAL ESTIMADO');
+console.log('\nDENSIDADE EDITORIAL SECUNDÁRIA');
 console.log(`disciplinas aplicáveis: ${disciplinas.length}`);
 console.log(`palavras autorais existentes: ${palavrasTotais.toLocaleString('pt-BR')}`);
 console.log(`meta distribuída: ${metaTotal.toLocaleString('pt-BR')} palavras`);
@@ -191,4 +191,4 @@ for (const item of pendentes.slice(0, 15)) {
     `  falta ${String(item.falta).padStart(5)} palavras  ${item.titulo}`,
   );
 }
-console.log('\nEsta é uma estimativa de produção, não uma nota de qualidade nem um gate automático.');
+console.log('\nIndicador secundário de volume textual: não representa a conclusão global das 121 disciplinas nem das 1.375 unidades.');

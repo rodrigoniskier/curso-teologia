@@ -67,12 +67,14 @@ jobs:
 
       - name: Testar regras de infraestrutura
         run: node --test scripts/lib/*.test.mjs
-      - name: Validar integridade do conteúdo
+      - name: Validar conteúdo, currículo integral e avaliações
         run: npm run validar
       - name: Auditar coerência semântica dos metadados
         run: npm run auditar:metadados
       - run: npm run build
       - name: Conferir os números do README
         run: npm run conferir
-      - name: Verificar diagnóstico editorial
+      - name: Conferir fila curricular integral
+        run: npm run progresso:curriculo -- --json > /dev/null
+      - name: Verificar diagnóstico editorial secundário
         run: npm run priorizar -- --json > /dev/null

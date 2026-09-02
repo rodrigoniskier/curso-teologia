@@ -20,6 +20,9 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Referências bibliográficas oficiais | **1.251** |
 | Verbetes redigidos | 201 |
 | Obras livres mapeadas | 224 |
+| Unidades verificadas | **0 / 1.375** |
+| Disciplinas concluídas | **0 / 121** |
+| Módulos avaliativos estruturados | **242** |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -31,11 +34,17 @@ Os cinco departamentos, conforme o documento oficial:
 | `TP` | Teologia Pastoral | 37 |
 | `CG` | Cultura Geral | 30 |
 
-A cobertura não é inferida pelo número bruto de verbetes. `npm run estado`
-conta **disciplinas distintas**: hoje há conteúdo em **101 das 101 disciplinas
-em que um verbete se aplica**. O primeiro ciclo de cobertura curricular está,
-portanto, completo. A diferença entre 201 verbetes e 101 disciplinas cobertas
-existe porque algumas disciplinas possuem mais de um verbete.
+A régua principal não é mais a presença de verbetes. O projeto acompanha o **currículo integral das 121 disciplinas** e exige verificação explícita das **1.375 unidades oficiais**. Idiomas e estágios pertencem à mesma meta, mas usam formatos pedagógicos próprios. Um verbete ancorado numa unidade não a certifica automaticamente.
+
+O registro conservador começa sem promover retroativamente o acervo já escrito: cada unidade existente será revisada contra todos os seus tópicos oficiais quando chegar sua vez na fila de produção. `npm run progresso:curriculo` é a fonte de verdade para conclusão curricular; `npm run densidade:editorial` permanece apenas como indicador secundário de volume textual.
+
+## Currículo integral, ordem de produção e avaliações
+
+O plano permanente está em [`src/dados/plano-curricular.json`](src/dados/plano-curricular.json). A produção segue primeiro as **93 disciplinas que aparecem no histórico de referência**, na ordem em que constam nele; somente depois entram as **28 disciplinas ausentes do histórico**, preservando a ordem do currículo oficial.
+
+Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. O banco [`src/dados/questoes.json`](src/dados/questoes.json) começa vazio. A CI rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2; disciplinas sem unidades numeradas são acompanhadas em nível de disciplina, sem conteúdo inventado.
+
+As unidades oficiais têm rota própria (`/disciplina/:codigo/unidade/:numero`). Isso permite que aquisição de línguas e estágios recebam, no futuro, materiais adequados ao seu método sem depender do formato de verbete doutrinário.
 
 ## Como o conteúdo é escrito
 
@@ -88,8 +97,11 @@ um link válido prometa no título conteúdo que a URL não entrega; e a auditor
 de links verifica a disponibilidade da rede:
 
 ```bash
-npm run validar             # gera o índice e valida ids, verMais, fontes, acervo e currículo
+npm run validar             # integridade de conteúdo, currículo integral e avaliações
 npm run validar:curriculo   # sequência e contaminação estrutural das unidades e bibliografias
+npm run validar:plano       # 121 disciplinas, ordem do histórico, AV1/AV2 e cobertura explícita
+npm run validar:avaliacoes  # bloqueia questões prematuras ou fora da faixa/unidade
+npm run progresso:curriculo # régua principal: unidades e disciplinas verificadas
 npm run auditar:metadados   # coerência semântica entre título e URL de acervos
 npm run auditar             # falha se houver link quebrado
 npm run auditar:relatorio   # grava relatorio-auditoria.md
