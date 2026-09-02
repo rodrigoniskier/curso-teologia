@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { MaterialUnidade } from '../componentes/MaterialUnidade';
 import { naturezaDaDisciplina, rotuloNatureza } from '../dados/configuracao-curricular';
 import { carregarDisciplina } from '../infra/carregar-disciplina';
+import { carregarMaterialUnidade } from '../infra/carregar-material-unidade';
 import { porCodigo, verbetesDe } from '../infra/catalogo';
 import { unidadeEstaConcluida } from '../infra/cobertura-curricular';
-import type { Disciplina } from '../tipos';
+import type { Disciplina, MaterialUnidade as TMaterialUnidade } from '../tipos';
 
 function faixaAvaliativa(numero: number): string {
   if (numero <= 8) return 'AV1';
@@ -17,20 +19,31 @@ export function PaginaUnidade() {
   const resumo = porCodigo.get(codigo);
   const numeroUnidade = Number(numero);
   const [disciplina, setDisciplina] = useState<Disciplina>();
+  const [material, setMaterial] = useState<TMaterialUnidade>();
   const [falhou, setFalhou] = useState(false);
 
   useEffect(() => {
     let ativo = true;
+    setDisciplina(undefined);
+    setMaterial(undefined);
+    setFalhou(false);
     if (!resumo || !Number.isInteger(numeroUnidade)) return () => { ativo = false; };
-    void carregarDisciplina(codigo)
-      .then((d) => {
+
+    void Promise.all([
+      carregarDisciplina(codigo),
+      carregarMaterialUnidade(codigo, numeroUnidade),
+    ])
+      .then(([d, m]) => {
         if (!ativo) return;
         if (d) setDisciplina(d);
         else setFalhou(true);
+        if (m) setMaterial(m);
       })
-      .catch(() => {
+      .catch((erro: unknown) => {
+        console.error(erro);
         if (ativo) setFalhou(true);
       });
+
     return () => { ativo = false; };
   }, [codigo, numeroUnidade, resumo?.codigo]);
 
@@ -66,6 +79,9 @@ export function PaginaUnidade() {
   const natureza = naturezaDaDisciplina(codigo);
   const concluida = unidadeEstaConcluida(codigo, numeroUnidade);
   const relacionados = verbetesDe(codigo).filter((v) => v.unidade === numeroUnidade);
+  const materialDaRota = material?.disciplina === codigo && material.unidade === numeroUnidade
+    ? material
+    : undefined;
 
   return (
     <article>
@@ -104,11 +120,24 @@ export function PaginaUnidade() {
         )}
       </section>
 
-      <section className="mt-10 border-t border-margem pt-7">
-        <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
-          Materiais vinculados a esta unidade
-        </h2>
-        {relacionados.length > 0 ? (
+      {materialDaRota ? (
+        <MaterialUnidade material={materialDaRota} />
+      ) : (
+        <section className="mt-10 border-t border-margem pt-7">
+          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
+            Material da unidade
+          </h2>
+          <p className="mt-4 font-sans text-[0.84rem] leading-relaxed text-neutral-600">
+            O material pedagógico específico desta unidade ainda não foi publicado. A existência desta página não conta, por si só, como conclusão curricular.
+          </p>
+        </section>
+      )}
+
+      {relacionados.length > 0 && (
+        <section className="mt-10 border-t border-margem pt-7">
+          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-tinta-700">
+            Verbetes relacionados
+          </h2>
           <ul className="mt-4 space-y-3">
             {relacionados.map((v) => (
               <li key={v.id}>
@@ -122,12 +151,8 @@ export function PaginaUnidade() {
               </li>
             ))}
           </ul>
-        ) : (
-          <p className="mt-4 font-sans text-[0.84rem] leading-relaxed text-neutral-600">
-            Nenhum material unitário está publicado nesta unidade. A página existe desde já para receber o formato pedagógico adequado à disciplina sem confundir presença de material com conclusão curricular.
-          </p>
-        )}
-      </section>
+        </section>
+      )}
     </article>
   );
 }
