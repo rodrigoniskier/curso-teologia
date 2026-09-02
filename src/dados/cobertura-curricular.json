@@ -1,4 +1,6 @@
 {
-  "unidadesConcluidas": {},
+  "unidadesConcluidas": {
+    "CG01": [1, 2, 3, 4]
+  },
   "disciplinasSemUnidadesConcluidas": []
 }
