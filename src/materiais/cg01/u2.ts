@@ -141,16 +141,16 @@ export const material: MaterialUnidade = {
   fontes: [
     {
       id: 'uab-fonetica-fonologia-morfologia',
-      autor: 'Maria Helena Mira Mateus',
-      ano: '1991',
-      titulo: 'Fonética, fonologia e morfologia do português: a linguagem e as línguas',
-      publicacao: 'Universidade Aberta',
-      url: 'https://repositorioaberto.uab.pt/handle/10400.2/7188',
+      autor: 'Marli Hermenegilda Pereira; Mikaela Roberto; Ricardo Stavola Cavaliere',
+      ano: '2015',
+      titulo: 'Português V — Vol. 1',
+      publicacao: 'Canal CECIERJ / Consórcio CEDERJ',
+      url: 'https://canal.cecierj.edu.br/recurso/17163',
       idioma: 'pt',
       tipo: 'curso',
       acesso: 'livre',
-      nota: 'Recurso acadêmico aberto utilizado para a distinção introdutória entre fonética, fonologia e morfologia.',
+      nota: 'Caderno universitário aberto utilizado para a introdução à fonética e para a distinção entre realização sonora, fonema e grafia.',
     },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-03',
 };
