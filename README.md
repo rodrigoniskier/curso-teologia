@@ -19,10 +19,11 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Unidades do programa | **1.375** (2.036 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
 | Verbetes redigidos | 201 |
-| Obras livres mapeadas | 224 |
-| Unidades verificadas | **0 / 1.375** |
-| Disciplinas concluídas | **0 / 121** |
+| Obras livres mapeadas | 228 |
+| Unidades verificadas | **4 / 1.375** |
+| Disciplinas concluídas | **1 / 121** |
 | Módulos avaliativos estruturados | **242** |
+| Questões avaliativas publicadas | **10** |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -42,9 +43,9 @@ O registro conservador começa sem promover retroativamente o acervo já escrito
 
 O plano permanente está em [`src/dados/plano-curricular.json`](src/dados/plano-curricular.json). A produção segue primeiro as **93 disciplinas que aparecem no histórico de referência**, na ordem em que constam nele; somente depois entram as **28 disciplinas ausentes do histórico**, preservando a ordem do currículo oficial.
 
-Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. O banco [`src/dados/questoes.json`](src/dados/questoes.json) começa vazio. A CI rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2; disciplinas sem unidades numeradas são acompanhadas em nível de disciplina, sem conteúdo inventado.
+Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. O banco [`src/dados/questoes.json`](src/dados/questoes.json) cresce apenas quando um bloco curricular é efetivamente concluído; a CI rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Cada item publicado registra contexto, comando, alternativas, gabarito, racional individual, tipo, tema, Taxonomia de Bloom, dificuldade e referenciais. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2; disciplinas sem unidades numeradas são acompanhadas em nível de disciplina, sem conteúdo inventado.
 
-As unidades oficiais têm rota própria (`/disciplina/:codigo/unidade/:numero`). Isso permite que aquisição de línguas e estágios recebam, no futuro, materiais adequados ao seu método sem depender do formato de verbete doutrinário.
+As unidades oficiais têm rota própria (`/disciplina/:codigo/unidade/:numero`). Isso permite que aquisição de línguas e estágios recebam materiais adequados ao seu método sem depender do formato de verbete doutrinário.
 
 ## Como o conteúdo é escrito
 
