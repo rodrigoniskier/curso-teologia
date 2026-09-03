@@ -150,7 +150,8 @@ export interface QuestaoMultiplaEscolha {
   id: string;
   disciplina: string;
   avaliacao: AvaliacaoId;
-  unidade: number;
+  /** Ausente quando o programa oficial não possui unidades numeradas. */
+  unidade?: number;
   tipoItem: TipoItemAvaliativo;
   tema: string;
   taxonomiaBloom: NivelBloom;
@@ -179,6 +180,8 @@ export interface ModuloAvaliativo {
   fimUnidade: number;
   unidadesAlvo: number[];
   unidadesForaDoEscopo: number[];
+  /** `ementa-integral` é usado apenas quando não existem unidades oficiais. */
+  escopo: 'unidades' | 'ementa-integral';
   status: StatusModuloAvaliativo;
   questoes: QuestaoMultiplaEscolha[];
 }
