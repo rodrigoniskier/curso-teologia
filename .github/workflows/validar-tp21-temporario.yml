@@ -6,9 +6,25 @@ on:
       - content/curriculo-integral-02-tp21
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  sincronizar:
+    if: github.event.head_commit.message != 'Sincronizar main em TP21'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/curriculo-integral-02-tp21
+          fetch-depth: 0
+      - name: Incorporar main ao ramo
+        run: |
+          git config user.name 'dev.Rodrigo Niskier'
+          git config user.email 'niskier.rodrigo@gmail.com'
+          git fetch origin main
+          git merge origin/main --no-edit -m 'Sincronizar main em TP21'
+          git push origin HEAD:content/curriculo-integral-02-tp21
+
   validar:
     runs-on: ubuntu-latest
     steps:
