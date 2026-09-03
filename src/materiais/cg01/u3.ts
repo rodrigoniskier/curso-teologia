@@ -34,7 +34,7 @@ export const material: MaterialUnidade = {
       titulo: 'Categorias básicas para esta unidade',
       itens: [
         'Radical: elemento que concentra o núcleo lexical compartilhado por palavras de uma mesma família.',
-        'Afixo: morfema acrescentado à base; pode aparecer antes dela (prefixo) ou depois (sufixo).',
+        'Afixo: morfema acrescentado à base; pode aparecer antes dela (prefixo) ou depois dela (sufixo).',
         'Desinência: elemento flexional que expressa informações gramaticais, como número ou características verbais.',
         'Vogal temática: elemento que, em certas análises, liga o radical a terminações flexionais e identifica classes ou conjugações.',
         'Tema: combinação do radical com a vogal temática, quando esta existe.',
@@ -154,18 +154,6 @@ export const material: MaterialUnidade = {
       acesso: 'livre',
       nota: 'Caderno universitário aberto utilizado como apoio à estrutura, flexão e formação das palavras.',
     },
-    {
-      id: 'uab-fonetica-fonologia-morfologia',
-      autor: 'Maria Helena Mira Mateus',
-      ano: '1991',
-      titulo: 'Fonética, fonologia e morfologia do português: a linguagem e as línguas',
-      publicacao: 'Universidade Aberta',
-      url: 'https://repositorioaberto.uab.pt/handle/10400.2/7188',
-      idioma: 'pt',
-      tipo: 'curso',
-      acesso: 'livre',
-      nota: 'Material acadêmico aberto que situa a morfologia entre os níveis de análise da língua.',
-    },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-03',
 };
