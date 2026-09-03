@@ -1,0 +1,52 @@
+name: Finalizar TP21 temporariamente
+
+on:
+  push:
+    branches:
+      - content/curriculo-integral-02-tp21
+
+permissions:
+  contents: write
+
+jobs:
+  finalizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: content/curriculo-integral-02-tp21
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Atualizar README para o estado calculado
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('README.md')
+          s = p.read_text()
+          trocas = {
+            '| Disciplinas concluídas | **1 / 121** |': '| Disciplinas concluídas | **2 / 121** |',
+            '| Questões avaliativas publicadas | **10** |': '| Questões avaliativas publicadas | **30** |',
+            'Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. O banco [`src/dados/questoes.json`](src/dados/questoes.json) cresce apenas quando um bloco curricular é efetivamente concluído; a CI rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Cada item publicado registra contexto, comando, alternativas, gabarito, racional individual, tipo, tema, Taxonomia de Bloom, dificuldade e referenciais. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2; disciplinas sem unidades numeradas são acompanhadas em nível de disciplina, sem conteúdo inventado.': 'Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. O banco [`src/dados/questoes.json`](src/dados/questoes.json) cresce apenas quando um bloco curricular é efetivamente concluído; a CI rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Cada item publicado registra contexto, comando, alternativas, gabarito, racional individual, tipo, tema, Taxonomia de Bloom, dificuldade e referenciais. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2. Quando o programa oficial não possui unidades numeradas, nenhuma unidade fictícia é criada: a conclusão é registrada no nível da disciplina e AV1/AV2 só podem ser publicadas depois da verificação integral da ementa.'
+          }
+          for antiga, nova in trocas.items():
+              if s.count(antiga) != 1:
+                  raise SystemExit(f'trecho esperado não encontrado uma única vez: {antiga[:60]}')
+              s = s.replace(antiga, nova)
+          p.write_text(s)
+          PY
+      - run: npm ci
+      - name: Validar conteúdo e avaliações
+        run: npm run validar
+      - name: Build de produção
+        run: npm run build
+      - name: Conferir README e estado calculado
+        run: npm run conferir
+      - name: Publicar e remover workflow temporário
+        run: |
+          git config user.name 'dev.Rodrigo Niskier'
+          git config user.email 'niskier.rodrigo@gmail.com'
+          git rm .github/workflows/finalizar-tp21-temporario.yml
+          git add README.md
+          git commit -m 'Sincronizar README com conclusão de TP21'
+          git push origin HEAD:content/curriculo-integral-02-tp21
