@@ -29,6 +29,8 @@ jobs:
         run: npm run build
       - name: Estado curricular
         run: npm run progresso:curriculo
+      - name: Conferir README
+        run: npm run conferir
 
   links:
     runs-on: ubuntu-latest
