@@ -1,1 +1,382 @@
-[]
+[
+  {
+    "id": "cg01-av1-q01",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-unica",
+    "tema": "Adequação linguística e registro",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "facil",
+    "referenciais": ["cg01-u1-lingua-linguagem-comunicacao", "cecierj-linguagem-variacao"],
+    "contexto": "Uma comissão precisa registrar em ata que os participantes conversaram sobre uma divergência e decidiram conferir novamente os dados antes de votar. Na discussão oral, um integrante resumiu: “A gente viu que umas partes não batiam, aí resolveu olhar tudo de novo antes de decidir”.",
+    "comando": "Assinale a redação mais adequada para registrar essa informação em uma ata formal.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "A gente viu que umas partes não batiam e resolveu olhar tudo de novo antes de decidir.",
+        "justificativa": "A frase preserva marcas de oralidade e referências vagas que reduzem a autonomia e a precisão esperadas em uma ata formal."
+      },
+      {
+        "letra": "B",
+        "texto": "Os participantes identificaram divergências entre os dados e deliberaram por nova conferência antes da votação.",
+        "justificativa": "A redação explicita os referentes, mantém a relação lógica do relato e adota registro compatível com um documento formal."
+      },
+      {
+        "letra": "C",
+        "texto": "Houve, por conseguinte, uma fenomenologia discrepante cuja hermenêutica exigiu ulterior escrutínio deliberativo.",
+        "justificativa": "O vocabulário rebuscado acrescenta complexidade sem ganho de precisão e prejudica a clareza exigida pelo gênero ata."
+      },
+      {
+        "letra": "D",
+        "texto": "As partes estavam meio diferentes, então todo mundo achou melhor ver isso depois e votar.",
+        "justificativa": "Expressões como “meio diferentes”, “todo mundo” e “isso” mantêm imprecisão referencial e registro excessivamente coloquial."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "A adequação linguística depende do gênero e da situação. Em ata, a prioridade é registrar de modo claro, preciso e autônomo o fato e a deliberação, sem reproduzir literalmente a espontaneidade da fala.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q02",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-unica",
+    "tema": "Comunicação verbal e não verbal",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg01-u1-lingua-linguagem-comunicacao", "cecierj-linguagem-variacao"],
+    "contexto": "Na entrada de uma biblioteca há um cartaz com um desenho de telefone celular cortado por uma faixa diagonal vermelha e, logo abaixo, a frase “Mantenha o aparelho no silencioso”. O ícone pode ser reconhecido rapidamente, enquanto a frase especifica a conduta esperada.",
+    "comando": "Assinale a análise que melhor descreve a construção de sentido desse cartaz.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "O cartaz utiliza apenas linguagem verbal, pois a imagem depende de palavras para possuir qualquer significado.",
+        "justificativa": "O ícone é um recurso não verbal capaz de participar da significação, ainda que a frase verbal reduza possíveis ambiguidades."
+      },
+      {
+        "letra": "B",
+        "texto": "O cartaz utiliza apenas linguagem não verbal, pois o desenho é suficiente para substituir integralmente a frase escrita.",
+        "justificativa": "A frase é linguagem verbal e acrescenta uma instrução específica; portanto, o texto não pode ser classificado como exclusivamente não verbal."
+      },
+      {
+        "letra": "C",
+        "texto": "O cartaz é multimodal, pois articula linguagem não verbal e linguagem verbal que cooperam para orientar o leitor.",
+        "justificativa": "Imagem e frase pertencem a sistemas semióticos diferentes e atuam de maneira complementar na produção do sentido do aviso."
+      },
+      {
+        "letra": "D",
+        "texto": "O cartaz apresenta duas mensagens independentes, pois elementos verbais e visuais não podem integrar um mesmo ato comunicativo.",
+        "justificativa": "Textos multimodais combinam recursos verbais e não verbais em uma mesma ação comunicativa, como ocorre no cartaz descrito."
+      }
+    ],
+    "gabarito": "C",
+    "justificativa": "Comunicação real frequentemente integra palavras, imagens, cores e organização visual. O sentido do cartaz resulta da cooperação entre o ícone e a frase, caracterizando um texto multimodal.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q03",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-multipla",
+    "tema": "Variação linguística, oralidade e escrita",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg01-u1-lingua-linguagem-comunicacao", "cecierj-linguagem-variacao"],
+    "contexto": "Durante uma atividade, um estudante afirma que uma pronúncia regional usada por sua família é “português errado” e que a escrita formal seria simplesmente a fala correta colocada no papel. A turma compara conversas familiares, mensagens instantâneas, uma conferência lida e um artigo acadêmico.",
+    "comando": "Considere as afirmações a seguir e assinale a opção que reúne as análises compatíveis com o estudo da unidade. I. A variação regional é uma propriedade possível de línguas vivas. II. A adequação de registro depende do gênero, do interlocutor e do propósito. III. Oralidade e escrita possuem condições de produção distintas. IV. Toda escrita é necessariamente formal e toda fala é necessariamente informal.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "I e II, apenas.",
+        "justificativa": "As afirmações I e II são válidas, mas a III também é compatível com a distinção entre as condições de produção da oralidade e da escrita."
+      },
+      {
+        "letra": "B",
+        "texto": "I, II e III, apenas.",
+        "justificativa": "As três afirmações reconhecem variação, adequação e diferenças de modalidade sem transformar fala e escrita em categorias rígidas de formalidade."
+      },
+      {
+        "letra": "C",
+        "texto": "II, III e IV, apenas.",
+        "justificativa": "A afirmação IV é inadequada porque há fala planejada e formal e também escrita informal, como mensagens em situações cotidianas."
+      },
+      {
+        "letra": "D",
+        "texto": "I, II, III e IV.",
+        "justificativa": "A inclusão da afirmação IV torna a opção inadequada, pois modalidade e grau de formalidade não estabelecem correspondência absoluta."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "A unidade trata variação como fenômeno normal, adequação como competência contextual e oralidade/escrita como modalidades com condições próprias. Formalidade é uma dimensão diferente e pode ocorrer em ambas.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q04",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 2,
+    "tipoItem": "resposta-unica",
+    "tema": "Fonética, fonologia e contraste",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg01-u2-introducao-fonetica", "uab-fonetica-fonologia-morfologia"],
+    "contexto": "Em uma atividade de observação sonora, a turma compara os pares “pato/bato” e “faca/vaca”. Em cada par, a substituição do primeiro segmento sonoro produz outra palavra reconhecível do português com significado diferente.",
+    "comando": "Assinale a conclusão que utiliza corretamente os conceitos de fonética e fonologia para interpretar os pares apresentados.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Os pares demonstram apenas uma diferença ortográfica, pois fonema e letra são unidades equivalentes.",
+        "justificativa": "Fonema e letra pertencem a níveis diferentes: o primeiro é uma unidade funcional do sistema sonoro e a segunda é uma representação gráfica."
+      },
+      {
+        "letra": "B",
+        "texto": "A substituição evidencia contraste fonológico, pois diferenças sonoras participam da distinção entre palavras.",
+        "justificativa": "Quando a troca de um segmento sonoro contribui para formar outra palavra, há evidência de contraste funcional no sistema fonológico."
+      },
+      {
+        "letra": "C",
+        "texto": "A substituição descreve somente a intensidade física do som, que constitui o objeto exclusivo da fonologia.",
+        "justificativa": "Propriedades físicas são investigadas pela fonética; a função contrastiva dos segmentos pertence à análise fonológica."
+      },
+      {
+        "letra": "D",
+        "texto": "Os pares mostram que qualquer diferença de pronúncia sempre cria um novo fonema e uma nova palavra.",
+        "justificativa": "Variações fonéticas podem ocorrer sem alterar o fonema ou criar nova palavra; o contraste precisa ter função no sistema."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "A fonologia investiga como os sons funcionam no sistema. Pares em que a troca de um segmento distingue palavras ajudam a reconhecer contrastes fonológicos, enquanto a fonética descreve a realização física desses sons.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q05",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 2,
+    "tipoItem": "assercao-razao",
+    "tema": "Relação entre som, fonema e grafia",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["cg01-u2-introducao-fonetica", "uab-fonetica-fonologia-morfologia"],
+    "contexto": "Um estudante observa que a letra x participa de pronúncias diferentes em palavras como “xícara”, “exame” e “táxi”. Ele também nota que o som inicial de “casa” e “quilo” pode ser representado por letras diferentes. A partir dessas observações, considere as proposições: I. A ortografia do português não funciona como uma transcrição fonética exata. PORQUE II. A relação entre grafemas e unidades sonoras pode variar conforme a palavra e as convenções históricas da escrita.",
+    "comando": "Assinale a opção que apresenta corretamente a relação entre as duas proposições.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "As proposições I e II são verdadeiras, e II justifica I.",
+        "justificativa": "Os exemplos mostram correspondências variáveis entre escrita e som; essa variabilidade explica por que a ortografia não é uma transcrição fonética exata."
+      },
+      {
+        "letra": "B",
+        "texto": "As proposições I e II são verdadeiras, mas II não justifica I.",
+        "justificativa": "Embora ambas sejam verdadeiras, neste caso a segunda proposição fornece precisamente a razão que sustenta a primeira."
+      },
+      {
+        "letra": "C",
+        "texto": "A proposição I é verdadeira, e a proposição II é falsa.",
+        "justificativa": "A segunda proposição também é verdadeira, pois os exemplos apresentados evidenciam correspondências gráficas e sonoras não biunívocas."
+      },
+      {
+        "letra": "D",
+        "texto": "A proposição I é falsa, e a proposição II é verdadeira.",
+        "justificativa": "A primeira proposição é verdadeira: a escrita ortográfica representa a língua por convenções e não registra cada realização fonética de modo exato."
+      }
+    ],
+    "gabarito": "A",
+    "justificativa": "Os casos descritos mostram que letra/grafema e fonema/som não são categorias equivalentes. A própria variabilidade das correspondências sustenta a conclusão de que a ortografia não é transcrição fonética.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q06",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 3,
+    "tipoItem": "resposta-unica",
+    "tema": "Morfema, derivação e flexão",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg01-u3-introducao-morfologia", "cecierj-portugues-iv-morfologia"],
+    "contexto": "Uma turma organiza as formas “livro”, “livros”, “livrinho”, “livreiro” e “livraria”. Os estudantes percebem a recorrência de uma base lexical e observam que algumas alterações produzem novas palavras, enquanto outra apenas marca informação gramatical de número.",
+    "comando": "Assinale a análise que distingue adequadamente derivação e flexão nessa família de palavras.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "“Livros” exemplifica flexão de número, enquanto “livrinho”, “livreiro” e “livraria” exemplificam processos derivacionais.",
+        "justificativa": "O plural produz uma forma gramatical de “livro”, enquanto os sufixos das demais formas criam novas unidades lexicais ou novas nuances lexicais."
+      },
+      {
+        "letra": "B",
+        "texto": "Todas as formas exemplificam flexão, porque mantêm uma sequência lexical relacionada a “livro”.",
+        "justificativa": "Compartilhar um radical não transforma toda mudança em flexão; formações como “livreiro” e “livraria” ampliam o léxico por derivação."
+      },
+      {
+        "letra": "C",
+        "texto": "Todas as formas exemplificam derivação, porque qualquer acréscimo à base cria uma palavra lexicalmente independente.",
+        "justificativa": "A marca de plural em “livros” expressa informação gramatical de número e constitui flexão, não derivação lexical."
+      },
+      {
+        "letra": "D",
+        "texto": "“Livros” e “livraria” exemplificam apenas diferenças fonéticas, pois a morfologia estuda exclusivamente a pronúncia das palavras.",
+        "justificativa": "Morfologia investiga a estrutura e a formação das palavras; diferenças de pronúncia pertencem ao domínio fonético."
+      }
+    ],
+    "gabarito": "A",
+    "justificativa": "Flexão produz formas gramaticais de uma mesma unidade lexical; derivação participa da criação de novas unidades ou valores lexicais. A comparação de uma família torna essa diferença observável.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q07",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 3,
+    "tipoItem": "resposta-multipla",
+    "tema": "Formação de palavras",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg01-u3-introducao-morfologia", "cecierj-portugues-iv-morfologia"],
+    "contexto": "Em um exercício de revisão, aparecem três usos: “Precisamos refazer a análise”, “O passatempo terminou” e “O jantar começou cedo”. A turma deve reconhecer diferentes modos pelos quais o léxico do português se organiza e se amplia.",
+    "comando": "Considere as classificações e assinale a opção que reúne as adequadas. I. “Refazer” exemplifica derivação prefixal. II. “Passatempo” exemplifica composição por justaposição em análise tradicional. III. “O jantar” exemplifica conversão ou derivação imprópria da forma verbal para uso substantivo. IV. Os três casos constituem apenas flexão gramatical.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "I e II, apenas.",
+        "justificativa": "I e II são adequadas, mas a análise de “o jantar” como conversão ou derivação imprópria também é compatível com o conteúdo estudado."
+      },
+      {
+        "letra": "B",
+        "texto": "I, II e III, apenas.",
+        "justificativa": "As três classificações correspondem aos processos trabalhados, enquanto a afirmação IV confunde formação lexical com flexão gramatical."
+      },
+      {
+        "letra": "C",
+        "texto": "II, III e IV, apenas.",
+        "justificativa": "A afirmação IV é inadequada e a I é válida, pois re- é acrescentado à base verbal em um processo de derivação prefixal."
+      },
+      {
+        "letra": "D",
+        "texto": "I, II, III e IV.",
+        "justificativa": "A inclusão de IV torna a opção inadequada, pois os exemplos apresentados não são simples variações flexionais de uma mesma palavra."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "Derivação, composição e conversão são processos de formação ou reorganização lexical. Flexão, por sua vez, expressa informações gramaticais dentro do paradigma de uma mesma unidade lexical.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q08",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-unica",
+    "tema": "Pronome e colocação pronominal",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "facil",
+    "referenciais": ["cg01-u4-classes-palavras", "cecierj-portugues-modulo-1"],
+    "contexto": "Ao revisar um comunicado formal, o redator encontra as frases “Nunca disseram-me a razão da mudança” e “Quem contou-lhe essa informação?”. O objetivo é adequar a posição dos pronomes átonos às convenções da escrita formal brasileira trabalhadas na unidade.",
+    "comando": "Assinale a revisão que aplica adequadamente a colocação pronominal aos dois períodos.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Nunca me disseram a razão da mudança. Quem lhe contou essa informação?",
+        "justificativa": "“Nunca” e “quem” criam contextos de próclise na norma formal, levando os pronomes átonos para antes dos verbos."
+      },
+      {
+        "letra": "B",
+        "texto": "Nunca disseram-me a razão da mudança. Quem contou-lhe essa informação?",
+        "justificativa": "A redação mantém as colocações que a atividade pede revisar e ignora os contextos normativos de próclise presentes nos dois períodos."
+      },
+      {
+        "letra": "C",
+        "texto": "Nunca disseram a razão-me da mudança. Quem contou essa-lhe informação?",
+        "justificativa": "Pronomes átonos não são posicionados junto a substantivos dessa maneira; eles se vinculam ao verbo da estrutura."
+      },
+      {
+        "letra": "D",
+        "texto": "Me nunca disseram a razão da mudança. Lhe quem contou essa informação?",
+        "justificativa": "A próclise posiciona o pronome antes do verbo, mas não autoriza deslocá-lo para antes dos elementos que estabelecem o contexto da oração."
+      }
+    ],
+    "gabarito": "A",
+    "justificativa": "Na norma escrita formal, elementos como palavra negativa e pronome interrogativo favorecem ou exigem próclise. O exercício avalia adequação ao registro formal, sem negar que a fala brasileira apresente outros padrões.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q09",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-unica",
+    "tema": "Conjunção e relação argumentativa",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg01-u4-classes-palavras", "cecierj-portugues-modulo-1"],
+    "contexto": "Um autor escreve três versões para a mesma ideia: (1) “O texto é breve e complexo”; (2) “O texto é breve, mas complexo”; (3) “Embora o texto seja breve, é complexo”. Ele deseja escolher a formulação que apresente a complexidade como resultado que contrasta com a expectativa criada pela brevidade.",
+    "comando": "Assinale a versão que expressa de modo mais direto a relação de contraste pretendida pelo autor.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "A versão 1, porque a conjunção “e” apenas coordena as duas propriedades sem sinalizar contraste.",
+        "justificativa": "A própria explicação mostra por que a versão 1 não realiza diretamente o objetivo: “e” coordena, mas não marca o contraste pretendido."
+      },
+      {
+        "letra": "B",
+        "texto": "A versão 2, porque a conjunção “mas” explicita o contraste entre brevidade e complexidade.",
+        "justificativa": "“Mas” estabelece de forma direta uma relação adversativa, apresentando a complexidade contra a expectativa associada à brevidade."
+      },
+      {
+        "letra": "C",
+        "texto": "A versão 3, porque “embora” elimina qualquer relação entre as duas propriedades e apenas indica tempo.",
+        "justificativa": "“Embora” introduz concessão, não relação temporal, e mantém uma relação semântica entre as duas propriedades."
+      },
+      {
+        "letra": "D",
+        "texto": "As três versões são equivalentes em relação argumentativa, porque conjunções não modificam a organização do raciocínio.",
+        "justificativa": "Conjunções ajudam a explicitar relações lógicas e discursivas; trocar “e”, “mas” e “embora” modifica a organização argumentativa."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "Conjunções não servem apenas para unir estruturas: elas orientam relações entre ideias. “Mas” marca diretamente contraste; “embora” constrói concessão e “e” coordena sem explicitar essa oposição.",
+    "atualizadoEm": "2026-09-02"
+  },
+  {
+    "id": "cg01-av1-q10",
+    "disciplina": "CG01",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-multipla",
+    "tema": "Análise contextual das classes de palavras",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["cg01-u4-classes-palavras", "cecierj-portugues-modulo-1", "cecierj-portugues-iv-morfologia"],
+    "contexto": "Considere o período: “Quando o jovem professor explicou cuidadosamente a questão para a turma, ninguém lhe fez perguntas difíceis, mas alguns anotaram tudo.” A análise deve considerar a função das palavras no próprio enunciado, e não apenas definições memorizadas isoladamente.",
+    "comando": "Considere as análises e assinale a opção que reúne as classificações adequadas. I. “jovem” e “difíceis” funcionam como adjetivos. II. “cuidadosamente” funciona como advérbio. III. “para” funciona como preposição. IV. “quando” e “mas” participam da conexão entre estruturas do período.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "I e II, apenas.",
+        "justificativa": "I e II estão corretas, mas “para” também é preposição no contexto e “quando” e “mas” conectam estruturas, tornando III e IV igualmente adequadas."
+      },
+      {
+        "letra": "B",
+        "texto": "II e III, apenas.",
+        "justificativa": "As afirmações II e III são adequadas, porém I e IV também descrevem corretamente as funções observadas no período."
+      },
+      {
+        "letra": "C",
+        "texto": "I, II, III e IV.",
+        "justificativa": "Todas as classificações decorrem do comportamento contextual das formas: adjetivação, modificação adverbial, relação preposicional e conexão entre orações."
+      },
+      {
+        "letra": "D",
+        "texto": "I, III e IV, apenas.",
+        "justificativa": "A exclusão de II é inadequada, pois “cuidadosamente” modifica o modo como o processo verbal “explicou” é apresentado e funciona como advérbio."
+      }
+    ],
+    "gabarito": "C",
+    "justificativa": "A identificação de classes deve combinar forma, função e sentido no contexto. O período permite observar adjetivos, advérbio, preposição e conectivos sem depender de uma definição semântica simplificada de cada classe.",
+    "atualizadoEm": "2026-09-02"
+  }
+]

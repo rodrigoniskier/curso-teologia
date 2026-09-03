@@ -113,6 +113,43 @@ export interface Disciplina {
   paginaPdf: number;
 }
 
+/* ---- materiais pedagógicos por unidade ---- */
+
+/**
+ * Blocos próprios de uma aula por unidade. Permanecem separados semanticamente
+ * dos blocos de Verbete para não forçar toda disciplina à forma doutrinária.
+ */
+export type BlocoMaterialUnidade =
+  | { tipo: 'texto'; titulo?: string; paragrafos: string[] }
+  | { tipo: 'lista'; titulo?: string; itens: string[]; ordenada?: boolean }
+  | { tipo: 'exemplo'; titulo?: string; enunciado: string; explicacao: string }
+  | { tipo: 'quadro'; titulo: string; itens: string[] }
+  | {
+      tipo: 'atividade';
+      id: string;
+      titulo?: string;
+      enunciado: string;
+      itens?: string[];
+      resposta: string;
+    };
+
+/**
+ * Aula vinculada a exatamente uma unidade oficial. `topicosCobertos` repete
+ * literalmente os tópicos da JET/IPB para permitir validação automatizada de
+ * completude sem inferência por palavras-chave.
+ */
+export interface MaterialUnidade {
+  id: string;
+  disciplina: string;
+  unidade: number;
+  titulo: string;
+  objetivo: string;
+  topicosCobertos: string[];
+  blocos: BlocoMaterialUnidade[];
+  fontes: Fonte[];
+  atualizadoEm: string;
+}
+
 /* ---- planejamento curricular integral ---- */
 
 /**
@@ -123,26 +160,41 @@ export type NaturezaDisciplina = 'conteudo' | 'idioma' | 'estagio';
 
 export type AvaliacaoId = 'av1' | 'av2';
 export type LetraAlternativa = 'A' | 'B' | 'C' | 'D' | 'E';
+export type TipoItemAvaliativo = 'resposta-unica' | 'resposta-multipla' | 'assercao-razao';
+export type NivelBloom = 'lembrar' | 'compreender' | 'aplicar' | 'analisar' | 'avaliar' | 'criar';
+export type NivelDificuldade = 'extremamente-facil' | 'facil' | 'media' | 'dificil' | 'extremamente-dificil';
 
 export interface AlternativaMultiplaEscolha {
   letra: LetraAlternativa;
   texto: string;
+  /** Fundamentação individual para revisão do item e feedback após a resposta. */
+  justificativa: string;
 }
 
 /**
- * Estrutura reservada para as avaliações futuras. Nenhuma questão deve ser
- * criada enquanto o bloco de unidades correspondente não estiver concluído.
- * O par contexto + comando preserva a exigência de itens contextualizados.
+ * Item contextualizado segundo o padrão institucional usado como referência:
+ * texto-base, comando, opções, gabarito, racional das opções e metadados de
+ * matriz. A interface usa seleção única; itens de resposta múltipla e
+ * asserção-razão codificam combinações nas próprias opções de resposta.
  */
 export interface QuestaoMultiplaEscolha {
   id: string;
   disciplina: string;
   avaliacao: AvaliacaoId;
   unidade: number;
+  tipoItem: TipoItemAvaliativo;
+  tema: string;
+  taxonomiaBloom: NivelBloom;
+  nivelDificuldade: NivelDificuldade;
+  /** IDs de fontes ou materiais efetivamente indicados ao estudante. */
+  referenciais: string[];
+  /** Texto-base / situação-estímulo necessária à resolução do item. */
   contexto: string;
+  /** Instrução clara e positiva da tarefa. */
   comando: string;
   alternativas: AlternativaMultiplaEscolha[];
   gabarito: LetraAlternativa;
+  /** Síntese pedagógica exibida após a correção. */
   justificativa: string;
   atualizadoEm: string;
 }

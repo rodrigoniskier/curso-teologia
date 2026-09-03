@@ -4,7 +4,7 @@ import { avaliacaoDaDisciplina } from '../dados/avaliacoes';
 import { carregarDisciplina } from '../infra/carregar-disciplina';
 import { porCodigo } from '../infra/catalogo';
 import { coberturaDaDisciplina } from '../infra/cobertura-curricular';
-import type { Disciplina, LetraAlternativa, ModuloAvaliativo } from '../tipos';
+import type { Disciplina, LetraAlternativa, ModuloAvaliativo, QuestaoMultiplaEscolha } from '../tipos';
 
 function textoStatus(avaliacao: ModuloAvaliativo): string {
   switch (avaliacao.status) {
@@ -19,6 +19,12 @@ function textoStatus(avaliacao: ModuloAvaliativo): string {
     case 'publicado':
       return 'Avaliação disponível.';
   }
+}
+
+function rotuloTipo(q: QuestaoMultiplaEscolha): string {
+  if (q.tipoItem === 'resposta-multipla') return 'Resposta múltipla';
+  if (q.tipoItem === 'assercao-razao') return 'Asserção–razão';
+  return 'Resposta única';
 }
 
 export function PaginaAvaliacao() {
@@ -151,12 +157,19 @@ export function PaginaAvaliacao() {
 
           <ol className="mt-5 space-y-8">
             {avaliacao.questoes.map((q, indice) => {
+              const escolhida = q.alternativas.find((a) => a.letra === respostas[q.id]);
+              const alternativaCorreta = q.alternativas.find((a) => a.letra === q.gabarito);
               const correta = respostas[q.id] === q.gabarito;
               return (
                 <li key={q.id} className="border border-margem bg-white px-5 py-5">
-                  <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-wide text-ouro-700">
-                    Questão {indice + 1} · unidade {q.unidade}
-                  </p>
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-wide text-ouro-700">
+                      Questão {indice + 1} · unidade {q.unidade}
+                    </p>
+                    <p className="font-sans text-[0.64rem] uppercase tracking-wide text-neutral-400">
+                      {rotuloTipo(q)}
+                    </p>
+                  </div>
                   <p className="mt-3 text-[0.98rem] leading-relaxed text-neutral-700">{q.contexto}</p>
                   <p className="mt-3 font-sans text-[0.92rem] font-semibold leading-relaxed text-neutral-850">{q.comando}</p>
                   <div className="mt-4 space-y-2">
@@ -177,12 +190,23 @@ export function PaginaAvaliacao() {
                       </label>
                     ))}
                   </div>
-                  {enviada && (
+                  {enviada && escolhida && (
                     <div className={`mt-4 border-l-2 pl-4 ${correta ? 'border-emerald-500' : 'border-amber-500'}`}>
                       <p className="font-sans text-[0.78rem] font-semibold text-neutral-700">
-                        {correta ? 'Resposta correta.' : `Resposta correta: ${q.gabarito}.`}
+                        {correta ? 'Resposta correta.' : `Sua resposta: ${escolhida.letra}. Resposta correta: ${q.gabarito}.`}
                       </p>
-                      <p className="mt-1 text-[0.9rem] leading-relaxed text-neutral-600">{q.justificativa}</p>
+                      <p className="mt-1 text-[0.9rem] leading-relaxed text-neutral-600">
+                        {escolhida.justificativa}
+                      </p>
+                      {!correta && alternativaCorreta && (
+                        <p className="mt-2 text-[0.9rem] leading-relaxed text-neutral-600">
+                          <strong className="font-sans text-neutral-700">Por que {q.gabarito} é correta:</strong>{' '}
+                          {alternativaCorreta.justificativa}
+                        </p>
+                      )}
+                      <p className="mt-3 border-t border-margem pt-3 text-[0.9rem] leading-relaxed text-neutral-600">
+                        {q.justificativa}
+                      </p>
                     </div>
                   )}
                 </li>
