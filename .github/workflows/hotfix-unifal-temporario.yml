@@ -1,4 +1,4 @@
-name: Aplicar hotfix UNIFAL temporariamente
+name: Limpar hotfix UNIFAL temporariamente
 
 on:
   push:
@@ -9,29 +9,17 @@ permissions:
   contents: write
 
 jobs:
-  aplicar:
-    if: github.event.head_commit.message != 'Aplicar URL persistente do manual UNIFAL'
+  limpar:
+    if: github.event.head_commit.message == 'Preparar autolimpeza do workflow temporário UNIFAL'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
           ref: fix/unifal-normalizacao-estavel
-      - name: Substituir somente a URL instável
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('src/dados/biblioteca-extra.ts')
-          s = p.read_text()
-          antiga = 'https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2025/05/Manual-de-normalizacao-2-edicao-revista-e-atualizada-12-05-2025.pdf'
-          nova = 'https://repositorio.unifal-mg.edu.br/items/931ae2f8-b69d-47ff-83ee-ff7912db2480'
-          if s.count(antiga) != 1:
-              raise SystemExit(f'esperava 1 ocorrência; encontrei {s.count(antiga)}')
-          p.write_text(s.replace(antiga, nova))
-          PY
-      - name: Publicar alteração
+      - name: Remover este workflow do ramo
         run: |
           git config user.name 'dev.Rodrigo Niskier'
           git config user.email 'niskier.rodrigo@gmail.com'
-          git add src/dados/biblioteca-extra.ts
-          git commit -m 'Aplicar URL persistente do manual UNIFAL'
+          git rm .github/workflows/hotfix-unifal-temporario.yml
+          git commit -m 'Remover workflow temporário do hotfix UNIFAL'
           git push origin HEAD:fix/unifal-normalizacao-estavel
