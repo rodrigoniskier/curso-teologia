@@ -1,0 +1,422 @@
+[
+  {
+    "id": "tp21-av1-q01",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-unica",
+    "tema": "Natureza do estágio supervisionado",
+    "taxonomiaBloom": "compreender",
+    "nivelDificuldade": "facil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "manual-presbiteriano"],
+    "contexto": "No primeiro dia de estágio, um estudante afirma que a presença em uma igreja local lhe concede liberdade para assumir qualquer tarefa ministerial que considere útil, porque o objetivo do estágio seria demonstrar iniciativa pessoal.",
+    "comando": "Assinale a compreensão mais adequada da relação entre iniciativa, supervisão e prática ministerial no estágio.",
+    "alternativas": [
+      {"letra": "A", "texto": "O estudante deve agir de forma autônoma sempre que julgar a atividade benéfica, comunicando o supervisor apenas depois.", "justificativa": "A iniciativa pessoal não elimina limites de autoridade, responsabilidade e supervisão previamente definidos para a atividade."},
+      {"letra": "B", "texto": "O estudante participa de atividades reais dentro das atribuições delegadas, buscando orientação quando a situação excede seu papel.", "justificativa": "A formulação preserva aprendizagem prática, responsabilidade e submissão à supervisão sem reduzir o estudante a observador passivo."},
+      {"letra": "C", "texto": "O estudante deve limitar-se a observar todas as atividades, pois qualquer participação prática seria incompatível com a supervisão.", "justificativa": "Supervisão permite participação real; o ponto decisivo é que a atuação ocorra dentro de tarefas e limites autorizados."},
+      {"letra": "D", "texto": "O estudante assume automaticamente as competências do supervisor durante o período em que estiver realizando o estágio.", "justificativa": "A condição de estagiário não transfere automaticamente autoridade e competências ministeriais pertencentes aos responsáveis constituídos."}
+    ],
+    "gabarito": "B",
+    "justificativa": "O estágio combina prática real e responsabilidade supervisionada. O estudante aprende servindo, mas sua iniciativa permanece subordinada ao escopo delegado e à ordem da igreja e da instituição formadora.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q02",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-multipla",
+    "tema": "Preparação pré-atividade",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Uma estudante participará de uma atividade de visitação sob supervisão. Antes de sair, ela deseja verificar se compreendeu adequadamente o que precisa preparar e quais limites devem orientar sua participação.",
+    "comando": "Considere as afirmações e assinale a opção que reúne procedimentos adequados antes da atividade. I. Identificar o supervisor responsável. II. Compreender objetivo e papel do estudante. III. Esclarecer critérios de confidencialidade e registro. IV. Decidir previamente que qualquer problema encontrado será resolvido pelo estudante sem consulta.",
+    "alternativas": [
+      {"letra": "A", "texto": "I e II, apenas.", "justificativa": "I e II são adequadas, mas o esclarecimento prévio sobre confidencialidade e registro também integra uma preparação responsável."},
+      {"letra": "B", "texto": "I, II e III, apenas.", "justificativa": "As três práticas estabelecem supervisão, finalidade, limites e responsabilidade documental antes da atividade, enquanto IV rompe essa lógica."},
+      {"letra": "C", "texto": "II, III e IV, apenas.", "justificativa": "A afirmação IV propõe autonomia indevida diante de situações potencialmente complexas e a ausência de I enfraquece a supervisão."},
+      {"letra": "D", "texto": "I, II, III e IV.", "justificativa": "A inclusão de IV torna a opção inadequada porque o estágio exige saber quando consultar e encaminhar ao responsável competente."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Boa preparação define supervisor, objetivo, papel, limites e critérios de registro. Situações que excedem o escopo do estudante devem ser levadas ao responsável, não resolvidas por autonomia presumida.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q03",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-unica",
+    "tema": "Confidencialidade",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Após uma visita supervisionada a um membro hospitalizado, o estudante precisa registrar a atividade. Durante a conversa surgiram informações clínicas e familiares que não são necessárias para demonstrar a tarefa realizada.",
+    "comando": "Assinale a estratégia de registro mais responsável para o relatório de estágio.",
+    "alternativas": [
+      {"letra": "A", "texto": "Registrar nome completo, diagnóstico e detalhes familiares para tornar o relatório mais rico e específico.", "justificativa": "Especificidade acadêmica não justifica exposição de dados pessoais que não são necessários ao objetivo do relatório."},
+      {"letra": "B", "texto": "Eliminar toda informação sobre a atividade e escrever apenas que houve uma visita, evitando qualquer descrição verificável.", "justificativa": "Confidencialidade requer discrição, mas não transforma o relatório em registro genérico incapaz de documentar a experiência."},
+      {"letra": "C", "texto": "Descrever a natureza da visita, o papel desempenhado e o aprendizado, anonimizando informações pessoais desnecessárias.", "justificativa": "A opção preserva informação suficiente para supervisão acadêmica sem expor detalhes que não contribuem para o objetivo do estágio."},
+      {"letra": "D", "texto": "Substituir os nomes por iniciais, mantendo todos os demais detalhes clínicos e familiares para facilitar a avaliação.", "justificativa": "Trocar nomes por iniciais pode ser insuficiente quando a combinação de detalhes ainda permite identificação e exposição indevida."}
+    ],
+    "gabarito": "C",
+    "justificativa": "O relatório deve documentar a experiência com clareza e, ao mesmo tempo, aplicar minimização de dados: registrar apenas o necessário, anonimizar quando adequado e preservar informações sensíveis.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q04",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-unica",
+    "tema": "Fato e interpretação",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Depois de uma aula de escola dominical, o estudante escreve: “A turma estava desinteressada e a aula fracassou”. O supervisor pede que ele transforme a impressão em observação útil para reflexão posterior.",
+    "comando": "Assinale a reescrita que melhor separa observação factual de interpretação.",
+    "alternativas": [
+      {"letra": "A", "texto": "A turma claramente não gostou da aula e decidiu demonstrar desinteresse durante todo o encontro.", "justificativa": "A frase atribui intenção e estado interno aos participantes sem apresentar evidências observáveis que sustentem essa conclusão."},
+      {"letra": "B", "texto": "Após cerca de vinte minutos, surgiram conversas paralelas e duas perguntas previstas não foram discutidas; isso pode indicar necessidade de rever ritmo e participação.", "justificativa": "A redação identifica fatos observáveis e depois apresenta a interpretação como hipótese, preservando a diferença entre os níveis."},
+      {"letra": "C", "texto": "A aula foi ruim porque o método escolhido era inadequado e qualquer professor experiente perceberia isso imediatamente.", "justificativa": "A formulação apresenta julgamento conclusivo sem documentar os eventos que permitiriam avaliar a hipótese sobre o método."},
+      {"letra": "D", "texto": "Nada relevante pode ser registrado porque toda avaliação de uma aula é inevitavelmente subjetiva.", "justificativa": "Mesmo quando há interpretação, comportamentos, decisões, sequência de atividades e feedback podem ser registrados de modo verificável."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Relatórios formativos ganham qualidade quando registram primeiro o observável e apresentam interpretações como análise, permitindo que o supervisor examine a inferência em vez de receber apenas um julgamento final.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q05",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "assercao-razao",
+    "tema": "Supervisão e aprendizagem",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "baxter-reformed-pastor"],
+    "contexto": "Considere as proposições sobre prática supervisionada. I. A conversa com o supervisor após a atividade integra o processo formativo. PORQUE II. O estágio deve ajudar o estudante a examinar decisões, receber correção e transformar experiência em próximos passos de serviço.",
+    "comando": "Assinale a opção que apresenta corretamente a relação entre as duas proposições.",
+    "alternativas": [
+      {"letra": "A", "texto": "As proposições I e II são verdadeiras, e II justifica I.", "justificativa": "O debriefing é formativo precisamente porque permite análise, correção, autoexame e definição de passos posteriores."},
+      {"letra": "B", "texto": "As proposições I e II são verdadeiras, mas II não justifica I.", "justificativa": "A segunda proposição explica diretamente por que a conversa pós-atividade possui função formativa e não meramente burocrática."},
+      {"letra": "C", "texto": "A proposição I é verdadeira, e a proposição II é falsa.", "justificativa": "A segunda proposição descreve objetivos centrais da supervisão: refletir sobre decisões, acolher correção e orientar desenvolvimento."},
+      {"letra": "D", "texto": "A proposição I é falsa, e a proposição II é verdadeira.", "justificativa": "A primeira proposição também é verdadeira porque supervisão inclui retorno reflexivo e não somente autorização prévia da atividade."}
+    ],
+    "gabarito": "A",
+    "justificativa": "Supervisão é processo de aprendizagem. O diálogo posterior ajuda o estudante a interpretar o que fez, ouvir correção e planejar desenvolvimento, o que justifica sua inclusão como parte do estágio.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q06",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-unica",
+    "tema": "Limites de atuação",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "manual-presbiteriano"],
+    "contexto": "Durante uma atividade, uma pessoa pede ao estagiário uma decisão sobre matéria que envolve disciplina e autoridade eclesiástica. O estudante não recebeu competência para responder em nome do conselho ou do supervisor.",
+    "comando": "Assinale a conduta mais compatível com prática ministerial supervisionada.",
+    "alternativas": [
+      {"letra": "A", "texto": "Responder em nome da igreja para demonstrar segurança e depois pedir ao supervisor que confirme a decisão.", "justificativa": "Segurança aparente não cria autoridade; responder antes da consulta pode gerar orientação indevida e confusão institucional."},
+      {"letra": "B", "texto": "Explicar com respeito os limites de sua função e encaminhar a questão ao responsável competente.", "justificativa": "A conduta preserva responsabilidade, transparência e ordem, reconhecendo que algumas decisões pertencem às autoridades constituídas."},
+      {"letra": "C", "texto": "Evitar qualquer contato futuro com a pessoa, pois questões difíceis devem ser excluídas da experiência de estágio.", "justificativa": "O estágio pode incluir situações complexas; o aprendizado está também em reconhecer limites e encaminhar adequadamente, não em fugir do contato."},
+      {"letra": "D", "texto": "Dar uma opinião pessoal sem informar que se trata de opinião, porque o estudante ainda está em formação.", "justificativa": "Ocultar o caráter pessoal da resposta aumenta o risco de ela ser recebida como orientação oficial que o estudante não está autorizado a dar."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Reconhecer limites é competência ministerial. O estagiário deve distinguir participação formativa de autoridade institucional e encaminhar matérias que excedem sua atribuição.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q07",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-multipla",
+    "tema": "Ciclo de aprendizagem supervisionada",
+    "taxonomiaBloom": "compreender",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "O material organiza a experiência de estágio como um ciclo que começa antes da atividade e continua depois dela, de modo que a prática seja transformada em aprendizagem documentada.",
+    "comando": "Considere as etapas e assinale a opção que reúne componentes do ciclo proposto. I. Planejar. II. Servir. III. Observar e debriefar. IV. Refletir e relatar.",
+    "alternativas": [
+      {"letra": "A", "texto": "I e II, apenas.", "justificativa": "Planejar e servir são essenciais, mas o ciclo continua com observação, conversa de supervisão, reflexão e documentação."},
+      {"letra": "B", "texto": "II e III, apenas.", "justificativa": "Serviço, observação e debriefing pertencem ao ciclo, porém a preparação e o registro reflexivo também são componentes formativos."},
+      {"letra": "C", "texto": "I, II, III e IV.", "justificativa": "As quatro formulações reúnem a sequência completa: preparação, ação, observação, supervisão, reflexão e relatório."},
+      {"letra": "D", "texto": "I, III e IV, apenas.", "justificativa": "Sem a participação prática efetivamente autorizada, o estágio perderia o componente de serviço que liga preparação e reflexão à realidade ministerial."}
+    ],
+    "gabarito": "C",
+    "justificativa": "O ciclo evita dois reducionismos: prática sem reflexão e reflexão sem prática. O aprendizado supervisionado integra planejamento, serviço, observação, debriefing, reflexão e registro.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q08",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-unica",
+    "tema": "Postura do estagiário",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Dois estudantes realizam a mesma atividade. O primeiro registra também dúvidas e uma correção recebida do supervisor. O segundo omite dificuldades para que seu relatório transmita imagem de desempenho impecável.",
+    "comando": "Assinale a avaliação mais adequada da finalidade formativa do relatório.",
+    "alternativas": [
+      {"letra": "A", "texto": "O segundo estudante utiliza melhor o relatório porque a finalidade principal é demonstrar sucesso sem registrar fragilidades.", "justificativa": "Um relatório formativo não é peça promocional; omitir dificuldades relevantes reduz a possibilidade de supervisão e aprendizagem."},
+      {"letra": "B", "texto": "O primeiro estudante utiliza melhor o relatório porque correção e autoavaliação podem produzir próximos passos concretos.", "justificativa": "Registrar feedback, limites e mudanças planejadas transforma experiência em desenvolvimento verificável e favorece acompanhamento."},
+      {"letra": "C", "texto": "Os dois relatórios possuem a mesma função, pois dificuldades e correções pertencem somente a conversas privadas e nunca ao registro acadêmico.", "justificativa": "O registro pode incluir correções pertinentes sem expor confidências, distinguindo aprendizagem profissional de informações pessoais sensíveis."},
+      {"letra": "D", "texto": "O primeiro estudante deveria registrar apenas a correção e excluir qualquer aspecto que tenha sido realizado adequadamente.", "justificativa": "Autoavaliação equilibrada identifica tanto práticas a manter quanto aspectos a corrigir, sem transformar o relatório em autopunição."}
+    ],
+    "gabarito": "B",
+    "justificativa": "O relatório deve favorecer prestação de contas e aprendizagem. Reconhecer correção recebida e formular próximos passos demonstra maturidade formativa maior que construir uma narrativa artificial de desempenho perfeito.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q09",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "resposta-unica",
+    "tema": "Princípio confessional na reflexão",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "cfw-ipib"],
+    "contexto": "Após uma atividade eclesial, o estudante precisa escrever uma reflexão bíblico-teológica. Ele considera inserir um versículo sem explicar sua relação com a experiência apenas para que o relatório pareça mais espiritual.",
+    "comando": "Assinale a forma mais adequada de integrar fundamento bíblico-teológico ao relatório.",
+    "alternativas": [
+      {"letra": "A", "texto": "Selecionar muitas referências bíblicas, mesmo sem relação clara com as decisões analisadas, para demonstrar conhecimento.", "justificativa": "Quantidade de referências não substitui argumentação; textos usados apenas como decoração não esclarecem a avaliação ministerial."},
+      {"letra": "B", "texto": "Identificar um princípio realmente pertinente e explicar como ele ajuda a avaliar uma decisão, prática ou próximo passo.", "justificativa": "A reflexão teológica se torna formativa quando o princípio é relacionado de modo explícito e responsável à experiência concreta."},
+      {"letra": "C", "texto": "Excluir qualquer referência bíblica ou confessional, pois atividades práticas devem ser avaliadas somente por resultados observáveis.", "justificativa": "No estágio teológico, resultados observáveis importam, mas a avaliação ministerial também envolve critérios bíblicos e confessionais pertinentes."},
+      {"letra": "D", "texto": "Usar uma referência confessional como conclusão automática, sem considerar contexto, supervisão ou fatos observados.", "justificativa": "A confissão orienta a reflexão, mas não dispensa descrição cuidadosa do caso nem aplicação responsável do princípio ao contexto."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Reflexão bíblico-teológica exige pertinência e explicação. A Escritura e a confissão fornecem critérios, mas o estudante precisa demonstrar como o princípio ilumina a experiência em análise.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av1-q10",
+    "disciplina": "TP21",
+    "avaliacao": "av1",
+    "tipoItem": "assercao-razao",
+    "tema": "Confidencialidade e precisão",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Considere as proposições: I. Um relatório de estágio pode ser específico e verificável sem identificar desnecessariamente as pessoas envolvidas. PORQUE II. Confidencialidade exige seleção responsável dos dados registrados, e não a eliminação de toda descrição concreta da atividade.",
+    "comando": "Assinale a opção que apresenta corretamente a relação entre as duas proposições.",
+    "alternativas": [
+      {"letra": "A", "texto": "As proposições I e II são verdadeiras, e II justifica I.", "justificativa": "A minimização de dados permite preservar detalhes úteis sobre tarefa, supervisão e aprendizagem sem expor identidade e informações sensíveis."},
+      {"letra": "B", "texto": "As proposições I e II são verdadeiras, mas II não justifica I.", "justificativa": "A segunda proposição explica precisamente como é possível combinar precisão documental e proteção de informações pessoais."},
+      {"letra": "C", "texto": "A proposição I é verdadeira, e a proposição II é falsa.", "justificativa": "A segunda proposição também é verdadeira porque confidencialidade é compatível com descrição concreta quando os dados são selecionados responsavelmente."},
+      {"letra": "D", "texto": "A proposição I é falsa, e a proposição II é verdadeira.", "justificativa": "A primeira proposição é verdadeira: papel desempenhado, objetivo, sequência e feedback podem ser documentados sem exposição identificadora desnecessária."}
+    ],
+    "gabarito": "A",
+    "justificativa": "O relatório deve evitar tanto indiscrição quanto vaguidão. Selecionar apenas os dados necessários permite documentar a experiência de forma útil e responsável.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q01",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-unica",
+    "tema": "Estrutura do relatório",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "facil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "unifal-normalizacao-2025"],
+    "contexto": "Um estudante possui anotações sobre uma atividade, mas ainda precisa transformá-las em relatório que permita ao supervisor acadêmico compreender contexto, participação, análise e aprendizagem.",
+    "comando": "Assinale a organização que melhor atende à finalidade formativa do relatório proposto.",
+    "alternativas": [
+      {"letra": "A", "texto": "Começar por uma conclusão elogiosa, listar impressões soltas e terminar sem registrar feedback ou próximos passos.", "justificativa": "A organização privilegia impressão e autopromoção, mas não documenta de modo verificável a atividade nem sua aprendizagem."},
+      {"letra": "B", "texto": "Identificar atividade e objetivo, descrever fatos e participação, analisar, registrar feedback, autoavaliar e indicar próximo passo.", "justificativa": "A sequência permite reconstruir a experiência, distinguir níveis de análise e demonstrar como a supervisão produz aprendizagem."},
+      {"letra": "C", "texto": "Transcrever integralmente todas as conversas ocorridas, mesmo quando contêm dados pessoais sem relevância acadêmica.", "justificativa": "Transcrição indiscriminada viola o princípio de minimização de dados e não melhora necessariamente a análise ministerial."},
+      {"letra": "D", "texto": "Redigir somente uma reflexão teológica geral, sem informar qual atividade foi realizada ou qual foi o papel do estudante.", "justificativa": "Sem contexto e participação documentados, a reflexão se desconecta da experiência que o relatório deveria registrar e avaliar."}
+    ],
+    "gabarito": "B",
+    "justificativa": "O relatório precisa ligar experiência e aprendizagem. Uma estrutura ordenada oferece contexto, evidência, análise, supervisão e próximo passo, em vez de reunir impressões sem encadeamento.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q02",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-unica",
+    "tema": "Descrição factual",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Na seção de descrição factual, um estudante pretende registrar a sequência principal da atividade antes de discutir suas interpretações e avaliações. Ele possui quatro frases possíveis para abrir essa seção.",
+    "comando": "Assinale a frase que melhor funciona como descrição factual inicial.",
+    "alternativas": [
+      {"letra": "A", "texto": "O encontro foi espiritualmente fraco porque as pessoas não estavam preparadas para aprender.", "justificativa": "A frase combina avaliação e atribuição de estado interno sem apresentar primeiro fatos observáveis que sustentem a interpretação."},
+      {"letra": "B", "texto": "A atividade começou com leitura do texto previsto; em seguida, conduzi duas perguntas preparadas e o supervisor encerrou com síntese.", "justificativa": "A redação registra sequência, responsabilidades e ações observáveis, oferecendo base para análise posterior."},
+      {"letra": "C", "texto": "Tenho certeza de que todos foram profundamente impactados, embora ninguém tenha comentado o resultado da atividade.", "justificativa": "A certeza declarada ultrapassa as evidências disponíveis e transforma inferência sobre impacto em suposto fato."},
+      {"letra": "D", "texto": "Foi provavelmente o melhor encontro do semestre, pois senti muita segurança enquanto falava.", "justificativa": "A avaliação global e a sensação pessoal podem ser refletidas depois, mas não constituem descrição factual suficiente do que ocorreu."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Descrição factual deve permitir reconstruir o que aconteceu com base em ações, sequência e responsabilidades observáveis. A interpretação vem depois e precisa ser distinguida do registro factual.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q03",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-multipla",
+    "tema": "Debriefing com supervisor",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "baxter-reformed-pastor"],
+    "contexto": "Após uma atividade de ensino, o estudante terá poucos minutos para conversar com o supervisor e deseja usar esse momento para obter retorno que realmente contribua para sua formação.",
+    "comando": "Considere as perguntas e assinale a opção que reúne questões produtivas para o debriefing. I. O que aconteceu de relevante? II. Que decisão minha precisa ser revista? III. Que alternativa o supervisor sugere? IV. Como posso evitar registrar qualquer correção para preservar minha imagem?",
+    "alternativas": [
+      {"letra": "A", "texto": "I e II, apenas.", "justificativa": "I e II são produtivas, mas perguntar por alternativas sugeridas pelo supervisor também amplia a aprendizagem prática."},
+      {"letra": "B", "texto": "I, II e III, apenas.", "justificativa": "As três perguntas promovem reconstrução, avaliação e planejamento; IV contradiz a finalidade formativa da supervisão."},
+      {"letra": "C", "texto": "II, III e IV, apenas.", "justificativa": "A inclusão de IV substitui aprendizagem por autoproteção e a ausência de I dificulta compreender o contexto da decisão analisada."},
+      {"letra": "D", "texto": "I, II, III e IV.", "justificativa": "A quarta afirmação prejudica a prestação de contas e o autoexame que tornam o debriefing útil ao processo formativo."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Debriefing produtivo reconstrói fatos, examina decisões e considera alternativas. A correção recebida é parte do aprendizado e pode ser registrada de forma responsável.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q04",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-unica",
+    "tema": "Autoavaliação e próximo passo",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Na conclusão do relatório, quatro estudantes apresentam diferentes formas de autoavaliação. O objetivo é demonstrar aprendizagem concreta que possa ser retomada numa atividade semelhante.",
+    "comando": "Assinale a conclusão que melhor expressa autoavaliação formativa e próximo passo verificável.",
+    "alternativas": [
+      {"letra": "A", "texto": "Aprendi muito e pretendo ser cada vez melhor em todas as atividades ministeriais.", "justificativa": "A formulação é positiva, mas genérica; não identifica aprendizagem específica nem ação que possa ser verificada depois."},
+      {"letra": "B", "texto": "Percebi que minhas instruções iniciais ficaram longas; o supervisor sugeriu antecipar a pergunta central, e farei isso no próximo encontro.", "justificativa": "A conclusão identifica problema, feedback recebido e mudança específica que poderá ser observada numa próxima oportunidade."},
+      {"letra": "C", "texto": "Tudo ocorreu conforme o esperado, portanto não há nenhuma razão para registrar mudança ou questão para estudo.", "justificativa": "Mesmo uma atividade adequada pode produzir aspectos a manter, perguntas e refinamentos; a ausência automática de reflexão reduz valor formativo."},
+      {"letra": "D", "texto": "Cometi erros e preciso estudar mais, mas ainda não sei quais aspectos revisar nem quando farei isso.", "justificativa": "A frase reconhece limitação, porém permanece vaga e não converte a percepção em plano específico de desenvolvimento."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Próximo passo formativo deve nascer de observação e feedback e ser suficientemente específico para orientar nova prática. Generalidades dificultam acompanhamento e desenvolvimento deliberado.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q05",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "assercao-razao",
+    "tema": "Relatório como prestação de contas e aprendizagem",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Considere as proposições: I. O relatório de estágio deve permitir confirmar a experiência realizada e também demonstrar o que o estudante aprendeu com ela. PORQUE II. Um registro composto somente por impressões gerais não documenta adequadamente tarefas, supervisão, análise e próximos passos.",
+    "comando": "Assinale a opção que apresenta corretamente a relação entre as duas proposições.",
+    "alternativas": [
+      {"letra": "A", "texto": "As proposições I e II são verdadeiras, e II justifica I.", "justificativa": "A insuficiência de impressões gerais mostra por que o relatório precisa reunir documentação da prática e reflexão sobre aprendizagem."},
+      {"letra": "B", "texto": "As proposições I e II são verdadeiras, mas II não justifica I.", "justificativa": "A segunda proposição explica diretamente a necessidade dos dois componentes indicados na primeira: confirmação da prática e formação reflexiva."},
+      {"letra": "C", "texto": "A proposição I é verdadeira, e a proposição II é falsa.", "justificativa": "A segunda proposição também é verdadeira, pois impressões vagas não oferecem elementos suficientes para acompanhamento acadêmico e supervisão."},
+      {"letra": "D", "texto": "A proposição I é falsa, e a proposição II é verdadeira.", "justificativa": "A primeira proposição é verdadeira: o relatório possui função documental e pedagógica, e essas funções se reforçam quando bem estruturadas."}
+    ],
+    "gabarito": "A",
+    "justificativa": "Um relatório de estágio é útil quando combina prestação de contas e aprendizagem. A descrição concreta sustenta a reflexão, e a reflexão mostra o que o estudante fez com a experiência vivida.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q06",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-unica",
+    "tema": "Apresentação do relatório",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "facil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "O estudante deverá apresentar seu relatório oralmente. Ele dispõe do documento completo e deseja decidir como organizar a exposição sem transformar a apresentação em simples leitura de páginas.",
+    "comando": "Assinale a estratégia de apresentação mais adequada ao material da disciplina.",
+    "alternativas": [
+      {"letra": "A", "texto": "Ler o relatório integralmente, preservando cada detalhe, mesmo que isso impeça destacar o principal aprendizado.", "justificativa": "A apresentação deve selecionar e organizar o essencial; leitura integral tende a reduzir clareza e capacidade de síntese."},
+      {"letra": "B", "texto": "Apresentar contexto e objetivo, responsabilidade, desafio, feedback, reflexão e próximo passo de forma sintética.", "justificativa": "A sequência comunica os elementos centrais da experiência e mostra como a prática supervisionada resultou em aprendizagem."},
+      {"letra": "C", "texto": "Exibir somente fotografias das pessoas envolvidas para tornar a apresentação mais concreta, independentemente de autorização.", "justificativa": "Concretude visual não justifica exposição de pessoas; confidencialidade e autorização continuam válidas na apresentação oral e visual."},
+      {"letra": "D", "texto": "Falar apenas sobre sentimentos pessoais, porque os fatos e o feedback já estão disponíveis no relatório escrito.", "justificativa": "A apresentação deve sintetizar a experiência completa e não reduzir o aprendizado à dimensão subjetiva do estudante."}
+    ],
+    "gabarito": "B",
+    "justificativa": "A apresentação seleciona o essencial: contexto, participação, desafio, supervisão, fundamento e próximo passo. Ela complementa o relatório e preserva as mesmas responsabilidades éticas.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q07",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-multipla",
+    "tema": "Rubrica de qualidade do relatório",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Antes da entrega, o estudante usa a rubrica pedagógica sugerida pelo portal para revisar se seu relatório cumpre funções documentais, ministeriais e formativas.",
+    "comando": "Considere os critérios e assinale a opção que reúne dimensões previstas na rubrica. I. Fidelidade factual. II. Responsabilidade e confidencialidade. III. Clareza e reflexão. IV. Aprendizagem e qualidade da apresentação.",
+    "alternativas": [
+      {"letra": "A", "texto": "I e II, apenas.", "justificativa": "Fidelidade e responsabilidade são centrais, mas a rubrica também examina clareza, reflexão, aprendizagem e apresentação."},
+      {"letra": "B", "texto": "II e III, apenas.", "justificativa": "Responsabilidade, clareza e reflexão são avaliadas, porém a rubrica inclui também fidelidade factual, aprendizagem e apresentação."},
+      {"letra": "C", "texto": "I, II, III e IV.", "justificativa": "Todas as dimensões correspondem à rubrica sugerida para revisar a qualidade do relatório e de sua apresentação."},
+      {"letra": "D", "texto": "I, III e IV, apenas.", "justificativa": "Excluir responsabilidade e confidencialidade deixaria de avaliar uma dimensão essencial do serviço e do registro ministerial."}
+    ],
+    "gabarito": "C",
+    "justificativa": "A rubrica combina verdade factual, responsabilidade, clareza, reflexão, aprendizagem e comunicação. Nenhum desses critérios isoladamente é suficiente para um relatório de estágio consistente.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q08",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-unica",
+    "tema": "Modelo institucional e modelo pedagógico",
+    "taxonomiaBloom": "compreender",
+    "nivelDificuldade": "media",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "unifal-normalizacao-2025"],
+    "contexto": "O portal oferece uma estrutura sugerida de relatório, mas o seminário entrega ao estudante um formulário institucional específico com campos e assinaturas próprios para a disciplina.",
+    "comando": "Assinale a forma correta de relacionar o modelo pedagógico do portal e a exigência institucional.",
+    "alternativas": [
+      {"letra": "A", "texto": "Ignorar o formulário institucional e entregar somente o modelo do portal, pois ele possui estrutura mais detalhada.", "justificativa": "A ferramenta do portal foi explicitamente definida como apoio pedagógico e não substitui exigências formais determinadas pela instituição."},
+      {"letra": "B", "texto": "Usar o formulário institucional e aplicar os princípios do portal para melhorar clareza, reflexão e qualidade do conteúdo quando compatível.", "justificativa": "A opção respeita a autoridade institucional e preserva o valor pedagógico dos princípios de registro e reflexão ensinados no material."},
+      {"letra": "C", "texto": "Combinar os dois documentos livremente, alterando campos obrigatórios e eliminando assinaturas que pareçam desnecessárias.", "justificativa": "Campos e assinaturas institucionais não devem ser modificados por decisão unilateral do estudante; adaptações precisam seguir orientação competente."},
+      {"letra": "D", "texto": "Considerar que qualquer manual acadêmico externo define automaticamente o formato oficial do estágio no seminário.", "justificativa": "Fontes externas podem apoiar apresentação e normalização, mas não criam por si mesmas requisitos institucionais do estágio."}
+    ],
+    "gabarito": "B",
+    "justificativa": "O portal distingue princípio pedagógico de norma institucional. Quando existe formulário oficial, ele governa a entrega; o material do portal serve como apoio para produzir conteúdo mais claro e reflexivo.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q09",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "resposta-unica",
+    "tema": "Autoexame pastoral",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio", "baxter-reformed-pastor"],
+    "contexto": "Um estudante utiliza a leitura pastoral clássica apenas para apontar falhas da igreja onde estagia. O supervisor o convida a aplicar o princípio de autoexame também à própria doutrina, postura e prática.",
+    "comando": "Assinale a aplicação mais compatível com a finalidade formativa do estágio.",
+    "alternativas": [
+      {"letra": "A", "texto": "Usar o relatório principalmente para julgar as pessoas observadas, mantendo o estudante fora do alcance da avaliação crítica.", "justificativa": "A postura transforma reflexão em julgamento externo e perde a dimensão de autoexame necessária à formação ministerial."},
+      {"letra": "B", "texto": "Examinar também decisões e postura próprias, acolher correção e formular mudanças concretas sem abandonar avaliação responsável do contexto.", "justificativa": "A opção combina discernimento sobre a prática observada com humildade, correção e desenvolvimento pessoal do estudante."},
+      {"letra": "C", "texto": "Evitar qualquer avaliação de si ou do contexto para impedir desconforto e preservar relações durante o estágio.", "justificativa": "Supervisão formativa exige reflexão responsável; evitar toda avaliação impede identificar aprendizado, limites e mudanças necessárias."},
+      {"letra": "D", "texto": "Transformar cada dificuldade em confissão pública detalhada na apresentação, mesmo quando envolve informações de terceiros.", "justificativa": "Autoexame não exige exposição pública indiscriminada e deve continuar submetido a prudência, confidencialidade e propósito acadêmico."}
+    ],
+    "gabarito": "B",
+    "justificativa": "A reflexão pastoral madura inclui autoexame. O estudante avalia o contexto, mas também se coloca sob correção, transformando supervisão e experiência em mudanças observáveis de prática.",
+    "atualizadoEm": "2026-09-03"
+  },
+  {
+    "id": "tp21-av2-q10",
+    "disciplina": "TP21",
+    "avaliacao": "av2",
+    "tipoItem": "assercao-razao",
+    "tema": "Apresentação e confidencialidade",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["tp21-estagio1-pratica-relatorio"],
+    "contexto": "Considere as proposições: I. Informações preservadas por confidencialidade no relatório escrito também devem continuar protegidas durante a apresentação oral ou visual. PORQUE II. A mudança de meio de comunicação não elimina a responsabilidade sobre dados pessoais e situações sensíveis observadas no estágio.",
+    "comando": "Assinale a opção que apresenta corretamente a relação entre as duas proposições.",
+    "alternativas": [
+      {"letra": "A", "texto": "As proposições I e II são verdadeiras, e II justifica I.", "justificativa": "A responsabilidade acompanha a informação; mudar de texto para fala ou slide não autoriza revelar o que deveria permanecer protegido."},
+      {"letra": "B", "texto": "As proposições I e II são verdadeiras, mas II não justifica I.", "justificativa": "A segunda proposição fornece exatamente a razão para manter confidencialidade também na apresentação do relatório."},
+      {"letra": "C", "texto": "A proposição I é verdadeira, e a proposição II é falsa.", "justificativa": "A segunda proposição também é verdadeira porque princípios de proteção e prudência não dependem do meio em que o dado seria divulgado."},
+      {"letra": "D", "texto": "A proposição I é falsa, e a proposição II é verdadeira.", "justificativa": "A primeira proposição é verdadeira: apresentação oral ou visual permanece sujeita ao mesmo cuidado com informações sensíveis."}
+    ],
+    "gabarito": "A",
+    "justificativa": "Confidencialidade não termina quando o relatório muda de formato. Apresentação, slides e discussão em sala devem preservar os mesmos limites aplicados ao documento escrito.",
+    "atualizadoEm": "2026-09-03"
+  }
+]
