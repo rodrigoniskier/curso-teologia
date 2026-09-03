@@ -7,6 +7,16 @@ import { coberturaDaDisciplina } from '../infra/cobertura-curricular';
 import type { Disciplina, LetraAlternativa, ModuloAvaliativo, QuestaoMultiplaEscolha } from '../tipos';
 
 function textoStatus(avaliacao: ModuloAvaliativo): string {
+  if (avaliacao.escopo === 'ementa-integral') {
+    if (avaliacao.status === 'aguardando-conteudo') {
+      return 'O programa oficial não possui unidades numeradas. A avaliação só será liberada depois da conclusão e verificação da ementa integral da disciplina.';
+    }
+    if (avaliacao.status === 'pronto-para-elaboracao') {
+      return 'A ementa integral desta disciplina está concluída e verificada. A avaliação está liberada para elaboração.';
+    }
+    if (avaliacao.status === 'publicado') return 'Avaliação disponível sobre a ementa integral da disciplina.';
+  }
+
   switch (avaliacao.status) {
     case 'aguardando-conteudo':
       return 'Aguardando a conclusão e a verificação de todas as unidades deste bloco.';
@@ -93,9 +103,7 @@ export function PaginaAvaliacao() {
   const cobertura = coberturaDaDisciplina(disciplina);
   const unidades = disciplina.unidades.filter((u) => avaliacao.unidadesAlvo.includes(u.numero));
   const respondidas = avaliacao.questoes.filter((q) => respostas[q.id]).length;
-  const acertos = enviada
-    ? avaliacao.questoes.filter((q) => respostas[q.id] === q.gabarito).length
-    : 0;
+  const acertos = enviada ? avaliacao.questoes.filter((q) => respostas[q.id] === q.gabarito).length : 0;
 
   return (
     <article>
@@ -107,12 +115,8 @@ export function PaginaAvaliacao() {
         <p className="font-sans text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-ouro-700">
           Módulo avaliativo · {avaliacao.rotulo}
         </p>
-        <h1 className="mt-2 font-serif text-[2rem] font-semibold leading-tight text-tinta-900">
-          {disciplina.titulo}
-        </h1>
-        <p className="mt-4 max-w-[62ch] font-sans text-[0.9rem] leading-relaxed text-neutral-600">
-          {textoStatus(avaliacao)}
-        </p>
+        <h1 className="mt-2 font-serif text-[2rem] font-semibold leading-tight text-tinta-900">{disciplina.titulo}</h1>
+        <p className="mt-4 max-w-[62ch] font-sans text-[0.9rem] leading-relaxed text-neutral-600">{textoStatus(avaliacao)}</p>
       </header>
 
       <section className="mt-8 border border-margem bg-papel-quente px-5 py-5">
@@ -122,7 +126,18 @@ export function PaginaAvaliacao() {
             {avaliacao.questoes.length} questão(ões) publicada(s)
           </span>
         </div>
-        {unidades.length > 0 ? (
+        {avaliacao.escopo === 'ementa-integral' ? (
+          <div className="mt-4">
+            <p className="font-sans text-[0.72rem] font-semibold uppercase tracking-wide text-tinta-600">Ementa integral</p>
+            <p className="mt-2 text-[0.95rem] leading-relaxed text-neutral-700">{disciplina.ementa}</p>
+            <p className={`mt-3 font-sans text-[0.68rem] uppercase tracking-wide ${cobertura.concluida ? 'text-emerald-700' : 'text-neutral-400'}`}>
+              {cobertura.concluida ? 'disciplina concluída e verificada' : 'disciplina ainda pendente'}
+            </p>
+            <p className="mt-3 font-sans text-[0.78rem] leading-relaxed text-neutral-500">
+              O programa oficial não possui unidades numeradas. Por isso, nenhuma unidade fictícia é criada: AV1 e AV2 só podem usar a ementa integral depois da conclusão explícita da disciplina.
+            </p>
+          </div>
+        ) : unidades.length > 0 ? (
           <ol className="mt-4 space-y-2">
             {unidades.map((u) => {
               const concluida = cobertura.unidadesConcluidas.includes(u.numero);
@@ -138,21 +153,15 @@ export function PaginaAvaliacao() {
             })}
           </ol>
         ) : (
-          <p className="mt-3 font-sans text-[0.86rem] leading-relaxed text-neutral-600">
-            Não há unidades oficiais atribuíveis a este bloco pela regra atual.
-          </p>
+          <p className="mt-3 font-sans text-[0.86rem] leading-relaxed text-neutral-600">Não há unidades oficiais atribuíveis a este bloco pela regra atual.</p>
         )}
       </section>
 
       {avaliacao.status === 'publicado' && avaliacao.questoes.length > 0 ? (
         <section className="mt-10">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-tinta-700">
-              Questões de múltipla escolha
-            </h2>
-            <span className="font-sans text-[0.72rem] text-neutral-500">
-              {respondidas}/{avaliacao.questoes.length} respondidas
-            </span>
+            <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-tinta-700">Questões de múltipla escolha</h2>
+            <span className="font-sans text-[0.72rem] text-neutral-500">{respondidas}/{avaliacao.questoes.length} respondidas</span>
           </div>
 
           <ol className="mt-5 space-y-8">
@@ -164,11 +173,9 @@ export function PaginaAvaliacao() {
                 <li key={q.id} className="border border-margem bg-white px-5 py-5">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <p className="font-sans text-[0.68rem] font-semibold uppercase tracking-wide text-ouro-700">
-                      Questão {indice + 1} · unidade {q.unidade}
+                      Questão {indice + 1} · {q.unidade ? `unidade ${q.unidade}` : 'ementa integral'}
                     </p>
-                    <p className="font-sans text-[0.64rem] uppercase tracking-wide text-neutral-400">
-                      {rotuloTipo(q)}
-                    </p>
+                    <p className="font-sans text-[0.64rem] uppercase tracking-wide text-neutral-400">{rotuloTipo(q)}</p>
                   </div>
                   <p className="mt-3 text-[0.98rem] leading-relaxed text-neutral-700">{q.contexto}</p>
                   <p className="mt-3 font-sans text-[0.92rem] font-semibold leading-relaxed text-neutral-850">{q.comando}</p>
@@ -195,18 +202,13 @@ export function PaginaAvaliacao() {
                       <p className="font-sans text-[0.78rem] font-semibold text-neutral-700">
                         {correta ? 'Resposta correta.' : `Sua resposta: ${escolhida.letra}. Resposta correta: ${q.gabarito}.`}
                       </p>
-                      <p className="mt-1 text-[0.9rem] leading-relaxed text-neutral-600">
-                        {escolhida.justificativa}
-                      </p>
+                      <p className="mt-1 text-[0.9rem] leading-relaxed text-neutral-600">{escolhida.justificativa}</p>
                       {!correta && alternativaCorreta && (
                         <p className="mt-2 text-[0.9rem] leading-relaxed text-neutral-600">
-                          <strong className="font-sans text-neutral-700">Por que {q.gabarito} é correta:</strong>{' '}
-                          {alternativaCorreta.justificativa}
+                          <strong className="font-sans text-neutral-700">Por que {q.gabarito} é correta:</strong>{' '}{alternativaCorreta.justificativa}
                         </p>
                       )}
-                      <p className="mt-3 border-t border-margem pt-3 text-[0.9rem] leading-relaxed text-neutral-600">
-                        {q.justificativa}
-                      </p>
+                      <p className="mt-3 border-t border-margem pt-3 text-[0.9rem] leading-relaxed text-neutral-600">{q.justificativa}</p>
                     </div>
                   )}
                 </li>
@@ -225,35 +227,23 @@ export function PaginaAvaliacao() {
             </button>
           ) : (
             <div className="mt-6 border-l-2 border-ouro-300 pl-4">
-              <p className="font-serif text-[1.15rem] font-semibold text-tinta-800">
-                Resultado: {acertos}/{avaliacao.questoes.length}
-              </p>
-              <button
-                type="button"
-                onClick={() => { setRespostas({}); setEnviada(false); }}
-                className="mt-2 font-sans text-[0.78rem] font-medium text-tinta-600 underline"
-              >
-                Refazer avaliação
-              </button>
+              <p className="font-serif text-[1.15rem] font-semibold text-tinta-800">Resultado: {acertos}/{avaliacao.questoes.length}</p>
+              <button type="button" onClick={() => { setRespostas({}); setEnviada(false); }} className="mt-2 font-sans text-[0.78rem] font-medium text-tinta-600 underline">Refazer avaliação</button>
             </div>
           )}
         </section>
       ) : (
         <section className="mt-8 border-l-2 border-ouro-300 pl-4">
-          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-tinta-700">
-            Regra de publicação
-          </h2>
+          <h2 className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.13em] text-tinta-700">Regra de publicação</h2>
           <p className="mt-2 text-[0.96rem] leading-relaxed text-neutral-650">
-            As questões de múltipla escolha só serão redigidas depois que todas as unidades deste bloco estiverem
-            plenamente produzidas e verificadas. Até lá, este módulo permanece intencionalmente vazio.
+            As questões de múltipla escolha só serão redigidas depois que todo o escopo curricular desta avaliação estiver plenamente produzido e verificado. Até lá, este módulo permanece intencionalmente vazio.
           </p>
         </section>
       )}
 
       {avaliacao.unidadesForaDoEscopo.length > 0 && (
         <p className="mt-8 font-sans text-[0.78rem] leading-relaxed text-neutral-500">
-          Esta disciplina também possui unidades posteriores à 15. Elas permanecem obrigatórias no plano curricular,
-          embora não integrem AV1/AV2 pela regra 1–8 e 9–15.
+          Esta disciplina também possui unidades posteriores à 15. Elas permanecem obrigatórias no plano curricular, embora não integrem AV1/AV2 pela regra 1–8 e 9–15.
         </p>
       )}
     </article>
