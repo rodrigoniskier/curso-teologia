@@ -26,10 +26,15 @@ function modulo(
   const questoesDoModulo = questoes.filter(
     (q) => q.disciplina === disciplina.codigo && q.avaliacao === id,
   );
+  const escopo: ModuloAvaliativo['escopo'] = disciplina.unidades.length === 0
+    ? 'ementa-integral'
+    : 'unidades';
 
   let status: ModuloAvaliativo['status'];
   if (disciplina.unidades.length === 0) {
-    status = 'sem-unidades-oficiais';
+    status = cobertura.concluida
+      ? (questoesDoModulo.length > 0 ? 'publicado' : 'pronto-para-elaboracao')
+      : 'aguardando-conteudo';
   } else if (unidadesAlvo.length === 0) {
     status = 'sem-unidades-na-faixa';
   } else if (unidadesAlvo.every((numero) => cobertura.unidadesConcluidas.includes(numero))) {
@@ -46,16 +51,12 @@ function modulo(
     fimUnidade,
     unidadesAlvo,
     unidadesForaDoEscopo,
+    escopo,
     status,
     questoes: questoesDoModulo,
   };
 }
 
-/**
- * Gera dois módulos avaliativos para TODA disciplina do currículo. O banco de
- * questões é separado e começa vazio; o validador impede questões enquanto o
- * bloco correspondente não estiver integralmente concluído.
- */
 export function avaliacoesDaDisciplina(disciplina: Disciplina): ModuloAvaliativo[] {
   return [
     modulo(
