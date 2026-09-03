@@ -1,6 +1,6 @@
 import type { BlocoMaterialUnidade, MaterialUnidade as TMaterialUnidade } from '../tipos';
 
-function BlocoMaterial({ bloco }: { bloco: BlocoMaterialUnidade }) {
+export function BlocoMaterial({ bloco }: { bloco: BlocoMaterialUnidade }) {
   if (bloco.tipo === 'texto') {
     return (
       <section className="mt-8">
