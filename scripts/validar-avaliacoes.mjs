@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DADOS = join(RAIZ, 'src/dados');
 const MATERIAIS = join(RAIZ, 'src/materiais');
+const MATERIAIS_DISCIPLINAS = join(RAIZ, 'src/materiais-disciplinas');
 const ementas = JSON.parse(await readFile(join(DADOS, 'ementas.json'), 'utf8'));
 const plano = JSON.parse(await readFile(join(DADOS, 'plano-curricular.json'), 'utf8'));
 const cobertura = JSON.parse(await readFile(join(DADOS, 'cobertura-curricular.json'), 'utf8'));
@@ -13,6 +14,7 @@ const questoes = JSON.parse(await readFile(join(DADOS, 'questoes.json'), 'utf8')
 
 const porCodigo = new Map(ementas.map((d) => [d.codigo, d]));
 const concluidas = cobertura.unidadesConcluidas ?? {};
+const semUnidadesConcluidas = new Set(cobertura.disciplinasSemUnidadesConcluidas ?? []);
 const erros = [];
 const ids = new Set();
 const letrasPermitidas = new Set(['A', 'B', 'C', 'D', 'E']);
@@ -28,15 +30,7 @@ function exigir(condicao, mensagem) {
   if (!condicao) erros.push(mensagem);
 }
 
-async function coletarIdsReferenciais() {
-  const idsDisponiveis = new Set();
-  const arquivosBiblioteca = (await readdir(DADOS))
-    .filter((nome) => /^biblioteca.*\.ts$/.test(nome) && nome !== 'biblioteca-completa.ts');
-  for (const nome of arquivosBiblioteca) {
-    const texto = await readFile(join(DADOS, nome), 'utf8');
-    for (const [, id] of texto.matchAll(/\bid:\s*'([^']+)'/g)) idsDisponiveis.add(id);
-  }
-
+async function idsDeMateriaisEmPastas(idsDisponiveis) {
   let pastas = [];
   try {
     pastas = await readdir(MATERIAIS, { withFileTypes: true });
@@ -51,6 +45,32 @@ async function coletarIdsReferenciais() {
       if (id) idsDisponiveis.add(id);
     }
   }
+}
+
+async function idsDeMateriaisDisciplina(idsDisponiveis) {
+  let arquivos = [];
+  try {
+    arquivos = (await readdir(MATERIAIS_DISCIPLINAS)).filter((n) => n.endsWith('.ts'));
+  } catch (erro) {
+    if (erro?.code !== 'ENOENT') throw erro;
+  }
+  for (const nome of arquivos) {
+    const texto = await readFile(join(MATERIAIS_DISCIPLINAS, nome), 'utf8');
+    const id = texto.match(/\bid:\s*'([^']+)'/)?.[1];
+    if (id) idsDisponiveis.add(id);
+  }
+}
+
+async function coletarIdsReferenciais() {
+  const idsDisponiveis = new Set();
+  const arquivosBiblioteca = (await readdir(DADOS))
+    .filter((nome) => /^biblioteca.*\.ts$/.test(nome) && nome !== 'biblioteca-completa.ts');
+  for (const nome of arquivosBiblioteca) {
+    const texto = await readFile(join(DADOS, nome), 'utf8');
+    for (const [, id] of texto.matchAll(/\bid:\s*'([^']+)'/g)) idsDisponiveis.add(id);
+  }
+  await idsDeMateriaisEmPastas(idsDisponiveis);
+  await idsDeMateriaisDisciplina(idsDisponiveis);
   return idsDisponiveis;
 }
 
@@ -85,24 +105,29 @@ for (const q of Array.isArray(questoes) ? questoes : []) {
 
   if (!disciplina || !(q?.avaliacao in faixas)) continue;
 
-  const faixa = faixas[q.avaliacao];
-  const unidadesAlvo = disciplina.unidades
-    .filter((u) => u.numero >= faixa.inicioUnidade && u.numero <= faixa.fimUnidade)
-    .map((u) => u.numero);
-  const oficiais = new Set(disciplina.unidades.map((u) => u.numero));
-  const feitas = new Set(concluidas[disciplina.codigo] ?? []);
+  if (disciplina.unidades.length === 0) {
+    exigir(semUnidadesConcluidas.has(disciplina.codigo), `${q.id}: avaliação criada antes da conclusão integral da disciplina sem unidades`);
+    exigir(q.unidade === undefined || q.unidade === null, `${q.id}: não invente número de unidade em disciplina sem unidades oficiais`);
+  } else {
+    const faixa = faixas[q.avaliacao];
+    const unidadesAlvo = disciplina.unidades
+      .filter((u) => u.numero >= faixa.inicioUnidade && u.numero <= faixa.fimUnidade)
+      .map((u) => u.numero);
+    const oficiais = new Set(disciplina.unidades.map((u) => u.numero));
+    const feitas = new Set(concluidas[disciplina.codigo] ?? []);
 
-  exigir(disciplina.unidades.length > 0, `${q.id}: não pode haver questão em disciplina sem unidades oficiais`);
-  exigir(unidadesAlvo.length > 0, `${q.id}: a ${q.avaliacao.toUpperCase()} desta disciplina não possui unidades oficiais na faixa`);
-  exigir(oficiais.has(q.unidade), `${q.id}: unidade ${q.unidade} não existe em ${disciplina.codigo}`);
-  exigir(
-    q.unidade >= faixa.inicioUnidade && q.unidade <= faixa.fimUnidade,
-    `${q.id}: unidade ${q.unidade} está fora da faixa ${faixa.inicioUnidade}–${faixa.fimUnidade} de ${q.avaliacao.toUpperCase()}`,
-  );
-  exigir(
-    unidadesAlvo.every((numero) => feitas.has(numero)),
-    `${q.id}: ${q.avaliacao.toUpperCase()} contém questão antes da conclusão integral das unidades ${unidadesAlvo.join(', ')}`,
-  );
+    exigir(unidadesAlvo.length > 0, `${q.id}: a ${q.avaliacao.toUpperCase()} desta disciplina não possui unidades oficiais na faixa`);
+    exigir(Number.isInteger(q.unidade), `${q.id}: unidade obrigatória em disciplina com unidades oficiais`);
+    exigir(oficiais.has(q.unidade), `${q.id}: unidade ${q.unidade} não existe em ${disciplina.codigo}`);
+    exigir(
+      q.unidade >= faixa.inicioUnidade && q.unidade <= faixa.fimUnidade,
+      `${q.id}: unidade ${q.unidade} está fora da faixa ${faixa.inicioUnidade}–${faixa.fimUnidade} de ${q.avaliacao.toUpperCase()}`,
+    );
+    exigir(
+      unidadesAlvo.every((numero) => feitas.has(numero)),
+      `${q.id}: ${q.avaliacao.toUpperCase()} contém questão antes da conclusão integral das unidades ${unidadesAlvo.join(', ')}`,
+    );
+  }
 
   exigir(typeof q.contexto === 'string' && q.contexto.trim().length >= 30, `${q.id}: texto-base/contexto insuficiente`);
   exigir(typeof q.comando === 'string' && q.comando.trim().length >= 10, `${q.id}: comando insuficiente`);
@@ -134,5 +159,5 @@ if (erros.length) {
 console.log('✓ banco de avaliações válido');
 console.log(`  ${ementas.length * 2} módulos estruturais (AV1 + AV2)`);
 console.log(`  ${questoes.length} questões cadastradas`);
+console.log('  disciplinas sem unidades podem usar a ementa integral somente após conclusão explícita');
 console.log('  padrão dos itens: texto-base + comando + opções + gabarito + racional individual + Bloom/dificuldade/referenciais');
-if (questoes.length === 0) console.log('  banco deliberadamente vazio enquanto os blocos curriculares não forem concluídos');
