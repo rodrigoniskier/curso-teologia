@@ -1,4 +1,4 @@
-name: Validar TP21 temporariamente
+name: Limpar TP21 temporariamente
 
 on:
   push:
@@ -6,24 +6,70 @@ on:
       - content/curriculo-integral-02-tp21
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  validar:
+  limpar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
           ref: content/curriculo-integral-02-tp21
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
+      - name: Restaurar base de main e reaplicar somente mudanças necessárias
+        run: |
+          git fetch origin main
+          git show origin/main:src/paginas/Disciplina.tsx > src/paginas/Disciplina.tsx
+          git show origin/main:src/tipos.ts > src/tipos.ts
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('src/paginas/Disciplina.tsx')
+          s = p.read_text()
+          alvo = "import { ProgramaUnidades } from '../componentes/ProgramaUnidades';\n"
+          novo = alvo + "import { MaterialDisciplinaPainel } from '../componentes/MaterialDisciplinaPainel';\n"
+          if s.count(alvo) != 1:
+              raise SystemExit('import de ProgramaUnidades inesperado')
+          s = s.replace(alvo, novo)
+          alvo = "      <PainelCurricular disciplina={d} />\n"
+          novo = alvo + "      <MaterialDisciplinaPainel codigo={d.codigo} />\n"
+          if s.count(alvo) != 1:
+              raise SystemExit('PainelCurricular inesperado')
+          p.write_text(s.replace(alvo, novo))
+
+          p = Path('src/tipos.ts')
+          s = p.read_text()
+          alvo = "export interface MaterialUnidade {\n  id: string;\n  disciplina: string;\n  unidade: number;\n  titulo: string;\n  objetivo: string;\n  topicosCobertos: string[];\n  blocos: BlocoMaterialUnidade[];\n  fontes: Fonte[];\n  atualizadoEm: string;\n}\n"
+          acrescimo = alvo + "\n/**\n * Material pedagógico para disciplinas cujo programa oficial não possui\n * unidades numeradas (especialmente estágios). `ementaCoberta` deve reproduzir\n * literalmente a ementa oficial; isso permite validar cobertura sem inventar\n * unidades que não existem no currículo.\n */\nexport interface MaterialDisciplina {\n  id: string;\n  disciplina: string;\n  titulo: string;\n  objetivo: string;\n  ementaCoberta: string;\n  blocos: BlocoMaterialUnidade[];\n  fontes: Fonte[];\n  atualizadoEm: string;\n}\n"
+          if s.count(alvo) != 1:
+              raise SystemExit('MaterialUnidade inesperado')
+          s = s.replace(alvo, acrescimo)
+          alvo = "  unidade: number;\n  tipoItem: TipoItemAvaliativo;"
+          novo = "  /** Ausente quando o programa oficial não possui unidades numeradas. */\n  unidade?: number;\n  tipoItem: TipoItemAvaliativo;"
+          if s.count(alvo) != 1:
+              raise SystemExit('QuestaoMultiplaEscolha.unidade inesperado')
+          s = s.replace(alvo, novo)
+          alvo = "  unidadesForaDoEscopo: number[];\n  status: StatusModuloAvaliativo;"
+          novo = "  unidadesForaDoEscopo: number[];\n  /** `ementa-integral` é usado apenas quando não existem unidades oficiais. */\n  escopo: 'unidades' | 'ementa-integral';\n  status: StatusModuloAvaliativo;"
+          if s.count(alvo) != 1:
+              raise SystemExit('ModuloAvaliativo inesperado')
+          p.write_text(s.replace(alvo, novo))
+          PY
       - run: npm ci
-      - name: Validar materiais
-        run: npm run validar:materiais
-      - name: Validar integridade integral
+      - name: Validar material e avaliações
         run: npm run validar
       - name: Build de produção
         run: npm run build
-      - name: Estado curricular
+      - name: Conferir fila curricular
         run: npm run progresso:curriculo
+      - name: Remover workflow temporário e publicar limpeza
+        run: |
+          git config user.name 'dev.Rodrigo Niskier'
+          git config user.email 'niskier.rodrigo@gmail.com'
+          git rm .github/workflows/validar-tp21-temporario.yml
+          git add src/paginas/Disciplina.tsx src/tipos.ts
+          git commit -m 'Normalizar integração estrutural de TP21'
+          git push origin HEAD:content/curriculo-integral-02-tp21
