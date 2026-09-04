@@ -1,4 +1,4 @@
-import questoesJson from './questoes.json';
+import questoesBase from './questoes.json';
 import { politicaAvaliativa } from './configuracao-curricular';
 import { coberturaDaDisciplina } from '../infra/cobertura-curricular';
 import type {
@@ -8,7 +8,17 @@ import type {
   QuestaoMultiplaEscolha,
 } from '../tipos';
 
-const questoes = questoesJson as QuestaoMultiplaEscolha[];
+const bancosModulares = import.meta.glob('./questoes-*.json', {
+  eager: true,
+  import: 'default',
+});
+
+const questoes = [
+  ...(questoesBase as QuestaoMultiplaEscolha[]),
+  ...Object.values(bancosModulares).flatMap(
+    (banco) => banco as QuestaoMultiplaEscolha[],
+  ),
+];
 
 function modulo(
   disciplina: Disciplina,
