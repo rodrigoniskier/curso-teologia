@@ -7,6 +7,7 @@ import { carregarVerbete } from '../infra/carregar-verbete';
 import { Verbete } from '../componentes/Verbete';
 import { PainelCurricular } from '../componentes/PainelCurricular';
 import { ProgramaUnidades } from '../componentes/ProgramaUnidades';
+import { MaterialDisciplinaPainel } from '../componentes/MaterialDisciplinaPainel';
 import type { ObraLivre } from '../dados/biblioteca';
 import type { Disciplina, Verbete as TVerbete } from '../tipos';
 
@@ -212,6 +213,7 @@ export function PaginaDisciplina() {
       </header>
 
       <PainelCurricular disciplina={d} />
+      <MaterialDisciplinaPainel codigo={d.codigo} />
 
       {vs.length > 0 && (
         <section className="mt-9">

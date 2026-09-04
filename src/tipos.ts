@@ -150,6 +150,23 @@ export interface MaterialUnidade {
   atualizadoEm: string;
 }
 
+/**
+ * Material pedagógico para disciplinas cujo programa oficial não possui
+ * unidades numeradas (especialmente estágios). `ementaCoberta` deve reproduzir
+ * literalmente a ementa oficial; isso permite validar cobertura sem inventar
+ * unidades que não existem no currículo.
+ */
+export interface MaterialDisciplina {
+  id: string;
+  disciplina: string;
+  titulo: string;
+  objetivo: string;
+  ementaCoberta: string;
+  blocos: BlocoMaterialUnidade[];
+  fontes: Fonte[];
+  atualizadoEm: string;
+}
+
 /* ---- planejamento curricular integral ---- */
 
 /**
@@ -181,7 +198,8 @@ export interface QuestaoMultiplaEscolha {
   id: string;
   disciplina: string;
   avaliacao: AvaliacaoId;
-  unidade: number;
+  /** Ausente quando o programa oficial não possui unidades numeradas. */
+  unidade?: number;
   tipoItem: TipoItemAvaliativo;
   tema: string;
   taxonomiaBloom: NivelBloom;
@@ -214,6 +232,8 @@ export interface ModuloAvaliativo {
   fimUnidade: number;
   unidadesAlvo: number[];
   unidadesForaDoEscopo: number[];
+  /** `ementa-integral` é usado apenas quando não existem unidades oficiais. */
+  escopo: 'unidades' | 'ementa-integral';
   status: StatusModuloAvaliativo;
   questoes: QuestaoMultiplaEscolha[];
 }
