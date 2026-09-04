@@ -32,10 +32,20 @@ async function arquivosDeBiblioteca() {
     .sort();
 }
 
+async function arquivosDeQuestoes() {
+  const dir = join(RAIZ, 'src/dados');
+  return (await readdir(dir, { withFileTypes: true }))
+    .filter((ent) => ent.isFile() && /^questoes(?:-[a-z0-9-]+)?\.json$/i.test(ent.name))
+    .map((ent) => join(dir, ent.name))
+    .sort();
+}
+
 const ementas = JSON.parse(await readFile(join(RAIZ, 'src/dados/ementas.json'), 'utf8'));
 const plano = JSON.parse(await readFile(join(RAIZ, 'src/dados/plano-curricular.json'), 'utf8'));
 const cobertura = JSON.parse(await readFile(join(RAIZ, 'src/dados/cobertura-curricular.json'), 'utf8'));
-const questoes = JSON.parse(await readFile(join(RAIZ, 'src/dados/questoes.json'), 'utf8'));
+const questoes = (await Promise.all(
+  (await arquivosDeQuestoes()).map(async (arquivo) => JSON.parse(await readFile(arquivo, 'utf8'))),
+)).flat();
 const unidadesRegistradas = cobertura.unidadesConcluidas ?? {};
 const semUnidadesConcluidas = new Set(cobertura.disciplinasSemUnidadesConcluidas ?? []);
 
