@@ -1,4 +1,5 @@
 import type { MaterialUnidade } from '../tipos';
+import { chaveMaterialDoCaminho, chaveMaterialUnidade } from './chave-material-unidade';
 
 type ModuloMaterial = { default?: unknown };
 type CarregadorMaterial = () => Promise<ModuloMaterial>;
@@ -13,15 +14,10 @@ const modulos = import.meta.glob<ModuloMaterial>('../materiais/*/u*.ts');
 const porUnidade = new Map<string, CarregadorMaterial>();
 const cache = new Map<string, Promise<MaterialUnidade | undefined>>();
 
-function chaveLogica(codigo: string, unidade: number): string {
-  return `${codigo.toLowerCase()}:${unidade}`;
-}
-
 for (const [caminho, carregar] of Object.entries(modulos)) {
-  const match = caminho.match(/\/materiais\/([^/]+)\/u(\d+)\.ts$/);
-  if (!match) continue;
+  const chave = chaveMaterialDoCaminho(caminho);
+  if (!chave) continue;
 
-  const chave = chaveLogica(match[1], Number(match[2]));
   if (porUnidade.has(chave)) {
     throw new Error(`Mais de um material resolve para a mesma unidade: ${chave}`);
   }
@@ -32,7 +28,7 @@ export function carregarMaterialUnidade(
   codigo: string,
   unidade: number,
 ): Promise<MaterialUnidade | undefined> {
-  const chave = chaveLogica(codigo, unidade);
+  const chave = chaveMaterialUnidade(codigo, unidade);
   const existente = cache.get(chave);
   if (existente) return existente;
 
