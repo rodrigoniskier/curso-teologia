@@ -1,7 +1,7 @@
 import type { MaterialUnidade } from '../tipos';
 import { chaveMaterialDoCaminho, chaveMaterialUnidade } from './chave-material-unidade';
 
-type ModuloMaterial = { default?: unknown };
+type ModuloMaterial = { material?: unknown; default?: unknown };
 type CarregadorMaterial = () => Promise<ModuloMaterial>;
 
 /**
@@ -9,6 +9,11 @@ type CarregadorMaterial = () => Promise<ModuloMaterial>;
  * O índice é derivado dos caminhos reais retornados pelo Vite; assim o
  * carregamento não depende de zero à esquerda (u1.ts e u01.ts resolvem para
  * a mesma unidade lógica) e cada aula continua sendo um chunk independente.
+ *
+ * O contrato canônico dos arquivos é `export const material = { ... }`, o
+ * mesmo usado pelo validador e pelo carregador de materiais de disciplinas.
+ * O fallback para `default` mantém compatibilidade com módulos antigos sem
+ * enfraquecer o contrato validado para os arquivos versionados atuais.
  */
 const modulos = import.meta.glob<ModuloMaterial>('../materiais/*/u*.ts');
 const porUnidade = new Map<string, CarregadorMaterial>();
@@ -37,9 +42,9 @@ export function carregarMaterialUnidade(
     if (!carregar) return undefined;
 
     const modulo = await carregar();
-    const valor = modulo.default;
+    const valor = modulo.material ?? modulo.default;
     if (!valor || typeof valor !== 'object') {
-      throw new Error(`Material sem export default válido: ${chave}`);
+      throw new Error(`Material sem export nomeado \"material\" válido: ${chave}`);
     }
     return valor as MaterialUnidade;
   })();
