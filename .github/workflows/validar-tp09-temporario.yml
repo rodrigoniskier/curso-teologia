@@ -1,0 +1,27 @@
+name: Validar TP09 temporariamente
+
+on:
+  push:
+    branches:
+      - content/curriculo-integral-03-tp09
+
+permissions:
+  contents: read
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Validar materiais
+        run: npm run validar:materiais
+      - name: Validar integridade integral
+        run: npm run validar
+      - name: Build de produção
+        run: npm run build
+      - name: Conferir progresso
+        run: npm run progresso:curriculo
