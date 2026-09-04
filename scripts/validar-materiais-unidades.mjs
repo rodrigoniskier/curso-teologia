@@ -8,7 +8,6 @@ const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MATERIAIS = join(RAIZ, 'src', 'materiais');
 const DADOS = join(RAIZ, 'src', 'dados');
 const ementas = JSON.parse(await readFile(join(DADOS, 'ementas.json'), 'utf8'));
-const plano = JSON.parse(await readFile(join(DADOS, 'plano-curricular.json'), 'utf8'));
 const cobertura = JSON.parse(await readFile(join(DADOS, 'cobertura-curricular.json'), 'utf8'));
 const porCodigo = new Map(ementas.map((d) => [d.codigo, d]));
 const erros = [];
@@ -127,9 +126,7 @@ for (const caminho of await listarTs(MATERIAIS)) {
   if (disciplina && Number.isInteger(unidade)) materiais.set(`${disciplina}:${unidade}`, rel);
 }
 
-const idiomas = new Set(plano.naturezas?.idioma ?? []);
 for (const [codigo, unidades] of Object.entries(cobertura.unidadesConcluidas ?? {})) {
-  if (!idiomas.has(codigo)) continue;
   for (const unidade of unidades) {
     exigir(
       materiais.has(`${codigo}:${unidade}`),
@@ -146,4 +143,4 @@ if (erros.length) {
 
 console.log(`✓ materiais por unidade válidos: ${materiais.size}`);
 console.log('  tópicos cobertos conferidos literalmente contra a ementa oficial');
-console.log('  unidades concluídas de idiomas exigem material didático correspondente');
+console.log('  toda unidade concluída exige material didático validado correspondente');
