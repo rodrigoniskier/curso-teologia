@@ -10,7 +10,12 @@ const MATERIAIS_DISCIPLINAS = join(RAIZ, 'src/materiais-disciplinas');
 const ementas = JSON.parse(await readFile(join(DADOS, 'ementas.json'), 'utf8'));
 const plano = JSON.parse(await readFile(join(DADOS, 'plano-curricular.json'), 'utf8'));
 const cobertura = JSON.parse(await readFile(join(DADOS, 'cobertura-curricular.json'), 'utf8'));
-const questoes = JSON.parse(await readFile(join(DADOS, 'questoes.json'), 'utf8'));
+const arquivosQuestoes = (await readdir(DADOS))
+  .filter((nome) => /^questoes(?:-[a-z0-9-]+)?\.json$/i.test(nome))
+  .sort();
+const questoes = (await Promise.all(
+  arquivosQuestoes.map(async (nome) => JSON.parse(await readFile(join(DADOS, nome), 'utf8'))),
+)).flat();
 
 const porCodigo = new Map(ementas.map((d) => [d.codigo, d]));
 const concluidas = cobertura.unidadesConcluidas ?? {};
@@ -76,7 +81,7 @@ async function coletarIdsReferenciais() {
 
 const referenciaisDisponiveis = await coletarIdsReferenciais();
 
-exigir(Array.isArray(questoes), 'src/dados/questoes.json deve conter uma lista');
+exigir(Array.isArray(questoes), 'os bancos de questões devem conter listas');
 
 for (const q of Array.isArray(questoes) ? questoes : []) {
   exigir(typeof q?.id === 'string' && q.id.trim().length > 0, 'questão sem id válido');
@@ -158,6 +163,6 @@ if (erros.length) {
 
 console.log('✓ banco de avaliações válido');
 console.log(`  ${ementas.length * 2} módulos estruturais (AV1 + AV2)`);
-console.log(`  ${questoes.length} questões cadastradas`);
+console.log(`  ${questoes.length} questões cadastradas em ${arquivosQuestoes.length} banco(s)`);
 console.log('  disciplinas sem unidades podem usar a ementa integral somente após conclusão explícita');
 console.log('  padrão dos itens: texto-base + comando + opções + gabarito + racional individual + Bloom/dificuldade/referenciais');

@@ -20,10 +20,10 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Referências bibliográficas oficiais | **1.251** |
 | Verbetes redigidos | 201 |
 | Obras livres mapeadas | 228 |
-| Unidades verificadas | **4 / 1.375** |
-| Disciplinas concluídas | **2 / 121** |
+| Unidades verificadas | **19 / 1.375** |
+| Disciplinas concluídas | **3 / 121** |
 | Módulos avaliativos estruturados | **242** |
-| Questões avaliativas publicadas | **30** |
+| Questões avaliativas publicadas | **45** |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -43,7 +43,7 @@ O registro conservador começa sem promover retroativamente o acervo já escrito
 
 O plano permanente está em [`src/dados/plano-curricular.json`](src/dados/plano-curricular.json). A produção segue primeiro as **93 disciplinas que aparecem no histórico de referência**, na ordem em que constam nele; somente depois entram as **28 disciplinas ausentes do histórico**, preservando a ordem do currículo oficial.
 
-Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. O banco [`src/dados/questoes.json`](src/dados/questoes.json) cresce apenas quando um bloco curricular é efetivamente concluído; a CI rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Cada item publicado registra contexto, comando, alternativas, gabarito, racional individual, tipo, tema, Taxonomia de Bloom, dificuldade e referenciais. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2. Quando o programa oficial não possui unidades numeradas, nenhuma unidade fictícia é criada: a conclusão é registrada no nível da disciplina e AV1/AV2 só podem ser publicadas depois da verificação integral da ementa.
+Cada disciplina possui dois módulos avaliativos estruturais: **AV1**, para as unidades oficiais 1–8 existentes, e **AV2**, para as unidades 9–15 existentes. Os bancos [`src/dados/questoes.json`](src/dados/questoes.json) e `src/dados/questoes-*.json` crescem apenas quando um bloco curricular é efetivamente concluído; a CI reúne e valida todos os bancos e rejeita qualquer questão criada antes da conclusão integral de todas as unidades do bloco correspondente. Cada item publicado registra contexto, comando, alternativas, gabarito, racional individual, tipo, tema, Taxonomia de Bloom, dificuldade e referenciais. Unidades 16+ continuam obrigatórias para concluir a disciplina, embora fiquem fora do recorte AV1/AV2. Quando o programa oficial não possui unidades numeradas, nenhuma unidade fictícia é criada: a conclusão é registrada no nível da disciplina e AV1/AV2 só podem ser publicadas depois da verificação integral da ementa.
 
 As unidades oficiais têm rota própria (`/disciplina/:codigo/unidade/:numero`). Isso permite que aquisição de línguas e estágios recebam materiais adequados ao seu método sem depender do formato de verbete doutrinário.
 
