@@ -1,29 +1,45 @@
 import type { MaterialUnidade } from '../tipos';
 
 type ModuloMaterial = { default?: unknown };
+type CarregadorMaterial = () => Promise<ModuloMaterial>;
 
 /**
- * Convenção permanente: src/materiais/<codigo-em-minusculas>/uNN.ts.
- * Cada aula é um chunk independente e só é baixada ao abrir a unidade.
+ * Os materiais seguem src/materiais/<codigo-em-minusculas>/u<numero>.ts.
+ * O índice é derivado dos caminhos reais retornados pelo Vite; assim o
+ * carregamento não depende de zero à esquerda (u1.ts e u01.ts resolvem para
+ * a mesma unidade lógica) e cada aula continua sendo um chunk independente.
  */
 const modulos = import.meta.glob<ModuloMaterial>('../materiais/*/u*.ts');
+const porUnidade = new Map<string, CarregadorMaterial>();
 const cache = new Map<string, Promise<MaterialUnidade | undefined>>();
 
-function chaveDe(codigo: string, unidade: number): string {
-  return `../materiais/${codigo.toLowerCase()}/u${String(unidade).padStart(2, '0')}.ts`;
+function chaveLogica(codigo: string, unidade: number): string {
+  return `${codigo.toLowerCase()}:${unidade}`;
+}
+
+for (const [caminho, carregar] of Object.entries(modulos)) {
+  const match = caminho.match(/\/materiais\/([^/]+)\/u(\d+)\.ts$/);
+  if (!match) continue;
+
+  const chave = chaveLogica(match[1], Number(match[2]));
+  if (porUnidade.has(chave)) {
+    throw new Error(`Mais de um material resolve para a mesma unidade: ${chave}`);
+  }
+  porUnidade.set(chave, carregar);
 }
 
 export function carregarMaterialUnidade(
   codigo: string,
   unidade: number,
 ): Promise<MaterialUnidade | undefined> {
-  const chave = chaveDe(codigo, unidade);
+  const chave = chaveLogica(codigo, unidade);
   const existente = cache.get(chave);
   if (existente) return existente;
 
   const promessa = (async () => {
-    const carregar = modulos[chave];
+    const carregar = porUnidade.get(chave);
     if (!carregar) return undefined;
+
     const modulo = await carregar();
     const valor = modulo.default;
     if (!valor || typeof valor !== 'object') {
