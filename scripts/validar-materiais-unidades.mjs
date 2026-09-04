@@ -8,7 +8,6 @@ const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const MATERIAIS = join(RAIZ, 'src', 'materiais');
 const DADOS = join(RAIZ, 'src', 'dados');
 const ementas = JSON.parse(await readFile(join(DADOS, 'ementas.json'), 'utf8'));
-const plano = JSON.parse(await readFile(join(DADOS, 'plano-curricular.json'), 'utf8'));
 const cobertura = JSON.parse(await readFile(join(DADOS, 'cobertura-curricular.json'), 'utf8'));
 const porCodigo = new Map(ementas.map((d) => [d.codigo, d]));
 const erros = [];
@@ -68,13 +67,19 @@ const ids = new Set();
 for (const caminho of await listarTs(MATERIAIS)) {
   const fonte = await readFile(caminho, 'utf8');
   const sf = ts.createSourceFile(caminho, fonte, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
-  const variavel = sf.statements
+  const statementMaterial = sf.statements
     .filter(ts.isVariableStatement)
-    .flatMap((st) => [...st.declarationList.declarations])
+    .find((st) => [...st.declarationList.declarations]
+      .some((decl) => ts.isIdentifier(decl.name) && decl.name.text === 'material'));
+  const variavel = statementMaterial?.declarationList.declarations
     .find((decl) => ts.isIdentifier(decl.name) && decl.name.text === 'material');
   const obj = variavel?.initializer;
   const rel = relative(RAIZ, caminho).split(sep).join('/');
   exigir(Boolean(obj && ts.isObjectLiteralExpression(obj)), `${rel}: deve declarar const material = { ... }`);
+  exigir(
+    Boolean(statementMaterial?.modifiers?.some((m) => m.kind === ts.SyntaxKind.ExportKeyword)),
+    `${rel}: material deve ser exportado como \"export const material\" para ser carregável pela interface`,
+  );
   if (!obj || !ts.isObjectLiteralExpression(obj)) continue;
 
   const id = textoLiteral(propriedade(obj, 'id')?.initializer);
@@ -116,7 +121,7 @@ for (const caminho of await listarTs(MATERIAIS)) {
   if (u && topicos) {
     exigir(topicos.length === u.topicos.length, `${rel}: quantidade de tópicos cobertos diverge da unidade oficial`);
     for (let i = 0; i < u.topicos.length; i++) {
-      exigir(topicos[i] === u.topicos[i], `${rel}: tópico ${i + 1} deve repetir literalmente "${u.topicos[i]}"`);
+      exigir(topicos[i] === u.topicos[i], `${rel}: tópico ${i + 1} deve repetir literalmente \"${u.topicos[i]}\"`);
     }
   }
 
@@ -127,13 +132,11 @@ for (const caminho of await listarTs(MATERIAIS)) {
   if (disciplina && Number.isInteger(unidade)) materiais.set(`${disciplina}:${unidade}`, rel);
 }
 
-const idiomas = new Set(plano.naturezas?.idioma ?? []);
 for (const [codigo, unidades] of Object.entries(cobertura.unidadesConcluidas ?? {})) {
-  if (!idiomas.has(codigo)) continue;
   for (const unidade of unidades) {
     exigir(
       materiais.has(`${codigo}:${unidade}`),
-      `${codigo} unidade ${unidade} está marcada como concluída, mas não possui material didático validado`,
+      `${codigo} unidade ${unidade} está marcada como concluída, mas não possui material didático validado e carregável`,
     );
   }
 }
@@ -146,4 +149,5 @@ if (erros.length) {
 
 console.log(`✓ materiais por unidade válidos: ${materiais.size}`);
 console.log('  tópicos cobertos conferidos literalmente contra a ementa oficial');
-console.log('  unidades concluídas de idiomas exigem material didático correspondente');
+console.log('  contrato runtime conferido: export const material');
+console.log('  toda unidade marcada como concluída exige material didático correspondente');
