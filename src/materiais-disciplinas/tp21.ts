@@ -224,7 +224,7 @@ export const material: MaterialDisciplina = {
       ano: '2025',
       titulo: 'Manual de normalização e apresentação de trabalhos acadêmicos da UNIFAL-MG: com base nas normas de documentação da ABNT',
       publicacao: 'Sistema de Bibliotecas da UNIFAL-MG',
-      url: 'https://repositorio.unifal-mg.edu.br/items/931ae2f8-b69d-47ff-83ee-ff7912db2480',
+      url: 'https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2025/05/Manual-de-normalizacao-2-edicao-revista-e-atualizada-12-05-2025.pdf',
       idioma: 'pt',
       tipo: 'documento',
       acesso: 'livre',
