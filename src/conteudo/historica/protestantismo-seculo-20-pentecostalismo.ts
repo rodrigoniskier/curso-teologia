@@ -8,7 +8,7 @@ export const protestantismoSeculo20Pentecostalismo: Verbete = {
   subtitulo: 'O século em que o protestantismo deixou de ser pequena minoria missionária e se tornou um campo religioso brasileiro plural',
   objetivo:
     'Ao final, você compreenderá os desafios das denominações históricas no século XX; situará sociedades bíblicas, ACM, Esforço Cristão e Confederação Evangélica; distinguirá as principais fases do pentecostalismo e do neopentecostalismo; reconhecerá o movimento de renovação dentro das igrejas históricas; e poderá avaliar crescimento religioso sem confundir descrição sociológica, aprovação teológica e caricatura denominacional.',
-  atualizadoEm: '2026-08-28',
+  atualizadoEm: '2026-09-09',
   verMais: ['th05-igreja-brasileira', 'th06-ipb-1903-1959', 'th04-igreja-seculo-20'],
   blocos: [
     {
@@ -184,8 +184,8 @@ export const protestantismoSeculo20Pentecostalismo: Verbete = {
       autor: 'Erasmo Braga',
       ano: '1916',
       titulo: 'Pan-Americanismo: aspecto religioso',
-      publicacao: 'Open Library',
-      url: 'https://openlibrary.org/works/OL17033879W/Pan-Americanismo_aspecto_religioso',
+      publicacao: 'Internet Archive — digitalização da edição original',
+      url: 'https://archive.org/details/panamericanismoa00brag',
       idioma: 'pt',
       tipo: 'obra-primaria',
       acesso: 'livre',
