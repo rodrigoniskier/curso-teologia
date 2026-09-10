@@ -9,7 +9,7 @@ export const credosConfissoes: Verbete = {
     'A igreja não escolhe entre ter ou não ter um credo; escolhe entre confessar publicamente o que crê ou deixar sua teologia escondida',
   objetivo:
     'Ao final, você saberá distinguir credo, confissão, catecismo, cânones e fórmulas de consenso; compreenderá por que a fé cristã é histórica e confessional sem colocar documentos humanos no nível da Escritura; percorrerá o desenvolvimento doutrinário do Credo Apostólico, Niceia-Constantinopla, Calcedônia e Orange; distinguirá a tradição luterana da tradição reformada; e será capaz de situar Consensus Tigurinus, Confissão da Guanabara, Segunda Confissão Helvética, Confissão Belga, Catecismo de Heidelberg, Cânones de Dort, símbolos de Westminster, Formula Consensus Helvetica e a Declaração de Fé da World Reformed Fellowship dentro da história da confessionalidade reformada.',
-  atualizadoEm: '2026-08-20',
+  atualizadoEm: '2026-09-09',
   verMais: ['ts11-subscricao-confessional', 'th03-reforma', 'ts51-apologetica'],
   blocos: [
     {
@@ -260,8 +260,8 @@ export const credosConfissoes: Verbete = {
       autor: 'Segundo Concílio de Orange',
       ano: '529',
       titulo: 'Canons of the Second Council of Orange, A.D. 529',
-      publicacao: 'Open Library — edição de 1882',
-      url: 'https://openlibrary.org/books/OL28397248M/Canons_of_the_Second_Council_of_Orange_A.D._529',
+      publicacao: 'Internet Archive — edição bilíngue de 1882',
+      url: 'https://archive.org/details/canonsofsecondco0000coun',
       idioma: 'en',
       tipo: 'documento',
       acesso: 'livre',

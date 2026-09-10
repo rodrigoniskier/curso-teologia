@@ -8,7 +8,7 @@ export const projetoLinguisticoMissiologico: Verbete = {
   subtitulo: 'Uma lista de palavras coletada no campo ainda não é uma pesquisa — e uma pesquisa que não muda nenhuma decisão missionária pode ser apenas um arquivo bonito',
   objetivo:
     'Ao final, você saberá transformar uma necessidade missionária em uma pergunta de pesquisa delimitada, desenhar coleta de dados fonológicos, morfossintáticos e sociolinguísticos sem tratar pessoas como fontes descartáveis, distinguir elicitação de uso natural, organizar gravações e metadados, analisar padrões sem confundir hipótese com fato e escrever um relatório que deixe claros método, limites, evidências e implicações práticas para aquisição de língua, tradução, comunicação e estratégia missionária.',
-  atualizadoEm: '2026-08-19',
+  atualizadoEm: '2026-09-09',
   verMais: ['cg66-linguistica-aplicada', 'tp27-antropologia-missionaria', 'tp60-estrategia-missionaria'],
   blocos: [
     {
@@ -312,10 +312,10 @@ export const projetoLinguisticoMissiologico: Verbete = {
     {
       id: 'anderson-linguistics2',
       autor: 'Catherine Anderson et al.',
-      ano: '2022',
+      ano: '2022–2026',
       titulo: 'Essentials of Linguistics, 2nd edition',
-      publicacao: 'eCampusOntario / McMaster University',
-      url: 'https://openlibrary-repo.ecampusontario.ca/jspui/handle/123456789/1489',
+      publicacao: 'eCampusOntario / McMaster University — Pressbooks',
+      url: 'https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/',
       idioma: 'en',
       tipo: 'curso',
       acesso: 'livre',
