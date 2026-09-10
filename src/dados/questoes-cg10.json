@@ -1,0 +1,200 @@
+[
+  {
+    "id": "cg10-av1-q01",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-unica",
+    "tema": "Objeto e limites da Sociologia",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u1-significado-historia-sociologia"],
+    "contexto": "Um pesquisador observa que determinada crença religiosa é mais frequente em um grupo social e conclui que essa distribuição sociológica prova que a crença é falsa.",
+    "comando": "Assinale a avaliação mais adequada.",
+    "alternativas": [
+      {"letra": "A", "texto": "A conclusão é válida porque toda explicação social elimina a questão da verdade.", "justificativa": "Descrever condições sociais de transmissão não decide o valor de verdade de uma proposição."},
+      {"letra": "B", "texto": "A Sociologia pode estudar a distribuição e transmissão da crença, mas esses dados não bastam para decidir se seu conteúdo é verdadeiro.", "justificativa": "A disciplina explica fenômenos sociais sem transformar correlação social em refutação lógica ou teológica."},
+      {"letra": "C", "texto": "Crenças religiosas não podem ser estudadas sociologicamente.", "justificativa": "Práticas, instituições e distribuição social da religião são objetos legítimos da Sociologia."},
+      {"letra": "D", "texto": "Somente a economia poderia estudar esse padrão.", "justificativa": "A questão envolve relações e grupos sociais e pertence legitimamente ao campo sociológico."}
+    ],
+    "gabarito": "B",
+    "justificativa": "A Sociologia pode explicar padrões de adesão e transmissão sem que seu método, por si só, decida a verdade do conteúdo religioso.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q02",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 2,
+    "tipoItem": "resposta-unica",
+    "tema": "Sociedade, cultura e instituições",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u2-sociedade-cultura-instituicoes"],
+    "contexto": "Uma congregação mantém culto às 19h, possui regimento escrito e ensina uma doutrina confessional. Um aluno afirma que horário, regimento e doutrina são todos 'instituições sociais' no mesmo sentido e, portanto, têm a mesma autoridade.",
+    "comando": "Qual distinção corrige melhor o raciocínio?",
+    "alternativas": [
+      {"letra": "A", "texto": "Tudo o que é social possui automaticamente autoridade religiosa absoluta.", "justificativa": "Existência social e autoridade normativa são categorias diferentes."},
+      {"letra": "B", "texto": "Somente edifícios podem ser considerados instituições.", "justificativa": "Instituições são padrões duráveis de papéis, normas e práticas, não apenas estruturas físicas."},
+      {"letra": "C", "texto": "É preciso distinguir instituição, organização, costume e reivindicação normativa; o fato de algo ser socialmente estável não define sua autoridade teológica.", "justificativa": "A análise sociológica identifica formas e funções, enquanto a autoridade doutrinária requer outro critério."},
+      {"letra": "D", "texto": "O horário do culto é necessariamente uma doutrina porque se repete semanalmente.", "justificativa": "Repetição institucional não transforma uma decisão prudencial em doutrina."}
+    ],
+    "gabarito": "C",
+    "justificativa": "Instituições e costumes podem ser socialmente estáveis sem terem o mesmo estatuto normativo de uma doutrina confessada.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q03",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 3,
+    "tipoItem": "resposta-unica",
+    "tema": "Normas sociais e sanções",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u3-normas-sociais"],
+    "contexto": "Numa instituição não existe regra escrita sobre vestimenta, mas novos membros aprendem rapidamente que determinado padrão recebe aprovação e sua violação gera constrangimento.",
+    "comando": "Qual interpretação sociológica é mais adequada?",
+    "alternativas": [
+      {"letra": "A", "texto": "Não há norma porque nada foi escrito.", "justificativa": "Normas sociais também podem ser informais."},
+      {"letra": "B", "texto": "Existe uma norma informal sustentada por sanções sociais, embora sua existência não prove que seja moralmente justa.", "justificativa": "Expectativa e sanção caracterizam a eficácia social da norma sem resolver sua legitimidade."},
+      {"letra": "C", "texto": "Toda sanção informal é ilegal.", "justificativa": "Sanções sociais incluem aprovação, prestígio e constrangimento e não se confundem necessariamente com punição jurídica."},
+      {"letra": "D", "texto": "A norma é necessariamente bíblica porque é antiga.", "justificativa": "Antiguidade de uma prática não estabelece sua normatividade teológica."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Normas podem operar informalmente por expectativas e sanções; sua descrição sociológica não equivale a aprovação moral.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q04",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-unica",
+    "tema": "Estratificação social",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u4-estratificacao-social"],
+    "contexto": "Membros que dependem de transporte público participam menos de reuniões noturnas do que membros com automóvel. Alguém conclui que o primeiro grupo é espiritualmente menos comprometido.",
+    "comando": "Qual procedimento é sociologicamente mais rigoroso?",
+    "alternativas": [
+      {"letra": "A", "texto": "Aceitar a conclusão porque frequência sempre mede motivação individual.", "justificativa": "Frequência pode ser afetada por barreiras estruturais e não identifica sozinha a causa."},
+      {"letra": "B", "texto": "Negar toda responsabilidade individual porque existe desigualdade de recursos.", "justificativa": "Estruturas condicionam possibilidades sem abolir agência."},
+      {"letra": "C", "texto": "Investigar transporte, jornada de trabalho, território e segurança antes de atribuir causalidade moral à diferença de participação.", "justificativa": "Isso testa explicações estruturais e evita confundir associação com causa."},
+      {"letra": "D", "texto": "Desconsiderar qualquer padrão coletivo e entrevistar apenas um membro.", "justificativa": "Um caso isolado não explica necessariamente uma regularidade entre grupos."}
+    ],
+    "gabarito": "C",
+    "justificativa": "A estratificação pode produzir custos desiguais de participação; esses fatores precisam ser medidos antes de interpretações causais ou morais.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q05",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 5,
+    "tipoItem": "resposta-unica",
+    "tema": "Status, papel e conflito de papéis",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u5-status-papel-sociedade"],
+    "contexto": "Uma médica que também é mãe recebe simultaneamente uma emergência hospitalar e uma emergência com o filho. As duas posições carregam expectativas legítimas e incompatíveis naquele momento.",
+    "comando": "Que conceito descreve melhor a situação?",
+    "alternativas": [
+      {"letra": "A", "texto": "Anomia, porque toda incompatibilidade entre deveres elimina normas sociais.", "justificativa": "O caso descreve tensão entre expectativas de posições diferentes, não ausência geral de normas."},
+      {"letra": "B", "texto": "Conflito de papéis, porque expectativas ligadas a dois status da mesma pessoa entram em tensão.", "justificativa": "É precisamente a definição sociológica do fenômeno."},
+      {"letra": "C", "texto": "Agregado social, porque há duas instituições envolvidas.", "justificativa": "Agregado descreve reunião circunstancial de pessoas, não tensão entre papéis."},
+      {"letra": "D", "texto": "Mobilidade social, porque a pessoa possui mais de um papel.", "justificativa": "Mobilidade se refere a deslocamentos entre posições de estratificação."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Conflito de papéis ocorre quando expectativas legítimas associadas a diferentes status ocupados pela mesma pessoa se tornam incompatíveis em uma situação concreta.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q06",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 6,
+    "tipoItem": "resposta-unica",
+    "tema": "Processos sociais básicos",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u6-processos-sociais-basicos"],
+    "contexto": "Um conselho registra votações sempre unânimes, mas participantes mais novos dizem fora das reuniões que discordar publicamente costuma trazer custos sociais.",
+    "comando": "Qual conclusão é mais prudente?",
+    "alternativas": [
+      {"letra": "A", "texto": "A unanimidade registrada prova ausência de conflito.", "justificativa": "Silêncio pode resultar de sanções ou assimetrias de poder."},
+      {"letra": "B", "texto": "Todo consenso institucional é necessariamente coerção.", "justificativa": "Consenso pode ser genuíno; é preciso investigar o processo."},
+      {"letra": "C", "texto": "É preciso examinar regras de participação, sanções informais e distribuição de voz antes de identificar unanimidade com consenso substantivo.", "justificativa": "O processo social pode ocultar conflitos não expressos."},
+      {"letra": "D", "texto": "Conflito e cooperação nunca podem coexistir no mesmo grupo.", "justificativa": "Processos sociais distintos podem coexistir em uma organização."}
+    ],
+    "gabarito": "C",
+    "justificativa": "A ausência de conflito manifesto não demonstra, por si, liberdade de participação ou inexistência de desacordo.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q07",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 7,
+    "tipoItem": "resposta-unica",
+    "tema": "Grupos, agregados e categorias",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "facil",
+    "referenciais": ["cg10-u7-grupos-agregados-sociais"],
+    "contexto": "Cem passageiros aguardam ônibus no mesmo terminal sem interação estável, identidade compartilhada ou vínculo posterior.",
+    "comando": "Na classificação sociológica apresentada na unidade, esse conjunto é melhor descrito como:",
+    "alternativas": [
+      {"letra": "A", "texto": "Grupo primário.", "justificativa": "Grupo primário pressupõe relações próximas e relativamente duráveis."},
+      {"letra": "B", "texto": "Grupo de referência.", "justificativa": "Nada indica que seus padrões sirvam de referência identitária aos participantes."},
+      {"letra": "C", "texto": "Agregado social.", "justificativa": "As pessoas compartilham circunstancialmente o espaço sem constituir vínculo social estável."},
+      {"letra": "D", "texto": "Instituição social.", "justificativa": "O conjunto de passageiros não é um padrão institucional durável de papéis e normas."}
+    ],
+    "gabarito": "C",
+    "justificativa": "Proximidade física temporária sem interação ou identidade estável caracteriza um agregado, não necessariamente um grupo social.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av1-q08",
+    "disciplina": "CG10",
+    "avaliacao": "av1",
+    "unidade": 8,
+    "tipoItem": "resposta-unica",
+    "tema": "Desenvolvimento e mudança social",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg10-u8-desenvolvimento-mudanca-social"],
+    "contexto": "Uma nova tecnologia aumenta a produtividade de uma comunidade, mas também amplia isolamento de idosos e elimina postos de trabalho locais.",
+    "comando": "Qual leitura corresponde melhor à unidade?",
+    "alternativas": [
+      {"letra": "A", "texto": "Toda mudança tecnológica é progresso em todos os sentidos.", "justificativa": "Mudanças podem produzir efeitos positivos e negativos simultaneamente."},
+      {"letra": "B", "texto": "A Sociologia deve descrever mecanismos e efeitos antes de transformar mudança em juízo total de progresso ou decadência.", "justificativa": "Descrição causal e avaliação normativa são etapas distintas."},
+      {"letra": "C", "texto": "Tecnologia nunca produz mudança social, apenas mudança individual.", "justificativa": "Tecnologia pode reorganizar trabalho, comunicação, redes e instituições."},
+      {"letra": "D", "texto": "Somente efeitos econômicos são sociologicamente relevantes.", "justificativa": "Relações, instituições, demografia e integração social também são objetos sociológicos."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Mudança social precisa ser descrita em seus mecanismos e efeitos diversos; 'progresso' acrescenta uma avaliação que não decorre automaticamente da novidade.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg10-av2-q01",
+    "disciplina": "CG10",
+    "avaliacao": "av2",
+    "unidade": 9,
+    "tipoItem": "resposta-unica",
+    "tema": "Igreja e problemas sociais",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "dificil",
+    "referenciais": ["cg10-u9-igreja-problemas-sociais"],
+    "contexto": "Uma igreja identifica pobreza no bairro e propõe distribuir ajuda apenas a moradores que apoiem determinado candidato ou participem de seus cultos. A liderança afirma que isso integra ação social, evangelização e cidadania.",
+    "comando": "Assinale a avaliação mais adequada segundo a unidade.",
+    "alternativas": [
+      {"letra": "A", "texto": "A proposta é adequada porque assistência pode ser usada livremente para produzir adesão política ou religiosa.", "justificativa": "Isso instrumentaliza vulnerabilidade e confunde serviço, coerção e captura partidária."},
+      {"letra": "B", "texto": "A igreja deve abandonar toda preocupação social para preservar sua missão espiritual.", "justificativa": "A unidade distingue missão própria, diaconia e cidadania sem concluir por indiferentismo social."},
+      {"letra": "C", "texto": "A resposta deve partir de diagnóstico verificável e servir sem condicionar ajuda a voto ou profissão religiosa, distinguindo ação da igreja, diaconia e cidadania dos membros.", "justificativa": "Essa abordagem preserva dignidade, evita coerção e mantém claras as competências institucionais."},
+      {"letra": "D", "texto": "Basta substituir o candidato por outro para resolver o problema ético.", "justificativa": "O defeito está no condicionamento e instrumentalização da assistência, não na identidade partidária escolhida."}
+    ],
+    "gabarito": "C",
+    "justificativa": "Problemas sociais requerem diagnóstico e ação responsável; assistência não deve ser convertida em instrumento de coerção política ou religiosa.",
+    "atualizadoEm": "2026-09-10"
+  }
+]
