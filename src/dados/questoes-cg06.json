@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cg06-av1-q01",
+    "disciplina": "CG06",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-unica",
+    "tema": "Métodos e técnicas de pesquisa",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg06-u1-metodos-tecnicas-pesquisa"],
+    "contexto": "Um pesquisador quer saber como seminaristas verificam referências sugeridas por ferramentas de IA e decide, antes de formular a pergunta com precisão, que obrigatoriamente aplicará um experimento controlado.",
+    "comando": "Assinale a avaliação metodológica mais adequada.",
+    "alternativas": [
+      {"letra": "A", "texto": "A decisão é correta porque experimento é sempre o método científico mais rigoroso.", "justificativa": "Rigor depende da adequação entre pergunta e desenho; nem toda questão admite ou exige experimento."},
+      {"letra": "B", "texto": "Primeiro deve delimitar a pergunta e o tipo de evidência necessário; só então escolher método, técnica e instrumento compatíveis.", "justificativa": "A pergunta orienta o desenho, não o contrário."},
+      {"letra": "C", "texto": "A pesquisa só será científica se produzir dados numéricos.", "justificativa": "Métodos qualitativos e documentais também podem ser sistemáticos, transparentes e rigorosos."},
+      {"letra": "D", "texto": "Basta escolher qualquer técnica e explicar a decisão na conclusão.", "justificativa": "O desenho precisa ser justificado antes da coleta e integrado ao problema e às limitações."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Método é escolhido em função da pergunta, do tipo de evidência e das limitações; não existe técnica universalmente superior independentemente do problema.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg06-av1-q02",
+    "disciplina": "CG06",
+    "avaliacao": "av1",
+    "unidade": 2,
+    "tipoItem": "resposta-unica",
+    "tema": "Normalização ABNT",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg06-u2-padroes-abnt"],
+    "contexto": "Um aluno usa um modelo de TCC de 2019 e afirma que ele representa automaticamente 'a ABNT atual'. O orientador informa que o curso adota um manual institucional revisado em 2025.",
+    "comando": "Qual procedimento é o mais adequado?",
+    "alternativas": [
+      {"letra": "A", "texto": "Manter o modelo de 2019, porque normas de documentação não mudam depois de publicadas.", "justificativa": "Normas são versionadas e podem ser substituídas ou atualizadas."},
+      {"letra": "B", "texto": "Conferir as normas vigentes e o manual institucional atualizado, distinguindo exigências da ABNT de adaptações locais.", "justificativa": "Esse procedimento identifica a fonte normativa e sua versão, além da regra institucional aplicável."},
+      {"letra": "C", "texto": "Ignorar a ABNT, porque qualquer manual institucional a substitui juridicamente.", "justificativa": "O manual institucional normalmente aplica e adapta normas; é necessário saber de onde cada regra provém."},
+      {"letra": "D", "texto": "Escolher a regra visualmente mais comum entre trabalhos disponíveis na internet.", "justificativa": "Popularidade de um modelo não demonstra vigência normativa."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Normalização responsável exige identificar norma, edição vigente e adaptação institucional, evitando atribuir à ABNT uma regra desatualizada ou meramente local.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg06-av1-q03",
+    "disciplina": "CG06",
+    "avaliacao": "av1",
+    "unidade": 3,
+    "tipoItem": "resposta-unica",
+    "tema": "Gêneros acadêmicos, citação e paráfrase",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg06-u3-producao-trabalhos-academicos"],
+    "contexto": "Um estudante lê um argumento em um artigo, mantém a mesma sequência lógica, troca quase todas as palavras por sinônimos e não menciona o autor porque 'não copiou nenhuma frase literalmente'.",
+    "comando": "Assinale a avaliação correta.",
+    "alternativas": [
+      {"letra": "A", "texto": "Não há problema, pois plágio só existe quando palavras idênticas são copiadas.", "justificativa": "Ideias e estrutura argumentativa também exigem atribuição quando apropriadas de outra fonte."},
+      {"letra": "B", "texto": "Há problema de atribuição: paráfrase exige compreensão, reconstrução própria e crédito à fonte intelectual.", "justificativa": "Trocar palavras não transfere a autoria da ideia ou do raciocínio."},
+      {"letra": "C", "texto": "O procedimento seria correto se a fonte fosse incluída apenas na bibliografia final, sem chamada no texto.", "justificativa": "A bibliografia isolada não mostra ao leitor qual ideia específica foi tomada daquela fonte."},
+      {"letra": "D", "texto": "A única correção necessária seria transformar todo o trecho em slide.", "justificativa": "Mudar o suporte não resolve a falta de atribuição."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Paráfrase não é ocultação da fonte por reescrita superficial; ela preserva a obrigação de atribuir o conteúdo intelectual utilizado.",
+    "atualizadoEm": "2026-09-10"
+  },
+  {
+    "id": "cg06-av1-q04",
+    "disciplina": "CG06",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-unica",
+    "tema": "Tema, problema e objetivos",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg06-u4-etapas-trabalho-cientifico"],
+    "contexto": "Um projeto apresenta o tema 'A Reforma Protestante', o problema 'Provar que a Reforma estava correta' e o objetivo geral 'Conhecer tudo sobre a Reforma'.",
+    "comando": "Qual revisão metodológica é mais necessária?",
+    "alternativas": [
+      {"letra": "A", "texto": "Apenas aumentar a quantidade de referências; tema, problema e objetivo já estão suficientemente delimitados.", "justificativa": "O problema contém a conclusão e o objetivo é amplo e não verificável."},
+      {"letra": "B", "texto": "Delimitar objeto/corpus/período, formular uma pergunta que não pressuponha a conclusão e substituir o objetivo por uma ação investigativa verificável.", "justificativa": "Isso transforma um assunto amplo e uma defesa prévia em projeto pesquisável."},
+      {"letra": "C", "texto": "Eliminar qualquer hipótese ou convicção do pesquisador, porque pesquisa exige ausência absoluta de pressupostos.", "justificativa": "Rigor exige controle e transparência, não a alegação impossível de neutralidade total."},
+      {"letra": "D", "texto": "Trocar o título, mantendo problema e objetivo como estão.", "justificativa": "O defeito é metodológico, não apenas nominal."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Um problema pesquisável precisa admitir investigação real, e os objetivos devem descrever ações intelectuais que conduzam a uma resposta delimitada.",
+    "atualizadoEm": "2026-09-10"
+  }
+]
