@@ -1,0 +1,134 @@
+[
+  {
+    "id":"cg08-av1-q01","disciplina":"CG08","avaliacao":"av1","unidade":1,"tipoItem":"resposta-unica","tema":"Espírito filosófico","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg08-u1-introducao-filosofia"],
+    "contexto":"Em uma discussão, alguém responde a toda pergunta dizendo apenas: ‘essa é a minha opinião’.",
+    "comando":"Assinale a atitude que melhor expressa o espírito filosófico estudado.",
+    "alternativas":[
+      {"letra":"A","texto":"Encerrar a discussão, porque opiniões pessoais não podem ser examinadas racionalmente.","justificativa":"Filosofia justamente examina conceitos, razões e pressupostos de crenças."},
+      {"letra":"B","texto":"Perguntar o que os termos significam, quais razões sustentam a opinião e que consequências decorrem dela.","justificativa":"Essa sequência traduz o hábito filosófico de definição, argumentação e análise."},
+      {"letra":"C","texto":"Substituir a opinião por uma citação de autoridade sem examinar o argumento.","justificativa":"Autoridades podem ser relevantes, mas não dispensam compreensão do raciocínio."},
+      {"letra":"D","texto":"Duvidar de tudo permanentemente, sem admitir qualquer conclusão.","justificativa":"Dúvida disciplinada não é ceticismo absoluto."}
+    ],"gabarito":"B","justificativa":"O espírito filosófico transforma afirmações em problemas examináveis mediante conceitos, razões, pressupostos e consequências.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q02","disciplina":"CG08","avaliacao":"av1","unidade":2,"tipoItem":"resposta-unica","tema":"Origem da filosofia","taxonomiaBloom":"avaliar","nivelDificuldade":"media","referenciais":["cg08-u2-origem-filosofia"],
+    "contexto":"Um resumo didático afirma: ‘antes dos filósofos gregos havia apenas mito; com Tales nasceu a razão humana’.",
+    "comando":"Assinale a correção historicamente mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"Manter a frase, pois povos anteriores não produziam cálculo, leis ou explicações racionais.","justificativa":"Civilizações anteriores possuíam formas complexas de raciocínio, cálculo e explicação."},
+      {"letra":"B","texto":"Reconhecer uma mudança gradual nas formas públicas de justificar explicações, sem imaginar ruptura absoluta entre mito e razão.","justificativa":"A formulação preserva a novidade filosófica sem caricaturar o passado."},
+      {"letra":"C","texto":"Negar qualquer novidade à filosofia grega.","justificativa":"Houve desenvolvimento real de investigação conceitual e argumentativa."},
+      {"letra":"D","texto":"Definir filosofia como simples rejeição de toda religião.","justificativa":"A filosofia antiga continuou tratando de divindade, cosmos e finalidade."}
+    ],"gabarito":"B","justificativa":"A origem da filosofia é melhor descrita como processo histórico de transformação dos modos de pergunta e justificação.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q03","disciplina":"CG08","avaliacao":"av1","unidade":3,"tipoItem":"resposta-unica","tema":"Disciplinas filosóficas","taxonomiaBloom":"aplicar","nivelDificuldade":"facil","referenciais":["cg08-u3-disciplinas-filosofia-1"],
+    "contexto":"Um pesquisador pergunta: ‘o que torna uma explicação científica uma boa explicação e quando correlação conta como causa?’",
+    "comando":"Qual campo filosófico é mais diretamente acionado pela pergunta?",
+    "alternativas":[
+      {"letra":"A","texto":"Filosofia da ciência.","justificativa":"Ela examina pressupostos, explicação, evidência e causalidade nas práticas científicas."},
+      {"letra":"B","texto":"Estética.","justificativa":"Estética trata principalmente de beleza, gosto e valor estético."},
+      {"letra":"C","texto":"Filosofia política.","justificativa":"Pode haver implicações políticas, mas não é o foco principal da pergunta."},
+      {"letra":"D","texto":"Metaética.","justificativa":"Metaética investiga fundamentos dos juízos morais."}
+    ],"gabarito":"A","justificativa":"A questão examina os fundamentos de uma prática científica e, portanto, pertence primariamente à filosofia da ciência.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q04","disciplina":"CG08","avaliacao":"av1","unidade":4,"tipoItem":"resposta-unica","tema":"Integração dos ramos","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg08-u4-disciplinas-filosofia-2"],
+    "contexto":"Um argumento diz: ‘estudos mostram que uma prática aumenta a satisfação média; logo o Estado deve obrigar todos a adotá-la’.",
+    "comando":"Qual é a principal falha filosófica indicada pela unidade?",
+    "alternativas":[
+      {"letra":"A","texto":"Dados empíricos jamais podem participar de decisões políticas.","justificativa":"Dados são relevantes, mas não bastam sozinhos para uma conclusão normativa."},
+      {"letra":"B","texto":"A conclusão normativa introduz premissas sobre autoridade, direitos e bem que não foram justificadas apenas pelo dado descritivo.","justificativa":"A passagem de fato a dever exige razões normativas adicionais."},
+      {"letra":"C","texto":"Toda política pública é logicamente inválida.","justificativa":"Políticas podem ser justificadas por argumentos adequados."},
+      {"letra":"D","texto":"A satisfação não pode ser estudada empiricamente.","justificativa":"A questão não é a possibilidade da pesquisa, mas a inferência normativa."}
+    ],"gabarito":"B","justificativa":"Descrição empírica e conclusão normativa pertencem a níveis distintos; a ponte entre elas precisa ser argumentada.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q05","disciplina":"CG08","avaliacao":"av1","unidade":5,"tipoItem":"resposta-unica","tema":"Metafísica aristotélica","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["cg08-u5-metafisica-1"],
+    "contexto":"Uma semente pode tornar-se árvore, mas não pode tornar-se espontaneamente um triângulo.",
+    "comando":"Que distinção aristotélica melhor ajuda a explicar o exemplo?",
+    "alternativas":[
+      {"letra":"A","texto":"Ato e potência.","justificativa":"Potência descreve capacidades reais delimitadas e ato sua realização."},
+      {"letra":"B","texto":"Ceticismo e dogmatismo.","justificativa":"São categorias epistemológicas, não a distinção central do exemplo."},
+      {"letra":"C","texto":"Analítico e sintético.","justificativa":"Não é a estrutura aristotélica usada para mudança no exemplo."},
+      {"letra":"D","texto":"Denotação e conotação.","justificativa":"São distinções semânticas."}
+    ],"gabarito":"A","justificativa":"Ato e potência permitem explicar mudança como realização de capacidades reais sem tornar qualquer transformação possível.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q06","disciplina":"CG08","avaliacao":"av1","unidade":6,"tipoItem":"resposta-unica","tema":"Kant e positivismo lógico","taxonomiaBloom":"avaliar","nivelDificuldade":"dificil","referenciais":["cg08-u6-metafisica-2"],
+    "contexto":"Um aluno afirma: ‘Kant simplesmente aboliu toda metafísica e o positivismo lógico provou empiricamente que apenas frases verificáveis empiricamente têm significado’.",
+    "comando":"Assinale a correção mais precisa.",
+    "alternativas":[
+      {"letra":"A","texto":"A frase está correta em ambas as partes.","justificativa":"Ela simplifica Kant e ignora o problema autorreferencial do verificacionismo forte."},
+      {"letra":"B","texto":"Kant limita e transforma a metafísica dogmática; o verificacionismo forte enfrenta a questão de não ser ele mesmo verificável pelo critério que propõe.","justificativa":"Essa formulação preserva as duas críticas sem caricatura."},
+      {"letra":"C","texto":"Kant defendia a metafísica medieval sem alteração e o positivismo lógico era uma teologia.","justificativa":"Ambas as afirmações são historicamente erradas."},
+      {"letra":"D","texto":"O positivismo lógico não se interessava por linguagem ou significado.","justificativa":"A análise do significado era central ao movimento."}
+    ],"gabarito":"B","justificativa":"Kant redefine limites do conhecimento metafísico e o critério forte de verificação enfrenta dificuldades ao ser aplicado a si mesmo.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q07","disciplina":"CG08","avaliacao":"av1","unidade":7,"tipoItem":"resposta-unica","tema":"Heidegger e modalidade","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg08-u7-metafisica-3"],
+    "contexto":"Uma apresentação diz que Heidegger e Kripke fizeram o mesmo projeto: ambos restauraram a metafísica aristotélica.",
+    "comando":"Assinale a avaliação correta.",
+    "alternativas":[
+      {"letra":"A","texto":"Correto, porque toda metafísica contemporânea repete Aristóteles.","justificativa":"Os projetos são distintos em método e problema."},
+      {"letra":"B","texto":"Incorreto: Heidegger reabre a pergunta pelo ser e critica a tradição; Kripke contribui à lógica e metafísica modal de necessidade, possibilidade e identidade.","justificativa":"A resposta distingue adequadamente os dois programas."},
+      {"letra":"C","texto":"Incorreto apenas porque Kripke rejeitou toda lógica formal.","justificativa":"Kripke é central justamente para a semântica formal da lógica modal."},
+      {"letra":"D","texto":"Correto porque “mundo possível” em Kripke significa Dasein em Heidegger.","justificativa":"São conceitos pertencentes a quadros filosóficos diferentes."}
+    ],"gabarito":"B","justificativa":"A unidade apresenta duas reconstruções distintas: ontológica em Heidegger e modal/analítica em Kripke.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av1-q08","disciplina":"CG08","avaliacao":"av1","unidade":8,"tipoItem":"resposta-unica","tema":"Teoria do conhecimento","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg08-u8-epistemologia-1"],
+    "contexto":"Uma pessoa consulta um relógio quebrado exatamente quando ele, por coincidência, mostra a hora correta.",
+    "comando":"Por que o caso é epistemologicamente relevante?",
+    "alternativas":[
+      {"letra":"A","texto":"Porque mostra que crenças verdadeiras nunca podem ser justificadas.","justificativa":"A conclusão é forte demais."},
+      {"letra":"B","texto":"Porque mostra que uma crença verdadeira com aparência de justificativa pode ainda depender de sorte epistêmica.","justificativa":"Esse é o ponto do tipo de caso associado ao problema de Gettier."},
+      {"letra":"C","texto":"Porque prova que relógios não são fontes de informação.","justificativa":"Relógios funcionais podem ser fontes normalmente confiáveis."},
+      {"letra":"D","texto":"Porque verdade depende da crença do observador.","justificativa":"O caso pressupõe justamente uma verdade independente da crença."}
+    ],"gabarito":"B","justificativa":"A coincidência entre crença verdadeira e uma razão defeituosa evidencia que conhecimento exige conexão epistêmica adequada com a verdade.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av2-q09","disciplina":"CG08","avaliacao":"av2","unidade":9,"tipoItem":"resposta-unica","tema":"Fé e razão","taxonomiaBloom":"avaliar","nivelDificuldade":"media","referenciais":["cg08-u9-epistemologia-2-fe-razao"],
+    "contexto":"Alguém afirma que reconhecer pressupostos significa abandonar evidências e argumentos.",
+    "comando":"Assinale a resposta mais coerente com a unidade.",
+    "alternativas":[
+      {"letra":"A","texto":"Correto: se há pressupostos, evidência é irrelevante.","justificativa":"Pressupostos moldam interpretação, mas não eliminam o valor das evidências."},
+      {"letra":"B","texto":"Incorreto: reconhecer pressupostos torna explícito o quadro de interpretação, enquanto documentos, observações e argumentos continuam devendo ser examinados.","justificativa":"Essa é a posição defendida na unidade."},
+      {"letra":"C","texto":"Correto apenas na teologia, não em outras áreas.","justificativa":"A relação entre pressupostos e evidência é questão epistemológica geral."},
+      {"letra":"D","texto":"Incorreto porque seres humanos não possuem pressupostos.","justificativa":"A unidade rejeita a ideia de neutralidade absoluta."}
+    ],"gabarito":"B","justificativa":"A crítica à neutralidade não é licença para dispensar evidências; é convite a examinar também os compromissos que orientam sua interpretação.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av2-q10","disciplina":"CG08","avaliacao":"av2","unidade":10,"tipoItem":"resposta-unica","tema":"Conhecimento de Deus","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg08-u10-epistemologia-3-conhecimento-deus"],
+    "contexto":"Um aluno conclui: ‘se a criação torna Deus conhecido, então ninguém precisa ouvir o evangelho para ser salvo’.",
+    "comando":"Assinale a correção reformada mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"A conclusão é correta porque conhecimento natural e salvador são idênticos.","justificativa":"A tradição reformada distingue claramente esses níveis."},
+      {"letra":"B","texto":"A criação comunica conhecimento verdadeiro de Deus e torna inescusável, mas não comunica por si o evangelho salvador de Cristo.","justificativa":"Essa distinção combina revelação natural e necessidade da revelação especial."},
+      {"letra":"C","texto":"A criação não comunica absolutamente nada sobre Deus.","justificativa":"Isso contradiz a doutrina reformada da revelação geral."},
+      {"letra":"D","texto":"Somente filósofos possuem conhecimento natural de Deus.","justificativa":"O conhecimento natural não é restrito à formação filosófica."}
+    ],"gabarito":"B","justificativa":"Conhecimento natural de Deus é real, mas não equivale ao conhecimento salvador comunicado pelo evangelho.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av2-q11","disciplina":"CG08","avaliacao":"av2","unidade":11,"tipoItem":"resposta-unica","tema":"Ética e metaética","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["cg08-u11-teoria-valores-etica"],
+    "contexto":"Três conselheiros rejeitam a mesma ação: um porque aumentará o sofrimento, outro porque viola um dever e outro porque forma um caráter injusto.",
+    "comando":"Qual classificação é correta?",
+    "alternativas":[
+      {"letra":"A","texto":"Consequencialismo, deontologia e ética das virtudes, respectivamente.","justificativa":"Cada razão corresponde à ênfase descrita na unidade."},
+      {"letra":"B","texto":"Estética, lógica e epistemologia, respectivamente.","justificativa":"Esses campos não correspondem às razões morais apresentadas."},
+      {"letra":"C","texto":"Deontologia, consequencialismo e relativismo, respectivamente.","justificativa":"A ordem e a terceira categoria estão incorretas."},
+      {"letra":"D","texto":"Todas são apenas formas de consequencialismo.","justificativa":"Dever e caráter não se reduzem automaticamente a consequências."}
+    ],"gabarito":"A","justificativa":"Resultados, deveres e caráter correspondem às três famílias normativas apresentadas na unidade.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"cg08-av2-q12","disciplina":"CG08","avaliacao":"av2","unidade":12,"tipoItem":"resposta-unica","tema":"Estética","taxonomiaBloom":"avaliar","nivelDificuldade":"media","referenciais":["cg08-u12-teoria-valores-estetica"],
+    "contexto":"Uma pessoa afirma: ‘como gosto é subjetivo, nenhuma avaliação estética pode ser melhor fundamentada que outra’.",
+    "comando":"Assinale a avaliação mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"Correto, porque experiência subjetiva elimina qualquer possibilidade de razões públicas.","justificativa":"A unidade distingue resposta subjetiva de ausência de razões."},
+      {"letra":"B","texto":"Incorreto: julgamentos estéticos envolvem experiência do sujeito, mas podem discutir propriedades da obra, contexto, técnica e formação da percepção.","justificativa":"Essa formulação preserva experiência e argumentação."},
+      {"letra":"C","texto":"Incorreto porque beleza pode ser provada por silogismo independentemente de qualquer experiência.","justificativa":"A unidade não reduz estética a dedução formal."},
+      {"letra":"D","texto":"Correto somente para arte religiosa.","justificativa":"A questão filosófica é mais ampla que o tipo de arte."}
+    ],"gabarito":"B","justificativa":"O envolvimento do sujeito não transforma automaticamente todo juízo estético em preferência incomunicável; razões e percepção educada continuam relevantes.","atualizadoEm":"2026-09-10"
+  }
+]
