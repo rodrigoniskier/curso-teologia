@@ -293,7 +293,7 @@ export const linguisticaAplicada: Verbete = {
       ano: '2022',
       titulo: 'Essentials of Linguistics, 2nd edition',
       publicacao: 'eCampusOntario / McMaster University',
-      url: 'https://openlibrary-repo.ecampusontario.ca/jspui/handle/123456789/1489',
+      url: 'https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/',
       idioma: 'en',
       tipo: 'curso',
       acesso: 'livre',
