@@ -1,0 +1,167 @@
+[
+  {
+    "id":"te12-av1-q01","disciplina":"TE12","avaliacao":"av1","unidade":1,"tipoItem":"resposta-unica","tema":"Hermenêutica, exegese e aplicação","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u1-definicao-conceituacoes"],
+    "contexto":"Um pregador encontra uma frase bíblica, associa-a imediatamente a um problema atual e chama essa associação de interpretação, sem examinar gênero, argumento ou contexto.",
+    "comando":"Assinale a avaliação metodologicamente mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"A associação já é exegese porque toda aplicação contemporânea revela automaticamente o sentido original.","justificativa":"Aplicação e interpretação são relacionadas, mas não idênticas; a aplicação precisa derivar de sentido demonstrado."},
+      {"letra":"B","texto":"É necessário primeiro interpretar/exegetar a passagem em seu contexto e só depois formular aplicações coerentes com esse sentido.","justificativa":"A ordem preserva a distinção entre o que o texto comunica e as implicações posteriores."},
+      {"letra":"C","texto":"Somente informações históricas importam; aplicação não pertence ao uso legítimo da Escritura.","justificativa":"Aplicação é parte legítima do ministério bíblico, desde que derive da interpretação."},
+      {"letra":"D","texto":"A hermenêutica dispensa exegese porque seus princípios gerais já determinam o significado de qualquer versículo.","justificativa":"Hermenêutica fornece princípios; exegese os aplica aos dados concretos da passagem."}
+    ],"gabarito":"B","justificativa":"Interpretação e exegese investigam o sentido comunicado; aplicação deriva desse sentido para outras situações e não pode substituí-lo.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q02","disciplina":"TE12","avaliacao":"av1","unidade":2,"tipoItem":"resposta-unica","tema":"Pressupostos do intérprete","taxonomiaBloom":"avaliar","nivelDificuldade":"media","referenciais":["te12-u2-pressupostos"],
+    "contexto":"Dois leitores discordam. O primeiro afirma não possuir pressupostos; o segundo reconhece sua tradição e a submete a revisão pelo texto e pela comparação canônica.",
+    "comando":"Assinale a postura mais coerente com a hermenêutica reformada estudada.",
+    "alternativas":[
+      {"letra":"A","texto":"A primeira, porque consciência de pressupostos torna impossível qualquer verdade objetiva.","justificativa":"Reconhecer pré-compreensões não elimina evidência textual nem comunicação verdadeira."},
+      {"letra":"B","texto":"A segunda, porque pressupostos são inevitáveis, mas podem ser explicitados, criticados e corrigidos pela Escritura.","justificativa":"Essa postura combina humildade epistêmica e confiança na possibilidade de correção textual."},
+      {"letra":"C","texto":"Nenhuma, porque toda interpretação é apenas autobiografia do leitor.","justificativa":"A existência de leitores situados não dissolve o texto em projeção subjetiva."},
+      {"letra":"D","texto":"A primeira, desde que o leitor use uma tradução literal.","justificativa":"Tradução não elimina pressupostos culturais, teológicos e linguísticos."}
+    ],"gabarito":"B","justificativa":"A tradição reformada não pressupõe neutralidade absoluta, mas subordinação consciente dos pressupostos à Palavra e à crítica exegética.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q03","disciplina":"TE12","avaliacao":"av1","unidade":3,"tipoItem":"resposta-unica","tema":"Autoria divina e humana","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u3-duas-naturezas-biblia"],
+    "contexto":"Um estudante diz que, se a Bíblia é inspirada, conhecer o contexto histórico e a intenção do autor humano é desnecessário.",
+    "comando":"Assinale a resposta mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"Correto, porque inspiração substitui todos os meios humanos de comunicação.","justificativa":"A inspiração opera por autores humanos reais, em linguagem, gênero e história."},
+      {"letra":"B","texto":"Incorreto, porque autoria divina e autoria humana são afirmadas juntas; estudar os meios humanos ajuda a compreender a própria forma da revelação.","justificativa":"A investigação histórico-gramatical decorre do modo como a Escritura foi dada."},
+      {"letra":"C","texto":"Correto apenas no NT, cuja linguagem não possui condicionamento histórico.","justificativa":"Ambos os Testamentos empregam linguagem e contextos humanos históricos."},
+      {"letra":"D","texto":"Incorreto porque a Bíblia deve ser tratada somente como documento humano.","justificativa":"Essa resposta cai no reducionismo oposto e exclui sua reivindicação de inspiração."}
+    ],"gabarito":"B","justificativa":"Confessar inspiração não elimina gramática e história; reconhece que Deus escolheu comunicar-se justamente por esses meios humanos.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q04","disciplina":"TE12","avaliacao":"av1","unidade":4,"tipoItem":"resposta-unica","tema":"Intertextualidade no AT","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["te12-u4-intertextualidade-rabinos"],
+    "contexto":"Um intérprete afirma que duas passagens são intertextualmente relacionadas apenas porque ambas mencionam água, sem outras correspondências verbais, históricas ou estruturais.",
+    "comando":"Assinale a avaliação correta.",
+    "alternativas":[
+      {"letra":"A","texto":"A relação está provada, porque qualquer palavra compartilhada estabelece dependência literária.","justificativa":"Vocabulário genérico isolado é evidência fraca e pode ser coincidência temática."},
+      {"letra":"B","texto":"A proposta precisa de evidência mais específica: vocabulário distintivo, estrutura, contexto e função da retomada no texto posterior.","justificativa":"Intertextualidade responsável exige critérios verificáveis."},
+      {"letra":"C","texto":"Autores do AT nunca interpretam textos bíblicos anteriores.","justificativa":"O próprio AT contém numerosas retomadas e releituras de tradições anteriores."},
+      {"letra":"D","texto":"Somente o NT pode conter intertextualidade verdadeira.","justificativa":"O fenômeno já ocorre dentro do AT."}
+    ],"gabarito":"B","justificativa":"Uma relação intertextual precisa explicar correspondências específicas e a função da retomada, não apenas compartilhar um tema amplo.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q05","disciplina":"TE12","avaliacao":"av1","unidade":5,"tipoItem":"resposta-unica","tema":"Qumran, Josefo e Filo","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u5-qumran-josefo-filo"],
+    "contexto":"Um resumo didático afirma que Qumran, Josefo e Filo representam um único método judaico uniforme de interpretação.",
+    "comando":"Assinale a correção historicamente mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"A afirmação é correta porque todo judaísmo do Segundo Templo interpretava a Escritura do mesmo modo.","justificativa":"O período apresenta pluralidade de grupos, objetivos e estratégias interpretativas."},
+      {"letra":"B","texto":"É necessário distingui-los: Qumran tem leitura sectária e escatológica, Josefo projeto historiográfico/apologético e Filo forte uso de alegoria em ambiente helenístico.","justificativa":"A distinção preserva o contexto específico de cada testemunha."},
+      {"letra":"C","texto":"Somente Filo interpretava textos; Qumran e Josefo não utilizavam Escritura.","justificativa":"Ambos se relacionam intensamente com a tradição bíblica, embora de modos distintos."},
+      {"letra":"D","texto":"As diferenças são irrelevantes porque fontes extracanônicas nunca ajudam a interpretação bíblica.","justificativa":"Elas podem iluminar contexto histórico sem adquirir autoridade canônica."}
+    ],"gabarito":"B","justificativa":"O judaísmo do Segundo Templo não é hermeneuticamente uniforme; comparar os três exige distinguir contexto, gênero e finalidade.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q06","disciplina":"TE12","avaliacao":"av1","unidade":6,"tipoItem":"resposta-unica","tema":"Uso do AT no NT","taxonomiaBloom":"avaliar","nivelDificuldade":"dificil","referenciais":["te12-u6-autores-nt-interpretam-at"],
+    "contexto":"Um pregador argumenta que, como os apóstolos veem tipologia no AT, leitores atuais podem atribuir livremente significados cristológicos a qualquer detalhe narrativo.",
+    "comando":"Assinale a avaliação mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"Correto, pois tipologia elimina a necessidade de correspondência histórica e canônica.","justificativa":"Tipologia responsável pressupõe padrões históricos e desenvolvimento canônico."},
+      {"letra":"B","texto":"Incorreto: o padrão apostólico ensina unidade canônica e cumprimento em Cristo, mas não autoriza criar novos sentidos sem controle textual e histórico-redentivo.","justificativa":"A autoridade apostólica e as conexões canônicas distinguem uso inspirado de associação livre."},
+      {"letra":"C","texto":"Incorreto porque o NT jamais interpreta tipologicamente o AT.","justificativa":"O NT emprega padrões tipológicos claros."},
+      {"letra":"D","texto":"Correto somente quando a aplicação produz uma doutrina verdadeira.","justificativa":"Uma conclusão verdadeira não torna válida uma derivação exegética sem suporte."}
+    ],"gabarito":"B","justificativa":"O uso apostólico do AT oferece um modelo canônico, mas não licença para alegorizar detalhes arbitrariamente.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q07","disciplina":"TE12","avaliacao":"av1","unidade":7,"tipoItem":"resposta-unica","tema":"Alexandria e Antioquia","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u7-alexandria-antioquia"],
+    "contexto":"Um aluno resume a história dizendo: “Alexandria ignorava o texto; Antioquia era simplesmente a hermenêutica reformada antes da Reforma”.",
+    "comando":"Assinale a revisão historicamente mais defensável.",
+    "alternativas":[
+      {"letra":"A","texto":"Manter o resumo, porque cada escola possuía um método homogêneo e sem exceções.","justificativa":"A oposição simplifica excessivamente autores, períodos e estratégias diversas."},
+      {"letra":"B","texto":"Tratar Alexandria e Antioquia como tendências: a primeira enfatiza leituras espirituais/allegóricas e a segunda história e gramática, sem identificar qualquer delas integralmente com a hermenêutica reformada posterior.","justificativa":"A formulação reconhece diferenças reais sem anacronismo ou caricatura."},
+      {"letra":"C","texto":"Eliminar toda distinção, porque não houve diferenças interpretativas entre os centros.","justificativa":"Houve ênfases e controvérsias reais que merecem ser estudadas."},
+      {"letra":"D","texto":"Afirmar que Antioquia rejeitou qualquer leitura cristológica do AT.","justificativa":"A ênfase histórica não equivale a rejeitar toda relação teológica ou cristológica."}
+    ],"gabarito":"B","justificativa":"O contraste é útil quando tratado como tendência histórica, não como dois blocos homogêneos ou projeções diretas da Reforma.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av1-q08","disciplina":"TE12","avaliacao":"av1","unidade":8,"tipoItem":"resposta-unica","tema":"Ocidente latino","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u8-ocidente-latino"],
+    "contexto":"Uma interpretação agostiniana produz uma aplicação sobre amor a Deus e ao próximo, mas essa aplicação não pode ser derivada do argumento específico da passagem utilizada.",
+    "comando":"Assinale a avaliação mais adequada segundo a unidade.",
+    "alternativas":[
+      {"letra":"A","texto":"A aplicação é necessariamente exegese correta porque sua conclusão moral é verdadeira.","justificativa":"Verdade moral não prova que aquela passagem ensine a conclusão pelo caminho proposto."},
+      {"letra":"B","texto":"A finalidade de caridade é teologicamente valiosa, mas a interpretação da passagem ainda precisa ser demonstrada por linguagem e contexto.","justificativa":"Edificação e prova exegética não são a mesma coisa."},
+      {"letra":"C","texto":"Toda preocupação moral deve ser excluída da interpretação bíblica.","justificativa":"A Escritura possui implicações morais reais; o problema é desligá-las do sentido textual."},
+      {"letra":"D","texto":"Somente traduções latinas podem decidir a questão.","justificativa":"A tradição latina é historicamente importante, mas não possui autoridade exegética exclusiva."}
+    ],"gabarito":"B","justificativa":"O legado latino integra exegese e formação cristã, mas uma aplicação verdadeira ainda precisa nascer de uma leitura textual responsável.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q01","disciplina":"TE12","avaliacao":"av2","unidade":9,"tipoItem":"resposta-unica","tema":"Quadriga medieval","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u9-hermeneutica-medieval"],
+    "contexto":"Um intérprete afirma que Jerusalém em uma passagem significa simultaneamente a cidade histórica, a igreja, a alma do crente e a pátria celestial, sem demonstrar como os três últimos sentidos surgem do texto.",
+    "comando":"Assinale o diagnóstico mais adequado.",
+    "alternativas":[
+      {"letra":"A","texto":"O exemplo ilustra o potencial e o risco da quadriga: integra doutrina e vida, mas pode multiplicar sentidos sem controle textual suficiente.","justificativa":"Esse é o problema metodológico central discutido na unidade."},
+      {"letra":"B","texto":"O exemplo prova que todo uso figurado da Bíblia é ilegítimo.","justificativa":"Metáforas, símbolos e tipologia podem ser textualmente legítimos."},
+      {"letra":"C","texto":"O sentido histórico deve ser descartado sempre que houver aplicação espiritual.","justificativa":"A crítica reformada preserva prioridade do sentido histórico-literário."},
+      {"letra":"D","texto":"A quadriga é idêntica ao método histórico-gramatical.","justificativa":"Os métodos possuem critérios e estruturas diferentes."}
+    ],"gabarito":"A","justificativa":"A quadriga procurou relacionar Escritura, doutrina, moral e esperança, mas pode tornar os sentidos espirituais independentes da demonstração exegética.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q02","disciplina":"TE12","avaliacao":"av2","unidade":10,"tipoItem":"resposta-unica","tema":"Reforma e sola Scriptura","taxonomiaBloom":"avaliar","nivelDificuldade":"media","referenciais":["te12-u10-reforma-1"],
+    "contexto":"Um estudante define sola Scriptura como “rejeitar credos, comentários, história da igreja e qualquer professor, ficando apenas com minha leitura individual”.",
+    "comando":"Assinale a correção mais adequada.",
+    "alternativas":[
+      {"letra":"A","texto":"A definição é correta porque toda tradição é necessariamente rival da Bíblia.","justificativa":"A Reforma subordinou tradições, mas continuou dialogando com pais, credos e intérpretes."},
+      {"letra":"B","texto":"Sola Scriptura afirma a Escritura como norma final infalível; tradição e igreja continuam úteis como testemunhas subordinadas e corrigíveis.","justificativa":"Isso distingue sola Scriptura de individualismo sem história."},
+      {"letra":"C","texto":"Sola Scriptura significa que somente textos sem tradução podem ser lidos.","justificativa":"O princípio trata de autoridade, não de proibição de traduções."},
+      {"letra":"D","texto":"Sola Scriptura coloca confissões reformadas no mesmo nível da Escritura.","justificativa":"Confissões são padrões subordinados, não norma infalível igual."}
+    ],"gabarito":"B","justificativa":"A Reforma reordena autoridades: tradição serve, ensina e corrige, mas somente a Escritura funciona como norma final infalível.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q03","disciplina":"TE12","avaliacao":"av2","unidade":11,"tipoItem":"resposta-unica","tema":"Calvino e analogia da fé","taxonomiaBloom":"aplicar","nivelDificuldade":"dificil","referenciais":["te12-u11-reforma-2"],
+    "contexto":"Uma passagem parece tensionar uma formulação doutrinária tradicional. O intérprete decide alterar imediatamente o sentido da passagem para proteger a fórmula recebida.",
+    "comando":"Assinale o uso correto da analogia da fé.",
+    "alternativas":[
+      {"letra":"A","texto":"Forçar a passagem a repetir a fórmula é correto porque doutrina nunca pode ser refinada.","justificativa":"A formulação doutrinária permanece subordinada ao conjunto da Escritura."},
+      {"letra":"B","texto":"Reexaminar a passagem, comparar textos claros e, se necessário, qualificar a formulação para explicar todos os dados bíblicos.","justificativa":"A analogia da fé controla contradições sem tornar sistemas humanos incorrigíveis."},
+      {"letra":"C","texto":"Ignorar todos os demais textos porque cada passagem possui uma teologia isolada.","justificativa":"A unidade canônica é componente da hermenêutica reformada."},
+      {"letra":"D","texto":"Eliminar qualquer doutrina sistemática antes da leitura.","justificativa":"Pré-compreensão e síntese canônica são inevitáveis e úteis quando subordinadas ao texto."}
+    ],"gabarito":"B","justificativa":"A analogia da fé promove comparação canônica e revisão responsável; não serve para imunizar uma formulação humana contra a exegese.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q04","disciplina":"TE12","avaliacao":"av2","unidade":12,"tipoItem":"resposta-unica","tema":"Confessionalismo e escolástica reformada","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u12-confessionalismo-escolasticos-puritanos"],
+    "contexto":"Um aluno afirma que “escolástica reformada” significa necessariamente substituir a Bíblia por raciocínio filosófico autônomo.",
+    "comando":"Assinale a avaliação historicamente mais precisa.",
+    "alternativas":[
+      {"letra":"A","texto":"A afirmação é adequada porque escolástica designa sempre uma doutrina religiosa específica.","justificativa":"Escolástica também designa uma forma de organizar questões, distinções e disputas."},
+      {"letra":"B","texto":"A afirmação é simplista: a escolástica reformada empregou métodos de precisão lógica sob compromissos confessionais que declaravam a Escritura como autoridade final.","justificativa":"Método argumentativo e fonte de autoridade não devem ser confundidos."},
+      {"letra":"C","texto":"A escolástica reformada rejeitou toda confissão.","justificativa":"O período é justamente marcado pela consolidação confessional."},
+      {"letra":"D","texto":"Puritanos abandonaram aplicação pastoral para trabalhar apenas com lógica abstrata.","justificativa":"A tradição puritana é conhecida pela integração entre exegese, doutrina e aplicação."}
+    ],"gabarito":"B","justificativa":"Escolástica descreve em grande parte método de organização e argumentação; no contexto reformado, sua autoridade declarada permanecia subordinada à Escritura.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q05","disciplina":"TE12","avaliacao":"av2","unidade":13,"tipoItem":"resposta-unica","tema":"Modernidade e crítica histórica","taxonomiaBloom":"avaliar","nivelDificuldade":"dificil","referenciais":["te12-u13-modernidade-1"],
+    "contexto":"Um pesquisador afirma: “Milagres são impossíveis; portanto todo relato de milagre deve ser explicado como lenda ou causa natural”.",
+    "comando":"Assinale a análise metodológica correta.",
+    "alternativas":[
+      {"letra":"A","texto":"A impossibilidade do milagre é uma conclusão textual obtida automaticamente pelo método histórico.","justificativa":"Ela foi assumida antes da análise do caso particular."},
+      {"letra":"B","texto":"A frase incorpora um pressuposto filosófico naturalista; perguntas históricas sobre testemunho, gênero e data continuam legítimas sem essa exclusão a priori.","justificativa":"Ferramentas históricas e metafísica naturalista precisam ser distinguidas."},
+      {"letra":"C","texto":"A resposta reformada deve rejeitar toda investigação histórica.","justificativa":"A hermenêutica reformada depende de história, linguagem e evidência."},
+      {"letra":"D","texto":"Basta afirmar que o relato é inspirado, sem examinar seu gênero ou contexto.","justificativa":"Inspiração não elimina investigação exegética."}
+    ],"gabarito":"B","justificativa":"A crítica reformada pode receber métodos históricos rigorosos enquanto recusa transformar a exclusão do sobrenatural em regra metodológica não examinada.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q06","disciplina":"TE12","avaliacao":"av2","unidade":14,"tipoItem":"resposta-unica","tema":"Historicidade e círculo hermenêutico","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["te12-u14-modernidade-2"],
+    "contexto":"Um leitor começa uma passagem com uma hipótese, encontra dados que não se ajustam a ela e revisa sua compreensão do todo antes de reler as partes.",
+    "comando":"Assinale a interpretação adequada desse processo.",
+    "alternativas":[
+      {"letra":"A","texto":"O processo mostra que o círculo hermenêutico precisa ser necessariamente vicioso e impede aprendizagem.","justificativa":"O movimento entre parte e todo pode representar revisão progressiva baseada em evidência."},
+      {"letra":"B","texto":"O processo exemplifica um círculo hermenêutico produtivo: pré-compreensão é testada e corrigida pela resistência do texto.","justificativa":"A hipótese inicial não determina o resultado quando permanece revisável."},
+      {"letra":"C","texto":"O processo prova que o autor e o texto são irrelevantes.","justificativa":"A revisão ocorre justamente porque dados textuais desafiam o leitor."},
+      {"letra":"D","texto":"O leitor deveria preservar sua hipótese inicial para manter coerência.","justificativa":"Coerência não justifica ignorar evidências contrárias."}
+    ],"gabarito":"B","justificativa":"A historicidade do leitor não implica aprisionamento: pré-compreensões podem ser confrontadas e revistas por dados do texto.","atualizadoEm":"2026-09-10"
+  },
+  {
+    "id":"te12-av2-q07","disciplina":"TE12","avaliacao":"av2","unidade":15,"tipoItem":"resposta-unica","tema":"Pós-modernidade e significado","taxonomiaBloom":"avaliar","nivelDificuldade":"dificil","referenciais":["te12-u15-pos-modernidade"],
+    "contexto":"Uma leitura crítica identifica corretamente que certa interpretação histórica serviu a interesses de poder e conclui, por isso, que não existe qualquer sentido textual capaz de julgar interpretações concorrentes.",
+    "comando":"Assinale a avaliação mais adequada segundo a unidade.",
+    "alternativas":[
+      {"letra":"A","texto":"A conclusão decorre necessariamente da descoberta do interesse de poder.","justificativa":"Identificar viés não demonstra que todo significado seja construção relativa."},
+      {"letra":"B","texto":"A crítica do poder pode revelar viés real, mas precisa ser seguida por reconstrução exegética; leitores situados ainda podem discutir interpretações por evidências textuais públicas.","justificativa":"A postura recebe o alerta pós-moderno sem dissolver comunicação e verdade."},
+      {"letra":"C","texto":"Questões de poder nunca são relevantes para interpretação bíblica.","justificativa":"Elas podem revelar pontos cegos e usos ideológicos reais."},
+      {"letra":"D","texto":"Somente a comunidade atual cria o significado e nenhuma leitura pode ser criticada como falsa.","justificativa":"Essa conclusão elimina o papel normativo do texto e torna a própria crítica difícil de fundamentar."}
+    ],"gabarito":"B","justificativa":"A hermenêutica reformada reconhece leitores situados, pecado e poder, mas sustenta que a Escritura comunica algo capaz de confrontar todos os horizontes interpretativos.","atualizadoEm":"2026-09-10"
+  }
+]
