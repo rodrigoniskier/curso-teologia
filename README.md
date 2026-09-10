@@ -19,11 +19,11 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Unidades do programa | **1.375** (2.036 tópicos) |
 | Referências bibliográficas oficiais | **1.251** |
 | Verbetes redigidos | 201 |
-| Obras livres mapeadas | 233 |
-| Unidades verificadas | **91 / 1.375** |
-| Disciplinas concluídas | **8 / 121** |
+| Obras livres mapeadas | 234 |
+| Unidades verificadas | **95 / 1.375** |
+| Disciplinas concluídas | **9 / 121** |
 | Módulos avaliativos estruturados | **242** |
-| Questões avaliativas publicadas | **117** |
+| Questões avaliativas publicadas | **121** |
 
 Os cinco departamentos, conforme o documento oficial:
 
@@ -260,8 +260,7 @@ perdidas em 18 disciplinas** na primeira grande correção, mistura CG12/CG13,
 unidades 7–9 de CG10 absorvidas por uma coluna de bibliografia, unidades 20–30
 de TH01 deslocadas para TH02, unidades 27–30 de TH02 inseridas em TH03, a
 unidade 15 de TP02 mais sua bibliografia inseridas em TP03, dois tópicos de
-TH04 presos na bibliografia e vazamentos programáticos em outros 12 registros
-bibliográficos.
+TH04 presos na bibliografia e vazamentos programáticos em outros 12 registros bibliográficos.
 
 Com as reconstruções e saneamentos auditados atuais, não há perda curricular
 conhecida entre esses casos já identificados. A CI agora regenera `ementas.json`
