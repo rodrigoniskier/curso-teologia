@@ -29,5 +29,24 @@
     "motivo": "As páginas atuais do IPHAN no portal Gov.br são públicas e navegáveis, mas o host devolve HTTP 401 aos runners do GitHub Actions. A exceção é deliberadamente limitada ao prefixo /iphan/ para não deixar outras fontes do Gov.br fora da auditoria automática.",
     "confirmadoEm": "2026-08-21",
     "comoVerificar": "Abrir a URL do IPHAN em navegador comum e confirmar título, órgão publicador e conteúdo. Reavaliar periodicamente; remova esta exceção se os runners voltarem a receber 2xx."
+  },
+  {
+    "dominio": "stepbible.org",
+    "motivo": "O STEP Bible continuou publicamente acessível em verificação de navegador em 10/09/2026, mas devolveu HTTP 403 ao GitHub Actions no passe inicial e na confirmação serial. O comportamento é compatível com bloqueio do acesso automatizado em datacenter, não com remoção da ferramenta.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir https://www.stepbible.org/ em navegador comum e confirmar que a interface do STEP Bible carrega textos e ferramentas. Reavaliar periodicamente e remover a exceção se a CI voltar a receber 2xx de forma estável."
+  },
+  {
+    "dominio": "monergism.com",
+    "urlPrefixo": "https://www.monergism.com/reformed-dogmatics-ebook",
+    "motivo": "A página Reformed Dogmatics (eBook), de Herman Bavinck, continuou acessível em navegação pública em 10/09/2026, com os quatro volumes e links de download, mas respondeu HTTP 403 repetidamente ao runner do GitHub Actions. A exceção é limitada à URL verificada, sem isentar o restante do domínio.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir https://www.monergism.com/reformed-dogmatics-ebook em navegador comum e confirmar o título 'Reformed Dogmatics (eBook)', Herman Bavinck e os quatro volumes."
+  },
+  {
+    "dominio": "sacred-texts.com",
+    "motivo": "Páginas do Internet Sacred Text Archive nos hosts www.sacred-texts.com e archive.sacred-texts.com permaneceram publicamente acessíveis em verificação externa em 10/09/2026, mas ambas devolveram HTTP 403 ao GitHub Actions inclusive na confirmação serial. O padrão indica bloqueio automatizado por origem, não remoção dos textos.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir em navegador comum a URL citada no portal e confirmar título e conteúdo do texto. Foram verificadas em 10/09/2026 as páginas da Bhagavad-Gita em archive.sacred-texts.com e The Buddha's Way of Virtue em www.sacred-texts.com. Reavaliar periodicamente."
   }
 ]
