@@ -48,5 +48,40 @@
     "motivo": "Páginas do Internet Sacred Text Archive nos hosts www.sacred-texts.com e archive.sacred-texts.com permaneceram publicamente acessíveis em verificação externa em 10/09/2026, mas ambas devolveram HTTP 403 ao GitHub Actions inclusive na confirmação serial. O padrão indica bloqueio automatizado por origem, não remoção dos textos.",
     "confirmadoEm": "2026-09-10",
     "comoVerificar": "Abrir em navegador comum a URL citada no portal e confirmar título e conteúdo do texto. Foram verificadas em 10/09/2026 as páginas da Bhagavad-Gita em archive.sacred-texts.com e The Buddha's Way of Virtue em www.sacred-texts.com. Reavaliar periodicamente."
+  },
+  {
+    "dominio": "unifal-mg.edu.br",
+    "urlPrefixo": "https://www.unifal-mg.edu.br/bibliotecas/wp-content/uploads/sites/125/2025/05/Manual-de-normalizacao-2-edicao-revista-e-atualizada-12-05-2025.pdf",
+    "motivo": "O PDF institucional da UNIFAL-MG permaneceu publicamente acessível em verificação externa, mas terminou em UND_ERR_CONNECT_TIMEOUT no passe principal e na confirmação serial em execuções consecutivas do GitHub Actions. A exceção é limitada ao arquivo citado, não ao restante do domínio.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir o PDF do Manual de normalização da UNIFAL-MG em navegador comum e confirmar a 2ª edição revista e atualizada de 12/05/2025. Reavaliar periodicamente e remover a exceção se a CI voltar a receber 2xx."
+  },
+  {
+    "dominio": "ibge.gov.br",
+    "urlPrefixo": "https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102182.pdf",
+    "motivo": "Este PDF oficial do IBGE devolveu HTTP 403 ao GitHub Actions no passe principal e na confirmação serial em execuções consecutivas, padrão compatível com proteção do acesso automatizado. A exceção é limitada ao arquivo citado.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102182.pdf em navegador comum e confirmar que o PDF institucional do IBGE é entregue. Reavaliar periodicamente."
+  },
+  {
+    "dominio": "ibge.gov.br",
+    "urlPrefixo": "https://biblioteca.ibge.gov.br/visualizacao/livros/liv102011.pdf",
+    "motivo": "Este PDF oficial da Biblioteca do IBGE devolveu HTTP 403 ao GitHub Actions no passe principal e na confirmação serial em execuções consecutivas, embora o recurso seja institucional. A exceção é limitada ao arquivo citado.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir https://biblioteca.ibge.gov.br/visualizacao/livros/liv102011.pdf em navegador comum e confirmar que o PDF institucional do IBGE é entregue. Reavaliar periodicamente."
+  },
+  {
+    "dominio": "ibge.gov.br",
+    "urlPrefixo": "https://sidra.ibge.gov.br/pesquisa/censo-demografico/demografico-2022/amostra-religioes",
+    "motivo": "A consulta oficial do SIDRA sobre religiões no Censo Demográfico 2022 permaneceu publicamente acessível em verificação externa, mas terminou em UND_ERR_CONNECT_TIMEOUT no passe principal e na confirmação serial em execuções consecutivas do GitHub Actions. A exceção é limitada à rota citada.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir a rota do SIDRA em navegador comum e confirmar a consulta do Censo Demográfico 2022 — amostra — religiões. Reavaliar periodicamente."
+  },
+  {
+    "dominio": "receita.fazenda.gov.br",
+    "urlPrefixo": "https://normas.receita.fazenda.gov.br/sijut2consulta/consulta.action",
+    "motivo": "A consulta oficial de normas da Receita Federal permaneceu acessível fora do runner, mas terminou em UND_ERR_CONNECT_TIMEOUT no passe principal e na confirmação serial em execuções consecutivas do GitHub Actions. A exceção fica restrita à rota de consulta do SIJUT2, sem isentar outras páginas da Receita.",
+    "confirmadoEm": "2026-09-10",
+    "comoVerificar": "Abrir em navegador comum a consulta SIJUT2 da Receita Federal e pesquisar o termo 971/09, confirmando o carregamento da base normativa. Reavaliar periodicamente."
   }
 ]
