@@ -106,4 +106,17 @@ export const bibliotecaLinguas: ObraLivre[] = [
     nota: 'Curso gratuito e imersivo de hebraico bíblico, acompanhado por transcrições, lições gramaticais, vocabulário, exercícios e materiais reutilizáveis disponibilizados pelo próprio projeto. Complementa a gramática analítica com exposição auditiva e leitura contextual.',
     base: 'edição autorizada',
   },
+  {
+    id: 'brehe-grammar-anatomy',
+    autor: 'Steven Brehe',
+    ano: '2019',
+    titulo: "Brehe's Grammar Anatomy",
+    publicacao: 'University of North Georgia Press',
+    url: 'https://ung.edu/university-press/books/grammar-anatomy.php',
+    idioma: 'en',
+    acesso: 'livre',
+    disciplinas: ['CG05'],
+    nota: 'Livro-texto universitário aberto de gramática inglesa, com explicações acessíveis, exercícios ao fim dos capítulos, respostas, glossário e índice. A edição digital é gratuita e licenciada em CC BY-SA 4.0; serve de apoio gramatical à leitura instrumental.',
+    base: 'edição autorizada',
+  },
 ];
