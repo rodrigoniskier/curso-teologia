@@ -1,0 +1,90 @@
+[
+  {
+    "id": "cg05-av1-q01", "disciplina": "CG05", "avaliacao": "av1", "unidade": 1, "tipoItem": "resposta-unica", "tema": "Inferência contextual", "taxonomiaBloom": "analisar", "nivelDificuldade": "media", "referenciais": ["cg05-u1-inferencia-contextual"],
+    "contexto": "Um aluno encontra a frase: “The elder exhorted the congregation; that is, he strongly urged them to remain faithful.” Ele não conhece o verbo exhorted.",
+    "comando": "Qual procedimento produz a inferência mais bem fundamentada?",
+    "alternativas": [
+      {"letra":"A","texto":"Ignorar toda a frase e traduzir exhorted pela palavra portuguesa graficamente mais parecida.","justificativa":"Semelhança gráfica isolada não é evidência suficiente."},
+      {"letra":"B","texto":"Usar a paráfrase após “that is” para inferir que exhorted significa algo como exortou/instou fortemente.","justificativa":"O próprio texto fornece uma reformulação explícita do verbo."},
+      {"letra":"C","texto":"Concluir que exhorted significa “expulsou” porque o verbo está no passado.","justificativa":"Tempo verbal não determina o conteúdo lexical."},
+      {"letra":"D","texto":"Parar a leitura até memorizar todos os sentidos possíveis do verbo.","justificativa":"Leitura instrumental testa hipóteses contextuais antes de ampliar consulta lexical."}
+    ], "gabarito":"B", "justificativa":"A expressão “that is” introduz uma paráfrase que explica diretamente o termo desconhecido.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q02","disciplina":"CG05","avaliacao":"av1","unidade":2,"tipoItem":"resposta-unica","tema":"Cognatos e falsos cognatos","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["cg05-u2-cognatos"],
+    "contexto":"Num artigo lê-se: “The author actually rejects the traditional interpretation.” Um aluno traduz actually como “atualmente”.",
+    "comando":"Qual correção é mais adequada?",
+    "alternativas":[
+      {"letra":"A","texto":"Manter “atualmente”, pois palavras parecidas sempre têm o mesmo significado.","justificativa":"Actually é um falso cognato frequente."},
+      {"letra":"B","texto":"Traduzir “na verdade/de fato”, testando o sentido no contexto da afirmação.","justificativa":"É o valor semântico adequado de actually neste contexto."},
+      {"letra":"C","texto":"Eliminar a palavra porque advérbios nunca afetam a leitura.","justificativa":"Advérbios podem modificar significativamente o compromisso da afirmação."},
+      {"letra":"D","texto":"Traduzir “ativamente” por semelhança sonora.","justificativa":"Semelhança sonora não sustenta essa tradução."}
+    ],"gabarito":"B","justificativa":"Cognatos devem ser confirmados pelo contexto; actually normalmente significa “de fato/na verdade”.","atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q03","disciplina":"CG05","avaliacao":"av1","unidade":3,"tipoItem":"resposta-unica","tema":"Afixação","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["cg05-u3-afixacao"],
+    "contexto":"O leitor encontra “misinterpretation” em uma discussão exegética e conhece interpret e interpretation.",
+    "comando":"Qual análise morfológica melhor ajuda a compreender a palavra?",
+    "alternativas":[
+      {"letra":"A","texto":"mis- + interpretation: substantivo que indica interpretação incorreta/equivocada.","justificativa":"O prefixo mis- frequentemente introduz ideia de erro ou inadequação."},
+      {"letra":"B","texto":"mis + inter + pretation: verbo no futuro.","justificativa":"A segmentação e a classe gramatical estão incorretas."},
+      {"letra":"C","texto":"interpretation + -ly: advérbio.","justificativa":"A forma não contém -ly."},
+      {"letra":"D","texto":"Afixos não oferecem nenhuma pista semântica.","justificativa":"A unidade mostra justamente seu valor para formular hipóteses de sentido e classe."}
+    ],"gabarito":"A","justificativa":"Reconhecer a base interpretation e o prefixo mis- permite inferir corretamente “má interpretação/interpretação equivocada”.","atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q04","disciplina":"CG05","avaliacao":"av1","unidade":4,"tipoItem":"resposta-unica","tema":"Relações lexicais","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg05-u4-sinonimia-antonimia"],
+    "contexto":"Um texto afirma: “Grace is free, but it is not cheap; it costs the disciple his self-rule.”",
+    "comando":"Que relação lexical é decisiva para compreender o contraste?",
+    "alternativas":[
+      {"letra":"A","texto":"Free e cheap são tratados como sinônimos perfeitos.","justificativa":"A construção “but ... not” justamente nega essa equivalência."},
+      {"letra":"B","texto":"O texto contrapõe sentidos possíveis de free e cheap para mostrar que gratuidade não significa ausência de custo existencial.","justificativa":"O contraste delimita o sentido pretendido."},
+      {"letra":"C","texto":"Costs é sinônimo de free e elimina a oposição.","justificativa":"O verbo reforça a tensão semântica, não a elimina."},
+      {"letra":"D","texto":"A conjunção but não possui função argumentativa.","justificativa":"But é precisamente o marcador de contraste."}
+    ],"gabarito":"B","justificativa":"A oposição introduzida por but impede que free seja interpretado simplesmente como cheap.","atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q05","disciplina":"CG05","avaliacao":"av1","unidade":5,"tipoItem":"resposta-unica","tema":"Segmentação sintática","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["cg05-u5-segmentacao-morfossintatica"],
+    "contexto":"Considere: “The inspired Scriptures guide the church in doctrine and life.”",
+    "comando":"Qual segmentação favorece a tradução correta?",
+    "alternativas":[
+      {"letra":"A","texto":"[The inspired Scriptures] [guide] [the church] [in doctrine and life].","justificativa":"Identifica corretamente sujeito, verbo, objeto e grupo preposicionado."},
+      {"letra":"B","texto":"[The] [inspired Scriptures guide the] [church in] [doctrine and life].","justificativa":"Agrupa palavras sem respeitar suas funções sintáticas."},
+      {"letra":"C","texto":"[The inspired] [Scriptures guide] [the church in doctrine] [and life].","justificativa":"Confunde o substantivo Scriptures com o verbo guide."},
+      {"letra":"D","texto":"A sentença não pode ser segmentada antes de cada palavra ser traduzida.","justificativa":"A segmentação é justamente uma estratégia anterior à tradução palavra por palavra."}
+    ],"gabarito":"A","justificativa":"A estrutura revela “As Escrituras inspiradas guiam a igreja na doutrina e na vida”.","atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q06","disciplina":"CG05","avaliacao":"av1","unidade":6,"tipoItem":"resposta-unica","tema":"Grupos nominais e pré-modificadores","taxonomiaBloom":"aplicar","nivelDificuldade":"media","referenciais":["cg05-u6-premodificadores-grupos-nominais"],
+    "contexto":"O título de uma seção é “early church worship practices”.",
+    "comando":"Qual leitura identifica melhor o núcleo e produz português natural?",
+    "alternativas":[
+      {"letra":"A","texto":"O núcleo é early; tradução: “cedo igreja culto práticas”.","justificativa":"Early é modificador e a tradução preserva indevidamente a ordem inglesa."},
+      {"letra":"B","texto":"O núcleo é practices; tradução possível: “práticas de culto da igreja primitiva”.","justificativa":"O último substantivo funciona como núcleo e os modificadores precisam ser reorganizados."},
+      {"letra":"C","texto":"O núcleo é worship; tradução obrigatória: “culto práticas”.","justificativa":"Não reconhece o substantivo final como núcleo do grupo."},
+      {"letra":"D","texto":"Todos os termos são verbos.","justificativa":"A expressão é um grupo nominal."}
+    ],"gabarito":"B","justificativa":"Identificar practices como núcleo permite reconstruir naturalmente a sequência de modificadores em português.","atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q07","disciplina":"CG05","avaliacao":"av1","unidade":7,"tipoItem":"resposta-unica","tema":"Coesão e referência","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg05-u7-coesao-referencia"],
+    "contexto":"Leia: “The council published a confession. It was read in the churches, and this strengthened their common witness.”",
+    "comando":"Qual rastreamento dos referentes é mais adequado?",
+    "alternativas":[
+      {"letra":"A","texto":"It = council; this = churches; their = confession.","justificativa":"Esses referentes não produzem a melhor coerência sintática e semântica."},
+      {"letra":"B","texto":"It = confession; this = o fato de a confissão ser lida nas igrejas; their = churches.","justificativa":"Os antecedentes recuperam coerentemente os participantes e a proposição anterior."},
+      {"letra":"C","texto":"Todos os pronomes se referem a council.","justificativa":"Número e conteúdo tornam essa leitura inadequada."},
+      {"letra":"D","texto":"Pronomes não precisam de referentes para a compreensão textual.","justificativa":"A coesão depende justamente da recuperação desses referentes."}
+    ],"gabarito":"B","justificativa":"It retoma confession, this resume a situação anterior e their se liga às churches.","atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"cg05-av1-q08","disciplina":"CG05","avaliacao":"av1","unidade":8,"tipoItem":"resposta-unica","tema":"Reconhecimento gramatical integrado","taxonomiaBloom":"analisar","nivelDificuldade":"media","referenciais":["cg05-u8-reconhecimento-gramatical"],
+    "contexto":"Leia: “The second edition has included more detailed notes than the first one, and these have helped younger readers.”",
+    "comando":"Qual análise é correta?",
+    "alternativas":[
+      {"letra":"A","texto":"has included e have helped são construções de perfect; more detailed than expressa comparação; these retoma notes.","justificativa":"A análise reconhece corretamente auxiliares, comparação e referência."},
+      {"letra":"B","texto":"has included é futuro; more detailed é superlativo; these retoma edition.","justificativa":"As três classificações estão incorretas."},
+      {"letra":"C","texto":"second é pronome e younger é verbo.","justificativa":"Second é numeral/ordinal e younger funciona como comparativo adjetival."},
+      {"letra":"D","texto":"Than indica causa, e first one significa “primeira pessoa”.","justificativa":"Than marca comparação e one substitui edition no contexto."}
+    ],"gabarito":"A","justificativa":"A leitura integrada identifica as formas que estruturam temporalidade/aspecto, comparação e coesão do enunciado.","atualizadoEm":"2026-09-11"
+  }
+]
