@@ -20,10 +20,10 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Referências bibliográficas oficiais | **1.251** |
 | Verbetes redigidos | 201 |
 | Obras livres mapeadas | 234 |
-| Unidades verificadas | **104 / 1.375** |
-| Disciplinas concluídas | **10 / 121** |
+| Unidades verificadas | **120 / 1.375** |
+| Disciplinas concluídas | **11 / 121** |
 | Módulos avaliativos estruturados | **242** |
-| Questões avaliativas publicadas | **130** |
+| Questões avaliativas publicadas | **145** |
 
 Os cinco departamentos, conforme o documento oficial:
 
