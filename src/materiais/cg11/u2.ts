@@ -7,7 +7,9 @@ export const material: MaterialUnidade = {
   titulo: 'Cultura material e imaterial',
   objetivo: 'Compreender a relação entre objetos culturais e significados compartilhados.',
   topicosCobertos: [],
-  blocos: [],
+  blocos: [
+    { tipo: 'texto', titulo: 'Cultura material', paragrafos: ['Objetos e espaços produzidos por grupos humanos fazem parte da cultura material.'] }
+  ],
   fontes: [],
   atualizadoEm: '2026-09-14',
 };
