@@ -11,6 +11,10 @@ export const material: MaterialUnidade = {
     { tipo: 'texto', titulo: 'Cultura material', paragrafos: [
       'Objetos e espaços produzidos por grupos humanos fazem parte da cultura material.',
       'O significado de um objeto depende dos usos aprendidos em cada contexto.'
+    ] },
+    { tipo: 'texto', titulo: 'Cultura imaterial', paragrafos: [
+      'Língua, memória, valores, narrativas, regras, símbolos, músicas e ritos formam dimensões imateriais da cultura.',
+      'Material e imaterial se conectam: uma construção física também expressa ideias sobre ordem, pertencimento e uso do espaço.'
     ] }
   ],
   fontes: [],
