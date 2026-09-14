@@ -8,7 +8,10 @@ export const material: MaterialUnidade = {
   objetivo: 'Compreender a relação entre objetos culturais e significados compartilhados.',
   topicosCobertos: [],
   blocos: [
-    { tipo: 'texto', titulo: 'Cultura material', paragrafos: ['Objetos e espaços produzidos por grupos humanos fazem parte da cultura material.'] }
+    { tipo: 'texto', titulo: 'Cultura material', paragrafos: [
+      'Objetos e espaços produzidos por grupos humanos fazem parte da cultura material.',
+      'O significado de um objeto depende dos usos aprendidos em cada contexto.'
+    ] }
   ],
   fontes: [],
   atualizadoEm: '2026-09-14',
