@@ -1,0 +1,13 @@
+import type { MaterialUnidade } from '../../tipos';
+
+export const material: MaterialUnidade = {
+  id: 'cg11-u2-cultura-material-imaterial',
+  disciplina: 'CG11',
+  unidade: 2,
+  titulo: 'Cultura material e imaterial',
+  objetivo: 'Compreender a relação entre objetos culturais e significados compartilhados.',
+  topicosCobertos: [],
+  blocos: [],
+  fontes: [],
+  atualizadoEm: '2026-09-14',
+};
