@@ -1,0 +1,212 @@
+[
+  {
+    "id": "tp55-av1-q01", "disciplina": "TP55", "avaliacao": "av1", "unidade": 1,
+    "tipoItem": "resposta-unica", "tema": "Conceitos gerais de comunicação", "taxonomiaBloom": "aplicar", "nivelDificuldade": "media",
+    "referenciais": ["tp55-u1-introducao-comunicacao-social"],
+    "contexto": "Uma igreja decide abrir três redes sociais porque 'toda igreja precisa estar nelas', mas não consegue explicar qual problema pastoral ou informacional pretende resolver.",
+    "comando": "Qual é o primeiro passo mais coerente com a unidade?",
+    "alternativas": [
+      {"letra":"A","texto":"Criar imediatamente todas as contas para garantir os nomes de usuário.","justificativa":"A escolha da ferramenta antes do diagnóstico inverte a ordem do planejamento."},
+      {"letra":"B","texto":"Definir público, necessidade concreta, mensagem e resultado esperado antes de escolher o canal.","justificativa":"O meio deve responder a uma necessidade e finalidade previamente definidas."},
+      {"letra":"C","texto":"Escolher a plataforma com maior número de usuários e copiar o mesmo conteúdo para as demais.","justificativa":"Tamanho de plataforma não define adequação e os meios possuem propriedades distintas."},
+      {"letra":"D","texto":"Medir sucesso apenas por seguidores, pois são uma métrica objetiva.","justificativa":"Seguidores descrevem presença na plataforma, não necessariamente resolução do problema comunicacional."}
+    ],
+    "gabarito":"B", "justificativa":"Comunicação eclesiástica responsável começa pelo problema, público e finalidade; a ferramenta é decisão posterior.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q02", "disciplina":"TP55", "avaliacao":"av1", "unidade":2,
+    "tipoItem":"resposta-unica", "tema":"Propriedades dos meios", "taxonomiaBloom":"analisar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u2-modelos-teoricos-comunicacao"],
+    "contexto":"Uma igreja compara rádio ao vivo, site próprio e rede social e conclui que a única diferença relevante é que dois são digitais e um é tradicional.",
+    "comando":"Qual análise corrige melhor essa comparação?",
+    "alternativas":[
+      {"letra":"A","texto":"A divisão tradicional/digital explica integralmente sincronia, permanência, interação e controle de distribuição.","justificativa":"A mesma categoria tecnológica pode combinar propriedades comunicacionais muito diferentes."},
+      {"letra":"B","texto":"É melhor comparar sincronia, permanência, modo de descoberta, tipo de interação e controle da distribuição.","justificativa":"Essas propriedades permanecem úteis mesmo quando marcas e tecnologias mudam."},
+      {"letra":"C","texto":"Meios digitais são sempre de conversa e meios tradicionais sempre de massa.","justificativa":"Há transmissões digitais de massa e meios tradicionais com interação."},
+      {"letra":"D","texto":"Todo meio próprio possui alcance maior que plataformas terceirizadas.","justificativa":"Controle e alcance são variáveis diferentes."}
+    ],
+    "gabarito":"B", "justificativa":"O modelo por propriedades permite comparar meios de épocas diferentes sem depender de rótulos tecnológicos amplos.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q03", "disciplina":"TP55", "avaliacao":"av1", "unidade":3,
+    "tipoItem":"resposta-unica", "tema":"Comunicação radiofônica", "taxonomiaBloom":"aplicar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u3-comunicacao-radio"],
+    "contexto":"Um roteiro para rádio comunitária começa com quatro minutos de contexto, contém oito datas e termina dizendo que o endereço será mostrado 'na tela'.",
+    "comando":"Qual revisão é mais adequada ao meio?",
+    "alternativas":[
+      {"letra":"A","texto":"Manter o roteiro porque o rádio deve reproduzir integralmente a escrita de um artigo.","justificativa":"Texto para escuta exige organização diferente da leitura silenciosa."},
+      {"letra":"B","texto":"Antecipar o assunto, usar frases curtas, reduzir detalhes, repetir informação essencial e verbalizar endereço/contato.","justificativa":"Isso adapta estrutura e informação à ausência de apoio visual e à escuta linear."},
+      {"letra":"C","texto":"Adicionar música constante para compensar a falta de imagem.","justificativa":"Música não resolve falta de estrutura e pode competir com a mensagem."},
+      {"letra":"D","texto":"Remover todas as informações práticas e manter apenas uma frase de impacto.","justificativa":"O rádio também pode cumprir função informacional concreta."}
+    ],
+    "gabarito":"B", "justificativa":"Rádio exige escrita para o ouvido: sinalização, concisão e dados essenciais verbalizados com clareza.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q04", "disciplina":"TP55", "avaliacao":"av1", "unidade":4,
+    "tipoItem":"resposta-unica", "tema":"Comunicação televisiva", "taxonomiaBloom":"avaliar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u4-comunicacao-televisao"],
+    "contexto":"Um vídeo institucional usa apenas tomadas de auditório cheio e depoimentos emocionais, embora a congregação normalmente seja pequena e o vídeo não informe doutrina, horário ou contato.",
+    "comando":"Qual avaliação é mais responsável?",
+    "alternativas":[
+      {"letra":"A","texto":"A edição é adequada porque imagens promocionais não comunicam afirmações implícitas.","justificativa":"Imagem e seleção editorial produzem inferências sobre a instituição."},
+      {"letra":"B","texto":"A produção deve representar a realidade com honestidade e acrescentar informação verificável que sirva ao público.","justificativa":"Técnica visual deve servir verdade, clareza e finalidade institucional."},
+      {"letra":"C","texto":"Toda imagem em vídeo eclesiástico é necessariamente proibida.","justificativa":"A tradição reformada possui debate mais específico sobre imagens, especialmente representação de Deus; a afirmação é ampla demais."},
+      {"letra":"D","texto":"A única correção necessária é aumentar a qualidade da câmera.","justificativa":"O problema central é semântico e ético, não de resolução técnica."}
+    ],
+    "gabarito":"B", "justificativa":"O audiovisual comunica tanto por conteúdo explícito quanto por seleção e enquadramento; ambos devem ser honestos.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q05", "disciplina":"TP55", "avaliacao":"av1", "unidade":5,
+    "tipoItem":"resposta-unica", "tema":"Publicações e adequação da redação", "taxonomiaBloom":"aplicar", "nivelDificuldade":"facil",
+    "referenciais":["tp55-u5-comunicacao-publicacoes"],
+    "contexto":"A equipe recebe um artigo de 2.500 palavras e quer imprimi-lo sem alterações num panfleto de convite para um curso de novos membros.",
+    "comando":"Qual decisão respeita melhor a função do meio?",
+    "alternativas":[
+      {"letra":"A","texto":"Usar todo o artigo em fonte menor para não perder conteúdo.","justificativa":"Isso sacrifica legibilidade e ignora a função específica do panfleto."},
+      {"letra":"B","texto":"Reduzir o panfleto à finalidade, público, informações práticas e ação; oferecer o conteúdo longo em formato apropriado.","justificativa":"A redação deve ser adequada à função do suporte sem perder acesso ao aprofundamento."},
+      {"letra":"C","texto":"Eliminar data e contato para sobrar espaço para argumentos.","justificativa":"Um convite sem dados práticos deixa de cumprir sua finalidade."},
+      {"letra":"D","texto":"Transformar todo texto impresso em frases publicitárias.","justificativa":"Publicações podem ensinar e informar; não são apenas propaganda."}
+    ],
+    "gabarito":"B", "justificativa":"Livro, revista e panfleto exigem níveis distintos de desenvolvimento; adequação não é empobrecimento, mas serviço ao leitor.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q06", "disciplina":"TP55", "avaliacao":"av1", "unidade":6,
+    "tipoItem":"resposta-unica", "tema":"YouTube e governança de canal", "taxonomiaBloom":"analisar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u6-video-youtube"],
+    "contexto":"Um canal de igreja alcança muitas visualizações com títulos exagerados, enquanto os vídeos que explicam fielmente o conteúdo recebem menos cliques. A equipe propõe adaptar os títulos para maximizar retenção.",
+    "comando":"Qual princípio deve governar a decisão?",
+    "alternativas":[
+      {"letra":"A","texto":"A maior retenção comprova maior fruto espiritual e deve governar a pauta.","justificativa":"Métrica de plataforma não mede fidelidade nem fruto espiritual."},
+      {"letra":"B","texto":"Título e miniatura podem facilitar descoberta, mas devem descrever honestamente o conteúdo e permanecer subordinados à finalidade pastoral.","justificativa":"Divulgação responsável não fabrica expectativas para obter clique."},
+      {"letra":"C","texto":"Nenhuma métrica deve ser observada, pois dados técnicos são moralmente neutros demais para servir à igreja.","justificativa":"Métricas podem diagnosticar processo quando interpretadas dentro de objetivos legítimos."},
+      {"letra":"D","texto":"Todo vídeo deve ter a mesma duração para evitar influência do algoritmo.","justificativa":"Formato depende da finalidade e do gênero do conteúdo."}
+    ],
+    "gabarito":"B", "justificativa":"A técnica serve à mensagem; engajamento pode informar decisões, mas não autoriza exagero nem se torna medida de fidelidade.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q07", "disciplina":"TP55", "avaliacao":"av1", "unidade":7,
+    "tipoItem":"resposta-unica", "tema":"Sites e blogs", "taxonomiaBloom":"aplicar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u7-sites-blogs"],
+    "contexto":"Uma igreja mantém cinco redes sociais, mas não possui nenhum lugar estável com crenças, horários, endereço e contato atualizados.",
+    "comando":"Qual intervenção é prioritária?",
+    "alternativas":[
+      {"letra":"A","texto":"Abrir mais uma rede social para diversificar alcance.","justificativa":"Isso aumenta dependência sem resolver a falta de referência estável."},
+      {"letra":"B","texto":"Criar um canal próprio simples e atualizado que concentre identidade, informações essenciais e caminhos de contato.","justificativa":"Site ou estrutura equivalente oferece referência permanente sob maior controle institucional."},
+      {"letra":"C","texto":"Excluir todas as redes sociais, pois canais terceirizados nunca têm utilidade.","justificativa":"Redes podem servir descoberta e interação; o problema é dependência exclusiva."},
+      {"letra":"D","texto":"Publicar informações apenas em imagens porque são mais compartilháveis.","justificativa":"Informação essencial precisa ser acessível, pesquisável e atualizável."}
+    ],
+    "gabarito":"B", "justificativa":"Um canal próprio funciona como referência institucional e reduz dependência da distribuição de terceiros.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av1-q08", "disciplina":"TP55", "avaliacao":"av1", "unidade":8,
+    "tipoItem":"resposta-unica", "tema":"Redes sociais e interação pública", "taxonomiaBloom":"aplicar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u8-redes-sociais-facebook"],
+    "contexto":"Na página pública da igreja, uma pessoa acusa nominalmente um membro de pecado e pede que a liderança explique o caso nos comentários.",
+    "comando":"Qual resposta é mais adequada?",
+    "alternativas":[
+      {"letra":"A","texto":"Debater os detalhes no comentário para demonstrar transparência.","justificativa":"Questões pessoais e disciplinares não devem ser expostas num espaço público inadequado."},
+      {"letra":"B","texto":"Remover ou moderar a exposição indevida e encaminhar o assunto ao canal e à autoridade eclesiástica apropriados.","justificativa":"O meio público não deve converter disciplina e reputação pessoal em espetáculo."},
+      {"letra":"C","texto":"Ignorar toda mensagem recebida pelas redes.","justificativa":"Redes podem ser portas legítimas de contato; a resposta depende da natureza do assunto."},
+      {"letra":"D","texto":"Responder com enquete para ouvir a comunidade.","justificativa":"Votação pública não é processo eclesiástico nem protege as pessoas envolvidas."}
+    ],
+    "gabarito":"B", "justificativa":"Governança de redes inclui saber quando a interação deve migrar do espaço público para cuidado e processo eclesiástico adequados.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q09", "disciplina":"TP55", "avaliacao":"av2", "unidade":9,
+    "tipoItem":"resposta-unica", "tema":"Orkut, Twitter e obsolescência", "taxonomiaBloom":"analisar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u9-orkut-twitter"],
+    "contexto":"Um curso antigo ensina passo a passo como criar comunidades no Orkut. A plataforma foi descontinuada, mas o professor quer preservar a aprendizagem útil.",
+    "comando":"Qual reformulação é mais durável?",
+    "alternativas":[
+      {"letra":"A","texto":"Manter apenas capturas de tela do Orkut e exigir memorização dos menus.","justificativa":"Interface inexistente não produz competência transferível."},
+      {"letra":"B","texto":"Transformar o conteúdo em princípios de criação, moderação, identidade, arquivo e migração de comunidades digitais.","justificativa":"Essas competências permanecem aplicáveis a plataformas futuras."},
+      {"letra":"C","texto":"Eliminar todo estudo histórico de plataformas encerradas.","justificativa":"O caso histórico é útil justamente para compreender obsolescência e dependência tecnológica."},
+      {"letra":"D","texto":"Substituir Orkut por uma marca atual e manter o mesmo tutorial indefinidamente.","justificativa":"A nova marca também mudará; o problema curricular permaneceria."}
+    ],
+    "gabarito":"B", "justificativa":"A unidade transforma o tópico histórico obrigatório em aprendizagem sobre propriedades e governança que sobrevivem às plataformas.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q10", "disciplina":"TP55", "avaliacao":"av2", "unidade":10,
+    "tipoItem":"resposta-unica", "tema":"Comunicação e plantação de igrejas", "taxonomiaBloom":"avaliar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u10-comunicacao-plantacao-igrejas"],
+    "contexto":"Uma plantação considera seu projeto bem-sucedido porque uma campanha gerou milhares de impressões, embora quase ninguém consiga encontrar endereço, doutrina ou forma de contato.",
+    "comando":"Qual diagnóstico é mais adequado?",
+    "alternativas":[
+      {"letra":"A","texto":"As impressões já demonstram que a plantação cumpriu sua missão.","justificativa":"Alcance de mídia não equivale a formação de igreja nem mesmo a comunicação funcional."},
+      {"letra":"B","texto":"A estratégia deve ser revista para conduzir descoberta a compreensão, contato e presença concreta, preservando fidelidade da mensagem.","justificativa":"Comunicação auxilia a plantação quando reduz barreiras reais e serve ao processo eclesial."},
+      {"letra":"C","texto":"Toda comunicação pública deve ser abandonada para evitar marketing.","justificativa":"Divulgação honesta pode servir legitimamente à missão."},
+      {"letra":"D","texto":"O único indicador necessário é aumentar o orçamento de anúncios.","justificativa":"Orçamento não corrige arquitetura informacional nem finalidade mal definida."}
+    ],
+    "gabarito":"B", "justificativa":"Mídia deve servir à proclamação, ao contato e à igreja real, sem substituir o processo de plantação por métricas de campanha.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q11", "disciplina":"TP55", "avaliacao":"av2", "unidade":11,
+    "tipoItem":"resposta-unica", "tema":"Adequação do meio e faixa etária", "taxonomiaBloom":"analisar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u11-equilibrio-meios-comunicacao"],
+    "contexto":"A equipe decide que todos os idosos receberão apenas impresso e todos os jovens apenas vídeos curtos, sem observar os hábitos reais da congregação.",
+    "comando":"Qual crítica corresponde à unidade?",
+    "alternativas":[
+      {"letra":"A","texto":"A idade determina completamente a preferência de mídia, portanto a divisão é tecnicamente segura.","justificativa":"Faixa etária influencia hábitos, mas não determina sozinha acesso e preferência."},
+      {"letra":"B","texto":"É preciso considerar público real, acessibilidade, urgência, complexidade, privacidade e manutenção, usando idade como uma variável entre outras.","justificativa":"A escolha responsável evita caricaturas geracionais e parte da tarefa comunicacional."},
+      {"letra":"C","texto":"O mesmo formato deve ser usado para todos os públicos para garantir igualdade.","justificativa":"Igualdade de conteúdo não exige identidade de canal ou apresentação."},
+      {"letra":"D","texto":"A preferência do público deve sempre modificar o conteúdo doutrinário.","justificativa":"Forma pode ser adaptada; fidelidade da mensagem não é negociada pela preferência do meio."}
+    ],
+    "gabarito":"B", "justificativa":"A unidade trata faixa etária como dado relevante dentro de diagnóstico mais amplo e subordina o meio à mensagem.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q12", "disciplina":"TP55", "avaliacao":"av2", "unidade":12,
+    "tipoItem":"resposta-unica", "tema":"Meios institucionais da IPB", "taxonomiaBloom":"analisar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u12-meios-comunicacao-ipb"],
+    "contexto":"Um aluno encontra uma opinião num perfil pessoal de ministro presbiteriano e a cita como 'posição oficial da IPB'.",
+    "comando":"Qual procedimento deve corrigir a citação?",
+    "alternativas":[
+      {"letra":"A","texto":"Todo ministro fala oficialmente pela denominação em qualquer perfil pessoal.","justificativa":"Autoridade institucional depende da instância e do canal, não apenas da identidade denominacional do autor."},
+      {"letra":"B","texto":"É preciso identificar autoria, órgão responsável, canal oficial, data e escopo antes de atribuir posição à denominação.","justificativa":"A unidade distingue meios denominacionais e níveis de autoridade comunicacional."},
+      {"letra":"C","texto":"Somente material impresso pode ser oficial.","justificativa":"A IPB possui canais digitais institucionais."},
+      {"letra":"D","texto":"Qualquer publicação viral se torna oficial pela repercussão.","justificativa":"Popularidade não cria competência institucional."}
+    ],
+    "gabarito":"B", "justificativa":"Comunicação denominacional exige rastrear quem fala, em nome de qual órgão e por qual canal.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q13", "disciplina":"TP55", "avaliacao":"av2", "unidade":13,
+    "tipoItem":"resposta-unica", "tema":"Diagnóstico de projeto de comunicação", "taxonomiaBloom":"aplicar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u13-projeto-comunicacao-diagnostico"],
+    "contexto":"O briefing de uma igreja contém apenas: 'Instagram, YouTube, podcast e panfletos'.",
+    "comando":"O que falta para que isso seja um projeto de comunicação?",
+    "alternativas":[
+      {"letra":"A","texto":"Somente escolher logotipo e cores.","justificativa":"Identidade visual não substitui diagnóstico e objetivo."},
+      {"letra":"B","texto":"Problema, públicos, objetivo, mensagem, restrições e critério de sucesso antes da matriz de canais.","justificativa":"A lista atual contém ferramentas, não a justificativa do projeto."},
+      {"letra":"C","texto":"Adicionar mais plataformas para aumentar abrangência.","justificativa":"Mais canais sem finalidade aumentam dívida de manutenção."},
+      {"letra":"D","texto":"Definir apenas número desejado de seguidores.","justificativa":"Seguidor não identifica qual necessidade pastoral ou informacional será resolvida."}
+    ],
+    "gabarito":"B", "justificativa":"O diagnóstico transforma uma lista de ferramentas em projeto orientado por problema, pessoas e resultado.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q14", "disciplina":"TP55", "avaliacao":"av2", "unidade":14,
+    "tipoItem":"resposta-unica", "tema":"Matriz editorial e governança", "taxonomiaBloom":"aplicar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u14-projeto-comunicacao-plano"],
+    "contexto":"Uma igreja abre seis canais, todos publicam os mesmos cards, ninguém sabe quem aprova textos doutrinários e as senhas estão em contas pessoais de voluntários.",
+    "comando":"Qual correção é mais completa?",
+    "alternativas":[
+      {"letra":"A","texto":"Aumentar a frequência para justificar todos os canais.","justificativa":"Isso amplia carga sem corrigir redundância e governança."},
+      {"letra":"B","texto":"Definir função, público, responsável, aprovador, cadência, integração e propriedade institucional para cada canal, encerrando os que não se justificam.","justificativa":"A matriz editorial e a governança tornam o sistema sustentável e responsável."},
+      {"letra":"C","texto":"Entregar todas as decisões doutrinárias ao designer para agilizar o fluxo.","justificativa":"Execução técnica não transfere autoridade eclesiástica."},
+      {"letra":"D","texto":"Manter senhas pessoais porque facilita a troca de voluntários.","justificativa":"Dependência de contas pessoais ameaça continuidade e controle institucional."}
+    ],
+    "gabarito":"B", "justificativa":"O projeto precisa associar cada canal a função e governança explícitas, não apenas a calendário de postagem.", "atualizadoEm":"2026-09-11"
+  },
+  {
+    "id":"tp55-av2-q15", "disciplina":"TP55", "avaliacao":"av2", "unidade":15,
+    "tipoItem":"resposta-unica", "tema":"Execução e avaliação do projeto", "taxonomiaBloom":"avaliar", "nivelDificuldade":"media",
+    "referenciais":["tp55-u15-projeto-comunicacao-avaliacao"],
+    "contexto":"O objetivo do projeto era diminuir o número de visitantes que chegam sem saber horário e localização, mas o relatório final apresenta apenas curtidas e visualizações.",
+    "comando":"Como a avaliação deve ser corrigida?",
+    "alternativas":[
+      {"letra":"A","texto":"Manter as métricas porque qualquer número digital mede o objetivo indiretamente.","justificativa":"Métrica só é útil quando possui relação válida com a mudança pretendida."},
+      {"letra":"B","texto":"Medir se visitantes encontraram informações corretas e chegaram orientados, usando métricas de plataforma apenas como diagnóstico secundário.","justificativa":"O indicador precisa responder ao problema definido no início do projeto."},
+      {"letra":"C","texto":"Substituir toda avaliação por impressão subjetiva da equipe.","justificativa":"O projeto pode e deve observar resultados do processo comunicacional."},
+      {"letra":"D","texto":"Tratar aumento de visualizações como prova de conversão espiritual.","justificativa":"Fruto espiritual não pode ser inferido diretamente de métrica de plataforma."}
+    ],
+    "gabarito":"B", "justificativa":"Avaliação responsável mede a necessidade que o projeto pretendia resolver e não confunde analytics com fruto espiritual.", "atualizadoEm":"2026-09-11"
+  }
+]
