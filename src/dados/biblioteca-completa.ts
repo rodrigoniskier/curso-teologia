@@ -9,6 +9,7 @@ import { bibliotecaLinguas } from './biblioteca-linguas';
 import { bibliotecaTe03 } from './biblioteca-te03';
 import { bibliotecaMetodologia } from './biblioteca-metodologia';
 import { bibliotecaTp55 } from './biblioteca-tp55';
+import { bibliotecaCg11 } from './biblioteca-cg11';
 
 /** Acervo completo consumido pela interface. */
 export const biblioteca = [
@@ -23,6 +24,7 @@ export const biblioteca = [
   ...bibliotecaTe03,
   ...bibliotecaMetodologia,
   ...bibliotecaTp55,
+  ...bibliotecaCg11,
 ];
 
 export const porDisciplina = (codigo: string) =>
