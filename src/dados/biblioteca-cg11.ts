@@ -5,10 +5,10 @@ export const bibliotecaCg11: ObraLivre[] = [
   {
     id: 'ibge-brasil-500-povoamento',
     autor: 'Instituto Brasileiro de Geografia e Estatística (IBGE)',
-    ano: '2000',
+    ano: '2007',
     titulo: 'Brasil: 500 anos de povoamento',
     publicacao: 'IBGE',
-    url: 'https://brasil500anos.ibge.gov.br/pt/estatisticas-do-povoamento',
+    url: 'https://biblioteca.ibge.gov.br/visualizacao/livros/liv6687.pdf',
     idioma: 'pt',
     acesso: 'livre',
     disciplinas: ['CG11'],
