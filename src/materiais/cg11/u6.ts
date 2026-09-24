@@ -27,7 +27,7 @@ export const material: MaterialUnidade = {
   ],
   fontes: [
     { id: 'lery-pt', autor: 'Jean de Léry', ano: '1578', titulo: 'História de uma viagem feita à terra do Brasil', publicacao: 'Internet Archive', url: 'https://archive.org/details/historiadeumavia00lery', idioma: 'pt', tipo: 'obra-primaria', acesso: 'livre', nota: 'Fonte histórica para encontro intercultural no Brasil, lida criticamente em seu contexto.' },
-    { id: 'ibge-brasil-500-povoamento', autor: 'Instituto Brasileiro de Geografia e Estatística (IBGE)', ano: '2000', titulo: 'Brasil: 500 anos de povoamento', publicacao: 'IBGE', url: 'https://brasil500anos.ibge.gov.br/pt/estatisticas-do-povoamento', idioma: 'pt', tipo: 'acervo', acesso: 'livre', nota: 'Fonte oficial para formação populacional e fluxos migratórios brasileiros.' },
+    { id: 'ibge-brasil-500-povoamento', autor: 'Instituto Brasileiro de Geografia e Estatística (IBGE)', ano: '2007', titulo: 'Brasil: 500 anos de povoamento', publicacao: 'IBGE', url: 'https://biblioteca.ibge.gov.br/visualizacao/livros/liv6687.pdf', idioma: 'pt', tipo: 'acervo', acesso: 'livre', nota: 'Fonte oficial para formação populacional e fluxos migratórios brasileiros.' },
     { id: 'cfw-ipib', autor: 'Assembleia de Westminster', ano: '1647', titulo: 'Confissão de Fé de Westminster', publicacao: 'Igreja Presbiteriana Independente do Brasil', url: 'https://ipib.org.br/confissao-de-fe-de-westminster/', idioma: 'pt', tipo: 'documento', acesso: 'livre', nota: 'Referência confessional para liberdade de consciência e critérios normativos subordinados à Escritura.' }
   ],
   atualizadoEm: '2026-09-24',
