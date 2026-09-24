@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cg11-av1-q01",
+    "disciplina": "CG11",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-unica",
+    "tema": "Objeto e método da antropologia da religião",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg11-u1-antropologia-religiao"],
+    "contexto": "Um pesquisador observa uma prática religiosa desconhecida e imediatamente a classifica como superstição sem perguntar aos participantes o que ela significa.",
+    "comando": "Qual procedimento corrige melhor o problema metodológico?",
+    "alternativas": [
+      {"letra":"A","texto":"Condenar primeiro e só depois investigar o sentido interno da prática.","justificativa":"O juízo anterior à descrição favorece caricaturas e erro de alvo."},
+      {"letra":"B","texto":"Descrever a prática de modo que seus participantes a reconheçam antes de avaliá-la por critérios externos.","justificativa":"A descrição precisa é condição para comparação e avaliação responsável."},
+      {"letra":"C","texto":"Suspender permanentemente qualquer avaliação porque toda prática cultural é igualmente normativa.","justificativa":"Compreensão não implica relativismo nem impede avaliação posterior."},
+      {"letra":"D","texto":"Usar apenas categorias do pesquisador porque a autodescrição do grupo não tem valor analítico.","justificativa":"A perspectiva interna é dado indispensável, embora não seja a única perspectiva possível."}
+    ],
+    "gabarito": "B",
+    "justificativa": "A antropologia começa pela descrição contextual e pela compreensão dos significados atribuídos pelos participantes, sem confundir precisão descritiva com concordância.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "cg11-av1-q02",
+    "disciplina": "CG11",
+    "avaliacao": "av1",
+    "unidade": 2,
+    "tipoItem": "resposta-unica",
+    "tema": "Cultura material e imaterial",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg11-u2-cultura-material-imaterial"],
+    "contexto": "Uma comunidade preserva um edifício antigo. Um estudante afirma que o prédio pertence à cultura material e, portanto, seus significados religiosos, memórias e regras de uso são irrelevantes para a análise.",
+    "comando": "Qual resposta é mais adequada?",
+    "alternativas": [
+      {"letra":"A","texto":"O estudante está correto porque cultura material pode ser estudada sem qualquer dimensão simbólica.","justificativa":"Objetos e espaços recebem usos e significados socialmente aprendidos."},
+      {"letra":"B","texto":"O prédio é material, mas sua interpretação exige também dimensões imateriais como memória, valor, linguagem e ritual.","justificativa":"Material e imaterial se articulam na experiência cultural."},
+      {"letra":"C","texto":"O prédio é exclusivamente cultura imaterial porque possui significado.","justificativa":"A construção continua sendo um artefato material, embora carregue sentidos."},
+      {"letra":"D","texto":"Somente a idade do prédio importa antropologicamente.","justificativa":"Cronologia é um dado, não esgota a análise cultural."}
+    ],
+    "gabarito": "B",
+    "justificativa": "Artefatos culturais são materiais, mas seus usos e significados dependem de memórias, normas, valores e práticas imateriais.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "cg11-av1-q03",
+    "disciplina": "CG11",
+    "avaliacao": "av1",
+    "unidade": 3,
+    "tipoItem": "resposta-unica",
+    "tema": "Cultura de elite, popular e de massa",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg11-u3-cultura-elite-popular-massa"],
+    "contexto": "Uma canção surgida numa comunidade local passa a ser estudada em universidades e, depois, distribuída comercialmente por plataformas digitais.",
+    "comando": "O caso demonstra principalmente que:",
+    "alternativas": [
+      {"letra":"A","texto":"Categorias culturais são essências fixas e a canção precisa pertencer a apenas uma delas.","justificativa":"As formas de circulação podem mudar historicamente."},
+      {"letra":"B","texto":"Cultura popular sempre deixa de ser popular quando ganha circulação ampla.","justificativa":"Ampliação de circulação não apaga automaticamente a origem ou os usos comunitários."},
+      {"letra":"C","texto":"As categorias descrevem modos de produção, circulação e legitimação cujas fronteiras podem se sobrepor e mudar.","justificativa":"É a leitura adequada do movimento entre contextos popular, institucional e massivo."},
+      {"letra":"D","texto":"O valor moral da canção aumenta quando ela entra na universidade.","justificativa":"Prestígio institucional não determina valor moral ou teológico."}
+    ],
+    "gabarito": "C",
+    "justificativa": "Cultura de elite, popular e de massa são categorias analíticas de produção e circulação, não castas imutáveis nem escalas automáticas de valor.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "cg11-av1-q04",
+    "disciplina": "CG11",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-unica",
+    "tema": "Caracterização antropológica de grupos religiosos",
+    "taxonomiaBloom": "avaliar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg11-u4-grupos-religiosos"],
+    "contexto": "Um relatório descreve todos os católicos brasileiros apenas pela doutrina oficial da instituição e todos os adeptos de religiões de matriz africana como se pertencessem a uma única tradição homogênea.",
+    "comando": "Qual é a principal falha antropológica do relatório?",
+    "alternativas": [
+      {"letra":"A","texto":"Usar qualquer categoria religiosa em pesquisa é sempre inválido.","justificativa":"Categorias podem ser úteis quando seus limites são explicitados."},
+      {"letra":"B","texto":"O relatório ignora diversidade interna, diferença entre instituição e prática vivida e autodescrição dos participantes.","justificativa":"Esses elementos são essenciais para caracterização não caricatural."},
+      {"letra":"C","texto":"Somente dados censitários bastariam para descrever completamente cada religião.","justificativa":"Estatística dimensiona grupos, mas não esgota significados e práticas."},
+      {"letra":"D","texto":"Toda diferença interna torna impossível qualquer comparação entre grupos.","justificativa":"Comparação é possível quando categorias e limites são usados com cuidado."}
+    ],
+    "gabarito": "B",
+    "justificativa": "A caracterização antropológica precisa reconhecer heterogeneidade, práticas populares, estruturas formais e categorias usadas pelos próprios grupos.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "cg11-av1-q05",
+    "disciplina": "CG11",
+    "avaliacao": "av1",
+    "unidade": 5,
+    "tipoItem": "resposta-unica",
+    "tema": "Cultura virtual e espiritualidade",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg11-u5-cultura-virtual-espiritualidade"],
+    "contexto": "Uma igreja percebe que milhares de pessoas consomem seus vídeos, mas poucas possuem relação estável com uma comunidade local. A equipe conclui que alcance digital e pertencimento eclesial são equivalentes.",
+    "comando": "Qual avaliação melhor corresponde à unidade?",
+    "alternativas": [
+      {"letra":"A","texto":"A equivalência é correta porque toda interação mediada produz automaticamente comunidade plena.","justificativa":"Alcance não demonstra reciprocidade, cuidado, disciplina ou pertencimento."},
+      {"letra":"B","texto":"Todo conteúdo digital é incompatível com espiritualidade cristã.","justificativa":"O meio digital pode ensinar, informar e aproximar pessoas."},
+      {"letra":"C","texto":"É preciso distinguir consumo de conteúdo, interação e pertencimento comunitário, avaliando o que a mediação digital possibilita e o que não substitui.","justificativa":"A unidade trata mediação digital sem equipará-la automaticamente à vida comunitária."},
+      {"letra":"D","texto":"O único dado relevante é a quantidade de visualizações.","justificativa":"Métricas de alcance não medem por si sós vínculo ou formação espiritual."}
+    ],
+    "gabarito": "C",
+    "justificativa": "Ambientes digitais reorganizam presença e autoridade; podem servir à espiritualidade sem equivaler automaticamente à vida eclesial concreta.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "cg11-av1-q06",
+    "disciplina": "CG11",
+    "avaliacao": "av1",
+    "unidade": 6,
+    "tipoItem": "resposta-unica",
+    "tema": "Cultura e transculturalidade",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": ["cg11-u6-cultura-transculturalidade"],
+    "contexto": "Uma equipe missionária encontra uma forma musical local desconhecida e decide proibi-la apenas porque não pertence à tradição cultural da igreja enviadora.",
+    "comando": "Qual procedimento corresponde melhor à contextualização crítica?",
+    "alternativas": [
+      {"letra":"A","texto":"Proibir toda forma cultural local para evitar qualquer possibilidade de sincretismo.","justificativa":"Isso tende a confundir a cultura do mensageiro com o evangelho."},
+      {"letra":"B","texto":"Aceitar toda forma local porque cultura nunca pode ser avaliada moral ou teologicamente.","justificativa":"Contextualização crítica não implica relativismo."},
+      {"letra":"C","texto":"Investigar o significado local da forma, avaliá-la à luz da Escritura e discernir com cristãos locais se pode ser mantida, transformada ou abandonada.","justificativa":"Esse processo distingue significado cultural, norma bíblica e decisão contextual."},
+      {"letra":"D","texto":"Decidir apenas pela origem geográfica da prática.","justificativa":"Origem não determina, sozinha, o significado atual nem a legitimidade."}
+    ],
+    "gabarito": "C",
+    "justificativa": "Transculturalidade responsável exige compreender o significado da prática, reconhecer a cultura do observador e julgar conteúdo sem canonizar costumes próprios.",
+    "atualizadoEm": "2026-09-24"
+  }
+]
