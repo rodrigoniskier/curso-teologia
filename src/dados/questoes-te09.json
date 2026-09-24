@@ -1,0 +1,402 @@
+[
+  {
+    "id": "te09-av1-q01",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 1,
+    "tipoItem": "resposta-unica",
+    "tema": "Primeira declinação",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u1-primeira-declinacao"
+    ],
+    "contexto": "Considere a forma γραφαῖς, de γραφή, -ῆς, ἡ.",
+    "comando": "Assinale a análise correta.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Genitivo singular feminino.",
+        "justificativa": "O genitivo singular é γραφῆς."
+      },
+      {
+        "letra": "B",
+        "texto": "Dativo plural feminino.",
+        "justificativa": "A terminação -αις identifica o dativo plural nesse paradigma."
+      },
+      {
+        "letra": "C",
+        "texto": "Acusativo singular feminino.",
+        "justificativa": "O acusativo singular é γραφήν."
+      },
+      {
+        "letra": "D",
+        "texto": "Nominativo plural masculino.",
+        "justificativa": "O lema é feminino e o nominativo plural é γραφαί."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "γραφαῖς é dativo plural feminino da primeira declinação.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q02",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 2,
+    "tipoItem": "resposta-unica",
+    "tema": "Posição atributiva e predicativa",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u2-adjetivos-introducao"
+    ],
+    "contexto": "Compare ὁ πιστὸς δοῦλος e πιστὸς ὁ δοῦλος.",
+    "comando": "Qual distinção é mais adequada?",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "As duas construções são necessariamente idênticas em função.",
+        "justificativa": "A posição do artigo participa da distinção sintática."
+      },
+      {
+        "letra": "B",
+        "texto": "A primeira é atributiva; a segunda pode ser predicativa, conforme o contexto.",
+        "justificativa": "A relação artigo-substantivo-adjetivo é a pista central da unidade."
+      },
+      {
+        "letra": "C",
+        "texto": "A primeira é predicativa e a segunda atributiva.",
+        "justificativa": "A ordem está invertida."
+      },
+      {
+        "letra": "D",
+        "texto": "O adjetivo não concorda com δοῦλος em nenhuma das duas.",
+        "justificativa": "πιστός e δοῦλος concordam em masculino nominativo singular."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "O artigo ajuda a distinguir o adjetivo integrado ao sintagma nominal da relação predicativa.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q03",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 3,
+    "tipoItem": "resposta-unica",
+    "tema": "Concordância adjetival",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u3-adjetivos-primeira-segunda-declinacoes"
+    ],
+    "contexto": "Um adjetivo aparece separado do substantivo por outras palavras, mas ambos têm o mesmo gênero, número e caso.",
+    "comando": "Qual princípio deve orientar a análise?",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "A proximidade linear é sempre mais importante que a concordância.",
+        "justificativa": "A ordem grega é flexível e a concordância fornece evidência estrutural."
+      },
+      {
+        "letra": "B",
+        "texto": "A concordância pode indicar relação entre as formas mesmo quando não estão adjacentes.",
+        "justificativa": "É exatamente a função morfológica estudada."
+      },
+      {
+        "letra": "C",
+        "texto": "Adjetivos nunca podem ser separados do substantivo.",
+        "justificativa": "Podem ocorrer separados na oração."
+      },
+      {
+        "letra": "D",
+        "texto": "Apenas o significado lexical decide a relação.",
+        "justificativa": "A morfologia fornece evidência sintática decisiva."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "Gênero, número e caso ajudam a identificar relações sintáticas para além da ordem superficial.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q04",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 4,
+    "tipoItem": "resposta-unica",
+    "tema": "Preposições e casos",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u4-preposicoes"
+    ],
+    "contexto": "Um aluno memoriza διά como 'por' e aplica a mesma tradução a qualquer construção.",
+    "comando": "Qual correção é mais precisa?",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Toda preposição grega possui uma única tradução portuguesa fixa.",
+        "justificativa": "Preposições possuem campos de uso e podem mudar conforme o caso."
+      },
+      {
+        "letra": "B",
+        "texto": "É preciso analisar διά + caso e o contexto antes de escolher a tradução.",
+        "justificativa": "Regência e contexto determinam a relação semântica."
+      },
+      {
+        "letra": "C",
+        "texto": "O caso regido não tem valor para a interpretação.",
+        "justificativa": "O caso faz parte da construção preposicional."
+      },
+      {
+        "letra": "D",
+        "texto": "Preposições não participam da sintaxe do Novo Testamento.",
+        "justificativa": "Elas estruturam numerosas relações sintáticas e semânticas."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "A unidade de leitura é preposição + caso + contexto, não uma equivalência isolada de glossário.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q05",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 5,
+    "tipoItem": "resposta-unica",
+    "tema": "Imperfeito",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u5-imperfeito-indicativo"
+    ],
+    "contexto": "Considere ἐλύον em uma frase sem sujeito expresso.",
+    "comando": "Qual análise morfológica é possível antes de consultar o contexto?",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Somente 1ª pessoa singular do imperfeito ativo.",
+        "justificativa": "A forma também pode ser 3ª pessoa plural."
+      },
+      {
+        "letra": "B",
+        "texto": "1ª pessoa singular ou 3ª pessoa plural do imperfeito ativo.",
+        "justificativa": "O paradigma possui sincretismo nessas duas posições."
+      },
+      {
+        "letra": "C",
+        "texto": "Futuro passivo, 3ª pessoa plural.",
+        "justificativa": "Não há tema passivo nem marcador de futuro."
+      },
+      {
+        "letra": "D",
+        "texto": "Aoristo médio, 1ª pessoa singular.",
+        "justificativa": "A forma não apresenta morfologia de aoristo médio."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "ἔλυον é ambíguo entre 1ª singular e 3ª plural; o contexto resolve.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q06",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 6,
+    "tipoItem": "resposta-unica",
+    "tema": "Segundo aoristo",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "dificil",
+    "referenciais": [
+      "te09-u6-segundo-aoristo"
+    ],
+    "contexto": "Um estudante afirma que todo aoristo descreve necessariamente uma ação instantânea e irrepetível.",
+    "comando": "Assinale a correção mais adequada.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "A afirmação está correta por definição.",
+        "justificativa": "O aoristo não codifica automaticamente pontualidade nem irrepetibilidade."
+      },
+      {
+        "letra": "B",
+        "texto": "O aoristo apresenta a situação de modo perfectivo; duração e repetição dependem do verbo e do contexto.",
+        "justificativa": "Essa formulação evita confundir aspecto com duração objetiva."
+      },
+      {
+        "letra": "C",
+        "texto": "Aoristo é apenas outro nome para futuro.",
+        "justificativa": "No indicativo, frequentemente relata eventos passados."
+      },
+      {
+        "letra": "D",
+        "texto": "O aoristo não possui diferença morfológica em relação ao presente.",
+        "justificativa": "Há temas e terminações próprios."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "O valor central é aspectual/perfectivo, e não a ideia obrigatória de ação pontual.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q07",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 7,
+    "tipoItem": "resposta-unica",
+    "tema": "Primeiro aoristo ativo, médio e passivo",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "dificil",
+    "referenciais": [
+      "te09-u7-primeiro-aoristo-ativo-medio-passivo"
+    ],
+    "contexto": "Durante a análise de uma narrativa do Novo Testamento, o estudante encontra a forma ἐλύθην e precisa distingui-la das séries ativa, média, imperfeita e futura antes de propor uma tradução. Ele observa o aumento inicial e o marcador passivo -θη-.",
+    "comando": "Assinale a opção correta.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Primeiro aoristo passivo do indicativo, 1ª pessoa singular.",
+        "justificativa": "O aumento e o tema -θη- identificam a série passiva de aoristo."
+      },
+      {
+        "letra": "B",
+        "texto": "Primeiro aoristo ativo do indicativo, 3ª pessoa plural.",
+        "justificativa": "O ativo regular usa -σα-, não -θη-."
+      },
+      {
+        "letra": "C",
+        "texto": "Futuro passivo, 1ª pessoa singular.",
+        "justificativa": "O futuro passivo teria -θησ- e terminação primária médio/passiva."
+      },
+      {
+        "letra": "D",
+        "texto": "Imperfeito médio/passivo, 1ª pessoa singular.",
+        "justificativa": "O imperfeito médio/passivo de λύω seria ἐλυόμην."
+      }
+    ],
+    "gabarito": "A",
+    "justificativa": "ἐλύθην é a forma-modelo do aoristo passivo indicativo 1ª singular de λύω.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av1-q08",
+    "disciplina": "TE09",
+    "avaliacao": "av1",
+    "unidade": 8,
+    "tipoItem": "resposta-unica",
+    "tema": "Futuro passivo",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u8-futuro-passivo"
+    ],
+    "contexto": "Na forma λυθήσονται, o estudante precisa explicar cada camada morfológica.",
+    "comando": "Qual análise é correta?",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Futuro passivo, 3ª pessoa plural; tema passivo -θη-, marcador futuro -σ- e terminação médio/passiva.",
+        "justificativa": "A forma combina exatamente essas camadas."
+      },
+      {
+        "letra": "B",
+        "texto": "Aoristo passivo, 3ª pessoa plural.",
+        "justificativa": "O futuro acrescenta σ e terminações primárias."
+      },
+      {
+        "letra": "C",
+        "texto": "Presente médio/passivo, 3ª pessoa plural.",
+        "justificativa": "O presente seria λύονται."
+      },
+      {
+        "letra": "D",
+        "texto": "Futuro ativo, 1ª pessoa plural.",
+        "justificativa": "A voz e a pessoa estão incorretas."
+      }
+    ],
+    "gabarito": "A",
+    "justificativa": "O futuro passivo reaproveita o tema passivo e acrescenta o marcador futuro antes das terminações médio/passivas.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av2-q01",
+    "disciplina": "TE09",
+    "avaliacao": "av2",
+    "unidade": 9,
+    "tipoItem": "resposta-unica",
+    "tema": "Pronomes pessoais",
+    "taxonomiaBloom": "analisar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u9-pronomes-pessoais"
+    ],
+    "contexto": "Uma oração contém γράφω e outra contém ἐγὼ γράφω.",
+    "comando": "Qual observação é mais adequada?",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "Sem ἐγώ, γράφω não possui sujeito gramatical.",
+        "justificativa": "A terminação verbal já marca 1ª pessoa singular."
+      },
+      {
+        "letra": "B",
+        "texto": "A presença explícita de ἐγώ pode acrescentar contraste ou ênfase, porque a pessoa já está codificada no verbo.",
+        "justificativa": "Esse é o efeito discursivo relevante."
+      },
+      {
+        "letra": "C",
+        "texto": "ἐγώ muda γράφω para terceira pessoa.",
+        "justificativa": "Ambos indicam primeira pessoa singular."
+      },
+      {
+        "letra": "D",
+        "texto": "O pronome nominativo é obrigatório em todo verbo grego.",
+        "justificativa": "O grego frequentemente omite o pronome sujeito expresso."
+      }
+    ],
+    "gabarito": "B",
+    "justificativa": "A flexão verbal permite sujeito implícito; pronome nominativo expresso pode ter função discursiva.",
+    "atualizadoEm": "2026-09-24"
+  },
+  {
+    "id": "te09-av2-q02",
+    "disciplina": "TE09",
+    "avaliacao": "av2",
+    "unidade": 10,
+    "tipoItem": "resposta-unica",
+    "tema": "Pronomes demonstrativos",
+    "taxonomiaBloom": "aplicar",
+    "nivelDificuldade": "media",
+    "referenciais": [
+      "te09-u10-pronomes-demonstrativos"
+    ],
+    "contexto": "Em uma frase de leitura, o estudante encontra οὗτος ὁ λόγος e precisa analisar o demonstrativo antes de traduzir. O artigo ὁ acompanha λόγος, enquanto οὗτος aparece fora do grupo artigo + substantivo e concorda com o substantivo.",
+    "comando": "Assinale a análise correta.",
+    "alternativas": [
+      {
+        "letra": "A",
+        "texto": "οὗτος é demonstrativo masculino nominativo singular e concorda com λόγος.",
+        "justificativa": "A concordância e a posição são compatíveis com o grupo demonstrativo."
+      },
+      {
+        "letra": "B",
+        "texto": "οὗτος é artigo definido.",
+        "justificativa": "O artigo é ὁ; οὗτος é demonstrativo."
+      },
+      {
+        "letra": "C",
+        "texto": "οὗτος precisa estar entre artigo e substantivo para ser gramatical.",
+        "justificativa": "O demonstrativo normalmente aparece fora do grupo artigo + substantivo."
+      },
+      {
+        "letra": "D",
+        "texto": "A forma é necessariamente acusativa plural.",
+        "justificativa": "οὗτος é nominativo singular masculino."
+      }
+    ],
+    "gabarito": "A",
+    "justificativa": "O demonstrativo concorda com o substantivo e, nessa construção, aparece fora da posição atributiva interna do grupo articular.",
+    "atualizadoEm": "2026-09-24"
+  }
+]
