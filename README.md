@@ -1,5 +1,14 @@
 # Sola Scriptura — Portal de Teologia Reformada
 
+> **Status: ativo e em desenvolvimento.** Projeto atualizado em setembro de 2026, com evolução contínua de conteúdo, avaliações e validações automatizadas.
+
+### Portfolio snapshot
+
+Além do domínio educacional, este projeto funciona como case de **web design, arquitetura da informação e engenharia de conteúdo**. A interface organiza um catálogo curricular amplo em uma experiência navegável, enquanto scripts e CI validam integridade, cobertura, referências e disponibilidade de fontes.
+
+**Stack:** React · TypeScript · Vite · Tailwind CSS · React Router · GitHub Actions · Vercel
+
+
 Portal de estudos em português de teologia reformada, organizado segundo o
 **Conteúdo Programático Curricular dos Seminários Teológicos da Igreja
 Presbiteriana do Brasil** (Junta de Educação Teológica, 2ª ed., 2018) — o
