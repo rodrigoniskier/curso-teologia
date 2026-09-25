@@ -30,13 +30,13 @@
     "conferir": "node scripts/estado.mjs --conferir"
   },
   "dependencies": {
-    "react": "^19.0.0",
+    "react": "^19.3.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.14",
-    "@types/react": "^19.0.7",
+    "@types/react": "^19.3.0",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^5.0.4",
     "tailwindcss": "^4.1.14",
