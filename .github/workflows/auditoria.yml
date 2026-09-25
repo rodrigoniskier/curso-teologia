@@ -37,7 +37,7 @@ jobs:
         run: cat relatorio-auditoria.md >> "$GITHUB_STEP_SUMMARY" || true
       - name: Guardar relatório
         if: always()
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: relatorio-auditoria
           path: |
