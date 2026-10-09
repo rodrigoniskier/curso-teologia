@@ -125,8 +125,11 @@ for (const caminho of await listarTs(MATERIAIS)) {
     }
   }
 
-  for (const [, url] of fonte.matchAll(/\burl:\s*'([^']+)'/g)) {
-    exigir(textoBiblioteca.includes(`url: '${url}'`), `${rel}: fonte não cadastrada no acervo: ${url}`);
+  for (const [, , url] of fonte.matchAll(/\burl:\s*(['"])(.*?)\1/g)) {
+    exigir(
+      textoBiblioteca.includes(`url: '${url}'`) || textoBiblioteca.includes(`url: "${url}"`),
+      `${rel}: fonte não cadastrada no acervo: ${url}`,
+    );
   }
 
   if (disciplina && Number.isInteger(unidade)) materiais.set(`${disciplina}:${unidade}`, rel);
