@@ -29,7 +29,7 @@ adotado pelo Seminário Presbiteriano do Norte e demais seminários da IPB.
 | Referências bibliográficas oficiais | **1.251** |
 | Verbetes redigidos | 201 |
 | Obras livres mapeadas | 238 |
-| Unidades verificadas | **174 / 1.375** |
+| Unidades verificadas | **176 / 1.375** |
 | Disciplinas concluídas | **16 / 121** |
 | Módulos avaliativos estruturados | **242** |
 | Questões avaliativas publicadas | **199** |
