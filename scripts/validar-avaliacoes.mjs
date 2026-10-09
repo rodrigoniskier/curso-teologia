@@ -46,7 +46,7 @@ async function idsDeMateriaisEmPastas(idsDisponiveis) {
     const arquivos = (await readdir(join(MATERIAIS, pasta.name))).filter((n) => n.endsWith('.ts'));
     for (const nome of arquivos) {
       const texto = await readFile(join(MATERIAIS, pasta.name, nome), 'utf8');
-      const id = texto.match(/\bid:\s*'([^']+)'/)?.[1];
+      const id = texto.match(/\bid:\s*(['"])(.*?)\1/)?.[2];
       if (id) idsDisponiveis.add(id);
     }
   }
@@ -61,7 +61,7 @@ async function idsDeMateriaisDisciplina(idsDisponiveis) {
   }
   for (const nome of arquivos) {
     const texto = await readFile(join(MATERIAIS_DISCIPLINAS, nome), 'utf8');
-    const id = texto.match(/\bid:\s*'([^']+)'/)?.[1];
+    const id = texto.match(/\bid:\s*(['"])(.*?)\1/)?.[2];
     if (id) idsDisponiveis.add(id);
   }
 }
@@ -72,7 +72,7 @@ async function coletarIdsReferenciais() {
     .filter((nome) => /^biblioteca.*\.ts$/.test(nome) && nome !== 'biblioteca-completa.ts');
   for (const nome of arquivosBiblioteca) {
     const texto = await readFile(join(DADOS, nome), 'utf8');
-    for (const [, id] of texto.matchAll(/\bid:\s*'([^']+)'/g)) idsDisponiveis.add(id);
+    for (const [, , id] of texto.matchAll(/\bid:\s*(['"])(.*?)\1/g)) idsDisponiveis.add(id);
   }
   await idsDeMateriaisEmPastas(idsDisponiveis);
   await idsDeMateriaisDisciplina(idsDisponiveis);

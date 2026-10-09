@@ -89,8 +89,11 @@ for (const caminho of arquivos) {
   }
   if (disciplina) exigir(estagios.has(disciplina), `${rel}: disciplina ${disciplina} não está classificada como estágio`);
 
-  for (const [, url] of fonte.matchAll(/\burl:\s*'([^']+)'/g)) {
-    exigir(textoBiblioteca.includes(`url: '${url}'`), `${rel}: fonte não cadastrada no acervo: ${url}`);
+  for (const [, , url] of fonte.matchAll(/\burl:\s*(['"])(.*?)\1/g)) {
+    exigir(
+      textoBiblioteca.includes(`url: '${url}'`) || textoBiblioteca.includes(`url: "${url}"`),
+      `${rel}: fonte não cadastrada no acervo: ${url}`,
+    );
   }
 
   if (disciplina) materiais.set(disciplina, rel);
